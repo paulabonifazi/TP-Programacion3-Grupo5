@@ -13,6 +13,9 @@ public class EstadoTicket {///como consulto el estado para las comparaciones, no
 		return estadoTicket;
 	}
 	
+	public void cambiarEstado(String nuevoEstado) {///
+		this.estadoTicket=nuevoEstado;
+	}
 	
 
 }
