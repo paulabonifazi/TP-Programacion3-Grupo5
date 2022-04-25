@@ -5,7 +5,7 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class RondaEncuentrosLaborales {
+public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra clase
 
 	////la agencia se deberia quedar con la lista que genera
 	
