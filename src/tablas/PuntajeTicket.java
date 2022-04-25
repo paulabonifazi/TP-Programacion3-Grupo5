@@ -9,14 +9,60 @@ public class PuntajeTicket {
 	
 	public double getPuntaje(TicketEmpleador ticketEmpleador, TicketEmpleadoPretenso ticketEmpleadoPretenso) {
 		double aux = 0;
-		
-		IAspecto aspEmpld =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	IAspecto aspEmprs =  TablaFactory.getValorAspecto("acceso a FB empleador");
+/////Locacion
+		IAspecto aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
+	 	IAspecto aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
 	 	
 		aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
 		puntaje += aux;
+//////////Remuneracion
+		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
+	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+	 	
+	 	aux = 0;
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+		puntaje += aux;
 		
-		/* LO MISMO CON TODOS LOS ASPECTOS */ 
+//////////CargaHoraria
+		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
+	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+	 	
+	 	aux = 0;
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+		puntaje += aux;
+		
+		
+//////////Tipo Puesto
+		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
+	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		
+	 	aux = 0;
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+		puntaje += aux;
+		
+//////////Rango Etario
+		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
+	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		
+	 	aux = 0;
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+		puntaje += aux;
+		
+////////// Experiencia Previa
+		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
+	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		
+	 	aux = 0;
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+		puntaje += aux;
+		
+//////////Estudios cursados
+		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
+	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		
+	 	aux = 0;
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+		puntaje += aux;
 		
 		
 		return puntaje;

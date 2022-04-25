@@ -3,7 +3,7 @@ package tablas;
 public class TablaFactory {
 	public static IAspecto getValAspecto(String nombreAspecto) {
 		IAspecto aspecto = null;
-		
+	///CargaHoraria
 		if (nombreAspecto.equals("CHCOMPLETA"))
 			aspecto = new CargaHorariaCompleta();
 		else if (nombreAspecto.equals("CHEXTENDIDA"))
@@ -11,7 +11,7 @@ public class TablaFactory {
 		else if (nombreAspecto.equals("CHMEDIA"))
 			aspecto = new CargaHorariaMedia();
 		
-		
+	///EstudiosCursados	
 		else if (nombreAspecto.equals("PRIMARIO"))
 			aspecto = new EstudiosCursadPrimario();
 		else if (nombreAspecto.equals("SECUNDARIO"))
@@ -19,7 +19,7 @@ public class TablaFactory {
 		else if (nombreAspecto.equals("TERCIARIO"))
 			aspecto = new EstudiosCursadTerciario();
 		
-		
+	///Experiencia	
 		else if (nombreAspecto.equals("EXPMEDIA"))
 			aspecto = new ExperienciaMedia();
 		else if (nombreAspecto.equals("EXPMUCHA"))
@@ -27,7 +27,7 @@ public class TablaFactory {
 		else if (nombreAspecto.equals("EXPNADA"))
 			aspecto = new ExperienciaNada();
 		
-		
+	///Locacion	
 		else if (nombreAspecto.equals("HOMEOFFICE"))
 			aspecto = new LocacionHomeOffice();
 		else if (nombreAspecto.equals("PRESENCIAL"))
@@ -35,7 +35,7 @@ public class TablaFactory {
 		else if (nombreAspecto.equals("INDISTINTO"))
 			aspecto = new LocacionIndistinto();
 		
-		
+	///RangoEtario	
 		else if (nombreAspecto.equals("MENOS40"))
 			aspecto = new RangoEtarioMenos40();
 		else if (nombreAspecto.equals("ENTRE40A50"))
@@ -43,7 +43,7 @@ public class TablaFactory {
 		else if (nombreAspecto.equals("MAS50"))
 			aspecto = new RangoEtarioMas50();
 	
-		
+	///Remuneracion	
 		else if (nombreAspecto.equals("HASTAV1"))
 			aspecto = new RemuneracionHastaV1();
 		else if (nombreAspecto.equals("ENTREV1YV2"))
@@ -51,7 +51,7 @@ public class TablaFactory {
 		else if (nombreAspecto.equals("MASV2"))
 			aspecto = new RemuneracionMasV2();
 		
-		
+	///TipoPuesto
 		else if (nombreAspecto.equals("JUNIOR"))
 			aspecto = new TipoPuestoJunior();
 		else if (nombreAspecto.equals("SENIOR"))
