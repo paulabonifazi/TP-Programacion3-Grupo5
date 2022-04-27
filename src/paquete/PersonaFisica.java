@@ -8,7 +8,7 @@ public class PersonaFisica extends Persona
 	public PersonaFisica(String nombre, String apellido, String telefono, String fechaNac, String aalle, int numCalle)
 	{
 		super(nombre, apellido, telefono, fechaNac, aalle, numCalle);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public String getNomUsuario() 
