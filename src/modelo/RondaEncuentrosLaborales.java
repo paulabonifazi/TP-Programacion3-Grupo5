@@ -10,7 +10,7 @@ public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra c
 	////la agencia se deberia quedar con la lista que genera
 	
 	
-	public void insertaOrdenado(ArrayList listaEmpleados) { 
+	public void insertaOrdenado(ArrayList listaEmpleados, String empleado) { 
 		///acomoda la listade empleados segun el¡ puntaje?
 			//debe conciderar si tengo 2 puntajes iguales
 	}

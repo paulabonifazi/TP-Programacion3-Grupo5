@@ -11,6 +11,5 @@ public class PersonaJuridica extends Persona
 		super(nombre, apellido, telefono, fechaNac, calle, numCalle);
 		// TODO Auto-generated constructor stub
 	}
-	///commit////
 	
 }
