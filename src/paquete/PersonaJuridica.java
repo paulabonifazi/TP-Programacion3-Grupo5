@@ -9,7 +9,7 @@ public class PersonaJuridica extends Persona
 			int numCalle) 
 	{
 		super(nombre, apellido, telefono, fechaNac, calle, numCalle);
-		// TODO Auto-generated constructor stub
+		
 	}
 	// //
 }
