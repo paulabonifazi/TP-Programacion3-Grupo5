@@ -18,10 +18,7 @@ public class Empleado extends Persona implements IPersonaFisica
 		this.edad = edad;
 	}
 
-	/*
-	 * ver como hacer un factory
-	 * 
-	 */
+
 	
 	
 }

@@ -8,6 +8,10 @@ public class Persona
 	private String nombUsuario;
 	private String contrasenia;
 	
+	/*
+	 * ver como hacer un factory 
+	 * 
+	 */
 	
 	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
