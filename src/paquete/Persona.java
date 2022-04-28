@@ -2,37 +2,32 @@ package paquete;
 
 public class Persona
 {
-	private String nombre;
-	private String apellido;
+	private Domicilio domicilio;
 	private String telefono;
-	private String fechaNac; // DD/MM/AAAA
-	private String calle;    //ver si agregar clase direccion!
-	private int numCalle;
+	private String mail;
+	private String nombUsuario;
+	private String contrasenia;
 	
 	
-	
-	public Persona(String nombre, String apellido, String telefono, String fechaNac, String aalle, int numCalle) 
+	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
-		this.nombre = nombre;
-		this.apellido = apellido;
+		super();
+		this.domicilio = domicilio;
 		this.telefono = telefono;
-		this.fechaNac = fechaNac;
-		this.calle = calle;
-		this.numCalle = numCalle;
+		this.mail = mail;
+		this.nombUsuario = nombUsuario;
+		this.contrasenia = contrasenia;
 	}
 
 
-
-	public String getNombre() {
-		return nombre;
+	public Domicilio getDomicilio() {
+		return domicilio;
 	}
 
 
-
-	public String getApellido() {
-		return apellido;
+	public void setDomicilio(Domicilio domicilio) {
+		this.domicilio = domicilio;
 	}
-
 
 
 	public String getTelefono() {
@@ -40,42 +35,39 @@ public class Persona
 	}
 
 
-
-	public String getFechaNac() {
-		return fechaNac;
-	}
-
-
-
-	public String getCalle() {
-		return calle;
-	}
-
-
-
-	public int getNumCalle() {
-		return numCalle;
-	}
-
-
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
 
-
-	public void setCalle(String calle) {
-		this.calle = calle;
+	public String getMail() {
+		return mail;
 	}
 
 
-
-	public void setNumCalle(int numCalle) {
-		this.numCalle = numCalle;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
-	
-	
+
+
+	public String getNombUsuario() {
+		return nombUsuario;
+	}
+
+
+	public void setNombUsuario(String nombUsuario) {
+		this.nombUsuario = nombUsuario;
+	}
+
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
 	
 	
 }
