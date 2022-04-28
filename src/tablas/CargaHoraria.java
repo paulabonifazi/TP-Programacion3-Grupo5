@@ -7,3 +7,4 @@ public abstract class CargaHoraria implements IAspecto{///definir el mod de aces
 	protected abstract double extendida();
 }
 
+//commit//
