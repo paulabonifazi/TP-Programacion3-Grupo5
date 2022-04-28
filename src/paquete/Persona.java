@@ -1,5 +1,7 @@
 package paquete;
 
+import modelo.Ticket;
+
 public class Persona
 {
 	private Domicilio domicilio;
@@ -7,13 +9,15 @@ public class Persona
 	private String mail;
 	private String nombUsuario;
 	private String contrasenia;
+	private Ticket ticket;
+	
 	
 	/*
 	 * ver como hacer un factory 
 	 * 
 	 */
-	
-	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
+	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
+			Ticket ticket) 
 	{
 		super();
 		this.domicilio = domicilio;
@@ -21,13 +25,15 @@ public class Persona
 		this.mail = mail;
 		this.nombUsuario = nombUsuario;
 		this.contrasenia = contrasenia;
+		this.ticket = ticket;
 	}
+	
 
 
 	public Domicilio getDomicilio() {
 		return domicilio;
 	}
-
+	
 
 	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
@@ -71,6 +77,16 @@ public class Persona
 
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
+	}
+	
+	public void Logear()
+	{
+	
+		/*
+		 * de ser usuario inexistente tirar excpecion
+		 * de ser contraseña erronea tirar excpecion
+		 * 
+		 */
 	}
 	
 	
