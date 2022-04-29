@@ -1,7 +1,5 @@
 package paquete;
 
-import modelo.Ticket;
-
 public class Persona
 {
 	private Domicilio domicilio;
@@ -9,15 +7,13 @@ public class Persona
 	private String mail;
 	private String nombUsuario;
 	private String contrasenia;
-	private Ticket ticket;
 	
 	
 	/*
 	 * ver como hacer un factory 
 	 * 
 	 */
-	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
-			Ticket ticket) 
+	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
 		super();
 		this.domicilio = domicilio;
@@ -25,7 +21,6 @@ public class Persona
 		this.mail = mail;
 		this.nombUsuario = nombUsuario;
 		this.contrasenia = contrasenia;
-		this.ticket = ticket;
 	}
 	
 
