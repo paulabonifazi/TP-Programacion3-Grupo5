@@ -54,26 +54,20 @@ import tablas.PuntajeTicket;
 
 public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra clase
 	
+	/*ArrayList<ListAsignacionEmpleadPretenso> listaCoincidenciaEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();//el resultado que me devuelven
+	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	*/
 	
-	
-	
-	ArrayList<ListAsignacionEmpleadPretenso> listaCoincidenciaEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();//el resultado que me devuelven
-	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	
-	
-a este metodo lo llama agencia y le devuelve una lista  de empleadosPrtenso que tienen en orden los posibles empresas
+///a este metodo lo llama agencia y le devuelve una lista  de empresas a cada empleadoPretenso
 	///definir el tipo de arrayList
-	public ArrayList listasAsignacionEmpleadoPretenso(ArrayList empleador,  ArrayList empleadosPretensos) {//las lista deberian venir ordenadas por algun criterio, por si hay que haver alguna busqueda futura
-		///creo un for
-		//copio en la posicion i empleadoPretenso.getEmpleaPreten en listaAsignEmpleadPretenso.empleadoPretenso
-		//listaAsignEmpleadPretenso.empresas = metodo listaOrdenEmpresaPorPuntaje
-		ArrayList<ListAsignacionEmpleadPretenso> listaAsignEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();///las que se le muestran al user
+	public ArrayList listasAsignacionEmpleadoPretenso(ArrayList<Empleador> empleador,  ArrayList<EmpleadoPretenso> empleadosPretensos) {//las lista deberian venir ordenadas por algun criterio, por si hay que haver alguna busqueda futura
 		
+		ArrayList<ListAsignacionEmpleadPretenso> listaAsignEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();///las que se le muestran al user
 		ListAsignacionEmpleadPretenso nuevoNodo = new ListAsignacionEmpleadPretenso();	
 		
 		for (int i=0; i<empleadosPretensos.size(); i++) {
-			nuevoNodo.setEmpleadoPretenso(empleadosPretensos.get(i)./*getEmpleadoPretenso*/);
+			nuevoNodo.setEmpleadoPretenso(empleadosPretensos.get(i));
 			
-			nuevoNodo.setListEmpleados(metodoOrdenamientoEpleadoPretenso(empleadosPretensos.get(i).getEmplead, empleador));///traigo una lista de las empresas 
+			nuevoNodo.setListEmpleadores(metodoOrdenamientoEpleadoPretenso(empleadosPretensos.get(i), empleador));///traigo una lista de las empresas 
 			
 			listaAsignEmpleadPretenso.add(nuevoNodo);
 		
@@ -82,26 +76,20 @@ a este metodo lo llama agencia y le devuelve una lista  de empleadosPrtenso que 
 	return listaAsignEmpleadPretenso;
 	}
 	
-a este metodo lo llama agencia y le devuelve una lista  de empresas que tienen en orden los posibles empleados
+///a este metodo lo llama agencia y le devuelve una lista  de empleadosPretensos a cada empresa
 
-	public ArrayList listasAsignacionEmpresa(ArrayList empleador,  ArrayList empleadosPretensos) {
+	public ArrayList listasAsignacionEmpresa(ArrayList<Empleador> empleador,  ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		
-		///creo un for
-		//copio en la posicion i empleador.getEmpleador en listaAsignEmpleador.empleador
-		//listaAsignEmpleador.empleadoPretenao = metodo listaOrdenEmpleadPretensPuntaje     ////ver si puedo usar el mismo metodo que arriba
 		ArrayList<ListAsignacionEmpleador> listaAsignEmpleador = new ArrayList<ListAsignacionEmpleador>();///las que se le muestran al user
 		ListAsignacionEmpleador nuevoNodo = new ListAsignacionEmpleador();	
 		
 		for (int i=0; i<empleador.size(); i++) {
-			nuevoNodo.setEmpleador(empleador.get(i./*/getEmpresa*));*/);
-			
-			nuevoNodo.setListEmpleadosPretensos(metodoOrdenamientoEmpleador(empleador.get(i).getEmpleador, empleadosPretensos));//traigo una lista de empleadosPretensos
-			
+			nuevoNodo.setEmpleador(empleador.get(i));
+			nuevoNodo.setListEmpleadosPretensos(metodoOrdenamientoEmpleador(empleador.get(i) , empleadosPretensos));//traigo una lista de empleadosPretensos
 			
 			listaAsignEmpleador.add(nuevoNodo);
 		
-		}
-		
+		}	
 
 		return listaAsignEmpleador;
 	}
@@ -109,29 +97,20 @@ a este metodo lo llama agencia y le devuelve una lista  de empresas que tienen e
 	
 	
 
-
-
-
-
-
-
-
-
-	
 		///crear una nueva lista con puntaje y empleadoPretenso
 		//la insercion es ordenada segun el puntaje
-			//la insercion es doble  para la nuevaLista con puntaje propia de este metodo y para la lista que tiene que devolver
-	//-.> si 
+			
 		
 
-	public ArrayList<EmpleadoPretenso> metodoOrdenamientoEmpleador(Empleador empleador, ArrayList listaEmpleaPretenso) {
+	public ArrayList<EmpleadoPretenso> metodoOrdenamientoEmpleador(Empleador empleador, ArrayList<EmpleadoPretenso> listaEmpleaPretenso) {
+		
 		ArrayList<EmpleadoPretenso> lista = new  ArrayList<EmpleadoPretenso>();
 		ArrayList<ListaEmpleadPretensoPuntaje> listaOrdenada = new ArrayList<ListaEmpleadPretensoPuntaje>();
 		ListaEmpleadPretensoPuntaje empleadoPretensPuntaje = new ListaEmpleadPretensoPuntaje();
 		
 		for (int i=0; i<=listaEmpleaPretenso.size(); i++) {///creo la listaCon Puntajes (listaOrdenada)
 			
-			empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i).getEmpleado);
+			empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
 			empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntaje("conseguiFB", "ConseguirFB"));//considerar hacer el new afuera 
 			
 			listaOrdenada.add(empleadoPretensPuntaje);
@@ -170,7 +149,7 @@ a este metodo lo llama agencia y le devuelve una lista  de empresas que tienen e
 	
 	
 	
-	public ArrayList<Empleador> metodoOrdenamientoEpleadoPretenso(Empleador empleador, ArrayList listaEmpleaPretenso) {
+	public ArrayList<Empleador> metodoOrdenamientoEpleadoPretenso(EmpleadoPretenso empleadoPretenso, ArrayList<Empleador> empleador) {
 		ArrayList <Empleador> lista = new ArrayList <Empleador>();
 		
 
