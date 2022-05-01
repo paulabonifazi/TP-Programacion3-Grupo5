@@ -10,7 +10,7 @@ import paquete.Empleador;
 public class ListAsignacionEmpleadPretenso {
 
 	private EmpleadoPretenso empleadoPretenso;
-	private ArrayList <Empleador> listEmpleados = new ArrayList <Empleador>();
+	private ArrayList <Empleador> listEmpleadores = new ArrayList <Empleador>();
 	
 
 	public EmpleadoPretenso getEmpleadoPretenso() {
@@ -20,11 +20,11 @@ public class ListAsignacionEmpleadPretenso {
 		this.empleadoPretenso = empleadoPretenso;
 	}
 	
-	public ArrayList<Empleador> getListEmpleados() {
-		return listEmpleados;
+	public ArrayList<Empleador> getListEmpleadores() {
+		return listEmpleadores;
 	}
-	public void setListEmpleados(ArrayList<Empleador> listEmpleados) {
-		this.listEmpleados = listEmpleados;
+	public void setListEmpleadores(ArrayList<Empleador> listEmpleados) {
+		this.listEmpleadores = listEmpleados;
 	}
 	
 	

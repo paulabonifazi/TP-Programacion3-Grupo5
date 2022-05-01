@@ -3,7 +3,7 @@ package tablas;
 import modelo.TicketEmpleadoPretenso;
 import modelo.TicketEmpleador;
 
-public abstract class PuntajeTicket {
+public class PuntajeTicket {
 	private double puntaje;
 	
 	
