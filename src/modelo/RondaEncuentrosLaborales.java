@@ -50,8 +50,7 @@ import paquete.EmpleadoPretenso;
 import paquete.Empleador;
 import tablas.PuntajeTicket;
 
-///cuando se defina como agencia llama a la ronda y les manda los datos a emplead/res se completan los arrays
-
+///cuando se defina como agencia llama a la ronda y les manda los datos a emplead/res se completan los arrays y corrijo lo de getEmpleado 
 
 public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra clase
 	
