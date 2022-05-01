@@ -1,25 +1,26 @@
 package modelo;
 
-import paquete.Empleador;
-
 import java.util.ArrayList;
 
-import paquete.Empleado;
+import paquete.EmpleadoPretenso;
+import paquete.Empleador;
 
+///hize el push sobre 
 public class ListAsignacionEmpleador {
 
 	private Empleador empleador;
-	private ArrayList <Empleado> listEmpleadosPretensos = new ArrayList <Empleado>();
+	private ArrayList <EmpleadoPretenso> listEmpleadosPretensos = new ArrayList <EmpleadoPretenso>();
+	
 	public Empleador getEmpleador() {
 		return empleador;
 	}
 	public void setEmpleador(Empleador empleador) {
 		this.empleador = empleador;
 	}
-	public ArrayList<Empleado> getListEmpleadosPretensos() {
+	public ArrayList<EmpleadoPretenso> getListEmpleadosPretensos() {
 		return listEmpleadosPretensos;
 	}
-	public void setListEmpleadosPretensos(ArrayList<Empleado> listEmpleadosPretensos) {
+	public void setListEmpleadosPretensos(ArrayList<EmpleadoPretenso> listEmpleadosPretensos) {
 		this.listEmpleadosPretensos = listEmpleadosPretensos;
 	}
 	

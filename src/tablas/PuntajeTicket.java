@@ -10,58 +10,58 @@ public abstract class PuntajeTicket {
 	public double getPuntaje(TicketEmpleador ticketEmpleador, TicketEmpleadoPretenso ticketEmpleadoPretenso) {
 		double aux = 0;
 /////Locacion
-		IAspecto aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	IAspecto aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		IAspecto aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getLocacion());
+	 	IAspecto aspEmpleador =  TablaFactory.getValorAspecto(ticketEmpleador.getFbTicket().getLocacion());
 	 	
-		aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+		aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpleadoPretenso.valor(aspEmpleador);
 		puntaje += aux;
 //////////Remuneracion
-		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
+		aspEmpleador =  TablaFactory.getValorAspecto(ticketEmpleador.getFbTicket().getRemuneracion());
 	 	
 	 	aux = 0;
-	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpleadoPretenso.valor(aspEmpleador);
 		puntaje += aux;
 		
 //////////CargaHoraria
-		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getCargaHoraria());
+		aspEmpleador =  TablaFactory.getValorAspecto(ticketEmpleador.getFbTicket().getCargaHoraria());
 	 	
 	 	aux = 0;
-	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpleadoPretenso.valor(aspEmpleador);
 		puntaje += aux;
 		
 		
 //////////Tipo Puesto
-		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getTipoPuesto());
+		aspEmpleador =  TablaFactory.getValorAspecto(ticketEmpleador.getFbTicket().getTipoPuesto());
 		
 	 	aux = 0;
-	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpleadoPretenso.valor(aspEmpleador);
 		puntaje += aux;
 		
 //////////Rango Etario
-		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRangoEtario());
+		aspEmpleador =  TablaFactory.getValorAspecto(ticketEmpleador.getFbTicket().getRangoEtario());
 		
 	 	aux = 0;
-	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpleadoPretenso.valor(aspEmpleador);
 		puntaje += aux;
 		
 ////////// Experiencia Previa
-		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getExperienciaPrevia());
+		aspEmpleador =  TablaFactory.getValorAspecto(ticketEmpleador.getFbTicket().getExperienciaPrevia());
 		
 	 	aux = 0;
-	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpleadoPretenso.valor(aspEmpleador);
 		puntaje += aux;
 		
 //////////Estudios cursados
-		aspEmpleado =  TablaFactory.getValorAspecto("acceso a FB empleadoPretenso");
-	 	aspEmpresa =  TablaFactory.getValorAspecto("acceso a FB empleador");
+		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getEstudiosCursados());
+		aspEmpleador =  TablaFactory.getValorAspecto(ticketEmpleador.getFbTicket().getEstudiosCursados());
 		
 	 	aux = 0;
-	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpld.valor(aspEmprs);
+	 	aux = CONSEGUIRPESO(EL QUE DA LA EMPRESA) * aspEmpleadoPretenso.valor(aspEmpleador);
 		puntaje += aux;
 		
 		

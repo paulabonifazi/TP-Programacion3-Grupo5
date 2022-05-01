@@ -58,14 +58,24 @@ public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra c
 	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	
 	
 	
-	
+	///definir el tipo de arrayList
 	public ArrayList listasAsignacionEmpleadoPretenso(ArrayList empleador,  ArrayList empleadosPretensos) {//las lista deberian venir ordenadas por algun criterio, por si hay que haver alguna busqueda futura
 		///creo un for
 		//copio en la posicion i empleadoPretenso.getEmpleaPreten en listaAsignEmpleadPretenso.empleadoPretenso
 		//listaAsignEmpleadPretenso.empresas = metodo listaOrdenEmpresaPorPuntaje
 		
-			
+		ListAsignacionEmpleadPretenso nuevoNodo = new ListAsignacionEmpleadPretenso();	
 		
+		for (int i=0; i<empleadosPretensos.size(); i++) {
+			nuevoNodo.setEmpleadoPretenso(empleadosPretensos.get(i)./*getEmpleadoPretenso*/);
+			
+			nuevoNodo.setListEmpleados()=metodoOrdenamientoEmpresa(empleador.get(i),empleadosPretensos);
+			
+			
+			listaAsignEmpleadPretenso.add(nuevoNodo);
+		}
+	 
+	return listaAsignEmpleadPretenso;
 	}
 
 	public ArrayList listasAsignacionEmpresa(ArrayList empleador,  ArrayList empleadosPretensos) {
@@ -73,9 +83,9 @@ public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra c
 		//copio en la posicion i empleador.getEmpleador en listaAsignEmpleador.empleador
 		//listaAsignEmpleador.empleadoPretenao = metodo listaOrdenEmpleadPretensPuntaje     ////ver si puedo usar el mismo metodo que arriba
 		
-<<<<<<< Updated upstream
+
 		///commit//
-=======
+
 		
 	}
 	
@@ -85,21 +95,19 @@ public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra c
 			//la insercion es ordenada segun el puntaje
 				//la insercion es doble  para la nuevaLista con puntaje propia de este metodo y para la lista que tiene que devolver
 		//-.> si 
->>>>>>> Stashed changes
+
 		
 		///al finalizar el metodo tendre 2 lista ordenadas una con un campo puntaje y la otra no,,, devuelvo la ultima
 		
-<<<<<<< Updated upstream
-		///commit///
-=======
+
+		return null;
 	}
 	
-	
+	/*
 en Agencia tendre dos lista con las lista que cree arriba
 	se les muestra la lista pertinente a cada empleado/dor para que tomen sus deciciones
 	agencia crea dos nuevas listas con las decicioens que las solicito para armar el metod de abajo
-
-
+*/
 	
 	public ArrayList RondaContratacion(ArrayList desicionEmpresas,  ArrayList desicionEmpleadPretens) {///devuelvo una lista de emprresas con los empleados contratados
 	//cada empleado para saber que empresa los contrato se tendria que buscar entre todas las empresas
@@ -109,7 +117,7 @@ en Agencia tendre dos lista con las lista que cree arriba
 		//	recorro desicionempleadPretenso 
 		//  busco si coincide la empresa actual con su eleccion
 		//	si es v la agrego y elimino el elemento, si es f paso ala siguiente /**si crease 2 lista, en este punto agrego a ambas lsitas/
->>>>>>> Stashed changes
+
 		return lista;
 		
 	}///ver si es mas combeniete 2 listas una de empresas con los empleados contratados y otra de empleados con la empresa en la que quedo
