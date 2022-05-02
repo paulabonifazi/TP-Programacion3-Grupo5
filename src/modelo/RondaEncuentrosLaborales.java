@@ -9,6 +9,8 @@
 agencia debe tener los metodo que generen las superListas (todas las empresas con todos sus posibles empleados y viceversa)
 
 
+la clase PuntajeTicketFC y PuntajeTicketCF acceden a la pos a,b y b,a en las tablas
+
 */
 
 package modelo;
@@ -19,7 +21,8 @@ import java.util.Comparator;
 
 import paquete.EmpleadoPretenso;
 import paquete.Empleador;
-import tablas.PuntajeTicket;
+import tablas.PuntajeTicketCF;
+import tablas.PuntajeTicketFC;
 
 
 public class RondaEncuentrosLaborales {
@@ -48,8 +51,8 @@ public class RondaEncuentrosLaborales {
 		for (int i=0; i<=listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
 			
 			empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
-			empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntaje(listaEmpleadores.get(i), empleadoPretensos.getTicket())); ///considerar hacer el new afuera ///es lo mismo el
-							//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto nueva clasa puntaje que lo considere
+			empleadorPuntaje.setPuntaje(new PuntajeTicketFC().getPuntaje(listaEmpleadores.get(i), empleadoPretensos.getTicket())); ///considerar hacer el new afuera ///es lo mismo el
+							//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
 						
 			listaOrdenada.add(empleadorPuntaje);
 		}
@@ -102,7 +105,7 @@ public class RondaEncuentrosLaborales {
 		for (int i=0; i<=listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
 			
 			empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
-			empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntaje(empleador, listaEmpleaPretenso.get(i).getTicket()));//considerar hacer el new afuera 
+			empleadoPretensPuntaje.setPuntaje(new PuntajeTicketCF().getPuntaje(empleador, listaEmpleaPretenso.get(i).getTicket()));//considerar hacer el new afuera 
 			
 			listaOrdenada.add(empleadoPretensPuntaje);
 		}

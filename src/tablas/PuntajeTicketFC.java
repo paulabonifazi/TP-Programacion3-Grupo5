@@ -4,9 +4,10 @@ import modelo.TicketEmpleadoPretenso;
 import modelo.TicketEmpleador;
 import paquete.Empleador;
 
-public class PuntajeTicket {
+public class PuntajeTicketFC {
 	private double puntaje;
 	
+//fijo empleador  vario el empleadoPretenso
 	
 	public double getPuntaje(Empleador empleador, TicketEmpleadoPretenso ticketEmpleadoPretenso) {
 		double aux = 0;
@@ -14,14 +15,14 @@ public class PuntajeTicket {
 		IAspecto aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getLocacion());  ///creo los elementos que va a usar el doubleDispath en el factory
 	 	IAspecto aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getLocacion());
 	 	
-		aux = empleador.getListaPesos().getPesoLocacion() * aspEmpleadoPretenso.valor(aspEmpleador);						/// multiplico el peso que definio el empleador para ese aspecto * el valor que hay en las tablas 
+		aux = empleador.getListaPesos().getPesoLocacion() * aspEmpleador.valor(aspEmpleadoPretenso);						/// multiplico el peso que definio el empleador para ese aspecto * el valor que hay en las tablas 
 		puntaje += aux;																										//voy acumulando el puntaje
 //////////Remuneracion
 		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getRemuneracion());
 	 	
 	 	aux = 0;
-	 	aux = empleador.getListaPesos().getPesoRemuneracion() * aspEmpleadoPretenso.valor(aspEmpleador);
+	 	aux = empleador.getListaPesos().getPesoRemuneracion() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
 		
 //////////CargaHoraria
@@ -29,7 +30,7 @@ public class PuntajeTicket {
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getCargaHoraria());
 	 	
 	 	aux = 0;
-	 	aux = empleador.getListaPesos().getPesoCargaHoraria() * aspEmpleadoPretenso.valor(aspEmpleador);
+	 	aux = empleador.getListaPesos().getPesoCargaHoraria() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
 		
 		
@@ -38,7 +39,7 @@ public class PuntajeTicket {
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getTipoPuesto());
 		
 	 	aux = 0;
-	 	aux = empleador.getListaPesos().getPesoTipoPuesto() * aspEmpleadoPretenso.valor(aspEmpleador);
+	 	aux = empleador.getListaPesos().getPesoTipoPuesto() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
 		
 //////////Rango Etario
@@ -46,7 +47,7 @@ public class PuntajeTicket {
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getRangoEtario());
 		
 	 	aux = 0;
-	 	aux = empleador.getListaPesos().getPesoRangoEtario() * aspEmpleadoPretenso.valor(aspEmpleador);
+	 	aux = empleador.getListaPesos().getPesoRangoEtario() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
 		
 ////////// Experiencia Previa
@@ -54,7 +55,7 @@ public class PuntajeTicket {
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getExperienciaPrevia());
 		
 	 	aux = 0;
-	 	aux = empleador.getListaPesos().getPesoExperienciaPrevia() * aspEmpleadoPretenso.valor(aspEmpleador);
+	 	aux = empleador.getListaPesos().getPesoExperienciaPrevia() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
 		
 //////////Estudios cursados
@@ -62,7 +63,7 @@ public class PuntajeTicket {
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getEstudiosCursados());
 		
 	 	aux = 0;
-	 	aux = empleador.getListaPesos().getPesoEstudiosCursados() * aspEmpleadoPretenso.valor(aspEmpleador);
+	 	aux = empleador.getListaPesos().getPesoEstudiosCursados() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
 		
 		
