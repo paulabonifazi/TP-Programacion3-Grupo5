@@ -4,7 +4,7 @@ import paquete.EmpleadoPretenso;
 
 ///este objeto lo usa el metodo metodoOrdenamientoEmpleador de la clase RondaEncuentroLaborales
 //
-public class ListaEmpleadPretensoPuntaje {
+public class EmpleadPretensoPuntaje {
 	private double puntaje;
 	private EmpleadoPretenso empleadoPretenso;
 	public double getPuntaje() {

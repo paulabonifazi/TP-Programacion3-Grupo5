@@ -2,10 +2,11 @@ package modelo;
 
 import paquete.Empleador;
 
-public class ListaEmpleadorPuntaje {
+public class EmpleadorPuntaje {
 
 	private double puntaje;
 	private Empleador empleador;
+	
 	public double getPuntaje() {
 		return puntaje;
 	}

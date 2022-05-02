@@ -2,14 +2,15 @@ package paquete;
 
 public class PersonaFisica extends Persona 
 {
+	
 	private String nomUsuario;
 	private String contrasenia;
 
-	public PersonaFisica(String nombre, String apellido, String telefono, String fechaNac, String aalle, int numCalle)
-	{
-		super(nombre, apellido, telefono, fechaNac, aalle, numCalle);
-		
+	public PersonaFisica(String nombre, String apellido, String telefono, String fechaNac, Domicilio domicilio) {
+		super(nombre, apellido, telefono, fechaNac, domicilio);
+	
 	}
+
 
 	public String getNomUsuario() 
 	{

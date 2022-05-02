@@ -1,44 +1,15 @@
+/* aclaraciones 
+ * 		clases que funcionan como objeto
+			ListAsignacionEmpleadPretenso guarda un empleadoPretenso con una array de empresas
+			ListAsignacionEmpleador guarda una empresa con un array de empleadoPretensos
+			
+			EmpleadorPuntaje guarda una empresa con el puntaje que obtuvo en las tablas
+			EmpleadoPretensPuntaje guarda un empleadoPretenso con el puntaje que obtuvo en las tablas
 
-///quien dispara la Ronda? LO HACE AGENCIA
-	//agencia tendria un arrayList de rondas?
+agencia debe tener los metodo que generen las superListas (todas las empresas con todos sus posibles empleados y viceversa)
 
 
-/// las listas de asignacion son particulares para cada uno///
-/*
-recibo la lista de empleados y empleadores de agencia
-
-tomo la primer empresa y le creo lista asignacion de empleadPretenso (ejecuto el calculu puntaje a cada emplPrete y los ordeno en una lista)
-		para guardar estos datos necesito una lista de empresas con un campo de lista de posibles empleados
-	
-		
-tomo el primer empleado y le creo lista asignacion de empresa (ejecuto el calculu puntaje a cada empresay los ordeno en una lista)
-		para guardar estos datos necesito una lista de empleados con un campo de lista de posibles empresas
-		
-en este punto tengo dos listas (con todas las empresas y todos los empleados)
-							una de empresas con los empleados ordenados (listAA)
-							una de empleados con las empresas ordenadas (listaBB)
-				
-en alguna parte la empresa quiere ver sus candidatos -> le doy listaAA.ListCandidatos (al ser una lista con un campo de lista -> ubico la empresa y mando la lista pertinente)
-	hace su eleccion y me devuelve listPosibleCandidatos (esto se repite con todas las empresas)
-armo una nueva lista de tipo listaAA donde el campo empleado sera el que me devolvierosv(listPosibleCandidato)
-
-lo mismo que arriba pero para empleadPretenso
-
-cuando todos terminen sus elecciones (ver como verificar)
-
-en este punto tengo dos nuevas listas
-						la de empresas (listaAAFinal) estas lista tienen sus elecciones
-						la de empleados (listaBBFinal)
-
-por ultimo armo las listas de contrataciones (lista de tipo listAA y listBB)
-							no podria tener una unica lista por que si un empleadPretenso quisiera ver quien lo contrato deberia de 
-							recorrer todas las empresas buscandose (el campo puntaje no es pertinernte, no implica que escojiese la de mejor puntaje)
-							
-al final agencia tiene sus 
-	
-		*/				
-					
-
+*/
 
 package modelo;
 
@@ -50,76 +21,96 @@ import paquete.EmpleadoPretenso;
 import paquete.Empleador;
 import tablas.PuntajeTicket;
 
-///cuando se defina como agencia llama a la ronda y les manda los datos a emplead/res se completan los arrays y corrijo lo de getEmpleado 
 
-public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra clase
+public class RondaEncuentrosLaborales {
 	
-	/*ArrayList<ListAsignacionEmpleadPretenso> listaCoincidenciaEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();//el resultado que me devuelven
-	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	*/
-	
-///a este metodo lo llama agencia y le devuelve una lista  de empresas a cada empleadoPretenso
-	///definir el tipo de arrayList
-	public ArrayList listasAsignacionEmpleadoPretenso(ArrayList<Empleador> empleador,  ArrayList<EmpleadoPretenso> empleadosPretensos) {//las lista deberian venir ordenadas por algun criterio, por si hay que haver alguna busqueda futura
+///a este metodo lo llama agencia y le devuelve un nodo que contiene una lista de empresas para empleadoPretenso (agencia se debe encargar de ir guardandolos en un array)
+																						///array de todas las empresas y el empleadoPretenso al que se le va agenerar la lista
+	public ListAsignacionEmpleadPretenso listasAsignacionEmpleadoPretenso(ArrayList<Empleador> empleador,  EmpleadoPretenso empleadoPretensos) {
 		
-		ArrayList<ListAsignacionEmpleadPretenso> listaAsignEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();///las que se le muestran al user
 		ListAsignacionEmpleadPretenso nuevoNodo = new ListAsignacionEmpleadPretenso();	
 		
-		for (int i=0; i<empleadosPretensos.size(); i++) {
-			nuevoNodo.setEmpleadoPretenso(empleadosPretensos.get(i));
+		nuevoNodo.setEmpleadoPretenso(empleadoPretensos);
+		nuevoNodo.setListEmpleadores(metodoOrdenamientoEpleadoPretenso(empleadoPretensos, empleador));///traigo una lista de las empresas ordenada
 			
-			nuevoNodo.setListEmpleadores(metodoOrdenamientoEpleadoPretenso(empleadosPretensos.get(i), empleador));///traigo una lista de las empresas 
-			
-			listaAsignEmpleadPretenso.add(nuevoNodo);
-		
-		}
-	 
-	return listaAsignEmpleadPretenso;
+		return nuevoNodo;
 	}
 	
-///a este metodo lo llama agencia y le devuelve una lista  de empleadosPretensos a cada empresa
-
-	public ArrayList listasAsignacionEmpresa(ArrayList<Empleador> empleador,  ArrayList<EmpleadoPretenso> empleadosPretensos) {
+	
+	///el metodo me devuelve una listaOrdenada de empresas para el empleadoPretneos en cuestion
+	public ArrayList<Empleador> metodoOrdenamientoEpleadoPretenso( EmpleadoPretenso empleadoPretensos, ArrayList<Empleador> listaEmpleadores) {
 		
-		ArrayList<ListAsignacionEmpleador> listaAsignEmpleador = new ArrayList<ListAsignacionEmpleador>();///las que se le muestran al user
+		ArrayList<Empleador> lista = new  ArrayList<Empleador>();						//lista que voy a devolver
+		ArrayList<EmpleadorPuntaje> listaOrdenada = new ArrayList<EmpleadorPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
+		
+		EmpleadorPuntaje empleadorPuntaje = new EmpleadorPuntaje();	
+		
+		for (int i=0; i<=listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
+			
+			empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
+			empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntaje(listaEmpleadores.get(i), empleadoPretensos.getTicket())); ///considerar hacer el new afuera ///es lo mismo el
+							//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto nueva clasa puntaje que lo considere
+						
+			listaOrdenada.add(empleadorPuntaje);
+		}
+		
+		
+		////probar si el metodo funciona bien///
+		Collections.sort(listaOrdenada, new Comparator<EmpleadorPuntaje>() {
+			@Override
+			public int compare(EmpleadorPuntaje p2, EmpleadorPuntaje p1) {
+				return new Double(p2.getPuntaje()).compareTo(new Double(p1.getPuntaje()));
+			}
+		});
+		
+		
+		for (int j = 0; j< listaOrdenada.size(); j++) 				///cargo lista con el orden de listaOrdenada
+			lista.add(listaOrdenada.get(j).getEmpleador());
+		
+		return lista;
+
+	///al finalizar el metodo tendre 2 lista ordenadas una con un campo puntaje y la otra no,,, devuelvo la ultima		
+	}
+	
+
+
+
+
+
+///a este metodo lo llama agencia y le devuelve un nodo que tine una lista de empleadosPretensos para la empresa (agencia se debe encargar de ir guardandolos en un array)
+
+	public ListAsignacionEmpleador listasAsignacionEmpresa(  ArrayList<EmpleadoPretenso> empleadosPretensos , Empleador empleador) {
+		
 		ListAsignacionEmpleador nuevoNodo = new ListAsignacionEmpleador();	
 		
-		for (int i=0; i<empleador.size(); i++) {
-			nuevoNodo.setEmpleador(empleador.get(i));
-			nuevoNodo.setListEmpleadosPretensos(metodoOrdenamientoEmpleador(empleador.get(i) , empleadosPretensos));//traigo una lista de empleadosPretensos
+		nuevoNodo.setEmpleador(empleador);
+		nuevoNodo.setListEmpleadosPretensos(metodoOrdenamientoEmpleador(empleador , empleadosPretensos));//traigo una lista de empleadosPretensos ordenada
 			
-			listaAsignEmpleador.add(nuevoNodo);
-		
-		}	
-
-		return listaAsignEmpleador;
+	return nuevoNodo;
 	}
 	
 	
 	
-
-		///crear una nueva lista con puntaje y empleadoPretenso
-		//la insercion es ordenada segun el puntaje
-			
-		
-
+	
+	///el metodo devuelve una lista ordenada por puntaje de empleadosPretensos
 	public ArrayList<EmpleadoPretenso> metodoOrdenamientoEmpleador(Empleador empleador, ArrayList<EmpleadoPretenso> listaEmpleaPretenso) {
 		
-		ArrayList<EmpleadoPretenso> lista = new  ArrayList<EmpleadoPretenso>();
-		ArrayList<ListaEmpleadPretensoPuntaje> listaOrdenada = new ArrayList<ListaEmpleadPretensoPuntaje>();
-		ListaEmpleadPretensoPuntaje empleadoPretensPuntaje = new ListaEmpleadPretensoPuntaje();
+		ArrayList<EmpleadoPretenso> lista = new  ArrayList<EmpleadoPretenso>();						//lista que voy a devolver
+		ArrayList<EmpleadPretensoPuntaje> listaOrdenada = new ArrayList<EmpleadPretensoPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
+		EmpleadPretensoPuntaje empleadoPretensPuntaje = new EmpleadPretensoPuntaje();	
 		
-		for (int i=0; i<=listaEmpleaPretenso.size(); i++) {///creo la listaCon Puntajes (listaOrdenada)
+		for (int i=0; i<=listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
 			
 			empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
-			empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntaje("conseguiFB", "ConseguirFB"));//considerar hacer el new afuera 
+			empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntaje(empleador, listaEmpleaPretenso.get(i).getTicket()));//considerar hacer el new afuera 
 			
 			listaOrdenada.add(empleadoPretensPuntaje);
 		}
 		
 		////reveer como ordenarlo
-		Collections.sort(listaOrdenada, new Comparator<ListaEmpleadPretensoPuntaje>() {
+		Collections.sort(listaOrdenada, new Comparator<EmpleadPretensoPuntaje>() {
 			@Override
-			public int compare(ListaEmpleadPretensoPuntaje p2, ListaEmpleadPretensoPuntaje p1) {
+			public int compare(EmpleadPretensoPuntaje p2, EmpleadPretensoPuntaje p1) {
 				return new Double(p2.getPuntaje()).compareTo(new Double(p1.getPuntaje()));
 			}
 		});
@@ -128,55 +119,21 @@ public class RondaEncuentrosLaborales {///podria se abstract u hacerlo en otra c
 		for (int j = 0; j< listaOrdenada.size(); j++) ///cargo lista con el orden de listaOrdenada
 			lista.add(listaOrdenada.get(j).getEmpleadoPretenso());
 		
-	return lista;
+		return lista;
 
-	
 	///al finalizar el metodo tendre 2 lista ordenadas una con un campo puntaje y la otra no,,, devuelvo la ultima	
 		
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public ArrayList<Empleador> metodoOrdenamientoEpleadoPretenso(EmpleadoPretenso empleadoPretenso, ArrayList<Empleador> empleador) {
-		ArrayList <Empleador> lista = new ArrayList <Empleador>();
-		
 
-		return lista;
-		
-	}
-	
-	/*
-en Agencia tendre dos lista con las lista que cree arriba
-	se les muestra la lista pertinente a cada empleado/dor para que tomen sus deciciones
-	agencia crea dos nuevas listas con las decicioens que las solicito para armar el metod de abajo
-*/
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/*ArrayList<ListAsignacionEmpleadPretenso> listaCoincidenciaEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();//el resultado que me devuelven
+	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	*/
 	public ArrayList RondaContratacion(ArrayList desicionEmpresas,  ArrayList desicionEmpleadPretens) {///devuelvo una lista de emprresas con los empleados contratados
 	//cada empleado para saber que empresa los contrato se tendria que buscar entre todas las empresas
-		
+		ArrayList lista = null;
 		//creo un for
 	//en la primer posicion pongo de listaFinal pongo la primer empresa de desicionEmpresa
 		//	recorro desicionempleadPretenso 
