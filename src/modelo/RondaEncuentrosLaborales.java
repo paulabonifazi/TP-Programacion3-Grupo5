@@ -21,8 +21,7 @@ import java.util.Comparator;
 
 import paquete.EmpleadoPretenso;
 import paquete.Empleador;
-import tablas.PuntajeTicketCF;
-import tablas.PuntajeTicketFC;
+import tablas.PuntajeTicket;
 
 
 public class RondaEncuentrosLaborales {
@@ -51,7 +50,7 @@ public class RondaEncuentrosLaborales {
 		for (int i=0; i<=listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
 			
 			empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
-			empleadorPuntaje.setPuntaje(new PuntajeTicketFC().getPuntaje(listaEmpleadores.get(i), empleadoPretensos.getTicket())); ///considerar hacer el new afuera ///es lo mismo el
+			empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeFC(listaEmpleadores.get(i), empleadoPretensos.getTicket())); ///considerar hacer el new afuera ///es lo mismo el
 							//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
 						
 			listaOrdenada.add(empleadorPuntaje);
@@ -105,7 +104,7 @@ public class RondaEncuentrosLaborales {
 		for (int i=0; i<=listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
 			
 			empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
-			empleadoPretensPuntaje.setPuntaje(new PuntajeTicketCF().getPuntaje(empleador, listaEmpleaPretenso.get(i).getTicket()));//considerar hacer el new afuera 
+			empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(empleador, listaEmpleaPretenso.get(i).getTicket()));//considerar hacer el new afuera 
 			
 			listaOrdenada.add(empleadoPretensPuntaje);
 		}
@@ -128,13 +127,13 @@ public class RondaEncuentrosLaborales {
 		
 	}
 	
-	
+	///no hago todo en un metodo, porque puede ser que quiera la lista solo de las empresas u empleados (tipo una funcionalidad que me deja ver los candidatos pero no seleccionar, solo ver)
 
 	
-	
+	public ArrayList RondaContratacion(ArrayList desicionEmpresas,  ArrayList desicionEmpleadPretens) {///devuelvo una lista de emprresas con los empleados contratados
 	/*ArrayList<ListAsignacionEmpleadPretenso> listaCoincidenciaEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();//el resultado que me devuelven
 	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	*/
-	public ArrayList RondaContratacion(ArrayList desicionEmpresas,  ArrayList desicionEmpleadPretens) {///devuelvo una lista de emprresas con los empleados contratados
+	
 	//cada empleado para saber que empresa los contrato se tendria que buscar entre todas las empresas
 		ArrayList lista = null;
 		//creo un for
