@@ -21,7 +21,7 @@ public class LocacionPresencial extends Locacion{
 
 	@Override
 	protected double indistinto() {
-		return -1;
+		return 1;
 	}
 
 }

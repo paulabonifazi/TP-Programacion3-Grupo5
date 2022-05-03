@@ -20,13 +20,13 @@ public class CargaHorariaExtendida extends CargaHoraria {
 	@Override
 	protected double completa() {
 
-		return 1;
+		return -0.5;
 	}
 
 	@Override
 	protected double extendida() {
 	
-		return -0.5;
+		return 1;
 	}
 	
 

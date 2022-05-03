@@ -17,12 +17,12 @@ public class RangoEtarioMas50 extends RangoEtario{
 
 	@Override
 	protected double entre40a50() {
-		return 1;
+		return -0.5;
 	}
 
 	@Override
 	protected double mas50() {
-		return -0.5;
+		return 1;
 	}
 
 }
