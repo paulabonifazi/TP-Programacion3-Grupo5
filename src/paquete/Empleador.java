@@ -26,12 +26,16 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	}
 
 
+	
+	/*/* en la parte donde la empresa se registra crea y manda el valor*/
+	public void setListaPesos(ValoracionAspecto listaPesos) {
+		this.listaPesos = listaPesos;
+	}
+
 
 	public ValoracionAspecto getListaPesos() {
 		return listaPesos;
 	}
-
-
 
 	public TicketEmpleador getTicket() {
 		return ticket;

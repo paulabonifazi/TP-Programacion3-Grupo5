@@ -1,11 +1,10 @@
 package tablas;
 
 import modelo.TicketEmpleadoPretenso;
-import modelo.TicketEmpleador;
 import paquete.Empleador;
 
 public class PuntajeTicket {
-	private double puntaje;
+	private double puntaje = 0;
 	
 //fijo empleador  vario el empleadoPretenso
 	
