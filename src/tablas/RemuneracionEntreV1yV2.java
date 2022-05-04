@@ -1,5 +1,7 @@
 package tablas;
 
+import Interfaces.IAspecto;
+
 public class RemuneracionEntreV1yV2 extends Remuneracion{
 
 	@Override

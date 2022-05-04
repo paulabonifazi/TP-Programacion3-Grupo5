@@ -1,5 +1,7 @@
 package tablas;
 
+import Interfaces.IAspecto;
+
 public abstract class Remuneracion implements IAspecto{
 	
 	protected abstract double hastaV1();

@@ -4,27 +4,29 @@ public class Persona
 {
 	private Domicilio domicilio;
 	private String telefono;
-	private String fechaNac; // DD/MM/AAAA
-	private Domicilio domicilio;
+	private String mail;
+	private String nombUsuario;
+	private String contrasenia;
 	
 	
-	
-	public Persona(String nombre, String apellido, String telefono, String fechaNac, Domicilio domicilio) 
+	/*
+	 * ver como hacer un factory 
+	 * 
+	 */
+	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
 		super();
 		this.domicilio = domicilio;
 		this.telefono = telefono;
-		this.fechaNac = fechaNac;
-		this.domicilio = domicilio;
-		
+		this.mail = mail;
+		this.nombUsuario = nombUsuario;
+		this.contrasenia = contrasenia;
 	}
 	
 
 
-
-
-	public String getNombre() {
-		return nombre;
+	public Domicilio getDomicilio() {
+		return domicilio;
 	}
 	
 
@@ -38,22 +40,13 @@ public class Persona
 	}
 
 
-
-	public String getFechaNac() {
-		return fechaNac;
-	}
-
-
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
 
-
-
-	public Domicilio getDomicilio() {
-		return domicilio;
+	public String getMail() {
+		return mail;
 	}
 
 
@@ -86,7 +79,7 @@ public class Persona
 	
 		/*
 		 * de ser usuario inexistente tirar excpecion
-		 * de ser contraseï¿½a erronea tirar excpecion
+		 * de ser contraseña erronea tirar excpecion
 		 * 
 		 */
 	}

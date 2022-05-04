@@ -1,5 +1,7 @@
 package tablas;
 
+import Interfaces.IAspecto;
+
 public class LocacionIndistinto extends Locacion{
 
 	@Override

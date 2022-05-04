@@ -9,3 +9,9 @@ public class PerfilEmpleador {
 		ticket.setCantEmpleadosObtenidos(0);
 	}
 }
+
+/*
+ *mismo caso que el perfil del empelado preteso
+ *se podría eliminar esta clase dado que el ticket se relaciono con dicha clase 
+ *
+ */

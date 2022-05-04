@@ -1,5 +1,7 @@
 package tablas;
 
+import Interfaces.IAspecto;
+
 public class TablaFactory {
 	public static IAspecto getValorAspecto(String nombreAspecto) {
 		IAspecto aspecto = null;

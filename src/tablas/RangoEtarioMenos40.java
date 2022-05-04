@@ -1,5 +1,7 @@
 package tablas;
 
+import Interfaces.IAspecto;
+
 public class RangoEtarioMenos40 extends RangoEtario{
 
 	@Override

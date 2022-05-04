@@ -148,3 +148,9 @@ public class RondaEncuentrosLaborales {
 			///doble referecnia
 	
 }
+
+/*
+ * analizar para que la agencia se encargue!!
+ * terminar métodos!
+ */
+ */
