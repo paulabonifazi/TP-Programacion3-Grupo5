@@ -3,7 +3,7 @@ package Interfaces;
 public interface IPersonaJuridica
 {
 	/*
-	 * métodos del empleador
+	 * mï¿½todos del empleador
 	 * 
 	 */
 	

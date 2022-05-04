@@ -3,7 +3,7 @@ package Interfaces;
 public interface IPersonaFisica
 {
 	/*
-	 * métodos del empleador o empleado
+	 * mï¿½todos del empleador o empleado
 	 * 
 	 */
 }

@@ -21,7 +21,7 @@ public class TipoPuestoManagment extends TipoPuesto{
 
 	@Override
 	protected double managment() {
-		return -0.5;
+		return 1;
 	}
 
 }

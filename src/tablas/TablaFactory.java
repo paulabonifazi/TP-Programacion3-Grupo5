@@ -1,7 +1,7 @@
 package tablas;
 
 public class TablaFactory {
-	public static IAspecto getValAspecto(String nombreAspecto) {
+	public static IAspecto getValorAspecto(String nombreAspecto) {
 		IAspecto aspecto = null;
 	///CargaHoraria
 		if (nombreAspecto.equals("CHCOMPLETA"))
