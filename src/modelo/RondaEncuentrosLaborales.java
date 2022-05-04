@@ -23,7 +23,7 @@ import paquete.EmpleadoPretenso;
 import paquete.Empleador;
 import tablas.PuntajeTicket;
 
-
+//*///*/
 public class RondaEncuentrosLaborales {
 	
 ///a este metodo lo llama agencia y le devuelve un nodo que contiene una lista de empresas para empleadoPretenso (agencia se debe encargar de ir guardandolos en un array)
@@ -151,6 +151,6 @@ public class RondaEncuentrosLaborales {
 
 /*
  * analizar para que la agencia se encargue!!
- * terminar métodos!
+ * terminar mÃ©todos!
  */
  */
