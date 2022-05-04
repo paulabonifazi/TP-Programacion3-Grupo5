@@ -9,6 +9,10 @@ public class Persona
 	private String contrasenia;
 	
 	
+	/*
+	 * ver como hacer un factory 
+	 * 
+	 */
 	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
 		super();
@@ -18,12 +22,13 @@ public class Persona
 		this.nombUsuario = nombUsuario;
 		this.contrasenia = contrasenia;
 	}
+	
 
 
 	public Domicilio getDomicilio() {
 		return domicilio;
 	}
-
+	
 
 	public void setDomicilio(Domicilio domicilio) {
 		this.domicilio = domicilio;
@@ -67,6 +72,16 @@ public class Persona
 
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
+	}
+	
+	public void Logear()
+	{
+	
+		/*
+		 * de ser usuario inexistente tirar excpecion
+		 * de ser contraseña erronea tirar excpecion
+		 * 
+		 */
 	}
 	
 	

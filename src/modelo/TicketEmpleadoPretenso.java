@@ -1,15 +1,22 @@
 package modelo;
 
-public class TicketEmpleadoPretenso extends Ticket{
-	
-	private Ticket ticket;
-	private String resultado; 
+import java.util.Date;
 
-	public void generarTicketEmpleadoPretenso(String locacion, String remuneracion, String cargaHoraria, String tipoPuesto,
-			String rangoEtario, String experienciaPrevia, String estudiosCursados) {
-		ticket.generarTicket(null, null, null, null, null, null, null);
-		
+public class TicketEmpleadoPretenso extends Ticket
+{
+	
+	private String resultado; 
+	
+
+	public TicketEmpleadoPretenso(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket,
+			String resultado) 
+	{
+		super(fbTicket, estadoTicket, fechaTicket);
+		this.resultado = resultado;
 	}
+
+
+
 
 	public String getResultado() {
 		return resultado;
@@ -17,3 +24,5 @@ public class TicketEmpleadoPretenso extends Ticket{
 
 
 }
+
+

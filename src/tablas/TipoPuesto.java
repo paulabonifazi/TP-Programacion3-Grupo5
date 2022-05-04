@@ -1,6 +1,8 @@
 package tablas;
 
-public abstract class TipoPuesto implements IAspecto{///definir el mod de aceso
+import Interfaces.IAspecto;
+
+public abstract class TipoPuesto implements IAspecto{
 
 	protected abstract double junior();
 	protected abstract double senior();

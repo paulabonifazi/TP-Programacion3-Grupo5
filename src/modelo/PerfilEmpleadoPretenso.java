@@ -10,3 +10,9 @@ public class PerfilEmpleadoPretenso {
 	
 	
 }
+
+/*
+*chequear! ver que onda el constructor
+*creo que se podría eliminar ya que se relacinó el ticket con
+*el empleadopretenso!
+*/

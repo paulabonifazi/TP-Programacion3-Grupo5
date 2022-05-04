@@ -1,6 +1,8 @@
 package tablas;
 
-public abstract class Experiencia implements IAspecto{///definir el mod de aceso
+import Interfaces.IAspecto;
+
+public abstract class Experiencia implements IAspecto{
 
 	protected abstract double nada();
 	protected abstract double media();

@@ -1,5 +1,7 @@
 package tablas;
 
+import Interfaces.IAspecto;
+
 public class LocacionIndistinto extends Locacion{
 
 	@Override
@@ -16,7 +18,7 @@ public class LocacionIndistinto extends Locacion{
 
 	@Override
 	protected double presencial() {
-		return -1;
+		return 1;
 	}
 
 	@Override

@@ -2,16 +2,22 @@ package modelo;
 
 import java.util.Date;
 
-public class TicketEmpleador extends Ticket {
-	
-
-
-	private Ticket ticket;
+public class TicketEmpleador extends Ticket 
+{	
 	private int cantEmpleados;
 	private int cantEmpleadosObtenidos;
 	
 	
-	
+	public TicketEmpleador(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket, int cantEmpleados,
+			int cantEmpleadosObtenidos) 
+	{
+		super(fbTicket, estadoTicket, fechaTicket);
+		this.cantEmpleados = cantEmpleados;
+		this.cantEmpleadosObtenidos = cantEmpleadosObtenidos;
+	}
+
+
+
 	public int getCantEmpleados() {
 		return cantEmpleados;
 	}
@@ -32,14 +38,6 @@ public class TicketEmpleador extends Ticket {
 
 	public void setCantEmpleadosObtenidos(int cantEmpleadosObtenidos) {
 		this.cantEmpleadosObtenidos = cantEmpleadosObtenidos;
-	}
-
-
-
-	public void generarTicketEmpleador(String locacion, String remuneracion, String cargaHoraria, String tipoPuesto,
-			String rangoEtario, String experienciaPrevia, String estudiosCursados) {
-		ticket.generarTicket(null, null, null, null, null, null, null);
-		
 	}
 	
 	
