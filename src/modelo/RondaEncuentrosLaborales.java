@@ -144,13 +144,13 @@ public class RondaEncuentrosLaborales {
 
 		return lista;
 		
-	}///ver si es mas combeniete 2 listas una de empresas con los empleados contratados y otra de empleados con la empresa en la que quedo
+	///ver si es mas combeniete 2 listas una de empresas con los empleados contratados y otra de empleados con la empresa en la que quedo
 			///doble referecnia
-	
+	}
 }
 
 /*
  * analizar para que la agencia se encargue!!
  * terminar métodos!
  */
- */
+ 

@@ -33,6 +33,8 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica
 
 	
 	
+	///metodo que me muestre la lista de empresas (accediendo a la lista de agencia)
+	///metodo que me permita seleccionar las posibles empresas (accediendo a la lista de agencia)
 	
 	
 	

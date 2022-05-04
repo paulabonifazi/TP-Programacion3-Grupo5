@@ -16,3 +16,6 @@ public class PerfilEmpleadoPretenso {
 *creo que se podría eliminar ya que se relacinó el ticket con
 *el empleadopretenso!
 */
+
+
+///la clase podria no existir, la idea era modularizar si era necesario, pero no creo que sea necesario, tipo la mayor carga la tiene agencia

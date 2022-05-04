@@ -1,6 +1,7 @@
 package modelo;
 
 public class EstadoTicket {///como consulto el estado para las comparaciones, no veo necesario mandarlo con el FB
+			///tiene sentido un double dispatch?
 
 	private String estadoTicket;
 

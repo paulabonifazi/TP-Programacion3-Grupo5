@@ -8,3 +8,4 @@ public class Prueba {
 	}
 
 }
+////empezar a definir lotes de prueba para aclarar donde hacer la creacion de los objetos (o sea donde convenga mas)

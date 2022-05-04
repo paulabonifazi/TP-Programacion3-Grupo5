@@ -31,4 +31,14 @@ public class EmpleadPretensoPuntaje {
 	public void setEmpleadoPretenso(EmpleadoPretenso empleadoPretenso) {
 		this.empleadoPretenso = empleadoPretenso;
 	}
+	
+	
+	//quien se encarga de hacer el registro?? (punto 1 funcionalidad emplead)
+	//excepcionesdelLogin, hace falta la clase login???
+	////metodo que muestre las listas (agencia tambien necesita este metodo -> ver donde ponerlo para no escribirlo 2 veces)
+			///metodo que me muestre la lista de empresas (accediendo a la lista de agencia)
+			///metodo que me permita seleccionar los posibles empresas (accediendo a la lista de agencia)
+			///metodo que me muestre la opcione elegidas
+
+	
 }
