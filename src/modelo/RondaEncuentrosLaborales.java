@@ -149,6 +149,51 @@ public class RondaEncuentrosLaborales {
 	///ver si es mas combeniete 2 listas una de empresas con los empleados contratados y otra de empleados con la empresa en la que quedo
 			///doble referecnia
 	}
+
+
+
+	///////////////////////////////////////////////////////////
+	
+
+	//  METODO COINCIDENCIAS -> buscar las coincidencias y guardar en un arrayList del mismo tipo quer la lista de empleadores
+
+	//recibo 2 arrayList de arrayList
+	//									-> ListaDeEmpleadores = Cada nodo tiene la empleados y un arrayList de a los empleados Pretensos que eligio
+	//									-> ListaDeEmpleadosPretensos = Cada nodo tiene al empleado Pretenso y al unico empleador que eligio
+	
+	//Recorrer el arrayListe de empleadores y buscar en el de empleadosPretensos si coinciden
+
+	public  TipoListaEmpleador ListaCoincidencias(TipoListaEmpleador ListaDeEmpleadores, TipoListaEmpleadosPretensos ListaDeEmpleadosPretensos) //ver cual es el tipo de las listas
+	{
+		 String empleador;
+		 TIPOListaEmpleadosPretensos posiblesEmpleados;
+		 String empleadoPretenso;
+
+		for(int i = 0; i < ListaDeEmpleadores.size(); i++)//Recorre el arrayList de empleadores
+		{
+			//trabahar con var para simplificar
+			empleador = ListaDeEmpleadores.get(i).getNombreEmpleador();
+			ListaPosiblesEmpleados = ListaDeEmpleadores.get(i).getListaEmpleadosPretensosElegidos();
+
+			//CREAR UN NUEVO OBJETO DE lISTACOINCIDENCIAS 
+			//CARGAR EL NOMBRE DE LA EMPRESA
+
+			for(int j = 0; j < ListaPosiblesEmpleados.size(); j++)// recorre la lsita de los empleados elegidos por el empleador
+			{
+				empleadoPretenso = ListaPosiblesEmpleados.get(j).getNombreEmpleadoPretenso();
+				int k = 0;
+				while(k < ListaDeEmpleadosPretensos.size() && ListaDeEmpleadosPretensos.get(k).getNombreEmpleadoPretenso != empleadoPretenso)//recorro buscando la coincidencia en la lista de los empleados -> si aparece el nombre en esa lista entonces hay coincidencia
+					k++;
+
+				if(k < ListaDeEmpleadosPretensos.size()) //coincidencia
+				{
+					//AGREGAR EMPLEADO A LA LISTA DE EMPLEADOS CON COINCIDENCIA DEL ELEMENTO CREADO
+				}
+			}
+			//CARGAR ELEMENTO A LA LISTA DE COINCIDENCIAS
+			
+		}
+	}
 }
 
 /*
