@@ -1,0 +1,1479 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>876</x>
+      <y>603</y>
+      <w>36</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IAspecto
+--
+valor()()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>651</x>
+      <y>231</y>
+      <w>36</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPersonaFisicica
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>231</y>
+      <w>36</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPersonaJuridica
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>441</x>
+      <y>642</y>
+      <w>60</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>EmpleadorPuntaje
+--
++getPuntaje() : double
++setPuntaje() : void
++getEmpleador : double
++setEmpleador : void
+--
+-puntaje : double
+-empleador : double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>435</x>
+      <y>588</y>
+      <w>96</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>EmpleadPretensoPuntaje
+--
++getPuntaje() : double
++setPuntaje() : void
++getEmpleadoPretenso() : EmpleadoPretenso
++setEmpleadoPretenso() : void
+--
+-puntaje : double
+-empleadoPretenso : EmpleadoPretenso</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>468</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>EstadoTicket
+--
++EstadoTicket()
++getEstadoTicket() : String
++getCambiarEstado() : void
+--
+-estadoTicket : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>819</x>
+      <y>507</y>
+      <w>69</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>FormularioBusqueda
+--
++FormularioBusqueda()
++getLocacion() : String
++getRemuneracion() : String
++getCargaHoraria() : String
++getTipoPuesto() : String
++getRangoEtario() : String
++getExperienciaPrevia() : String
++getEstudiosCursados() : String
+--
+-locacion : String
+-remuneracion : String
+-cargaHoraria : String
+-tipoPuesto : String
+-rangoEtario : String
+-experienciaPrevia : String
+-estudiosCursados : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>594</y>
+      <w>117</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>ListAsignacionEmpleador
+--
++getEmpleador() : Empleador
++setEmpleador() : void
++getListEmpleadosPretensos() : ArrayList&lt;EmpleadoPretenso&gt; 
++setListEmpleadosPretensos() : void
+--
+-empleador : Empleador
+-listEmpledosPretenso : ArrayList&lt;EmpleadoPretenso&gt; </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>654</y>
+      <w>117</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>ListAsignacionEmpleadoPretenso
+--
++getEmpleadoPretenso() : EmpleadoPretenso
++setEmpleadoPretenso() : void
++getListEmpleadores() : ArrayList&lt;Empleador&gt; 
++setListEmpleadores() : void
+--
+-empleadoPretenso : EmpleadoPretenso
+-listEmpledores : ArrayList&lt;Empleador&gt; </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>237</x>
+      <y>645</y>
+      <w>147</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>RondaEncuentrosLaborales
+--
++listasAsignacionEmpleadoPretenso() : ListAsignacionEmpleadPretenso
++metodoOrdenamientoEpleadoPretenso() : ArrayList&lt;Empleador&gt; 
++listasAsignacionEmpresa() : ListAsignacionEmpleador
++metodoOrdenamientoEmpleador() : ArrayList&lt;EmpleadoPretenso&gt;
++listaCoincidencia : ArrayList&lt;  &gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>474</y>
+      <w>84</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>Ticket
+--
++Ticket()
++getFbTicket() : FormularioBusqueda
++getEstadoTicket() : EstadoTicket
++getFechaTicket : Date
+--
+#fbTicket : FormularioBusqueda
+#estadoTicket : EstadoTicket</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>519</x>
+      <y>393</y>
+      <w>96</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>TicketEmpleadoPretenso
+--
++TicketEmpleadoPretenso()
++setResultado() : void
++getResultado): String
+--
+-resultado : String
+-empleadoresMatch : ArrayList&lt;Empleador&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>627</x>
+      <y>390</y>
+      <w>96</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>TicketEmpleador
+--
++TicketEmpleador()
++getCantEmpleadosSolicitados() : int
++getCantEmpleadosObtenidos() : int
++setCantEmpleadosSolicitados() : void
++setCantEmpleadosObtenidos() : void
+--
+-cantEmpleadosSolicitados : int
+-cantEmpleadosObtenidos : int
+-empleadosPretensosMatch : ArrayList&lt;EmpleadoPretenso&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>540</y>
+      <w>159</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Agencia
+--
+-Agencia()
++getInstance() : Agencia
+--
+-instancia : Agencia
+-nombre : String
+-empleadores : ArrayList&lt;Empleador&gt;
+-empleadosPretensos : ArrayList&lt;EmpleadoPretenso&gt;
+-listaEmpleadoPretenso : ArrayList&lt;EmpleadoPretenso&gt;
+-listaEmpleados : ArrayList&lt;Empleador&gt;
+-listAsignacionEmpleador : ArrayList&lt;ListAsignacionEmpleador&gt;
+-listAsignacionEmpleadoPretensos : ArrayList&lt;ListAsignacionEmpleadPretenso&gt;
+-listaContratacion : ArrayList&lt;ListAsignacionEmpleador&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>792</x>
+      <y>144</y>
+      <w>75</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Domicilio
+--
++Domicilio()
++getCalle() : String
++setCalle() : void
++getNumero() : int
++setNumero() : void
++getDescripcion() : String
++setDescripcion() : void
+--
+-calle : String
+-numero : int
+-descripcion : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>531</x>
+      <y>315</y>
+      <w>93</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>EmpleadoPretenso
+--
++EmpleadoPretenso()  
++getTicket() : TicketEmpleadoPretenso
++setTicket() : void
+--
+-nombre : String
+-apellido : String
+-edad : int
+-ticket : TicketEmpleadoPretenso</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>633</x>
+      <y>315</y>
+      <w>78</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>Empleador
+--
++Empleador()  
++getTicket() : TicketEmpleador
++setListaPesos() : void
++getListaPesos() : ValoracionAspecto
+--
+-nomRazonS : String
+-rubro : String
+-ticket : TicketEmpleador
+-listaPesos : ValoracionAspecto</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>141</y>
+      <w>117</w>
+      <h>93</h>
+    </coordinates>
+    <panel_attributes>Persona
+--
++Perosna()
++getDomicilio() : Domicilio
++setDomicilio() : void
++getTelefono() : String
++setTelefono() : void
++getMail() : String
++setMail() : void
++getNombUsuario() : String
++setNombUsuario() : void
++getContrasenia() : String
++setContrasenia() : void
++Logear() : void
+--
+-domicilio : Domicilio
+-telefono : String
+-mail : String
+-nombUsuario : String
+-contrasenia : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>792</x>
+      <y>300</y>
+      <w>84</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>ValoracionAspecto
+--
++ValoracionAspecto()
++getPesoLocacion() : int
++getPesoTipoPuesto() : int
++getPesoRangoEtario() : int
++getPesoExperienciaPrevia() : int
++getPesoEstudiosCursados() : int
++getPesoRemuneracion() : int
++getPesoCargaHoraria() : int
+--
+-pesoLocacion : int
+-pesoTipoPuesto : int
+-pesoRangoEtario : int 
+-pesoExperienciaPrevia : int
+-pesoEstudiosCursados : int
+-pesoRemuneracion : int
+-pesoCargaHoraria : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1017</x>
+      <y>327</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+CargaHoraria
+--
+#media() : double
+#completa() : double
+#extendida : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1017</x>
+      <y>417</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+EstudiosCursados
+--
+#primario() : double
+#secundario() : double
+#terciario : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1017</x>
+      <y>510</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Experiencia
+--
+#nada() : double
+#media() : double
+#mucha : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1017</x>
+      <y>600</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Locacion
+--
+#homeOffice() : double
+#presencial() : double
+#indistinto : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1017</x>
+      <y>696</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+RangoEtario
+--
+#menos40() : double
+#entre40a50() : double
+#mas50 : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1017</x>
+      <y>789</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+TipoPuesto
+--
+#junior() : double
+#senior() : double
+#managment : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1017</x>
+      <y>873</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+CargaHoraria
+--
+#media() : double
+#completa() : double
+#extendida : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>618</y>
+      <w>84</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>PuntajeTicket
+--
++getPuntajeFC() : double
++getPuntajeCF() : double
+--
+-puntaje : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>621</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>TablaFactory
+--
++getValorAspecto() : IAspecto</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>300</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>CargaHorariaCompleta
+--
++valor() : double
+#media() : double
+#completa : double
+#extendida : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>330</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>CargaHorariaCompleta
+--
++valor() : double
+#media() : double
+#completa : double
+#extendida : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>360</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>CargaHorariaMedia
+--
++valor() : double
+#media() : double
+#completa : double
+#extendida : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>390</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>EstudiosCursadPrimario
+--
++valor() : double
+#primario() : double
+#secundario : double
+#terciario : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>420</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>EstudiosCursadSecundario
+--
++valor() : double
+#primario() : double
+#secundario : double
+#terciario : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>450</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>EstudiosCursadTerciario
+--
++valor() : double
+#primario() : double
+#secundario : double
+#terciario : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>480</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>ExperienciaMedia
+--
++valor() : double
+#nada() : double
+#media : double
+#mucha : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>510</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>ExperienciaMucha
+--
++valor() : double
+#nada() : double
+#media : double
+#mucha : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>540</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>ExperienciaNada
+--
++valor() : double
+#nada() : double
+#media : double
+#mucha : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>570</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>LocacionHomeOffice
+--
++valor() : double
+#homeOffice() : double
+#presencial : double
+#indistinto : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>600</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>LocacionIndistinto
+--
++valor() : double
+#homeOffice() : double
+#presencial : double
+#indistinto : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>630</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>LocacionPresencial
+--
++valor() : double
+#homeOffice() : double
+#presencial : double
+#indistinto : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>663</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>RangoEtarioEntre40a50
+--
++valor() : double
+#menos40() : double
+#entre40a50 : double
+#mas50 : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>693</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>RangoEtarioMas50
+--
++valor() : double
+#menos40() : double
+#entre40a50 : double
+#mas50 : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>723</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>RangoEtarioMenos40
+--
++valor() : double
+#menos40() : double
+#entre40a50 : double
+#mas50 : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>756</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>RemuneracionEntreV1yV2
+--
++valor() : double
+#hastaV1() : double
+#entreV1yV2 : double
+#masV2 : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>786</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>RemuneracionHastaV1
+--
++valor() : double
+#hastaV1() : double
+#entreV1yV2 : double
+#masV2 : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>816</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>RemuneracionMasV2
+--
++valor() : double
+#hastaV1() : double
+#entreV1yV2 : double
+#masV2 : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>846</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>TipoPuestoJunior
+--
++valor() : double
+#junior() : double
+#senior : double
+#managment : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>876</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>TipoPuestoManagment
+--
++valor() : double
+#junior() : double
+#senior : double
+#managment : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>906</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>TipoPuestoSenior
+--
++valor() : double
+#junior() : double
+#senior : double
+#managment : double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>306</y>
+      <w>36</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>351</y>
+      <w>36</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;80.0;100.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>339</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>441</y>
+      <w>36</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;80.0;100.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>429</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>396</y>
+      <w>36</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>534</y>
+      <w>36</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;80.0;100.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>522</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>489</y>
+      <w>36</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>624</y>
+      <w>36</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;80.0;100.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>612</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>579</y>
+      <w>36</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>720</y>
+      <w>36</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;80.0;100.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>708</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>675</y>
+      <w>36</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>813</y>
+      <w>36</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;80.0;100.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>801</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>768</y>
+      <w>36</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>900</y>
+      <w>36</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;80.0;100.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>888</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>855</y>
+      <w>36</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;40.0;90.0;40.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>333</y>
+      <w>114</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;910.0;180.0;910.0;170.0;20.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>423</y>
+      <w>114</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;620.0;190.0;620.0;180.0;10.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>513</y>
+      <w>114</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;330.0;200.0;330.0;200.0;10.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>603</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;40.0;230.0;40.0;230.0;10.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>615</y>
+      <w>114</w>
+      <h>93</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;260.0;10.0;260.0;290.0;360.0;290.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>618</y>
+      <w>114</w>
+      <h>183</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;590.0;360.0;590.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>621</y>
+      <w>114</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0;230.0;860.0;360.0;860.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>555</x>
+      <y>426</y>
+      <w>51</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>150.0;160.0;150.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>621</x>
+      <y>438</y>
+      <w>51</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;50.0;150.0;50.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>657</x>
+      <y>480</y>
+      <w>168</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;540.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>657</x>
+      <y>489</y>
+      <w>168</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0;400.0;120.0;540.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>291</x>
+      <y>600</y>
+      <w>9</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>381</x>
+      <y>603</y>
+      <w>60</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;170.0;90.0;170.0;90.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>381</x>
+      <y>657</y>
+      <w>66</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>555</x>
+      <y>231</y>
+      <w>9</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>579</x>
+      <y>240</y>
+      <w>87</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;270.0;120.0;10.0;120.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>573</x>
+      <y>231</y>
+      <w>87</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0;270.0;190.0;270.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>240</y>
+      <w>21</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>50.0;10.0;50.0;150.0;10.0;150.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>687</x>
+      <y>240</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;150.0;10.0;150.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>678</x>
+      <y>363</y>
+      <w>33</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>573</x>
+      <y>357</y>
+      <w>33</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>708</x>
+      <y>327</y>
+      <w>90</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>162</y>
+      <w>174</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;560.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>681</x>
+      <y>624</y>
+      <w>60</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>246</y>
+      <w>87</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;270.0;120.0;10.0;120.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>609</y>
+      <w>66</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;70.0;110.0;70.0;110.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>204</x>
+      <y>558</y>
+      <w>45</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;170.0;50.0;170.0;50.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>204</x>
+      <y>564</y>
+      <w>48</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;320.0;60.0;320.0;60.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>204</x>
+      <y>663</y>
+      <w>48</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;70.0;60.0;70.0;60.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>204</x>
+      <y>624</y>
+      <w>51</w>
+      <h>39</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+teaches to &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;100.0;110.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>285</x>
+      <y>642</y>
+      <w>336</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;120.0;10.0;260.0;1100.0;260.0;1100.0;10.0</additional_attributes>
+  </element>
+</diagram>
