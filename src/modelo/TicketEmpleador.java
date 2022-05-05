@@ -1,11 +1,13 @@
 package modelo;
 
 import java.util.Date;
+import paquete.EmpleadoPretenso;
 
 public class TicketEmpleador extends Ticket 
 {	
 	private int cantEmpleados;
 	private int cantEmpleadosObtenidos;
+	private ArrayList<EmpleadoPretenso> empleadosPretensosMatch = null; //lista se que va a cargar en la ronda de encuentros
 	
 	
 	public TicketEmpleador(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket, int cantEmpleados,

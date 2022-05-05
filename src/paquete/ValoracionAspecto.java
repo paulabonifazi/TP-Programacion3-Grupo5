@@ -30,7 +30,9 @@ public class ValoracionAspecto {
 	private int pesoCargaHoraria;
 	
 	public ValoracionAspecto(int pesoLocacion, int pesoTipoPuesto, int pesoRangoEtario, int pesoExperienciaPrevia,
-			int pesoEstudiosCursados, int pesoRemuneracion, int pesoCargaHoraria) {
+			int pesoEstudiosCursados, int pesoRemuneracion, int pesoCargaHoraria) 
+	{
+		
 		super();
 		this.pesoLocacion = pesoLocacion;
 		this.pesoTipoPuesto = pesoTipoPuesto;

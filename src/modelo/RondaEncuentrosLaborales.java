@@ -131,7 +131,8 @@ public class RondaEncuentrosLaborales {
 	///no hago todo en un metodo, porque puede ser que quiera la lista solo de las empresas u empleados (tipo una funcionalidad que me deja ver los candidatos pero no seleccionar, solo ver)
 
 	
-	public ArrayList RondaContratacion(ArrayList desicionEmpresas,  ArrayList desicionEmpleadPretens) {///devuelvo una lista de emprresas con los empleados contratados
+	public ArrayList RondaContratacion(ArrayList desicionEmpresas,  ArrayList desicionEmpleadPretens) 
+	{///devuelvo una lista de emprresas con los empleados contratados
 	/*ArrayList<ListAsignacionEmpleadPretenso> listaCoincidenciaEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();//el resultado que me devuelven
 	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	*/
 	
