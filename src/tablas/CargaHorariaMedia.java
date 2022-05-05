@@ -2,7 +2,7 @@ package tablas;
 
 import Interfaces.IAspecto;
 
-public class CargaHorariaCompleta extends CargaHoraria {
+public class CargaHorariaMedia extends CargaHoraria {
 
 	@Override
 	public double valor(IAspecto objeto) {

@@ -31,4 +31,8 @@ public class EmpleadPretensoPuntaje {
 	public void setEmpleadoPretenso(EmpleadoPretenso empleadoPretenso) {
 		this.empleadoPretenso = empleadoPretenso;
 	}
+	
+	
+
+	
 }
