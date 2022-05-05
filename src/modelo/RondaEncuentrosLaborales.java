@@ -6,7 +6,8 @@
 			EmpleadorPuntaje guarda una empresa con el puntaje que obtuvo en las tablas
 			EmpleadoPretensPuntaje guarda un empleadoPretenso con el puntaje que obtuvo en las tablas
 
-agencia debe tener los metodo que generen las superListas (todas las empresas con todos sus posibles empleados y viceversa)
+agencia debe tener los metodo que generen las superListas (todas las empresas con todos sus posibles 
+empleados y viceversa)
 
 
 la clase PuntajeTicketFC y PuntajeTicketCF acceden a la pos a,b y b,a en las tablas

@@ -1,9 +1,6 @@
 package Interfaces;
 
-public interface IPersonaFisica
+public interface IPersonaFisica 
 {
-	/*
-	 * m�todos del empleador o empleado
-	 * 
-	 */
+
 }

@@ -1,18 +1,31 @@
 package paquete;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.SortedSet;
+
+import modelo.EmpleadorPuntaje;
+import modelo.ListAsignacionEmpleadPretenso;
+import tablas.PuntajeTicket;
 
 public class Agencia
 {
 	private static Agencia instancia = null;
 	private String nombre;
-	/*agregar otros tributos, ver cuales!*/
+
+	private ArrayList<Empleador> empleadores = new ArrayList<Empleador> ();						
+	private ArrayList<EmpleadoPretenso> empleadosPretensos = new ArrayList<EmpleadoPretenso> ();
 	
-	private ArrayList<Persona> personas = new ArrayList<Persona>();
+	
+	
+	
 	
 	private Agencia() {
 		
 	}
+	
 	
 	public static Agencia getInstance()
 	{
@@ -22,6 +35,24 @@ public class Agencia
 		return instancia;
 	}
 
+	
+	//Ronda de encuentros laborales:
+
+	public SortedSet<EmpleadoPretenso> creaListaOrdEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos)
+	{
+		SortedSet<EmpleadoPretenso> empleadosPretensosOrd =  (SortedSet<EmpleadoPretenso>) new HashSet<EmpleadoPretenso>(empleadosPretensos);
+		
+		return empleadosPretensosOrd;
+		
+	}
+	
+	public SortedSet<Empleador> creaListaOrdEmpleadores(ArrayList<Empleador> empleadores)
+	{
+		SortedSet<Empleador> empleadoresOrd = (SortedSet<Empleador>) new HashSet<Empleador>(empleadores);
+		
+		return empleadoresOrd;
+		
+	}
 	
 	
 	
