@@ -40,11 +40,6 @@ public class Agencia
 	
 	///metodo que recolecte y arma la lista de las elecciones
 	
-	///metodo que genere la lista con las contrataciones (emmpresa/empleado consultan en esta con quien se quedarton) (punto 6 funcionalidad agencia)
-			///metodo que calcule las comisiones en base a esa lista
-			///cambio en los estado de los tickets, actualizacion de los puntajes de usurario
-	
-	///metodo que muestre las listas 
 	
 	
 	private Agencia() {	}
@@ -92,6 +87,17 @@ public class Agencia
 	 *  a una lista de contrataciones en agencia!
 	 * 
 	 */
+	
+	
+	
+	
+	///metodo que genere la lista con las contrataciones (emmpresa/empleado consultan en esta con quien se quedarton) (punto 6 funcionalidad agencia)
+	///metodo que calcule las comisiones en base a esa lista
+	///cambio en los estado de los tickets, actualizacion de los puntajes de usurario
+
+	
+	
+	public void comision
 	
 	
 	
