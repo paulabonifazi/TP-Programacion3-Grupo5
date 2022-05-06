@@ -25,11 +25,11 @@ import paquete.Empleador;
 import tablas.PuntajeTicket;
 
 //*///*/
-public class RondaEncuentrosLaborales {
+public abstract class RondaEncuentrosLaborales {
 	
 ///a este metodo lo llama agencia y le devuelve un nodo que contiene una lista de empresas para empleadoPretenso (agencia se debe encargar de ir guardandolos en un array)
 																						///array de todas las empresas y el empleadoPretenso al que se le va agenerar la lista
-	public ListAsignacionEmpleadPretenso listasAsignacionEmpleadoPretenso(ArrayList<Empleador> empleador,  EmpleadoPretenso empleadoPretensos) {
+	public  ListAsignacionEmpleadPretenso listasAsignacionEmpleadoPretenso(ArrayList<Empleador> empleador,  EmpleadoPretenso empleadoPretensos) {
 		
 		ListAsignacionEmpleadPretenso nuevoNodo = new ListAsignacionEmpleadPretenso();	
 		

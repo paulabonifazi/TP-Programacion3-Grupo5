@@ -12,6 +12,7 @@ import tablas.PuntajeTicket;
 
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
+import modelo.RondaEncuentrosLaborales;
 
 public class Agencia
 {
@@ -26,7 +27,7 @@ public class Agencia
 	
 	
 	private ArrayList<EmpleadoPretenso> listaEmpleadoPretenso = new ArrayList<EmpleadoPretenso>();  ///listas de empleadosPretensos
-	private ArrayList<Empleador> listaEmpleados = new ArrayList<Empleador>();						///lista empleadores
+	private ArrayList<Empleador> listaEmpleadores = new ArrayList<Empleador>();						///lista empleadores
 	
 	private ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador = new ArrayList<ListAsignacionEmpleador>();//lista de empresas con sus posibles empleados ordenados
 	private ArrayList<ListAsignacionEmpleadPretenso> listAsignacionEmpleadoPretensos = new ArrayList<ListAsignacionEmpleadPretenso>();//lista de empleadosPretenso con sus posibles empresas ordenados
@@ -34,11 +35,43 @@ public class Agencia
 	private ArrayList<ListAsignacionEmpleador> listaContratacion = new ArrayList<ListAsignacionEmpleador>();//lista que guarda las coincidencias entre empresa y empleado
 		///unica lista para evitar la doble referencia de que empleadoPretensis conosca a empresa (si empleadoPretenso quiere saber con qyuien esta -> reviso la lista hasta encontrarla)
 	
+	
+	
 	///metodo que genere las lista de empresas y lista de empleadores 
+	public void agregarEmpleador (Empleador empleador) {
+		empleadores.add(empleador);
+	}
+	
+	public void agregarEmpleadoPretenso (EmpleadoPretenso empleadoPretenso) {
+		empleadosPretensos.add(empleadoPretenso);
+	}
+	
 	
 	///metodo que genere las listas de asignacion (con los metodos de RondaEncuentroLaboral) (punto 5 funcionalidad agencia)
+	public void generarListAsignacionEmpleador() {
+		for (int i=0; i<this.empleadores.size(); i++)
+			listAsignacionEmpleador.add(RondaEncuentrosLaborales.listasAsignacionEmpresa(this.empleadosPretensos,this.empleadores.get(i)));///la idea general es esta, definir si dejmos REL o movemos los metodos aca
+	}
+	
+	
+	public void generarListAsignacionEmpleadoPretenso() {
+		for (int i=0; i<this.empleadosPretensos.size(); i++)
+			listAsignacionEmpleadoPretensos.add(RondaEncuentrosLaborales.listasAsignacionEmpleadoPretenso(this.empleadores, this.empleadosPretensos.get(i)));///la idea general es esta, definir si dejmos REL o movemos los metodos aca
+	}
+	
 	
 	///metodo que recolecte y arma la lista de las elecciones
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -97,8 +130,3 @@ public class Agencia
 
 	
 	
-	public void comision
-	
-	
-	
-}
