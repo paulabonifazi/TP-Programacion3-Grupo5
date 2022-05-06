@@ -196,6 +196,44 @@ public abstract class RondaEncuentrosLaborales {
 	}
 }
 
+
+
+
+
+
+//Hay que crear una lista de contratados, ya que de la lista de coincidencias puede pasar que: 
+	//  como un empleador puede elegir mas empleadosPretensos de la cantidad solicitada, puede pasar que todos los empleados pretensos lo allan elegido 
+	//por lo que el problema seria que no puede contratar mas de lo solicitado 
+	//  ----> posible solucion, se contrata a las N primeros por tener los mejores puntajes 
+
+	public TipoListaCoincidencias ListaDeContrataciones( TipoListaCoincidencias ListaCoincidencias)
+	{
+		//NECESITO LA CANTIDAD DE SOLICITADOS EN EL TICKET
+
+		TIPOListaEmpleadosPretensos posiblesEmpleados;
+
+		for(int i=0; i< ListaCoincidencias.size(); i++)
+		{
+			ListaPosiblesEmpleados = ListaCoincidencias.get(i).getListaEmpleadosPretensosElegidos();
+
+			//eminimal los que sobren de  la cantidad solicitada en el ticket de empelador
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * analizar para que la agencia se encargue!!
  * terminar métodos!
