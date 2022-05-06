@@ -47,14 +47,22 @@ public class Agencia
 	}
 	
 	
+	
+	
+	
+	
+	
+	
 	///metodo que genere las listas de asignacion (con los metodos de RondaEncuentroLaboral) (punto 5 funcionalidad agencia)
 	public void generarListAsignacionEmpleador() {
+		filtroTicketActivoEmpleadores(this.empleadores);	///solo trabajo con los activos
 		for (int i=0; i<this.empleadores.size(); i++)
 			listAsignacionEmpleador.add(RondaEncuentrosLaborales.listasAsignacionEmpresa(this.empleadosPretensos,this.empleadores.get(i)));///la idea general es esta, definir si dejmos REL o movemos los metodos aca
 	}
 	
 	
 	public void generarListAsignacionEmpleadoPretenso() {
+		filtroTicketActivoEmpleadosPretensos(this.empleadosPretensos);
 		for (int i=0; i<this.empleadosPretensos.size(); i++)
 			listAsignacionEmpleadoPretensos.add(RondaEncuentrosLaborales.listasAsignacionEmpleadoPretenso(this.empleadores, this.empleadosPretensos.get(i)));///la idea general es esta, definir si dejmos REL o movemos los metodos aca
 	}
@@ -66,8 +74,21 @@ public class Agencia
 	
 	
 	
+	//filtro solo ticket activos(va a el principio
+	///ver si conservo la lista original
+	public ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
+		for (int i=0; i<empleadosPretensos.size();i++)
+			if (!empleadosPretensos.get(i).getTicket().getEstadoTicket().equals("ACTIVO"))
+				empleadosPretensos.remove(i);
+		return empleadosPretensos;
+	}
 	
-	
+	public ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
+		for (int i=0; i<empleadores.size();i++)
+			if (!empleadores.get(i).getTicket().getEstadoTicket().equals("ACTIVO"))
+				empleadores.remove(i);
+		return empleadores;
+	}
 	
 	
 	
@@ -142,7 +163,7 @@ public class Agencia
 		//Necesito la lista de contratados
 
 		//Sueldo pretendido -> Sale del formulario de busqueda -> analisar que pasa si la empresa ofrecio un o y el empleado elijio otro -> ejemplo: se queda con el mayor sueldo
-		
+		//los porcentajes los pongo en una constante?
 
 		public double calculoComision(TipoListaContrataciones ListaDeContrataciones)
 		{

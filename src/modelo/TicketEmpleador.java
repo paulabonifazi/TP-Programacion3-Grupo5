@@ -13,6 +13,7 @@ public class TicketEmpleador extends Ticket
 	private ArrayList<EmpleadoPretenso> empleadosPretensosMatch = null; //lista se que va a cargar en la ronda de encuentros
 	
 	
+	
 	public TicketEmpleador(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket, int cantEmpleadosSolicitados,int cantEmpleadosObtenidos) 
 	{
 		super(fbTicket, estadoTicket, fechaTicket);
