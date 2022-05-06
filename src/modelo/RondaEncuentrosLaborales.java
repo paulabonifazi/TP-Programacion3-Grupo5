@@ -131,29 +131,6 @@ public abstract class RondaEncuentrosLaborales {
 	///no hago todo en un metodo, porque puede ser que quiera la lista solo de las empresas u empleados (tipo una funcionalidad que me deja ver los candidatos pero no seleccionar, solo ver)
 
 	
-	public ArrayList RondaContratacion(ArrayList desicionEmpresas,  ArrayList desicionEmpleadPretens) 
-	{///devuelvo una lista de emprresas con los empleados contratados
-	/*ArrayList<ListAsignacionEmpleadPretenso> listaCoincidenciaEmpleadPretenso = new ArrayList<ListAsignacionEmpleadPretenso>();//el resultado que me devuelven
-	ArrayList<ListAsignacionEmpleador> listaCoincidenciaEmpleador = new ArrayList<ListAsignacionEmpleador>();	*/
-	
-	//cada empleado para saber que empresa los contrato se tendria que buscar entre todas las empresas
-		ArrayList lista = null;
-		//creo un for
-	//en la primer posicion pongo de listaFinal pongo la primer empresa de desicionEmpresa
-		//	recorro desicionempleadPretenso 
-		//  busco si coincide la empresa actual con su eleccion
-		//	si es v la agrego y elimino el elemento, si es f paso ala siguiente /**si crease 2 lista, en este punto agrego a ambas lsitas/
-
-		return lista;
-		
-	///ver si es mas combeniete 2 listas una de empresas con los empleados contratados y otra de empleados con la empresa en la que quedo
-			///doble referecnia
-	}
-
-
-
-	///////////////////////////////////////////////////////////
-	
 
 	//  METODO COINCIDENCIAS -> buscar las coincidencias y guardar en un arrayList del mismo tipo quer la lista de empleadores
 
@@ -163,26 +140,26 @@ public abstract class RondaEncuentrosLaborales {
 	
 	//Recorrer el arrayListe de empleadores y buscar en el de empleadosPretensos si coinciden
 
-	public  TipoListaEmpleador ListaCoincidencias(TipoListaEmpleador ListaDeEmpleadores, TipoListaEmpleadosPretensos ListaDeEmpleadosPretensos) //ver cual es el tipo de las listas
+	public  ArrayList<ListAsignacionEmpleador> ListaCoincidencias(ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
 	{
 		 String empleador;
-		 TIPOListaEmpleadosPretensos posiblesEmpleados;
+		 ArrayList<EmpleadoPretenso> ListaPosiblesEmpleados ;
 		 String empleadoPretenso;
 
 		for(int i = 0; i < ListaDeEmpleadores.size(); i++)//Recorre el arrayList de empleadores
 		{
 			//trabahar con var para simplificar
-			empleador = ListaDeEmpleadores.get(i).getNombreEmpleador();
-			ListaPosiblesEmpleados = ListaDeEmpleadores.get(i).getListaEmpleadosPretensosElegidos();
+			empleador = ListaDeEmpleadores.get(i).getEmpleador().getNombUsuario();
+			ListaPosiblesEmpleados = ListaDeEmpleadores.get(i).getListEmpleadosPretensos();
 
 			//CREAR UN NUEVO OBJETO DE lISTACOINCIDENCIAS 
 			//CARGAR EL NOMBRE DE LA EMPRESA
 
 			for(int j = 0; j < ListaPosiblesEmpleados.size(); j++)// recorre la lsita de los empleados elegidos por el empleador
 			{
-				empleadoPretenso = ListaPosiblesEmpleados.get(j).getNombreEmpleadoPretenso();
+				empleadoPretenso = ListaPosiblesEmpleados.get(j).getNombUsuario();
 				int k = 0;
-				while(k < ListaDeEmpleadosPretensos.size() && ListaDeEmpleadosPretensos.get(k).getNombreEmpleadoPretenso != empleadoPretenso)//recorro buscando la coincidencia en la lista de los empleados -> si aparece el nombre en esa lista entonces hay coincidencia
+				while(k < ListaDeEmpleadosPretensos.size() && ListaDeEmpleadosPretensos.get(k).getEmpleadoPretenso().getNombUsuario() != empleadoPretenso)//recorro buscando la coincidencia en la lista de los empleados -> si aparece el nombre en esa lista entonces hay coincidencia
 					k++;
 
 				if(k < ListaDeEmpleadosPretensos.size()) //coincidencia
@@ -193,8 +170,9 @@ public abstract class RondaEncuentrosLaborales {
 			//CARGAR ELEMENTO A LA LISTA DE COINCIDENCIAS
 			
 		}
+		return null;
 	}
-}
+
 
 
 
@@ -206,18 +184,19 @@ public abstract class RondaEncuentrosLaborales {
 	//por lo que el problema seria que no puede contratar mas de lo solicitado 
 	//  ----> posible solucion, se contrata a las N primeros por tener los mejores puntajes 
 
-	public TipoListaCoincidencias ListaDeContrataciones( TipoListaCoincidencias ListaCoincidencias)
+	public ArrayList<ListAsignacionEmpleador> ListaDeContrataciones( ArrayList<ListAsignacionEmpleador> ListaCoincidencias)
 	{
 		//NECESITO LA CANTIDAD DE SOLICITADOS EN EL TICKET
 
-		TIPOListaEmpleadosPretensos posiblesEmpleados;
+		ArrayList<EmpleadoPretenso> ListaPosiblesEmpleados;
 
 		for(int i=0; i< ListaCoincidencias.size(); i++)
 		{
-			ListaPosiblesEmpleados = ListaCoincidencias.get(i).getListaEmpleadosPretensosElegidos();
+			ListaPosiblesEmpleados = ListaCoincidencias.get(i).getListEmpleadosPretensos();
 
 			//eminimal los que sobren de  la cantidad solicitada en el ticket de empelador
 		}
+		return null;
 	}
 
 }

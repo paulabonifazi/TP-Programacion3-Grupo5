@@ -142,10 +142,11 @@ public class Agencia
 		//Necesito la lista de contratados
 
 		//Sueldo pretendido -> Sale del formulario de busqueda -> analisar que pasa si la empresa ofrecio un o y el empleado elijio otro -> ejemplo: se queda con el mayor sueldo
-		double sueldoPretendido = ... ;
+		
 
 		public double calculoComision(TipoListaContrataciones ListaDeContrataciones)
 		{
+			double sueldoPretendido = this.empleadosPretensos.get(0).getTicket().getFbTicket().getRemuneracion();
 			double comision = 0;
 			TIPOListaEmpleadosPretensos ListaEmpleadosContratados;
 			
