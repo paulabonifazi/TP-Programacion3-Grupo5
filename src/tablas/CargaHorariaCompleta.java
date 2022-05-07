@@ -1,6 +1,6 @@
 package tablas;
 
-import Interfaces.IAspecto;
+import interfaces.IAspecto;
 
 public class CargaHorariaCompleta extends CargaHoraria {
 

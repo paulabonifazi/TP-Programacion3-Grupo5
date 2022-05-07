@@ -1,6 +1,6 @@
 package tablas;
 
-import Interfaces.IAspecto;
+import interfaces.IAspecto;
 
 public abstract class CargaHoraria implements IAspecto{
 	protected abstract double media();

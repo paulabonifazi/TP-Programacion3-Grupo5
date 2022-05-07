@@ -1,6 +1,6 @@
 package paquete;
 
-import Interfaces.IPersonaFisica;
+import interfaces.IPersonaFisica;
 import modelo.Ticket;
 import modelo.TicketEmpleadoPretenso;
 
@@ -11,7 +11,6 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica
 	private int edad;
 	private TicketEmpleadoPretenso ticket;
 	
-	
 	public EmpleadoPretenso(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nombre, String apellido, int edad, TicketEmpleadoPretenso ticket) 
 	{
@@ -19,16 +18,34 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica
 		this.ticket = ticket;
 	}
 
-
 	public TicketEmpleadoPretenso getTicket() {
 		return ticket;
 	}
-
 
 	public void setTicket(TicketEmpleadoPretenso ticket) {
 		this.ticket = ticket;
 	}
 
+	@Override
+	public String getNombre()
+	{
+		// TODO Auto-generated method stub
+		return nombre;
+	}
+
+	@Override
+	public String getApellido()
+	{
+		// TODO Auto-generated method stub
+		return apellido;
+	}
+
+	@Override
+	public int getEdad()
+	{
+		// TODO Auto-generated method stub
+		return edad;
+	}
 	
 	///quien se encarga de hacer el registro?? (punto 1 funcionalidad emplead)
 	//excepcionesdelLogin, hace falta la clase login???

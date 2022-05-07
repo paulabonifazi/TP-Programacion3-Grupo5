@@ -1,6 +1,6 @@
 package tablas;
 
-import Interfaces.IAspecto;
+import interfaces.IAspecto;
 
 public class RemuneracionEntreV1yV2 extends Remuneracion{
 

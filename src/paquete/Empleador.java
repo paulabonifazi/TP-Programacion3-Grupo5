@@ -1,7 +1,7 @@
 package paquete;
 
-import Interfaces.IPersonaFisica;
-import Interfaces.IPersonaJuridica;
+import interfaces.IPersonaFisica;
+import interfaces.IPersonaJuridica;
 import modelo.TicketEmpleador;
 
 
@@ -23,27 +23,55 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		this.ticket = ticket;
 	}
 	
-	
-	
 	/*/* en la parte donde la empresa se registra crea y manda el valor*/
 	public void setListaPesos(ValoracionAspecto listaPesos) {
 		this.listaPesos = listaPesos;
 	}
 
-
 	public ValoracionAspecto getListaPesos() {
 		return listaPesos;
 	}
-
-
 
 	public TicketEmpleador getTicket() {
 		return ticket;
 	}
 
-	
-	
-	
+	@Override
+	public String getNomRazonS()
+	{
+		// TODO Auto-generated method stub
+		return nomRazonS;
+	}
+
+	@Override
+	public String getNombre()
+	{
+		// TODO Auto-generated method stub
+		return null;
+		//return nombre;
+	}
+
+	@Override
+	public String getApellido()
+	{
+		// TODO Auto-generated method stub
+		return null;
+		//return apellido;
+	}
+
+	@Override
+	public int getEdad()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+		//return edad;
+	}
+
+	public String getRubro()
+	{
+		return rubro;
+	}
+
 	
 	//quien se encarga de hacer el registro?? (punto 1 funcionalidad emplead)
 	//excepcionesdelLogin, hace falta la clase login???

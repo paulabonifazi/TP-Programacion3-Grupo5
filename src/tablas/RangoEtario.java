@@ -1,6 +1,6 @@
 package tablas;
 
-import Interfaces.IAspecto;
+import interfaces.IAspecto;
 
 public abstract class RangoEtario implements IAspecto{
 	protected abstract double menos40();

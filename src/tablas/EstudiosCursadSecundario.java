@@ -1,6 +1,6 @@
 package tablas;
 
-import Interfaces.IAspecto;
+import interfaces.IAspecto;
 
 public class EstudiosCursadSecundario extends EstudiosCursados{
 

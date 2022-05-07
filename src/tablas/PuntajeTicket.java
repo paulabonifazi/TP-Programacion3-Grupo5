@@ -1,6 +1,6 @@
 package tablas;
 
-import Interfaces.IAspecto;
+import interfaces.IAspecto;
 import modelo.TicketEmpleadoPretenso;
 import paquete.Empleador;
 
