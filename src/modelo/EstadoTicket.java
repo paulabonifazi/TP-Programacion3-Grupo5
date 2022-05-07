@@ -9,7 +9,7 @@ public class EstadoTicket {///como consulto el estado para las comparaciones, no
 		this.estadoTicket = estadoTicket;
 	}
 	
-	public String getEstadoTicket() {
+	public String getEstado() {
 		return estadoTicket;
 	}
 	
