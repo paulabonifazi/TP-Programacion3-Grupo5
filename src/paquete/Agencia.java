@@ -1,3 +1,19 @@
+/* aclaraciones 
+ * 		clases que funcionan como objeto
+			ListAsignacionEmpleadPretenso guarda un empleadoPretenso con una array de empresas
+			ListAsignacionEmpleador guarda una empresa con un array de empleadoPretensos
+			
+			EmpleadorPuntaje guarda una empresa con el puntaje que obtuvo en las tablas
+			EmpleadoPretensPuntaje guarda un empleadoPretenso con el puntaje que obtuvo en las tablas
+
+agencia debe tener los metodo que generen las superListas (todas las empresas con todos sus posibles 
+empleados y viceversa)
+
+
+la clase PuntajeTicketFC y PuntajeTicketCF acceden a la pos a,b y b,a en las tablas
+
+*////PASSARLO A LA DOCUMENTACION///
+
 package paquete;
 
 import java.util.ArrayList;
@@ -6,6 +22,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.SortedSet;
 
+import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
 import tablas.PuntajeTicket;
@@ -22,10 +39,6 @@ public class Agencia
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador> ();						
 	private ArrayList<EmpleadoPretenso> empleadosPretensos = new ArrayList<EmpleadoPretenso> ();
 	
-	
-	
-	
-	
 	private ArrayList<EmpleadoPretenso> listaEmpleadoPretenso = new ArrayList<EmpleadoPretenso>();  ///listas de empleadosPretensos
 	private ArrayList<Empleador> listaEmpleadores = new ArrayList<Empleador>();						///lista empleadores
 	
@@ -33,11 +46,17 @@ public class Agencia
 	private ArrayList<ListAsignacionEmpleadPretenso> listAsignacionEmpleadoPretensos = new ArrayList<ListAsignacionEmpleadPretenso>();//lista de empleadosPretenso con sus posibles empresas ordenados
 	
 	private ArrayList<ListAsignacionEmpleador> listaContratacion = new ArrayList<ListAsignacionEmpleador>();//lista que guarda las coincidencias entre empresa y empleado
-		///unica lista para evitar la doble referencia de que empleadoPretensis conosca a empresa (si empleadoPretenso quiere saber con qyuien esta -> reviso la lista hasta encontrarla)
+
+	private Agencia() {	}
 	
+	public static Agencia getInstance()
+	{
+		if (Agencia.instancia == null)
+			Agencia.instancia = new Agencia();
+		
+		return instancia;
+	}
 	
-	
-	///metodo que genere las lista de empresas y lista de empleadores 
 	public void agregarEmpleador (Empleador empleador) {
 		empleadores.add(empleador);
 	}
@@ -47,313 +66,181 @@ public class Agencia
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	///metodo que genere las listas de asignacion (con los metodos de RondaEncuentroLaboral) (punto 5 funcionalidad agencia)
+	///metodo que genere las listas de asignacion
 	public void generarListAsignacionEmpleador() {
 		filtroTicketActivoEmpleadores(this.empleadores);	///solo trabajo con los activos
 		for (int i=0; i<this.empleadores.size(); i++)
-			listAsignacionEmpleador.add(RondaEncuentrosLaborales.listasAsignacionEmpresa(this.empleadosPretensos,this.empleadores.get(i)));///la idea general es esta, definir si dejmos REL o movemos los metodos aca
+			listAsignacionEmpleador.add(listasAsignacionEmpresa(this.empleadosPretensos,this.empleadores.get(i)));
 	}
-	
 	
 	public void generarListAsignacionEmpleadoPretenso() {
 		filtroTicketActivoEmpleadosPretensos(this.empleadosPretensos);
 		for (int i=0; i<this.empleadosPretensos.size(); i++)
-			listAsignacionEmpleadoPretensos.add(RondaEncuentrosLaborales.listasAsignacionEmpleadoPretenso(this.empleadores, this.empleadosPretensos.get(i)));///la idea general es esta, definir si dejmos REL o movemos los metodos aca
+			listAsignacionEmpleadoPretensos.add(listasAsignacionEmpleadoPretenso(this.empleadores, this.empleadosPretensos.get(i)));
 	}
-	
-	
-	///metodo que recolecte y arma la lista de las elecciones
-	
-	
-	
-	
-	
-	//filtro solo ticket activos(va a el principio
+		
+	//filtro solo ticket activos
 	///ver si conservo la lista original
 	public ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		for (int i=0; i<empleadosPretensos.size();i++)
-			if (!empleadosPretensos.get(i).getTicket().getEstadoTicket().equals("ACTIVO"))
+			if (!empleadosPretensos.get(i).getTicket().getEstadoTicket().getEstado().equals("ACTIVO"))
 				empleadosPretensos.remove(i);
 		return empleadosPretensos;
 	}
 	
 	public ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
 		for (int i=0; i<empleadores.size();i++)
-			if (!empleadores.get(i).getTicket().getEstadoTicket().equals("ACTIVO"))
+			if (!empleadores.get(i).getTicket().getEstadoTicket().getEstado().equals("ACTIVO"))
 				empleadores.remove(i);
 		return empleadores;
 	}
 	
-	
-	
-	
-	
-	
-	
-	private Agencia() {	}
-	
-	
-	
-	public static Agencia getInstance()
-	{
-		if (Agencia.instancia == null)
-			Agencia.instancia = new Agencia();
-		
-		return instancia;
+
+	///le devuelve un nodo que contiene una lista de empresas para empleadoPretenso 
+	public  ListAsignacionEmpleadPretenso listasAsignacionEmpleadoPretenso(ArrayList<Empleador> empleador,  EmpleadoPretenso empleadoPretensos) {
+
+			ListAsignacionEmpleadPretenso nuevoNodo = new ListAsignacionEmpleadPretenso();	
+			nuevoNodo.setEmpleadoPretenso(empleadoPretensos);
+			nuevoNodo.setListEmpleadores(metodoOrdenamientoEpleadoPretenso(empleadoPretensos, empleador));///traigo una lista de las empresas ordenada
+
+			return nuevoNodo;
 	}
 
-	
-	//Ronda de encuentros laborales:
 
-	/*
-	public SortedSet<EmpleadoPretenso> creaListaOrdEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos)
-	{
-		SortedSet<EmpleadoPretenso> empleadosPretensosOrd =  (SortedSet<EmpleadoPretenso>) new HashSet<EmpleadoPretenso>(empleadosPretensos);
-		
-		return empleadosPretensosOrd;
-		
-	}
+	///el metodo me devuelve una listaOrdenada de empresas para el empleadoPretneos 
+	public ArrayList<Empleador> metodoOrdenamientoEpleadoPretenso( EmpleadoPretenso empleadoPretensos, ArrayList<Empleador> listaEmpleadores) {
 	
-	public SortedSet<Empleador> creaListaOrdEmpleadores(ArrayList<Empleador> empleadores)
-	{
-		SortedSet<Empleador> empleadoresOrd = (SortedSet<Empleador>) new HashSet<Empleador>(empleadores);
-		
-		return empleadoresOrd;
-		
-	}
+	ArrayList<Empleador> lista = new  ArrayList<Empleador>();						//lista que voy a devolver
+	ArrayList<EmpleadorPuntaje> listaOrdenada = new ArrayList<EmpleadorPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
+	EmpleadorPuntaje empleadorPuntaje = new EmpleadorPuntaje();	
 	
-	*/
-	
-	/*
-	 * estos metodos son llamados luego de haberse realizado las rondas de encuentros
-	 * en las rondas de encuentros hay que considerar el estado del ticket
-	 * primero crearía las listas de encuentros(analizando valor del ticket,
-	 *  ver si hay match, etc etc) y luego ordenar dichas listas con los métodos 
-	 *  sortedset de arriba o los métodos que realizó kevin (ANALIZAR) en la clase ronda encuentros
-	 *  una vez obtenidas las listas ordenadas se procede a la contratacion.
-	 *  una vez realizada dicha contratacion se agregan ambos (empleador y empleado pretenso)
-	 *  a una lista de contrataciones en agencia!
-	 * 
-	 */
-	
-	
-	
-	
-	///metodo que genere la lista con las contrataciones (emmpresa/empleado consultan en esta con quien se quedarton) (punto 6 funcionalidad agencia)
-	///metodo que calcule las comisiones en base a esa lista
-	///cambio en los estado de los tickets, actualizacion de los puntajes de usurario
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//Agencia calcula la comision si cierra contrato!!!!!!!
-
-		//Necesito la lista de contratados
-
-		//Sueldo pretendido -> Sale del formulario de busqueda -> analisar que pasa si la empresa ofrecio un o y el empleado elijio otro -> ejemplo: se queda con el mayor sueldo
-		//los porcentajes los pongo en una constante?
-
-		public double calculoComision(TipoListaContrataciones ListaDeContrataciones)
-		{
-			double sueldoPretendido = this.empleadosPretensos.get(0).getTicket().getFbTicket().getRemuneracion();
-			double comision = 0;
-			TIPOListaEmpleadosPretensos ListaEmpleadosContratados;
-			
-			for(int i=0; i< ListaDeContrataciones.size(); i++)//recorro la lista de contrataciones 
-			{
-				ListaEmpleadosContratados = ListaDeContrataciones.get(i).getListaEmpleados();
-
-				for(int j=0; j <ListaEmpleadosContratados.size(); j++ )//recorro la lista de empelados
-				{
-					//calculo la comision que se le cobra al empleado
-
-					//NECESITO EL FORMULARIO DE BUSQUEDA -> TIPO DE PUESTO LABORAL
-					if(tipoPuesto == "JUNIOR")
-						comision = sueldoPretendido * 0.8;
-					else
-						if(tipoPuesto == "SENIOR")
-							comision = sueldoPretendido * 0.9;
-						else //if(tipoPuesto == "Gerencial")
-							comision = sueldoPretendido;
-					
-
-					//PARA AMBOS SE PUEDE MODIFICAR POR EL PUNTAJE DE USUARIO -> RESTA 1% POR CADA PUNTO
-					//nECESITO EL PUNTAJE DE uSUARIO YA ACTUALIADO 
-					//PENSAR LA CONSIDERACION DE CUANTO SE RE RESTA!!!! SI LLEGA A 100 PUNTOS NO AGA COMISION??/
-						
-					if(puntajeUsuario != 0)
-						comision -= puntajeUsuario * 0.01;
-
-				}
-
-
-				//calculo comsion que se le cobra al empleador
-
-				//necesito datos del registro 
-				if(personaJuridica)
-				{
-					if(rubro == "SALUD")
-						comision = sueldoPretendido * 0.8;
-					else if(rubro == "COMERCIO LOCAL")
-							comision = sueldoPretendido * 0.9;
-						else //if(rubro =="COMERCIO INTERNACIONAL")
-							comision = sueldoPretendido ;
-				}
-				else //personaFisica
-				{
-					if(rubro == "SALUD")
-						comision = sueldoPretendido * 0.6;
-					else if(rubro == "COMERCIO LOCAL")
-							comision = sueldoPretendido * 0.7;
-						else //if(rubro =="COMERCIO INTERNACIONAL")
-							comision = sueldoPretendido * 0.8;
-				}
-
-				//PARA AMBOS SE PUEDE MODIFICAR POR EL PUNTAJE DE USUARIO -> RESTA 1% POR CADA PUNTO
-				//nECESITO EL PUNTAJE DE uSUARIO YA ACTUALIADO 
-				//PENSAR LA CONSIDERACION DE CUANTO SE RE RESTA!!!! SI LLEGA A 100 PUNTOS NO AGA COMISION??/
-			}	
+	for (int i=0; i<=listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
+		empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
+		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeFC(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
+				//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
+		listaOrdenada.add(empleadorPuntaje);
 		}
+	
+	////probar si el metodo funciona bien///
+	Collections.sort(listaOrdenada, new Comparator<EmpleadorPuntaje>() {
+	@Override
+		public int compare(EmpleadorPuntaje p2, EmpleadorPuntaje p1) {
+			return new Double(p2.getPuntaje()).compareTo(new Double(p1.getPuntaje()));
+			}
+		});
+	
+	for (int j = 0; j< listaOrdenada.size(); j++) 				///cargo lista con el orden de listaOrdenada
+		lista.add(listaOrdenada.get(j).getEmpleador());
+	
+	return lista;	
+	}
+	
+	
+	///le devuelve un nodo que tine una lista de empleadosPretensos para la empresa 
+	public ListAsignacionEmpleador listasAsignacionEmpresa(  ArrayList<EmpleadoPretenso> empleadosPretensos , Empleador empleador) {
+		ListAsignacionEmpleador nuevoNodo = new ListAsignacionEmpleador();	
+		nuevoNodo.setEmpleador(empleador);
+		nuevoNodo.setListEmpleadosPretensos(metodoOrdenamientoEmpleador(empleador , empleadosPretensos));//traigo una lista de empleadosPretensos ordenada
+	
+		return nuevoNodo;
+	}
+	
+	
+	///el metodo devuelve una lista ordenada por puntaje de empleadosPretensos
+	public ArrayList<EmpleadoPretenso> metodoOrdenamientoEmpleador(Empleador empleador, ArrayList<EmpleadoPretenso> listaEmpleaPretenso) {
+	
+		ArrayList<EmpleadoPretenso> lista = new  ArrayList<EmpleadoPretenso>();						//lista que voy a devolver
+		ArrayList<EmpleadPretensoPuntaje> listaOrdenada = new ArrayList<EmpleadPretensoPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
+		EmpleadPretensoPuntaje empleadoPretensPuntaje = new EmpleadPretensoPuntaje();	
+	
+		for (int i=0; i<=listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
+				empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
+				empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(empleador, listaEmpleaPretenso.get(i).getTicket()));
+				listaOrdenada.add(empleadoPretensPuntaje);
+	}
+	
+	////reveer como ordenarlo
+	Collections.sort(listaOrdenada, new Comparator<EmpleadPretensoPuntaje>() {
+		@Override
+		public int compare(EmpleadPretensoPuntaje p2, EmpleadPretensoPuntaje p1) {
+				return new Double(p2.getPuntaje()).compareTo(new Double(p1.getPuntaje()));
+				}
+		});
+	
+	for (int j = 0; j< listaOrdenada.size(); j++) ///cargo lista con el orden de listaOrdenada
+		lista.add(listaOrdenada.get(j).getEmpleadoPretenso());
+	
+	return lista;
+	}
+		
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///no hago todo en un metodo, porque puede ser que quiera la lista solo de las empresas u empleados (tipo una funcionalidad que me deja ver los candidatos pero no seleccionar, solo ver)
 
+	
 
-	
-	
-	
-	
-	
-	
+		//  METODO COINCIDENCIAS -> buscar las coincidencias y guardar en un arrayList del mismo tipo quer la lista de empleadores
+
+		//recibo 2 arrayList de arrayList
+		//									-> ListaDeEmpleadores = Cada nodo tiene la empleados y un arrayList de a los empleados Pretensos que eligio
+		//									-> ListaDeEmpleadosPretensos = Cada nodo tiene al empleado Pretenso y al unico empleador que eligio
 		
-		//////puntajeUsuario
-		
-		
-		
-		
-		//el admin se encarga de actulizar el puntaje????/
-		
-		//El puntaje es infinito?? o le damos un maximo y minimo 
-		//NO SE ACTUALIZA UNICAMENTE CUANDO FINALIZA UNA CONTRATACION!!!!!!!
-		
-		//NECESITO EL TIPOuSUARIO -> EMPLEADO O EMPLEADOR
-		//private int puntajeInicial = 0;
-		
-		//ver si existe una funcion predefinida que indique el ultimo elemnto
-		private int pU = 0;
-		
-		public int actualizacionPuntajeUsuario()
+		//Recorrer el arrayListe de empleadores y buscar en el de empleadosPretensos si coinciden
+
+		public  ArrayList<ListAsignacionEmpleador> ListaCoincidencias(ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
 		{
-			if(tipoUsuario == "EMPLEADO")
+			 String empleador;
+			 ArrayList<EmpleadoPretenso> ListaPosiblesEmpleados ;
+			 String empleadoPretenso;
+			 
+
+			for(int i = 0; i < ListaDeEmpleadores.size(); i++)//Recorre el arrayList de empleadores
 			{
-				//analizo estado del ticket 
-				if(estadoTicket == "FINALIZADO")
-					pU += 10;
-				else
-					if(estadoTicket == "CANCELADO")
-						pU -= -1;
-				
-				//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
-				if(posicion == cantListados) //ultimo lugar
-					pU -= 5;
-				else 
-					if(posicion == 1) //primero
-						pU += 5;
+				//trabahar con var para simplificar
+				empleador = ListaDeEmpleadores.get(i).getEmpleador().getNombUsuario();
+				ListaPosiblesEmpleados = ListaDeEmpleadores.get(i).getListEmpleadosPretensos();
+
+				//CREAR UN NUEVO OBJETO DE lISTACOINCIDENCIAS 
+				//CARGAR EL NOMBRE DE LA EMPRESA
+
+				for(int j = 0; j < ListaPosiblesEmpleados.size(); j++)// recorre la lsita de los empleados elegidos por el empleador
+				{
+					empleadoPretenso = ListaPosiblesEmpleados.get(j).getNombUsuario();
+					int k = 0;
+					while(k < ListaDeEmpleadosPretensos.size() && ListaDeEmpleadosPretensos.get(k).getEmpleadoPretenso().getNombUsuario() != empleadoPretenso)//recorro buscando la coincidencia en la lista de los empleados -> si aparece el nombre en esa lista entonces hay coincidencia
+						k++;
+
+					if(k < ListaDeEmpleadosPretensos.size()) //coincidencia
+					{
+						//AGREGAR EMPLEADO A LA LISTA DE EMPLEADOS CON COINCIDENCIA DEL ELEMENTO CREADO
+					}
+				}
+				//CARGAR ELEMENTO A LA LISTA DE COINCIDENCIAS
 				
 			}
-			else // EMPLEADOR
+			return null;
+		}
+
+
+	//Hay que crear una lista de contratados, ya que de la lista de coincidencias puede pasar que: 
+		//  como un empleador puede elegir mas empleadosPretensos de la cantidad solicitada, puede pasar que todos los empleados pretensos lo allan elegido 
+		//por lo que el problema seria que no puede contratar mas de lo solicitado 
+		//  ----> posible solucion, se contrata a las N primeros por tener los mejores puntajes 
+
+		public ArrayList<ListAsignacionEmpleador> ListaDeContrataciones( ArrayList<ListAsignacionEmpleador> ListaCoincidencias)
+		{
+			//NECESITO LA CANTIDAD DE SOLICITADOS EN EL TICKET
+
+			ArrayList<EmpleadoPretenso> ListaPosiblesEmpleados;
+
+			for(int i=0; i< ListaCoincidencias.size(); i++)
 			{
-				if(estadoTicket == "FINALIZADO")
-					pU += 50;
-				
-				if(posicion == 1) 
-					pU += 10;
-				
-				//necesitocontador de elecciones o var booleana que sea true cuando algun empleado lo haya elejido
-				(contElecciones == 0)//sin elecciones
-					pU -= 20;
+				ListaPosiblesEmpleados = ListaCoincidencias.get(i).getListEmpleadosPretensos();
+
+				//eminimal los que sobren de  la cantidad solicitada en el ticket de empelador
 			}
+			return null;
 		}
-		
-		
-		
-		
-		
-		///////cambio estado ticket
-		
-		
-		
-		
-		
-		//SE MODIFICA DCESPUES DE LA RONDA DE ENCUENTRO 
-		//O A PETICION DEL usuario
-		
-		
-		private String est = "ACTIVADO";
-		
-		public String estado()
-		{
-			//si usuario pide suspender ... 
-			
-			if(susp == 1)
-				this.est = "SUSPENDIDO";
-			else
-				this.est = "ACTIVADO";
-			
-			//necesito el resultado
-			if(resultado.equals("EXITO")
-				this.est = "FINALIZADO";
-			else
-				if(resultado.equals("FRACASO"))
-					this.est = "CANCELADO";
-			
-			return this.est;
-		}
-		
-		//
-		
-		private String res = "ESPERA"; //cuando inicia 
-		
-		public String resultado()
-		{
-			if(this.est == "ACTIVO" || this.est == "SUSPENDIDO")
-				this.res = "ESPERA";
-			else
-				if(this.est == "FINALIZADO")
-					this.res = "EXITO";
-				else //necesito un contador de rondas sin ser elegidos
-					if(this.est == "CANCELADO" || contRondasSinEleccion > 3) 
-						this.est = "FRACASO";
-			
-			return this.est;
-			//ver que onda como hacer esto xq el estado necesita el resultado y viceversa
-		}
+
 	}
 
 
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
