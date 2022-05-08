@@ -1,11 +1,15 @@
 package paquete;
 
+import java.util.ArrayList;
+
 import interfaces.IPersonaFisica;
 import interfaces.IPersonaJuridica;
+import interfaces.MuestraListaEmpleadosPretensos;
+import modelo.ListAsignacionEmpleadPretenso;
+import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleador;
 
-
-public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica
+public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, MuestraListaEmpleadosPretensos
 {
 	//ver como hacer para que tenga nombre o razon social!
 	private String nomRazonS;
@@ -72,14 +76,42 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		return rubro;
 	}
 
+	@Override
+	public void mostrarListaEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadoPretenso)
+	{
+		for (int i = 0; i<empleadoPretenso.size(); i++) 
+			System.out.println(empleadoPretenso.get(i).getNombUsuario());
+	}
 	
-	//quien se encarga de hacer el registro?? (punto 1 funcionalidad emplead)
-	//excepcionesdelLogin, hace falta la clase login???
-	////metodo que muestre las listas (agencia tambien necesita este metodo -> ver donde ponerlo para no escribirlo 2 veces)   aunque agencia mostraria todos los nodos y esto el suyo unicamente
-			///metodo que me muestre la lista de empleadosPretensos (accediendo a la lista de agencia)
-				///metodo que me permita seleccionar los posibles empleados pretensos (accediendo a la lista de agencia)
-				///metodo que me muestre las opciones elegidas
-			
-	
+	@Override
+	public void mostrarListaAsignacionDelEmpleador(ListAsignacionEmpleador lista)
+	{
+		for (int i=0; i<lista.getListEmpleadosPretensos().size(); i++)
+			System.out.println(lista.getListEmpleadosPretensos().get(i).getNombUsuario());
+	}
+
+	@Override
+	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista)
+	{
+		boolean coincidencia = false;
+		int contEmpleado = 0;
+		ListAsignacionEmpleadPretenso empleadoActual = null;
+		while (coincidencia==false && contEmpleado < lista.size()) {
+			int contEmpleador = 0;
+			//comienzo la busqueda en el nodo
+			empleadoActual = lista.get(contEmpleado);
+			while (coincidencia==false && contEmpleador <= empleadoActual.getListEmpleadores().size()) {
+				if (empleadoActual.getListEmpleadores().get(contEmpleador).getNombUsuario().equals(this.getNombUsuario()))///ver si no hay otra forma de buscar
+					coincidencia = true;
+				else
+					contEmpleador++;
+			}
+			contEmpleado++;
+		}
+		if (coincidencia == false)//si coincidencia es false -> nadie lo contrato -> lanza exception u cartel
+			System.out.println("Nadie tuvo en cuenta a " + this.getNombUsuario());
+		else
+			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
+	}
 
 }

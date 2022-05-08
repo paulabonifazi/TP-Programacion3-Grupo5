@@ -22,6 +22,7 @@ public class Persona
 		this.mail = mail;
 		this.nombUsuario = nombUsuario;
 		this.contrasenia = contrasenia;
+		this.puntajeUsuario = 0;
 	}
 	
 
@@ -94,7 +95,7 @@ public class Persona
 
 
 	public void setPuntajeUsuario(int puntajeUsuario) {
-		this.puntajeUsuario = puntajeUsuario;
+		this.puntajeUsuario += puntajeUsuario;
 	}
 	
 	

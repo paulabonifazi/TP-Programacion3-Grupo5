@@ -47,11 +47,11 @@ public class TablaFactory {
 	
 	///Remuneracion	
 		else if (nombreAspecto.equals("HASTAV1"))
-			aspecto = new RemuneracionHastaV1();
+			aspecto = new RemuneracionV1();
 		else if (nombreAspecto.equals("ENTREV1YV2"))
-			aspecto = new RemuneracionEntreV1yV2();
+			aspecto = new RemuneracionV2();
 		else if (nombreAspecto.equals("MASV2"))
-			aspecto = new RemuneracionMasV2();
+			aspecto = new RemuneracionV3();
 		
 	///TipoPuesto
 		else if (nombreAspecto.equals("JUNIOR"))

@@ -22,6 +22,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.SortedSet;
 
+import modelo.ControlEstadTicket;
 import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
@@ -49,7 +50,7 @@ public class Agencia
 	private ArrayList<ListAsignacionEmpleador> listEleccionEmpleador = new ArrayList<ListAsignacionEmpleador>();//lista de empresas con sus posibles empleados ordenados
 	private ArrayList<ListAsignacionEmpleadPretenso> listEleccionEmpleadoPretensos = new ArrayList<ListAsignacionEmpleadPretenso>();//lista de empleadosPretenso con sus posibles empresas ordenados
 	
-	private ArrayList<ListAsignacionEmpleador> listaContratacion = new ArrayList<ListAsignacionEmpleador>();//lista que guarda las coincidencias entre empresa y empleado
+	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();;//lista que guarda las coincidencias entre empresa y empleado
 
 	 private double saldoAgencia = calculoComision();
 
@@ -78,6 +79,8 @@ public class Agencia
 	public void activarRondaEncuentrosLaborales () {///metodo que genere las listas de asignacion
 		generarListAsignacionEmpleador();
 		generarListAsignacionEmpleadoPretenso();
+		
+		actualizacionPuntajeUsuario();
 	}
 	
 	public void generarListAsignacionEmpleador() {
@@ -193,7 +196,7 @@ public class Agencia
 
 	///comenzar las lista en null, -> si en algun momento se pide mostra u sumilat sy es null -> no hay nada
 		
-	 ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>(); ///equivale a lista de contrataciones
+	  ///equivale a lista de contrataciones
 		
 	 public  void ListaCoincidencias(ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
 		{	
@@ -231,6 +234,7 @@ public class Agencia
 				}
 				listaCoincidencias.add(nodo);
 			}
+			new ControlEstadTicket().finalizarTickets(listaCoincidencias);    				////ver si es correcto
 		}
 
 
@@ -330,6 +334,59 @@ public class Agencia
 
 			return comisionTotal;//retorno el total de la comision de la lista
 		}
+
+
+
+
+public void actualizacionPuntajeUsuario()
+{
+	for(int i=0; i<empleadosPretensosActivos.size(); i++)
+	
+	{
+		
+		//analizo estado del ticket 
+		if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("FINALIZADO"))
+			empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
+		else
+			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("CANCELADO"))
+				empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
+		
+		//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
+		
+		int posicion = 0;
+		while(posicion < listAsignacionEmpleadoPretensos.size() && listAsignacionEmpleadoPretensos.get(posicion).getEmpleadoPretenso().equals(empleadosPretensosActivos.get(i)))
+			posicion++;	
+
+		int ult = listAsignacionEmpleadoPretensos.size();
+		//como calculo la posicion?
+		if(posicion == ult) //ultimo lugar
+			empleadosPretensosActivos.get(i).setPuntajeUsuario(-5);
+		else 
+			if(posicion == 1) //primero
+				empleadosPretensosActivos.get(i).setPuntajeUsuario(5);
+	}
+
+	for(int j=0; j<empleadoresActivos.size(); j++)
+	{
+
+		if(empleadoresActivos.get(j).getTicket().getEstadoTicket().equals("FINALIZADO"))
+			empleadoresActivos.get(j).setPuntajeUsuario(50); 
+
+		Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();
+		
+		if(empresaPos1.equals(empleadoresActivos.get(j))) //en primer lugar
+			empleadoresActivos.get(j).setPuntajeUsuario(10); 
+		
+		//necesitocontador de elecciones o var booleana que sea true cuando algun empleado lo haya elejido
+		int k = 0;
+		while(k < listaCoincidencias.size() && listaCoincidencias.get(k).getEmpleador().equals(empleadoresActivos.get(j)))
+			k++;
+		
+		if(k < listaCoincidencias.size())
+			if ( listaCoincidencias.get(k).getListEmpleadosPretensos() == null)//sin elecciones
+				empleadoresActivos.get(j).setPuntajeUsuario(-20); 
+		}
+	}
 }
 
 
