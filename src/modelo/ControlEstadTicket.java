@@ -15,14 +15,15 @@ public class ControlEstadTicket {
 //TicketFinalizar		
 	public void finalizarTickets(ArrayList<ListAsignacionEmpleador> lista) {
 		for (int i=0; i<lista.size(); i++) {
-			lista.get(i).getEmpleador().getTicket().getEstadoTicket().cambiarEstado("FINALIZADO");
+			if (lista.get(i).getEmpleador().getTicket().getCantEmpleadosObtenidos() == lista.get(i).getEmpleador().getTicket().getCantEmpleadosSolicitados())
+				lista.get(i).getEmpleador().getTicket().getEstadoTicket().cambiarEstado("FINALIZADO");
 			for (int j=0; j<lista.get(i).getListEmpleadosPretensos().size(); i++)
 				lista.get(i).getListEmpleadosPretensos().get(j).getTicket().getEstadoTicket().cambiarEstado("FINALIZADO");
 		}
 	}
 
 //ticketActivo/Suspendido
-	///reveer, que parametros necesito para suspender,o sea el empleado como automanda su referencia, podria mandar directamente el ticket
+
 	public void suspenderTicket (Ticket ticket) {
 		if (ticket.getEstadoTicket().getEstado().equals("CANCELADO"))
 		{}///LANZAR EXCEPTION
@@ -59,11 +60,3 @@ public class ControlEstadTicket {
 			//ver que onda como hacer esto xq el estado necesita el resultado y viceversa
 		}
 	}
-
-
-
-/*
- * analizar para que la agencia se encargue!!
- * terminar métodos!
- */
- 
