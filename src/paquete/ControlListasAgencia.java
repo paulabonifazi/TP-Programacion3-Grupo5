@@ -138,7 +138,7 @@ public class ControlListasAgencia {
 	 public  ArrayList<ListAsignacionEmpleador> ListaCoincidencias (ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
 		{	
 			 ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
-			 ArrayList<EmpleadoPretenso>Empleado;
+			 ArrayList<EmpleadoPretenso>empleado;
 			 ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();
 			 
 			 String empleador;

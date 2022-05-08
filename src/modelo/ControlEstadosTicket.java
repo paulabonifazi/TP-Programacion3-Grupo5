@@ -2,14 +2,7 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-import paquete.EmpleadoPretenso;
-import paquete.Empleador;
-import tablas.PuntajeTicket;
-
-//*///*/
 public class ControlEstadosTicket {
 	
 //TicketFinalizar		
@@ -38,9 +31,6 @@ public class ControlEstadosTicket {
 			ticket.getEstadoTicket().cambiarEstado("ACTIVO");
 	}
 		
-	
-
-		
 		//SE MODIFICA DCESPUES DE LA RONDA DE ENCUENTRO 
 		//O A PETICION DEL usuario
 		
@@ -48,10 +38,10 @@ public class ControlEstadosTicket {
 		public String resultadoTicketEP(TicketEmpleadoPretenso ticket)
 		{
 			String estado = null; 
-			if(ticket.getEstadoTicket().equals("FINALIZADO")) //exito
+			if(ticket.getEstadoTicket().getEstado().equals("FINALIZADO")) //exito
 				estado = "EXITO";
 			else
-				if(ticket.getEstadoTicket().equals("CANCELADO"))//fracaso
+				if(ticket.getEstadoTicket().getEstado().equals("CANCELADO"))//fracaso
 					estado = "FRACASO";	
 			
 			return estado;

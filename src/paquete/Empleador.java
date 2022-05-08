@@ -12,22 +12,44 @@ import modelo.TicketEmpleador;
 
 public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, MuestraListaEmpleadosPretensos
 {
-	//ver como hacer para que tenga nombre o razon social!
+	private boolean personaJuridica;//ver como hacer para que tenga nombre o razon social!
 	private String nomRazonS;
+	private String nombre;
+	private String apellido;
+	private int edad;
 	private String rubro; //salud - comercio local - comercio internacional
 	private TicketEmpleador ticket;
 	///definir como se carga listaPesos
 	private ValoracionAspecto listaPesos;                 ///como consoco la cantidad de aspectos -> no seria necesario un array, suficiente con un objeto que guarde los 7 PesosAspectos
 	
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
-			String nomRazonS, String rubro, TicketEmpleador ticket) 
+			String nomRazonS, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
 		super(domicilio, telefono, mail, nombUsuario, contrasenia);
+		this.personaJuridica = true;
 		this.nomRazonS = nomRazonS;
+		this.nombre = null;
+		this.apellido = null;
+		this.edad = 0;
 		this.rubro = rubro;
 		this.ticket = ticket;
+		this.listaPesos = listaPesos;
 	}
-	
+
+	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
+			String nombre, String apellido, int edad, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
+	{
+		super(domicilio, telefono, mail, nombUsuario, contrasenia);
+		this.personaJuridica = false;
+		this.nomRazonS = null;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.edad = edad;
+		this.rubro = rubro;
+		this.ticket = ticket;
+		this.listaPesos = listaPesos;
+	}
+
 	/*/* en la parte donde la empresa se registra crea y manda el valor*/
 	public void setListaPesos(ValoracionAspecto listaPesos) {
 		this.listaPesos = listaPesos;
@@ -52,7 +74,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	public String getNombre()
 	{
 		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 		//return nombre;
 	}
 
@@ -60,16 +82,24 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	public String getApellido()
 	{
 		// TODO Auto-generated method stub
-		return null;
+		return apellido;
 		//return apellido;
 	}
 
 	@Override
 	public int getEdad()
 	{
-		// TODO Auto-generated method stub
-		return 0;
-		//return edad;
+		int edad;
+		if (personaJuridica)
+			edad = 0;
+		else
+			edad = this.edad;
+		return edad;
+	}
+
+	public boolean isPersonaJuridica()
+	{
+		return personaJuridica;
 	}
 
 	public String getRubro()

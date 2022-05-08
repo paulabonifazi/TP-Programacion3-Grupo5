@@ -114,10 +114,10 @@ public class Agencia
 		{
 			
 			//analizo estado del ticket 
-			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("FINALIZADO"))
+			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("FINALIZADO"))
 				empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
 			else
-				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("CANCELADO"))
+				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("CANCELADO"))
 					empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
 			
 			//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
@@ -138,7 +138,7 @@ public class Agencia
 		for(int j=0; j<empleadoresActivos.size(); j++)
 		{
 	
-			if(empleadoresActivos.get(j).getTicket().getEstadoTicket().equals("FINALIZADO"))
+			if(empleadoresActivos.get(j).getTicket().getEstadoTicket().getEstado().equals("FINALIZADO"))
 				empleadoresActivos.get(j).setPuntajeUsuario(50); 
 	
 			Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();

@@ -14,7 +14,7 @@ public class Comision {
 
 	double comisionEmpleados = 0;
 	double comisionEmpleador = 0;
-				//El sueldo pretrendido que se utiliza es el que eligio cada usuario cuando lleno el formi=ulario 
+	//El sueldo pretrendido que se utiliza es el que eligio cada usuario cuando lleno el formulario 
 	double sueldoPretendido ;
 	double comisionTotal = 0.0;
 	
@@ -69,7 +69,7 @@ public class Comision {
 					//calculo comsion que se le cobra al EMPLEADOR
 					//necesito datos del registro 
 
-					if(listaCoincidencias.get(i).getEmpleador() .equais("PERSONAJURIDICA"))//////a definir    ////////////// //////       /////////////
+					if(listaCoincidencias.get(i).getEmpleador().isPersonaJuridica())//////a definir    ////////////// //////       /////////////
 					{
 						if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("SALUD"))
 							comisionEmpleador = sueldoPretendido * PorcentajePJSalud;
