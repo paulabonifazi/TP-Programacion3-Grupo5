@@ -88,7 +88,7 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, Muestra
 		else
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadorActual.getEmpleador().getNombUsuario());
 	}
-	
+}
 	///quien se encarga de hacer el registro?? (punto 1 funcionalidad emplead)
 	//excepcionesdelLogin, hace falta la clase login???
 	////metodo que muestre las listas (agencia tambien necesita este metodo -> ver donde ponerlo para no escribirlo 2 veces)	aunque agencia mostraria todos los nodos y esto el suyo unicamente

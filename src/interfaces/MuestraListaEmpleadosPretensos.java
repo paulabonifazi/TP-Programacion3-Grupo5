@@ -23,4 +23,4 @@ public interface MuestraListaEmpleadosPretensos
 	/// si no llega a estar en ningunaparte -->> LANZAR EXCEPTION u tratar el caso
 
 	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista);
-	
+}

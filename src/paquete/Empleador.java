@@ -114,29 +114,4 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
 	}
 
-
-	@Override
-	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista)
-	{
-		boolean coincidencia = false;
-		int contEmpleado = 0;
-		ListAsignacionEmpleadPretenso empleadoActual = null;
-		while (coincidencia==false && contEmpleado < lista.size()) {
-			int contEmpleador = 0;
-			//comienzo la busqueda en el nodo
-			empleadoActual = lista.get(contEmpleado);
-			while (coincidencia==false && contEmpleador <= empleadoActual.getListEmpleadores().size()) {
-				if (empleadoActual.getListEmpleadores().get(contEmpleador).getNombUsuario().equals(this.getNombUsuario()))///ver si no hay otra forma de buscar
-					coincidencia = true;
-				else
-					contEmpleador++;
-			}
-			contEmpleado++;
-		}
-		if (coincidencia == false)//si coincidencia es false -> nadie lo contrato -> lanza exception u cartel
-			System.out.println("Nadie tuvo en cuenta a " + this.getNombUsuario());
-		else
-			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
-	}
-
 }
