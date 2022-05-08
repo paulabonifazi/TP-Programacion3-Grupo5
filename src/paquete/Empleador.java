@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import interfaces.IPersonaFisica;
 import interfaces.IPersonaJuridica;
 import interfaces.MuestraListaEmpleadosPretensos;
+import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleador;
@@ -114,4 +115,13 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
 	}
 
+	public void activarTicket() {
+		ControlEstadosTicket cla=null;
+		cla.activarTicket(ticket);
+	}
+	
+	public void suspenderTicket() {
+		ControlEstadosTicket cla=null;
+		cla.suspenderTicket(ticket);
+	}
 }

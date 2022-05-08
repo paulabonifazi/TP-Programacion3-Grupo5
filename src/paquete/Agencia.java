@@ -25,7 +25,7 @@ import java.util.SortedSet;
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
 import modelo.Comision;
-import modelo.ControlEstadTicket;
+import modelo.ControlEstadosTicket;
 import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
@@ -95,10 +95,14 @@ public class Agencia
 	
 	public void activarRondaEncuentrosLaborales () {///metodo que genere las listas de asignacion
 		ControlListasAgencia cla= null;
+		ControlEstadosTicket cet = null;
 		listAsignacionEmpleador = cla.generarListAsignacionEmpleador(empleadosPretensosActivos,empleadoresActivos);
 		listAsignacionEmpleadoPretensos = cla.generarListAsignacionEmpleadoPretenso(empleadosPretensosActivos,empleadoresActivos);
 		
+		listaCoincidencias = cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos);
 		actualizacionPuntajeUsuario();
+		
+		cet.finalizarTickets(listaCoincidencias);    				
 	}
 	
 	

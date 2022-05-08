@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import modelo.ControlEstadTicket;
+import modelo.ControlEstadosTicket;
 import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
@@ -135,10 +135,11 @@ public class ControlListasAgencia {
 		
 	  ///equivale a lista de contrataciones
 		
-	 public  void ListaCoincidencias(ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
+	 public  ArrayList<ListAsignacionEmpleador> ListaCoincidencias (ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
 		{	
 			 ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
 			 ArrayList<EmpleadoPretenso>Empleado;
+			 ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();
 			 
 			 String empleador;
 			 ArrayList<EmpleadoPretenso> ListaPosiblesEmpleados ;
@@ -171,7 +172,8 @@ public class ControlListasAgencia {
 				}
 				listaCoincidencias.add(nodo);
 			}
-			new ControlEstadTicket().finalizarTickets(listaCoincidencias);    				////ver si es correcto
+			return listaCoincidencias;
+				
 		}
 	
 }

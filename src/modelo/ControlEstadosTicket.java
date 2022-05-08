@@ -10,7 +10,7 @@ import paquete.Empleador;
 import tablas.PuntajeTicket;
 
 //*///*/
-public class ControlEstadTicket {
+public class ControlEstadosTicket {
 	
 //TicketFinalizar		
 	public void finalizarTickets(ArrayList<ListAsignacionEmpleador> lista) {
@@ -60,3 +60,5 @@ public class ControlEstadTicket {
 			//ver que onda como hacer esto xq el estado necesita el resultado y viceversa
 		}
 	}
+
+
