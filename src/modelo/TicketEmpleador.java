@@ -41,8 +41,8 @@ public class TicketEmpleador extends Ticket
 
 
 
-	public void setCantEmpleadosObtenidos(int cantEmpleadosObtenidos) {
-		this.cantEmpleadosObtenidos = cantEmpleadosObtenidos;
+	public void setCantEmpleadosObtenidos() {
+		this.cantEmpleadosObtenidos++;
 	}
 	
 

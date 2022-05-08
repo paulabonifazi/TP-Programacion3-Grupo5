@@ -8,6 +8,7 @@ public class Persona
 	private String nombUsuario;
 	private String contrasenia;
 	
+	private int puntajeUsuario;
 	
 	/*
 	 * ver como hacer un factory 
@@ -83,6 +84,21 @@ public class Persona
 		 * 
 		 */
 	}
+
+
+
+	public int getPuntajeUsuario() {
+		return puntajeUsuario;
+	}
+
+
+
+	public void setPuntajeUsuario(int puntajeUsuario) {
+		this.puntajeUsuario = puntajeUsuario;
+	}
+	
+	
+	
 	
 	
 }

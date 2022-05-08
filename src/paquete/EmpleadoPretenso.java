@@ -18,6 +18,8 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica
 		this.ticket = ticket;
 	}
 
+	
+
 	public TicketEmpleadoPretenso getTicket() {
 		return ticket;
 	}
