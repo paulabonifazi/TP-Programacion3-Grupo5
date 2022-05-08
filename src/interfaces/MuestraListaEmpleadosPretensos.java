@@ -24,4 +24,3 @@ public interface MuestraListaEmpleadosPretensos
 
 	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista);
 	
-}
