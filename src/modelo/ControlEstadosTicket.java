@@ -44,19 +44,17 @@ public class ControlEstadosTicket {
 		//SE MODIFICA DCESPUES DE LA RONDA DE ENCUENTRO 
 		//O A PETICION DEL usuario
 		
-		
-		public String resultado()
+		//el resultado esta en INICIADO cuando se crea el ticket
+		public String resultadoTicketEP(TicketEmpleadoPretenso ticket)
 		{
-			if(this.est == "ACTIVO" || this.est == "SUSPENDIDO")
-				this.res = "ESPERA";
+			String estado = null; 
+			if(ticket.getEstadoTicket().equals("FINALIZADO")) //exito
+				estado = "EXITO";
 			else
-				if(this.est == "FINALIZADO")
-					this.res = "EXITO";
-				else //necesito un contador de rondas sin ser elegidos
-					if(this.est == "CANCELADO" || contRondasSinEleccion > 3) 
-						this.est = "FRACASO";
+				if(ticket.getEstadoTicket().equals("CANCELADO"))//fracaso
+					estado = "FRACASO";	
 			
-			return this.est;
+			return estado;
 			//ver que onda como hacer esto xq el estado necesita el resultado y viceversa
 		}
 	}

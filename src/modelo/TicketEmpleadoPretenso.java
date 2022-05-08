@@ -11,11 +11,10 @@ public class TicketEmpleadoPretenso extends Ticket
 	private ArrayList<Empleador> empleadoresMatch = null; //lista se que va a cargar en la ronda de encuentros
 	
 
-	public TicketEmpleadoPretenso(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket,
-			String resultado) 
+	public TicketEmpleadoPretenso(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket) 
 	{
 		super(fbTicket, estadoTicket, fechaTicket);
-		this.resultado = resultado;
+		this.resultado = "INICIADO";
 	}
 
 

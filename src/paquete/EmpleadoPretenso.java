@@ -100,6 +100,12 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, Muestra
 		ControlEstadosTicket cla=null;
 		cla.suspenderTicket(ticket);
 	}
+	
+	public void resultadoTicket() {
+		ControlEstadosTicket cet = null;
+		cet.resultadoTicketEP(ticket);
+		
+	}
 }
 	///quien se encarga de hacer el registro?? (punto 1 funcionalidad emplead)
 	//excepcionesdelLogin, hace falta la clase login???
