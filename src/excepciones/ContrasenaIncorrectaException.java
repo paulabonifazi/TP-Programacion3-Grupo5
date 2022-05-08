@@ -2,22 +2,15 @@ package excepciones;
 
 public class ContrasenaIncorrectaException extends Exception
 {
-	private String contrasena;
-
-	public ContrasenaIncorrectaException(String contrasena)
+	
+	public ContrasenaIncorrectaException(String arg0)
 	{
-		super();
-		this.contrasena = contrasena;
+		super(arg0);
 	}
 
 	@Override
 	public String getMessage()
 	{
 		return "Contraseña incorrecta";
-	}
-
-	public String getContrasena()
-	{
-		return contrasena;
 	}
 }

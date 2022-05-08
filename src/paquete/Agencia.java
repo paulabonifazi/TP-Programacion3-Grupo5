@@ -22,6 +22,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.SortedSet;
 
+import excepciones.ContrasenaIncorrectaException;
+import excepciones.NombreDeUsuarioIncorrectoException;
 import modelo.ControlEstadTicket;
 import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
@@ -240,153 +242,183 @@ public class Agencia
 
 	 
 	 ///existiria parametros si guardase todas las listas de asignaciones, pero con cada llamado se borra lo existente -> es como si tubiera unica lista
-	 public double calculoComision( )
+	public double calculoComision( )
+	{
+		final double PorcentajeJunior = 0.8;
+		final double PorcentajeSenior = 0.9;
+		final double PorcentajePJSalud = 0.8;
+		final double PorcentajePJComercioLocal = 0.9;
+		final double PorcentajePFSalud = 0.6;
+		final double PorcentajePFComercioLocal = 0.7;
+		final double PorcentajePFComercioInternacional = 0.8;
+
+		double comisionEmpleados = 0;
+		double comisionEmpleador = 0;
+		ArrayList<EmpleadoPretenso> ListaEmpleadosContratados;
+		//El sueldo pretrendido que se utiliza es el que eligio cada usuario cuando lleno el formi=ulario 
+		double sueldoPretendido = 0;
+		double comisionTotal = 0;
+
+		for(int i=0; i< listaCoincidencias.size(); i++)//recorro la lista de contrataciones 
 		{
-			final double PorcentajeJunior = 0.8;
-			final double PorcentajeSenior = 0.9;
-			final double PorcentajePJSalud = 0.8;
-			final double PorcentajePJComercioLocal = 0.9;
-			final double PorcentajePFSalud = 0.6;
-			final double PorcentajePFComercioLocal = 0.7;
-			final double PorcentajePFComercioInternacional = 0.8;
+			
 
-			double comisionEmpleados = 0;
-			double comisionEmpleador = 0;
-			ArrayList<EmpleadoPretenso> ListaEmpleadosContratados;
-			//El sueldo pretrendido que se utiliza es el que eligio cada usuario cuando lleno el formi=ulario 
-			double sueldoPretendido;
-			double comisionTotal = 0;
+			ListaEmpleadosContratados = listaCoincidencias.get(i).getListEmpleadosPretensos();
 
-			for(int i=0; i< listaCoincidencias.size(); i++)//recorro la lista de contrataciones 
+			for(int j=0; j <ListaEmpleadosContratados.size(); j++ )//recorro la lista de empelados
 			{
+				double comision = 0;
+				//calculo la comision que se le cobra al EMPLEADO
+
+			
+
+				if  (ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion() == "V1")
+					sueldoPretendido = v1;
+				else if (ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion() == "V2")
+					sueldoPretendido = v2;
+				else
+					sueldoPretendido = v3;
 				
-
-				ListaEmpleadosContratados = listaCoincidencias.get(i).getListEmpleadosPretensos();
-
-				for(int j=0; j <ListaEmpleadosContratados.size(); j++ )//recorro la lista de empelados
-				{
-					double comision = 0;
-					//calculo la comision que se le cobra al EMPLEADO
-
 				
-	
-					if  (ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion() == "V1")
-						sueldoPretendido = v1;
-					else if (ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion() == "V2")
-						sueldoPretendido = v2;
-					else
-						sueldoPretendido = v3;
-					
-					
-					if(ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("JUNIOR"))
-						comision = sueldoPretendido * PorcentajeJunior;
-					else
-						if(ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("SENIOR"))
-							comision = sueldoPretendido * PorcentajeSenior;
-						else //if(tipoPuesto == "Gerencial")
-							comision = sueldoPretendido;
-
-					//PARA AMBOS SE PUEDE MODIFICAR POR EL PUNTAJE DE USUARIO -> RESTA 1% POR CADA PUNTO
-
-					if(ListaEmpleadosContratados.get(i).getPuntajeUsuario() > 0 &&ListaEmpleadosContratados.get(i).getPuntajeUsuario() <= 99)
-						comision -= ListaEmpleadosContratados.get(i).getPuntajeUsuario() * 0.01;
-					else
-						if(ListaEmpleadosContratados.get(i).getPuntajeUsuario() >= 100)
-							comision = 0;
-
-					comisionEmpleados += comision;
-
-				}
-
-				//calculo comsion que se le cobra al EMPLEADOR
-				//necesito datos del registro 
-
-				if(listaCoincidencias.get(i).getEmpleador() .equais("PERSONAJURIDICA"))//////a definir    ////////////// //////       /////////////
-				{
-					if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("SALUD"))
-						comisionEmpleador = sueldoPretendido * PorcentajePJSalud;
-					else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("COMERCIO LOCAL"))
-							comisionEmpleador = sueldoPretendido * PorcentajePJComercioLocal;
-						else //if(rubro =="COMERCIO INTERNACIONAL")
-							comisionEmpleador = sueldoPretendido ;
-				}
-				else //personaFisica
-				{
-					if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("SALUD"))
-						comisionEmpleador = sueldoPretendido * PorcentajePFSalud;
-					else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals ("COMERCIO LOCAL"))
-							comisionEmpleador = sueldoPretendido * PorcentajePFComercioLocal;
-						else //if(rubro =="COMERCIO INTERNACIONAL")
-							comisionEmpleador = sueldoPretendido * PorcentajePFComercioInternacional;
-				}
+				if(ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("JUNIOR"))
+					comision = sueldoPretendido * PorcentajeJunior;
+				else
+					if(ListaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("SENIOR"))
+						comision = sueldoPretendido * PorcentajeSenior;
+					else //if(tipoPuesto == "Gerencial")
+						comision = sueldoPretendido;
 
 				//PARA AMBOS SE PUEDE MODIFICAR POR EL PUNTAJE DE USUARIO -> RESTA 1% POR CADA PUNTO
-		
-				if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() > 0 &&listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() <= 99)
-					comisionEmpleador -= listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() * 0.01;
+
+				if(ListaEmpleadosContratados.get(i).getPuntajeUsuario() > 0 &&ListaEmpleadosContratados.get(i).getPuntajeUsuario() <= 99)
+					comision -= ListaEmpleadosContratados.get(i).getPuntajeUsuario() * 0.01;
 				else
-					if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() >= 100)
-						comisionEmpleador = 0;
+					if(ListaEmpleadosContratados.get(i).getPuntajeUsuario() >= 100)
+						comision = 0;
 
-				
-				comisionTotal = (comisionEmpleador)*ListaEmpleadosContratados.size() + comisionEmpleados; 
-			}	
+				comisionEmpleados += comision;
 
-			return comisionTotal;//retorno el total de la comision de la lista
-		}
+			}
 
+			//calculo comsion que se le cobra al EMPLEADOR
+			//necesito datos del registro 
 
+			if(listaCoincidencias.get(i).getEmpleador().equals("PERSONAJURIDICA"))//////a definir    ////////////// //////       /////////////
+			{
+				if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("SALUD"))
+					comisionEmpleador = sueldoPretendido * PorcentajePJSalud;
+				else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("COMERCIO LOCAL"))
+						comisionEmpleador = sueldoPretendido * PorcentajePJComercioLocal;
+					else //if(rubro =="COMERCIO INTERNACIONAL")
+						comisionEmpleador = sueldoPretendido ;
+			}
+			else //personaFisica
+			{
+				if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("SALUD"))
+					comisionEmpleador = sueldoPretendido * PorcentajePFSalud;
+				else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals ("COMERCIO LOCAL"))
+						comisionEmpleador = sueldoPretendido * PorcentajePFComercioLocal;
+					else //if(rubro =="COMERCIO INTERNACIONAL")
+						comisionEmpleador = sueldoPretendido * PorcentajePFComercioInternacional;
+			}
 
-
-public void actualizacionPuntajeUsuario()
-{
-	for(int i=0; i<empleadosPretensosActivos.size(); i++)
+			//PARA AMBOS SE PUEDE MODIFICAR POR EL PUNTAJE DE USUARIO -> RESTA 1% POR CADA PUNTO
 	
-	{
-		
-		//analizo estado del ticket 
-		if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("FINALIZADO"))
-			empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
-		else
-			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("CANCELADO"))
-				empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
-		
-		//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
-		
-		int posicion = 0;
-		while(posicion < listAsignacionEmpleadoPretensos.size() && listAsignacionEmpleadoPretensos.get(posicion).getEmpleadoPretenso().equals(empleadosPretensosActivos.get(i)))
-			posicion++;	
+			if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() > 0 &&listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() <= 99)
+				comisionEmpleador -= listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() * 0.01;
+			else
+				if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() >= 100)
+					comisionEmpleador = 0;
 
-		int ult = listAsignacionEmpleadoPretensos.size();
-		//como calculo la posicion?
-		if(posicion == ult) //ultimo lugar
-			empleadosPretensosActivos.get(i).setPuntajeUsuario(-5);
-		else 
-			if(posicion == 1) //primero
-				empleadosPretensosActivos.get(i).setPuntajeUsuario(5);
+			
+			comisionTotal = (comisionEmpleador)*ListaEmpleadosContratados.size() + comisionEmpleados; 
+		}	
+
+		return comisionTotal;//retorno el total de la comision de la lista
 	}
 
-	for(int j=0; j<empleadoresActivos.size(); j++)
+	public void actualizacionPuntajeUsuario()
 	{
-
-		if(empleadoresActivos.get(j).getTicket().getEstadoTicket().equals("FINALIZADO"))
-			empleadoresActivos.get(j).setPuntajeUsuario(50); 
-
-		Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();
+		for(int i=0; i<empleadosPretensosActivos.size(); i++)
 		
-		if(empresaPos1.equals(empleadoresActivos.get(j))) //en primer lugar
-			empleadoresActivos.get(j).setPuntajeUsuario(10); 
-		
-		//necesitocontador de elecciones o var booleana que sea true cuando algun empleado lo haya elejido
-		int k = 0;
-		while(k < listaCoincidencias.size() && listaCoincidencias.get(k).getEmpleador().equals(empleadoresActivos.get(j)))
-			k++;
-		
-		if(k < listaCoincidencias.size())
-			if ( listaCoincidencias.get(k).getListEmpleadosPretensos() == null)//sin elecciones
-				empleadoresActivos.get(j).setPuntajeUsuario(-20); 
+		{
+			
+			//analizo estado del ticket 
+			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("FINALIZADO"))
+				empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
+			else
+				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().equals("CANCELADO"))
+					empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
+			
+			//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
+			
+			int posicion = 0;
+			while(posicion < listAsignacionEmpleadoPretensos.size() && listAsignacionEmpleadoPretensos.get(posicion).getEmpleadoPretenso().equals(empleadosPretensosActivos.get(i)))
+				posicion++;	
+	
+			int ult = listAsignacionEmpleadoPretensos.size();
+			//como calculo la posicion?
+			if(posicion == ult) //ultimo lugar
+				empleadosPretensosActivos.get(i).setPuntajeUsuario(-5);
+			else 
+				if(posicion == 1) //primero
+					empleadosPretensosActivos.get(i).setPuntajeUsuario(5);
 		}
+	
+		for(int j=0; j<empleadoresActivos.size(); j++)
+		{
+	
+			if(empleadoresActivos.get(j).getTicket().getEstadoTicket().equals("FINALIZADO"))
+				empleadoresActivos.get(j).setPuntajeUsuario(50); 
+	
+			Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();
+			
+			if(empresaPos1.equals(empleadoresActivos.get(j))) //en primer lugar
+				empleadoresActivos.get(j).setPuntajeUsuario(10); 
+			
+			//necesitocontador de elecciones o var booleana que sea true cuando algun empleado lo haya elejido
+			int k = 0;
+			while(k < listaCoincidencias.size() && listaCoincidencias.get(k).getEmpleador().equals(empleadoresActivos.get(j)))
+				k++;
+			
+			if(k < listaCoincidencias.size())
+				if ( listaCoincidencias.get(k).getListEmpleadosPretensos() == null)//sin elecciones
+					empleadoresActivos.get(j).setPuntajeUsuario(-20); 
+		}
+	}
+
+	public boolean login(String nombUsuarioIngresado, String contrasenaIngresada) throws NombreDeUsuarioIncorrectoException, ContrasenaIncorrectaException
+	{
+		/**
+		 * de ser usuario inexistente tira una excpecion
+		 * de ser contraseña erronea tira otra excpecion
+		 **/
+		int i = 0;
+		boolean loginCorrecto = false;
+		while (i<this.empleadores.size() && !this.empleadores.get(i).getNombUsuario().equals(nombUsuarioIngresado))
+			i++;
+		if (i<this.empleadores.size())
+		{
+			if (this.empleadores.get(i).getContrasenia().equals(contrasenaIngresada))
+				loginCorrecto = true;
+			else
+				throw new ContrasenaIncorrectaException("Contrasena incorrecta");
+		}
+		else
+		{
+			i = 0;
+			while (i<this.empleadosPretensos.size() && !this.empleadosPretensos.get(i).getNombUsuario().equals(nombUsuarioIngresado))
+				i++;
+			if (i<this.empleadosPretensos.size())
+			{
+				if (this.empleadosPretensos.get(i).getContrasenia().equals(contrasenaIngresada))
+					loginCorrecto = true;
+				else
+					throw new ContrasenaIncorrectaException("Contrasena incorrecta");
+			}
+			else
+				throw new NombreDeUsuarioIncorrectoException("Nombre de Usuario incorrecto");
+		}
+		return loginCorrecto;
 	}
 }
-
-

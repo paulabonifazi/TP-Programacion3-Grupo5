@@ -2,22 +2,15 @@ package excepciones;
 
 public class NombreDeUsuarioIncorrectoException extends Exception
 {
-	private String usuario;
 	
-	public NombreDeUsuarioIncorrectoException(String usuario)
+	public NombreDeUsuarioIncorrectoException(String arg0)
 	{
-		super();
-		this.usuario = usuario;
+		super(arg0);
 	}
 
 	@Override
 	public String getMessage()
 	{
 		return "Nombre de usuario incorrecto";
-	}
-
-	public String getUsuario()
-	{
-		return usuario;
 	}
 }

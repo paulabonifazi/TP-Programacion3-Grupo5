@@ -1,5 +1,8 @@
 package paquete;
 
+import excepciones.ContrasenaIncorrectaException;
+import excepciones.NombreDeUsuarioIncorrectoException;
+
 public class Persona
 {
 	private Domicilio domicilio;
@@ -76,30 +79,31 @@ public class Persona
 		this.contrasenia = contrasenia;
 	}
 	
-	public void Logear()
+	public void login(String nombUsuarioIngresado, String contrasenaIngresada) throws NombreDeUsuarioIncorrectoException, ContrasenaIncorrectaException
 	{
-	
-		/*
-		 * de ser usuario inexistente tirar excpecion
-		 * de ser contraseña erronea tirar excpecion
-		 * 
-		 */
+		/**
+		 * trata excpecion de ser usuario inexistente 
+		 * trata excpecion de ser contraseña erronea
+		 * Lo mejor sería hacer 2 funciones en Agencja: una para buscar el usuario y otra para la contraseña para evitar multicatch 
+		 **/
+		try
+		{
+			Agencia.getInstance().login(nombUsuarioIngresado, contrasenaIngresada);
+		} catch (NombreDeUsuarioIncorrectoException e)
+		{
+			System.out.println(e.getMessage());
+		}catch (ContrasenaIncorrectaException e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
-
-
-
+	
 	public int getPuntajeUsuario() {
 		return puntajeUsuario;
 	}
 
-
-
 	public void setPuntajeUsuario(int puntajeUsuario) {
 		this.puntajeUsuario += puntajeUsuario;
 	}
-	
-	
-	
-	
 	
 }
