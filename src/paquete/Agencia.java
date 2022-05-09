@@ -17,6 +17,10 @@ la clase PuntajeTicketFC y PuntajeTicketCF acceden a la pos a,b y b,a en las tab
 package paquete;
 
 import java.util.ArrayList;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -33,6 +37,11 @@ import tablas.PuntajeTicket;
 
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
+<<<<<<< Updated upstream
+=======
+import modelo.RondaEncuentrosLaborales;
+
+>>>>>>> Stashed changes
 
 public class Agencia
 {
@@ -43,12 +52,19 @@ public class Agencia
 	
 
 	
+<<<<<<< Updated upstream
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador> ();						
 	private ArrayList<EmpleadoPretenso> empleadosPretensos = new ArrayList<EmpleadoPretenso> ();
 	
 	private ArrayList<Empleador> empleadoresActivos = new ArrayList<Empleador> ();						
 	private ArrayList<EmpleadoPretenso> empleadosPretensosActivos = new ArrayList<EmpleadoPretenso> ();
 		
+=======
+	
+	private ArrayList<EmpleadoPretenso> listaEmpleadoPretenso = new ArrayList<EmpleadoPretenso>();  ///listas de empleadosPretensos
+	private ArrayList<Empleador> listaEmpleadores = new ArrayList<Empleador>();						///lista empleadores
+	
+>>>>>>> Stashed changes
 	private ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador = new ArrayList<ListAsignacionEmpleador>();//lista de empresas con sus posibles empleados ordenados
 	private ArrayList<ListAsignacionEmpleadPretenso> listAsignacionEmpleadoPretensos = new ArrayList<ListAsignacionEmpleadPretenso>();//lista de empleadosPretenso con sus posibles empresas ordenados
 
@@ -57,9 +73,17 @@ public class Agencia
 	
 	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();;//lista que guarda las coincidencias entre empresa y empleado
 
+<<<<<<< Updated upstream
 	 private double saldoAgencia = 0;
 	
 	private Agencia() {	}
+=======
+	
+	
+	private Agencia() {	
+		
+	}
+>>>>>>> Stashed changes
 	
 	public static Agencia getInstance()
 	{
@@ -189,6 +213,12 @@ public class Agencia
 			else
 				throw new NombreDeUsuarioIncorrectoException("Nombre de Usuario incorrecto");
 		}
+<<<<<<< Updated upstream
 		return loginCorrecto;
 	}
 }
+=======
+
+}
+
+>>>>>>> Stashed changes
