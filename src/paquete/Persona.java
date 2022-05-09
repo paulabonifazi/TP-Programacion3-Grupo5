@@ -13,10 +13,7 @@ public class Persona
 	
 	private int puntajeUsuario;
 	
-	/*
-	 * ver como hacer un factory 
-	 * 
-	 */
+	
 	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
 		super();
