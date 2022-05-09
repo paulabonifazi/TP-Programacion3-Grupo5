@@ -12,15 +12,15 @@ import modelo.TicketEmpleador;
 
 public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, MuestraListaEmpleadosPretensos
 {
-	private boolean personaJuridica;//ver como hacer para que tenga nombre o razon social!
+	private boolean personaJuridica;
 	private String nomRazonS;
 	private String nombre;
 	private String apellido;
 	private int edad;
 	private String rubro; //salud - comercio local - comercio internacional
 	private TicketEmpleador ticket;
-	///definir como se carga listaPesos
-	private ValoracionAspecto listaPesos;                 ///como consoco la cantidad de aspectos -> no seria necesario un array, suficiente con un objeto que guarde los 7 PesosAspectos
+	
+	private ValoracionAspecto listaPesos;                 ///como conozco la cantidad de aspectos -> no seria necesario un array, suficiente con un objeto que guarde los 7 PesosAspectos
 	
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nomRazonS, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
@@ -75,7 +75,6 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	{
 		// TODO Auto-generated method stub
 		return nombre;
-		//return nombre;
 	}
 
 	@Override
@@ -83,7 +82,6 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	{
 		// TODO Auto-generated method stub
 		return apellido;
-		//return apellido;
 	}
 
 	@Override

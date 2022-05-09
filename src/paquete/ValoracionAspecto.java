@@ -1,25 +1,6 @@
 package paquete;
 
-public class ValoracionAspecto {
-
-	/*private String aspecto;
-	private double pesoAspecto;
-	
-											/////	en caso de que sea array      //////
-	
-	public ValoracionAspecto(String aspecto, double pesoAspecto) {
-		super();
-		this.aspecto = aspecto;
-		this.pesoAspecto = pesoAspecto;
-	}
-	
-	public String getAspecto() {
-		return aspecto;
-	}
-	public double getPesoAspecto() {
-		return pesoAspecto;
-	}*/
-	
+public class ValoracionAspecto {	
 	
 	private int pesoLocacion;
 	private int pesoTipoPuesto;

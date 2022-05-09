@@ -78,11 +78,11 @@ public class Persona
 	
 	public void login(String nombUsuarioIngresado, String contrasenaIngresada) throws NombreDeUsuarioIncorrectoException, ContrasenaIncorrectaException
 	{
-		/**
-		 * trata excpecion de ser usuario inexistente 
-		 * trata excpecion de ser contraseña erronea
-		 * Lo mejor sería hacer 2 funciones en Agencja: una para buscar el usuario y otra para la contraseña para evitar multicatch 
-		 **/
+		
+		 // trata excpecion de ser usuario inexistente 
+		 //trata excpecion de ser contraseña erronea
+		 //Lo mejor sería hacer 2 funciones en Agencja: una para buscar el usuario y otra para la contraseña para evitar multicatch 
+		 
 		try
 		{
 			Agencia.getInstance().login(nombUsuarioIngresado, contrasenaIngresada);
