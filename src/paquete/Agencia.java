@@ -44,7 +44,6 @@ import modelo.ListAsignacionEmpleador;
 public class Agencia
 {
 	private static Agencia instancia = null;
-	private String nombre;
 
 	//no tendria que considerar conservar todas las listas de contratacion que se generan, yaque al ejecutar dos veces se pierde lo anterior
 	
@@ -66,7 +65,7 @@ public class Agencia
 
 	private double saldoAgencia = 0;
 	
-	private Agencia() {	}
+	public Agencia() {	}
 	
 	public static Agencia getInstance()
 	{
