@@ -34,6 +34,13 @@ import tablas.PuntajeTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 
+/**
+ * @author paula
+ *<br> 
+ *Clase que representa una agencia dentro de un sistema de Gestión de Búsquedas Laborales.
+ *<br>
+ *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego serán procesados para generar tickets. Dichos tickets permitirá analizar la contratación de empleados.
+ */
 public class Agencia
 {
 	private static Agencia instancia = null;
@@ -57,7 +64,7 @@ public class Agencia
 	
 	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();;//lista que guarda las coincidencias entre empresa y empleado
 
-	 private double saldoAgencia = 0;
+	private double saldoAgencia = 0;
 	
 	private Agencia() {	}
 	
@@ -82,17 +89,42 @@ public class Agencia
 		return saldoAgencia;
 	}
 
+	/**
+	 * Modifica el saldo de la agencia cuando ésta cobra una comisión.
+	 * <br>
+	 * <b>Pre: </b> Existe una lista de coincidencias con usuarios no nulos. Un empleado solo elije una empresa.
+	 * <br>
+	 * <b>Post: </b> Devuelve un único valor.
+	 * @param listaCoincidencias
+	 */
 	public void setSaldoAgencia(ArrayList<ListAsignacionEmpleador> listaCoincidencias) {
 		Comision comision = null;
 		this.saldoAgencia+= comision.calculoComision(listaCoincidencias);
 	}
 
+	/**
+	 * Genera un ArrayList con los empleados pretensos y empleadores activos.
+	 * <br>
+	 * <b>Pre: </b> Agencia tiene que tener al menos un empelado pretenso y un emperador.
+	 * <br>
+	 * <b>Post: </b> Devuelve solo los usuarios con estado de ticket activo.  
+	 */
 	public void generarUsusariosActivos() {
 		ControlListasAgencia cla= null;
 		empleadosPretensosActivos = cla.filtroTicketActivoEmpleadosPretensos(empleadosPretensos);
 		empleadoresActivos  = cla.filtroTicketActivoEmpleadores(empleadores);
 	}
 	
+	
+	
+	/**
+	 * Genera las listas se asignación de los empleadores y los empleados pretensos.
+	 * <br>
+	 * <b>Pre: <b/> Las listas no pueden ser nulas y tienen que tener al menos un dato.
+	 * <br>
+	 * <b>Pos: <b/> Devuelve listas de asignación y las de coincidencia. <br> Finaliza estado ticket <br> Actualiza puntaje usuario <br>
+	 *   
+	 */
 	public void activarRondaEncuentrosLaborales () {///metodo que genere las listas de asignacion
 		ControlListasAgencia cla= null;
 		ControlEstadosTicket cet = null;
@@ -107,6 +139,14 @@ public class Agencia
 	
 	
 
+	/**
+	 * Actualiza el puntaje de los usuarios
+	 * <br>
+	 * <b>Pre: </b> Las listas no pueden ser nulas y tienen que tener al menos un dato cargado.
+	 * <br>
+	 * <b>Pos: </b> Devuelve el puntaje actualizado.
+	 * 
+	 */
 	public void actualizacionPuntajeUsuario()
 	{
 		for(int i=0; i<empleadosPretensosActivos.size(); i++)
@@ -157,12 +197,24 @@ public class Agencia
 		}
 	}
 
+	/**
+	 * Logea un usuario.
+	 * <br>
+	 * <b>Pre: </b> La lista de empleadores y empleados no pueden ser nula.
+	 * <br>
+	 * <b>Pos: </b> Que el usuario ingresa al sistema con su nombre de usuario y la contraseña, si éste se encuentra registrado.
+	 * @param nombUsuarioIngresado : Nombre de usuario a logearse
+	 * @param contrasenaIngresada : Contraseña del usuario a logearse.
+	 * @return : retorna si el usuario se pudo logear.
+	 * @throws NombreDeUsuarioIncorrectoException : Lanza una excepcion si el usuario es incorrecto.
+	 * @throws ContrasenaIncorrectaException : Lanza una excepcion si la contraseña es incorrecta.
+	 */
 	public boolean login(String nombUsuarioIngresado, String contrasenaIngresada) throws NombreDeUsuarioIncorrectoException, ContrasenaIncorrectaException
 	{
-		/**
-		 * de ser usuario inexistente tira una excpecion
-		 * de ser contraseña erronea tira otra excpecion
-		 **/
+		
+		//de ser usuario inexistente tira una excpecion
+		// de ser contraseña erronea tira otra excpecion
+		
 		int i = 0;
 		boolean loginCorrecto = false;
 		while (i<this.empleadores.size() && !this.empleadores.get(i).getNombUsuario().equals(nombUsuarioIngresado))
