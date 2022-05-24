@@ -80,10 +80,10 @@ public class expLoginContrasena {
 			agencia.login("Paola", "hola1256");
 		} catch (NombreDeUsuarioIncorrectoException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.getMessage();
 		} catch (ContrasenaIncorrectaException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		agencia.activarRondaEncuentrosLaborales();
