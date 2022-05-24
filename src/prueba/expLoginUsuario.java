@@ -61,14 +61,13 @@ public class expLoginUsuario {
 		try
 		{
 			agencia.login("PaolaArgento", "11111");
+			System.out.println("Logueo exitoso");
 		} catch (NombreDeUsuarioIncorrectoException e)
 		{
-			// TODO Auto-generated catch block
-			e.getMessage();
+			System.out.println(e.getMessage());
 		} catch (ContrasenaIncorrectaException e)
 		{
-			// TODO Auto-generated catch block
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 		
 		agencia.activarRondaEncuentrosLaborales();
