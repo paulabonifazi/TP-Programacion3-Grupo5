@@ -58,21 +58,21 @@ public class expLoginUsuario {
 		agencia.agregarEmpleadoPretenso(empleadoPretenso5);
 		
 		
-		
-		try {
+		try
+		{
 			agencia.login("PaolaArgento", "11111");
-		} catch (NombreDeUsuarioIncorrectoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ContrasenaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Logueo exitoso");
+		} catch (NombreDeUsuarioIncorrectoException e)
+		{
+			System.out.println(e.getMessage());
+		} catch (ContrasenaIncorrectaException e)
+		{
+			System.out.println(e.getMessage());
 		}
 		
 		agencia.activarRondaEncuentrosLaborales();
 		agencia.generarUsusariosActivos();
-		System.out.println(agencia.getSaldoAgencia());
-		
+		agencia.getSaldoAgencia();
 
 	}
 

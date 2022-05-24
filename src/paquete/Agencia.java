@@ -251,7 +251,7 @@ public class Agencia
 	{
 		//de ser usuario inexistente tira una excpecion
 		// de ser contraseña erronea tira otra excpecion
-		/*
+		
 		int i = 0;
 		boolean loginCorrecto = false;
 		
@@ -280,7 +280,7 @@ public class Agencia
 				throw new NombreDeUsuarioIncorrectoException("Nombre de Usuario incorrecto");
 		}
 		return loginCorrecto;
-		*/
-		return true;
+		
+		//return true;
 	}
 }
