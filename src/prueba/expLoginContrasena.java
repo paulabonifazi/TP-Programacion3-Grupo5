@@ -58,24 +58,7 @@ public class expLoginContrasena {
 		agencia.agregarEmpleadoPretenso(empleadoPretenso4);
 		agencia.agregarEmpleadoPretenso(empleadoPretenso5);
 		
-		//------------------------------
-		System.out.println(agencia.getEmpleadores());
-		System.out.println(agencia.getEmpleadosPretensos());
-		
-		
-		//muere aca!
-		System.out.println(agencia.getEmpleadoresActivos());
-		System.out.println(agencia.getEmpleadosPretensosActivos());
-		agencia.muestraListas();
-		
-		System.out.println(agencia.getListAsignacionEmpleador());
-		System.out.println(agencia.getListAsignacionEmpleadoPretensos());
-		
-		System.out.println(agencia.getListEleccionEmpleador());
-		System.out.println(agencia.getListEleccionEmpleadoPretensos());
-		
-		System.out.println(agencia.getListaCoincidencias());
-		//-----------------------------
+	
 		try {
 			agencia.login("Paola", "hola1256");
 		} catch (NombreDeUsuarioIncorrectoException e) {
@@ -89,6 +72,25 @@ public class expLoginContrasena {
 		agencia.activarRondaEncuentrosLaborales();
 		agencia.generarUsusariosActivos();
 		agencia.getSaldoAgencia();
+		
+		//------------------------------
+		System.out.println("Lista Empleadores:"+agencia.getEmpleadores());
+		System.out.println("Lista Empleados Pretensos:"+agencia.getEmpleadosPretensos());
+		
+		
+		//muere aca!
+		System.out.println(agencia.getEmpleadoresActivos());
+		System.out.println(agencia.getEmpleadosPretensosActivos());
+		//agencia.muestraListas();
+		
+		System.out.println(agencia.getListAsignacionEmpleador());
+		System.out.println(agencia.getListAsignacionEmpleadoPretensos());
+		
+		System.out.println(agencia.getListEleccionEmpleador());
+		System.out.println(agencia.getListEleccionEmpleadoPretensos());
+		
+		System.out.println(agencia.getListaCoincidencias());
+		//-----------------------------
 		
 	}
 	
