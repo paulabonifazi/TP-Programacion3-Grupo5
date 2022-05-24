@@ -163,16 +163,16 @@ public class Agencia
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
-		listAsignacionEmpleador.addAll(cla.generarListAsignacionEmpleador(empleadosPretensosActivos,empleadoresActivos));System.out.println(empleadoresActivos.size());
+		listAsignacionEmpleador.addAll(cla.generarListAsignacionEmpleador(empleadosPretensosActivos,empleadoresActivos));
 		listAsignacionEmpleadoPretensos.addAll(cla.generarListAsignacionEmpleadoPretenso(empleadosPretensosActivos,empleadoresActivos));
 		
 		listaCoincidencias.addAll(cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos));
 		
-		/*actualizacionPuntajeUsuario();
+		actualizacionPuntajeUsuario();
 		
 		cet.finalizarTickets(listaCoincidencias);    		
 		
-		System.out.println(listaCoincidencias);*/
+		System.out.println(listaCoincidencias);
 	}
 	
 	

@@ -48,11 +48,11 @@ public class TablaFactory {
 			aspecto = new RangoEtarioMas50();
 	
 	///Remuneracion	
-		else if (nombreAspecto.equals("HASTAV1"))
+		else if (nombreAspecto.equals("V1"))
 			aspecto = new RemuneracionV1();
-		else if (nombreAspecto.equals("ENTREV1YV2"))
+		else if (nombreAspecto.equals("V2"))
 			aspecto = new RemuneracionV2();
-		else if (nombreAspecto.equals("MASV2"))
+		else if (nombreAspecto.equals("V3"))
 			aspecto = new RemuneracionV3();
 		
 	///TipoPuesto
