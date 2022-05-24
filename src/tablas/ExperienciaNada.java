@@ -4,12 +4,7 @@ import interfaces.IAspecto;
 
 public class ExperienciaNada extends Experiencia{
 
-	@Override
-	public double valor(IAspecto objeto) {
-		Experiencia e = null;
-		e = (Experiencia)objeto;
-		return e.nada();
-	}
+	
 ///completo por fila
 	@Override
 	protected double nada() {
@@ -25,6 +20,12 @@ public class ExperienciaNada extends Experiencia{
 	protected double mucha() {
 		return 2;
 	}
-
+	
+	@Override
+	public double valor(IAspecto objeto) {
+		Experiencia e = null;
+		e = (Experiencia)objeto;
+		return e.nada();
+	}
 }
 

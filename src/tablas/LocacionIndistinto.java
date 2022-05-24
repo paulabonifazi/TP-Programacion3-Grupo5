@@ -4,12 +4,7 @@ import interfaces.IAspecto;
 
 public class LocacionIndistinto extends Locacion{
 
-	@Override
-	public double valor(IAspecto objeto) {
-		Locacion l = null;
-		l = (Locacion)objeto;
-		return l.indistinto();
-	}
+	
 ///completo por fila
 	@Override
 	protected double homeOffice() {
@@ -24,6 +19,13 @@ public class LocacionIndistinto extends Locacion{
 	@Override
 	protected double indistinto() {
 		return 1;
+	}
+
+	@Override
+	public double valor(IAspecto o) {
+		Locacion objeto = null;
+		objeto = (Locacion) o;
+		return objeto.indistinto();
 	}
 
 }

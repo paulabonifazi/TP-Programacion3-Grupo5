@@ -19,8 +19,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	private int edad;
 	private String rubro; //salud - comercio local - comercio internacional
 	private TicketEmpleador ticket;
-	
-	private ValoracionAspecto listaPesos;                 ///como conozco la cantidad de aspectos -> no seria necesario un array, suficiente con un objeto que guarde los 7 PesosAspectos
+	private ValoracionAspecto listaPesos;                
 	
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nomRazonS, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
@@ -35,7 +34,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		this.ticket = ticket;
 		this.listaPesos = listaPesos;
 	}
-
+/*
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nombre, String apellido, int edad, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
@@ -48,7 +47,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		this.rubro = rubro;
 		this.ticket = ticket;
 		this.listaPesos = listaPesos;
-	}
+	}*/
 
 	/*/* en la parte donde la empresa se registra crea y manda el valor*/
 	public void setListaPesos(ValoracionAspecto listaPesos) {
@@ -144,12 +143,12 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	}
 
 	public void activarTicket() {
-		ControlEstadosTicket cla=null;
+		ControlEstadosTicket cla=new ControlEstadosTicket();
 		cla.activarTicket(ticket);
 	}
 	
 	public void suspenderTicket() {
-		ControlEstadosTicket cla=null;
+		ControlEstadosTicket cla=new ControlEstadosTicket();
 		cla.suspenderTicket(ticket);
 	}
 }
