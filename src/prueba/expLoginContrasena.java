@@ -20,9 +20,9 @@ public class expLoginContrasena {
 	public static void main(String[] args) 
 	{
 		
-		TicketEmpleador ticketEmpleador1 = new TicketEmpleador(new FormularioBusqueda("HomeOffice", "80000", "Completa", "Junior", "Menos de 40", "Nada", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 8, 23), 2, 0);
-		TicketEmpleador ticketEmpleador2 = new TicketEmpleador(new FormularioBusqueda("Indistinto", "125000", "Extendida", "Managment", "40 a 50", "Mucha", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 10, 5), 1, 0);
-		TicketEmpleador ticketEmpleador3 = new TicketEmpleador(new FormularioBusqueda("Presencial", "90000", "Media", "Senior", "Mas de 50", "Media", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 7, 12), 3, 0);
+		TicketEmpleador ticketEmpleador1 = new TicketEmpleador(new FormularioBusqueda("HomeOffice", "V1", "Completa", "Junior", "Menos de 40", "NADA", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 8, 23), 2, 0);
+		TicketEmpleador ticketEmpleador2 = new TicketEmpleador(new FormularioBusqueda("Indistinto", "V2", "Extendida", "Managment", "40 a 50", "MUCHA", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 10, 5), 1, 0);
+		TicketEmpleador ticketEmpleador3 = new TicketEmpleador(new FormularioBusqueda("Presencial", "V3", "Media", "Senior", "Mas de 50", "MEDIA", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 7, 12), 3, 0);
 		
 		Empleador empleador1 = new Empleador(new Domicilio("Juramento", 256, "Casa"), "22356971", "joseyasociados@gmail.com", "JoseyAsociados", "123456789", "Jose y Asociados S.A.", "Comercio Local",  ticketEmpleador1, new ValoracionAspecto(10, 10, 10, 10, 10, 10, 10)); //juridica
 		Empleador empleador2 = new Empleador(new Domicilio("Alvear", 2978, "9 H"), "7895630", "juana@gmail.com", "JuanaGonzalez", "987456", "Juana Gonzalez", "Salud", ticketEmpleador2, new ValoracionAspecto(10, 10, 10, 10, 10, 10, 10)); //fisica
@@ -31,11 +31,11 @@ public class expLoginContrasena {
 		
 		
 		
-		TicketEmpleadoPretenso ticketEmpleadoPretenso1 = new TicketEmpleadoPretenso(new FormularioBusqueda("Presencial", "70000", "Completa", "Senior", "Menos de 40", "Mucha", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 5, 2));
-		TicketEmpleadoPretenso ticketEmpleadoPretenso2 = new TicketEmpleadoPretenso(new FormularioBusqueda("HomeOffice", "170000", "Media", "Managment", "40 a 50", "Media", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 8, 9));
-		TicketEmpleadoPretenso ticketEmpleadoPretenso3 = new TicketEmpleadoPretenso(new FormularioBusqueda("Indistinto", "85000", "Extendida", "Junior", "Mas de 50", "Nada", "Primario"), new EstadoTicket("Activo"), new Date(2022, 11, 7));
-		TicketEmpleadoPretenso ticketEmpleadoPretenso4 = new TicketEmpleadoPretenso(new FormularioBusqueda("Presencial", "12000", "Extendida", "Managment", "Menos de 40", "Mucha", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 10, 5));
-		TicketEmpleadoPretenso ticketEmpleadoPretenso5 = new TicketEmpleadoPretenso(new FormularioBusqueda("HomeOffice", "70000", "Completa", "Senior", "40 a 50", "Media", "Primario"), new EstadoTicket("Activo"), new Date(2022, 6, 20));
+		TicketEmpleadoPretenso ticketEmpleadoPretenso1 = new TicketEmpleadoPretenso(new FormularioBusqueda("Presencial", "V1", "Completa", "Senior", "Menos de 40", "MUCHA", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 5, 2));
+		TicketEmpleadoPretenso ticketEmpleadoPretenso2 = new TicketEmpleadoPretenso(new FormularioBusqueda("HomeOffice", "V2", "Media", "Managment", "40 a 50", "MEDIA", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 8, 9));
+		TicketEmpleadoPretenso ticketEmpleadoPretenso3 = new TicketEmpleadoPretenso(new FormularioBusqueda("Indistinto", "V1", "Extendida", "Junior", "Mas de 50", "NADA", "Primario"), new EstadoTicket("Activo"), new Date(2022, 11, 7));
+		TicketEmpleadoPretenso ticketEmpleadoPretenso4 = new TicketEmpleadoPretenso(new FormularioBusqueda("Presencial", "V3", "Extendida", "Managment", "Menos de 40", "MUCHA", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 10, 5));
+		TicketEmpleadoPretenso ticketEmpleadoPretenso5 = new TicketEmpleadoPretenso(new FormularioBusqueda("HomeOffice", "V1", "Completa", "Senior", "40 a 50", "MEDIA", "Primario"), new EstadoTicket("Activo"), new Date(2022, 6, 20));
 		
 		
 		EmpleadoPretenso empleadoPretenso1 = new EmpleadoPretenso(new Domicilio("Saavedra", 5842, "Casa"), "552564", "paola@hyty.com", "PaolaArgento", "hola1256", "Paola", "Argento", 34, ticketEmpleadoPretenso1);
@@ -78,10 +78,10 @@ public class expLoginContrasena {
 		System.out.println(agencia.getListAsignacionEmpleador());
 		System.out.println(agencia.getListAsignacionEmpleadoPretensos());
 		
-	/*	System.out.println(agencia.getListEleccionEmpleador());
-		System.out.println(agencia.getListEleccionEmpleadoPretensos());*/
+		System.out.println(agencia.getListEleccionEmpleador());
+		System.out.println(agencia.getListEleccionEmpleadoPretensos());
 		
-	//	System.out.println(agencia.getListaCoincidencias());
+		System.out.println(agencia.getListaCoincidencias());
 	/*	//-----------------------------
 	/*	try {
 			agencia.login("Paola", "hola1256");
@@ -95,8 +95,8 @@ public class expLoginContrasena {
 		*/
 		//
 		
-		/*agencia.getSaldoAgencia();
-		*/
+		System.out.println("saldo "+agencia.getSaldoAgencia());
+		
 	}
 	
 }

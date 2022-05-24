@@ -1,7 +1,7 @@
 package tablas;
 
 import interfaces.IAspecto;
-/*
+
 public class CargaHorariaCompleta extends CargaHoraria {
 
 	///completo por fila
@@ -33,4 +33,4 @@ public class CargaHorariaCompleta extends CargaHoraria {
 	
 	
 
-}*/
+}

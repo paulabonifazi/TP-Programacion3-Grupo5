@@ -72,7 +72,7 @@ public class ControlListasAgencia {
 	
 	for (int i=0; i<listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
 		empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
-		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
+		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeFC(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
 				//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
 		listaOrdenada.add(empleadorPuntaje);
 		}

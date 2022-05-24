@@ -15,20 +15,20 @@ public class TablaFactory {
 			aspecto = new EstudiosCursadTerciario();
 		
 	///CargaHoraria
-	/*	else if (nombreAspecto.equals("Completa"))
+		else if (nombreAspecto.equals("Completa"))
 			aspecto = new CargaHorariaCompleta();
 		else if (nombreAspecto.equals("Extendida"))
 			aspecto = new CargaHorariaExtendida();
 		else if (nombreAspecto.equals("Media"))
 			aspecto = new CargaHorariaMedia();
-		*/
+		
 	
 	///Experiencia	
-		else if (nombreAspecto.equals("Media"))
+		else if (nombreAspecto.equals("MEDIA"))
 			aspecto = new ExperienciaMedia();
-		else if (nombreAspecto.equals("Mucha"))
+		else if (nombreAspecto.equals("MUCHA"))
 			aspecto = new ExperienciaMucha();
-		else if (nombreAspecto.equals("Nada"))
+		else if (nombreAspecto.equals("NADA"))
 			aspecto = new ExperienciaNada();
 		
 	///Locacion	
