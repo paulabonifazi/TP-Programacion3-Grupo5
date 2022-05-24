@@ -5,7 +5,7 @@ import java.util.Date;
 public class Ticket
 {
 	
-	protected FormularioBusqueda fbTicket;//no puede ser private porque sino sus clases hijas no pueden acceder!
+	protected FormularioBusqueda fbTicket;
 	protected EstadoTicket estadoTicket;
 	
 	private Date fechaTicket;

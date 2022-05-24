@@ -132,18 +132,6 @@ public class ControlListasAgencia {
 	
 	}
 		
-		//  METODO COINCIDENCIAS -> buscar las coincidencias y guardar en un arrayList del mismo tipo quer la lista de empleadores
-
-		//recibo 2 arrayList de arrayList
-		//									-> ListaDeEmpleadores = Cada nodo tiene la empleados y un arrayList de a los empleados Pretensos que eligio
-		//									-> ListaDeEmpleadosPretensos = Cada nodo tiene al empleado Pretenso y al unico empleador que eligio
-		
-		//Recorrer el arrayListe de empleadores y buscar en el de empleadosPretensos si coinciden
-
-	///comenzar las lista en null, -> si en algun momento se pide mostra u sumilat sy es null -> no hay nada
-		
-	  ///equivale a lista de contrataciones
-		
 	 public  ArrayList<ListAsignacionEmpleador> ListaCoincidencias (ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
 		{	
 			 ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
@@ -157,7 +145,6 @@ public class ControlListasAgencia {
 
 			for(int i = 0; i < ListaDeEmpleadores.size(); i++)//Recorre el arrayList de empleadores
 			{
-				//trabahar con var para simplificar
 				ListaPosiblesEmpleados = ListaDeEmpleadores.get(i).getListEmpleadosPretensos();
 
 				//CREAR UN NUEVO OBJETO DE lISTACOINCIDENCIAS 

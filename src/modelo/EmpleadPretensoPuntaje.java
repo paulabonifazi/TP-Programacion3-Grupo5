@@ -3,12 +3,6 @@ package modelo;
 import paquete.EmpleadoPretenso;
 
 ///este objeto lo usa el metodo metodoOrdenamientoEmpleador de la clase RondaEncuentroLaborales
-//
-
-/*
- * Analizar como este objeto se relaciona con ronda de encuentros
- * para ver constructor, herencia, etc
- */
 
 public class EmpleadPretensoPuntaje {
 	
@@ -31,8 +25,5 @@ public class EmpleadPretensoPuntaje {
 	public void setEmpleadoPretenso(EmpleadoPretenso empleadoPretenso) {
 		this.empleadoPretenso = empleadoPretenso;
 	}
-	
-	
-
-	
+		
 }

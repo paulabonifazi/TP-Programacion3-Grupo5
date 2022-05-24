@@ -1,38 +1,20 @@
-/* aclaraciones 
- * 		clases que funcionan como objeto
-			ListAsignacionEmpleadPretenso guarda un empleadoPretenso con una array de empresas
-			ListAsignacionEmpleador guarda una empresa con un array de empleadoPretensos
-			
-			EmpleadorPuntaje guarda una empresa con el puntaje que obtuvo en las tablas
-			EmpleadoPretensPuntaje guarda un empleadoPretenso con el puntaje que obtuvo en las tablas
-
-agencia debe tener los metodo que generen las superListas (todas las empresas con todos sus posibles 
-empleados y viceversa)
-
-
-la clase PuntajeTicketFC y PuntajeTicketCF acceden a la pos a,b y b,a en las tablas
-
-*////PASSARLO A LA DOCUMENTACION///
-
 package paquete;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.SortedSet;
 
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
+
 import modelo.Comision;
 import modelo.ControlEstadosTicket;
 import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
-import tablas.PuntajeTicket;
-
-import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
+
+import tablas.PuntajeTicket;
 
 /**
  * @author paula
@@ -228,10 +210,10 @@ public class Agencia
 		{
 			
 			//analizo estado del ticket 
-			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("FINALIZADO"))
+			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Finalizado"))
 				empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
 			else
-				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("CANCELADO"))
+				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Cancelado"))
 					empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
 			
 			//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
@@ -252,7 +234,7 @@ public class Agencia
 		for(int j=0; j<empleadoresActivos.size(); j++)
 		{
 	
-			if(empleadoresActivos.get(j).getTicket().getEstadoTicket().getEstado().equals("FINALIZADO"))
+			if(empleadoresActivos.get(j).getTicket().getEstadoTicket().getEstado().equals("Finalizado"))
 				empleadoresActivos.get(j).setPuntajeUsuario(50); 
 	
 			Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();
@@ -260,7 +242,7 @@ public class Agencia
 			if(empresaPos1.equals(empleadoresActivos.get(j))) //en primer lugar
 				empleadoresActivos.get(j).setPuntajeUsuario(10); 
 			
-			//necesitocontador de elecciones o var booleana que sea true cuando algun empleado lo haya elejido
+			//necesitocontador de elecciones o var booleana que sea true cuando algun empleado lo haya elegido
 			int k = 0;
 			while(k < listaCoincidencias.size() && listaCoincidencias.get(k).getEmpleador().equals(empleadoresActivos.get(j)))
 				k++;
@@ -317,6 +299,5 @@ public class Agencia
 		}
 		return loginCorrecto;
 		
-		//return true;
 	}
 }

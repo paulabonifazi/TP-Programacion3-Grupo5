@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import paquete.EmpleadoPretenso;
 import paquete.Empleador;
 
-///hize el push sobre 
 public class ListAsignacionEmpleador {
 
 	private Empleador empleador;
