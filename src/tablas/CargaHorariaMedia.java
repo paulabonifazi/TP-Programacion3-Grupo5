@@ -1,6 +1,6 @@
 package tablas;
 
-import interfaces.IAspecto;/*
+import interfaces.IAspecto;
 
 public class CargaHorariaMedia extends CargaHoraria {
 
@@ -33,4 +33,4 @@ public class CargaHorariaMedia extends CargaHoraria {
 		return cah.media();
 	}
 	
-}*/
+}

@@ -18,13 +18,13 @@ public class PuntajeTicket {
 		aux = empleador.getListaPesos().getPesoLocacion() * aspEmpleador.valor(aspEmpleadoPretenso);						/// multiplico el peso que definio el empleador para ese aspecto * el valor que hay en las tablas 
 		puntaje += aux;																										//voy acumulando el puntaje
 //////////Remuneracion
-	/*	aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
+		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getRemuneracion());
 	 	
 	 	aux = 0;
 	 	aux = empleador.getListaPesos().getPesoRemuneracion() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
-		*/
+	
 //////////CargaHoraria
 		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getCargaHoraria());
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getCargaHoraria());
@@ -87,21 +87,21 @@ public class PuntajeTicket {
 			aux = empleador.getListaPesos().getPesoLocacion() * aspEmpleadoPretenso.valor(aspEmpleador);						/// multiplico el peso que definio el empleador para ese aspecto * el valor que hay en las tablas 
 			puntaje += aux;																									//voy acumulando el puntaje
 	//////////Remuneracion
-			/*aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
+			aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
 			aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getRemuneracion());
 		 	
 		 	aux = 0;
 		 	aux = empleador.getListaPesos().getPesoRemuneracion() * aspEmpleadoPretenso.valor(aspEmpleador);
-			puntaje += aux;*/
+			puntaje += aux;
 			
 	//////////CargaHoraria
-		/*	aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getCargaHoraria());
+			aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getCargaHoraria());
 			aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getCargaHoraria());
 		 	
 		 	aux = 0;
 		 	aux = empleador.getListaPesos().getPesoCargaHoraria() * aspEmpleadoPretenso.valor(aspEmpleador);
 			puntaje += aux;
-			*/
+			
 			
 	//////////Tipo Puesto
 			aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getTipoPuesto());

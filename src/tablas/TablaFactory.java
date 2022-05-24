@@ -15,20 +15,20 @@ public class TablaFactory {
 			aspecto = new EstudiosCursadTerciario();
 		
 	///CargaHoraria
-	/*	else if (nombreAspecto.equals("Completa"))
+		else if (nombreAspecto.equals("Completa"))
 			aspecto = new CargaHorariaCompleta();
 		else if (nombreAspecto.equals("Extendida"))
 			aspecto = new CargaHorariaExtendida();
 		else if (nombreAspecto.equals("Media"))
 			aspecto = new CargaHorariaMedia();
-		*/
+		
 	
 	///Experiencia	
-		else if (nombreAspecto.equals("Media"))
+		else if (nombreAspecto.equals("MEDIA"))
 			aspecto = new ExperienciaMedia();
-		else if (nombreAspecto.equals("Mucha"))
+		else if (nombreAspecto.equals("MUCHA"))
 			aspecto = new ExperienciaMucha();
-		else if (nombreAspecto.equals("Nada"))
+		else if (nombreAspecto.equals("NADA"))
 			aspecto = new ExperienciaNada();
 		
 	///Locacion	
@@ -48,11 +48,11 @@ public class TablaFactory {
 			aspecto = new RangoEtarioMas50();
 	
 	///Remuneracion	
-		else if (nombreAspecto.equals("HASTAV1"))
+		else if (nombreAspecto.equals("V1"))
 			aspecto = new RemuneracionV1();
-		else if (nombreAspecto.equals("ENTREV1YV2"))
+		else if (nombreAspecto.equals("V2"))
 			aspecto = new RemuneracionV2();
-		else if (nombreAspecto.equals("MASV2"))
+		else if (nombreAspecto.equals("V3"))
 			aspecto = new RemuneracionV3();
 		
 	///TipoPuesto

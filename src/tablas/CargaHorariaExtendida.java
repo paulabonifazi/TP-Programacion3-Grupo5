@@ -1,6 +1,6 @@
 package tablas;
 
-import interfaces.IAspecto;/*
+import interfaces.IAspecto;
 
 public class CargaHorariaExtendida extends CargaHoraria {
 
@@ -33,4 +33,3 @@ public class CargaHorariaExtendida extends CargaHoraria {
 	
 
 }
-*/
