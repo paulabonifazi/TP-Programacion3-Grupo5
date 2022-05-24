@@ -156,6 +156,8 @@ public class Agencia
 		//System.out.println(this.empleadoresActivos);
 		//System.out.println(this.empleadosPretensosActivos);
 		//muestraListas();
+		
+		//analizar porque se piede la referencia una vez que termina generaUsuariosActivos!
 	}
 	
 	public void muestraListas() {
