@@ -58,8 +58,32 @@ public class expLoginContrasena {
 		agencia.agregarEmpleadoPretenso(empleadoPretenso4);
 		agencia.agregarEmpleadoPretenso(empleadoPretenso5);
 		
+		//------------------------------
+		for (int i=0; i<agencia.getEmpleadosPretensos().size(); i++)
+			System.out.println(agencia.getEmpleadosPretensos().get(i).getNombre());
+		
+		for (int i=0; i<agencia.getEmpleadores().size(); i++)
+			System.out.println(agencia.getEmpleadores().get(i).getNomRazonS());
+			
+		agencia.generarUsusariosActivos();
+		
 	
-		try {
+		System.out.println(agencia.getEmpleadoresActivos());
+		System.out.println(agencia.getEmpleadosPretensosActivos());
+		
+		
+		agencia.activarRondaEncuentrosLaborales();
+
+
+		System.out.println(agencia.getListAsignacionEmpleador());
+		System.out.println(agencia.getListAsignacionEmpleadoPretensos());
+		
+	/*	System.out.println(agencia.getListEleccionEmpleador());
+		System.out.println(agencia.getListEleccionEmpleadoPretensos());*/
+		
+	//	System.out.println(agencia.getListaCoincidencias());
+	/*	//-----------------------------
+	/*	try {
 			agencia.login("Paola", "hola1256");
 		} catch (NombreDeUsuarioIncorrectoException e) {
 			// TODO Auto-generated catch block
@@ -68,30 +92,11 @@ public class expLoginContrasena {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
+		//
 		
-		agencia.activarRondaEncuentrosLaborales();
-		agencia.generarUsusariosActivos();
-		agencia.getSaldoAgencia();
-		
-		//------------------------------
-		System.out.println("Lista Empleadores:"+agencia.getEmpleadores());
-		System.out.println("Lista Empleados Pretensos:"+agencia.getEmpleadosPretensos());
-		
-		
-		//muere aca!
-		System.out.println(agencia.getEmpleadoresActivos());
-		System.out.println(agencia.getEmpleadosPretensosActivos());
-		//agencia.muestraListas();
-		
-		System.out.println(agencia.getListAsignacionEmpleador());
-		System.out.println(agencia.getListAsignacionEmpleadoPretensos());
-		
-		System.out.println(agencia.getListEleccionEmpleador());
-		System.out.println(agencia.getListEleccionEmpleadoPretensos());
-		
-		System.out.println(agencia.getListaCoincidencias());
-		//-----------------------------
-		
+		/*agencia.getSaldoAgencia();
+		*/
 	}
 	
 }

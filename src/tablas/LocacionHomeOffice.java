@@ -4,12 +4,7 @@ import interfaces.IAspecto;
 
 public class LocacionHomeOffice extends Locacion{
 
-	@Override
-	public double valor(IAspecto objeto) {
-		Locacion l = null;
-		l = (Locacion)objeto;
-		return l.homeOffice();
-	}
+
 ///completo por fila
 	@Override
 	protected double homeOffice() {
@@ -25,5 +20,14 @@ public class LocacionHomeOffice extends Locacion{
 	protected double indistinto() {
 		return 1;
 	}
+
+	@Override
+	public double valor(IAspecto o) {
+		Locacion objeto = null;
+		objeto = (Locacion) o;
+		return objeto.homeOffice();
+	}
+
+
 
 }

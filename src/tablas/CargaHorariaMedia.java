@@ -1,15 +1,9 @@
 package tablas;
 
-import interfaces.IAspecto;
+import interfaces.IAspecto;/*
 
 public class CargaHorariaMedia extends CargaHoraria {
 
-	@Override
-	public double valor(IAspecto objeto) {
-		CargaHoraria ch = null;
-		ch = (CargaHoraria) objeto;
-		return ch.completa();
-	}
 	
 	///completo por fila
 
@@ -32,4 +26,11 @@ public class CargaHorariaMedia extends CargaHoraria {
 	}
 	
 
-}
+	@Override
+	public double valor (IAspecto object) {
+		CargaHoraria cah = null;
+		cah =  (CargaHoraria) object;
+		return cah.media();
+	}
+	
+}*/

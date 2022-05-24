@@ -29,7 +29,7 @@ public class ControlListasAgencia {
 	}
 		
 	//filtro solo ticket activos
-	public ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
+	public static ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		ArrayList<EmpleadoPretenso> empleadosPretensosActivos = new ArrayList<EmpleadoPretenso>();
 		for (int i=0; i<empleadosPretensos.size();i++) {
 			if (empleadosPretensos.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
@@ -40,7 +40,7 @@ public class ControlListasAgencia {
 		return empleadosPretensosActivos;
 	}
 	
-	public ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
+	public static ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
 		ArrayList<Empleador> empleadoresActivos = new ArrayList<Empleador>();
 		for (int i=0; i<empleadores.size();i++) {
 			if (empleadores.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
@@ -70,9 +70,9 @@ public class ControlListasAgencia {
 	ArrayList<EmpleadorPuntaje> listaOrdenada = new ArrayList<EmpleadorPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
 	EmpleadorPuntaje empleadorPuntaje = new EmpleadorPuntaje();	
 	
-	for (int i=0; i<=listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
+	for (int i=0; i<listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
 		empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
-		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeFC(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
+		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
 				//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
 		listaOrdenada.add(empleadorPuntaje);
 		}
@@ -107,13 +107,14 @@ public class ControlListasAgencia {
 	
 		ArrayList<EmpleadoPretenso> lista = new  ArrayList<EmpleadoPretenso>();						//lista que voy a devolver
 		ArrayList<EmpleadPretensoPuntaje> listaOrdenada = new ArrayList<EmpleadPretensoPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
-		EmpleadPretensoPuntaje empleadoPretensPuntaje = new EmpleadPretensoPuntaje();	
+		EmpleadPretensoPuntaje empleadoPretensPuntaje = new EmpleadPretensoPuntaje();
 	
-		for (int i=0; i<=listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
+		for (int i=0; i<listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
+			
 				empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
 				empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(empleador, listaEmpleaPretenso.get(i).getTicket()));
 				listaOrdenada.add(empleadoPretensPuntaje);
-	}
+			}
 	
 		
 	Collections.sort(listaOrdenada, new Comparator<EmpleadPretensoPuntaje>() {
@@ -124,9 +125,11 @@ public class ControlListasAgencia {
 		});
 	
 	for (int j = 0; j< listaOrdenada.size(); j++) ///cargo lista con el orden de listaOrdenada
-		lista.add(listaOrdenada.get(j).getEmpleadoPretenso());
+		{lista.add(listaOrdenada.get(j).getEmpleadoPretenso());
+		}
 	
 	return lista;
+	
 	}
 		
 		//  METODO COINCIDENCIAS -> buscar las coincidencias y guardar en un arrayList del mismo tipo quer la lista de empleadores
