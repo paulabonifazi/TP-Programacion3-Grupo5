@@ -2,6 +2,8 @@ package prueba;
 
 import java.util.Date;
 
+import excepciones.ContrasenaIncorrectaException;
+import excepciones.NombreDeUsuarioIncorrectoException;
 import modelo.EstadoTicket;
 import modelo.FormularioBusqueda;
 import modelo.TicketEmpleadoPretenso;
@@ -56,11 +58,21 @@ public class expLoginUsuario {
 		agencia.agregarEmpleadoPretenso(empleadoPretenso5);
 		
 		
-		agencia.login("PaolaArgento", "11111");
+		
+		try {
+			agencia.login("PaolaArgento", "11111");
+		} catch (NombreDeUsuarioIncorrectoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ContrasenaIncorrectaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		agencia.activarRondaEncuentrosLaborales();
 		agencia.generarUsusariosActivos();
-		agencia.getSaldoAgencia();
+		System.out.println(agencia.getSaldoAgencia());
+		
 
 	}
 

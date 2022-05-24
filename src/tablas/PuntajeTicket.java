@@ -12,19 +12,19 @@ public class PuntajeTicket {
 	public double getPuntajeFC(Empleador empleador, TicketEmpleadoPretenso ticketEmpleadoPretenso) {
 		double aux = 0;
 /////Locacion
-		IAspecto aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getLocacion());  ///creo los elementos que va a usar el doubleDispath en el factory
+		IAspecto aspEmpleadoPretenso = TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getLocacion());  ///creo los elementos que va a usar el doubleDispath en el factory
 	 	IAspecto aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getLocacion());
 	 	
 		aux = empleador.getListaPesos().getPesoLocacion() * aspEmpleador.valor(aspEmpleadoPretenso);						/// multiplico el peso que definio el empleador para ese aspecto * el valor que hay en las tablas 
 		puntaje += aux;																										//voy acumulando el puntaje
 //////////Remuneracion
-		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
+	/*	aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getRemuneracion());
 	 	
 	 	aux = 0;
 	 	aux = empleador.getListaPesos().getPesoRemuneracion() * aspEmpleador.valor(aspEmpleadoPretenso);
 		puntaje += aux;
-		
+		*/
 //////////CargaHoraria
 		aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getCargaHoraria());
 		aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getCargaHoraria());
@@ -77,28 +77,31 @@ public class PuntajeTicket {
 	
 		public double getPuntajeCF(Empleador empleador, TicketEmpleadoPretenso ticketEmpleadoPretenso) {
 			double aux = 0;
+			IAspecto aspEmpleadoPretenso;
+			IAspecto aspEmpleador;
 	/////Locacion
-			IAspecto aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getLocacion());  ///creo los elementos que va a usar el doubleDispath en el factory
-		 	IAspecto aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getLocacion());
+			aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getLocacion());  ///creo los elementos que va a usar el doubleDispath en el factory
+		 	aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getLocacion());
+		 	
 		 	
 			aux = empleador.getListaPesos().getPesoLocacion() * aspEmpleadoPretenso.valor(aspEmpleador);						/// multiplico el peso que definio el empleador para ese aspecto * el valor que hay en las tablas 
-			puntaje += aux;																										//voy acumulando el puntaje
+			puntaje += aux;																									//voy acumulando el puntaje
 	//////////Remuneracion
-			aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
+			/*aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getRemuneracion());
 			aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getRemuneracion());
 		 	
 		 	aux = 0;
 		 	aux = empleador.getListaPesos().getPesoRemuneracion() * aspEmpleadoPretenso.valor(aspEmpleador);
-			puntaje += aux;
+			puntaje += aux;*/
 			
 	//////////CargaHoraria
-			aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getCargaHoraria());
+		/*	aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getCargaHoraria());
 			aspEmpleador =  TablaFactory.getValorAspecto(empleador.getTicket().getFbTicket().getCargaHoraria());
 		 	
 		 	aux = 0;
 		 	aux = empleador.getListaPesos().getPesoCargaHoraria() * aspEmpleadoPretenso.valor(aspEmpleador);
 			puntaje += aux;
-			
+			*/
 			
 	//////////Tipo Puesto
 			aspEmpleadoPretenso =  TablaFactory.getValorAspecto(ticketEmpleadoPretenso.getFbTicket().getTipoPuesto());
