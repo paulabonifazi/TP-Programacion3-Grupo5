@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.Date;
 
-public class Ticket 
+public class Ticket
 {
 	
 	protected FormularioBusqueda fbTicket;//no puede ser private porque sino sus clases hijas no pueden acceder!

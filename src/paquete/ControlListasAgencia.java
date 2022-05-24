@@ -29,19 +29,25 @@ public class ControlListasAgencia {
 	}
 		
 	//filtro solo ticket activos
-	public ArrayList<EmpleadoPretenso>  filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
+	public ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		ArrayList<EmpleadoPretenso> empleadosPretensosActivos = new ArrayList<EmpleadoPretenso>();
-		for (int i=0; i<empleadosPretensos.size();i++)
-			if (empleadosPretensos.get(i).getTicket().getEstadoTicket().getEstado().equals("ACTIVO"))
+		for (int i=0; i<empleadosPretensos.size();i++) {
+			if (empleadosPretensos.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
 				empleadosPretensosActivos.add(empleadosPretensos.get(i));
+				//System.out.println(empleadosPretensosActivos.get(i));
+			}
+		}
 		return empleadosPretensosActivos;
 	}
 	
 	public ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
 		ArrayList<Empleador> empleadoresActivos = new ArrayList<Empleador>();
-		for (int i=0; i<empleadores.size();i++)
-			if (empleadores.get(i).getTicket().getEstadoTicket().getEstado().equals("ACTIVO"))
+		for (int i=0; i<empleadores.size();i++) {
+			if (empleadores.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
 				empleadoresActivos.add(empleadores.get(i));
+				//System.out.println(empleadoresActivos.get(i));
+			}
+		}
 		return empleadoresActivos;
 	}
 	
@@ -71,7 +77,7 @@ public class ControlListasAgencia {
 		listaOrdenada.add(empleadorPuntaje);
 		}
 	
-	////probar si el metodo funciona bien///
+
 	Collections.sort(listaOrdenada, new Comparator<EmpleadorPuntaje>() {
 	@Override
 		public int compare(EmpleadorPuntaje p2, EmpleadorPuntaje p1) {
@@ -109,7 +115,7 @@ public class ControlListasAgencia {
 				listaOrdenada.add(empleadoPretensPuntaje);
 	}
 	
-	////reveer como ordenarlo
+		
 	Collections.sort(listaOrdenada, new Comparator<EmpleadPretensoPuntaje>() {
 		@Override
 		public int compare(EmpleadPretensoPuntaje p2, EmpleadPretensoPuntaje p1) {

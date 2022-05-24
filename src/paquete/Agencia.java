@@ -45,10 +45,6 @@ public class Agencia
 {
 	private static Agencia instancia = null;
 
-	//no tendria que considerar conservar todas las listas de contratacion que se generan, yaque al ejecutar dos veces se pierde lo anterior
-	
-
-	
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador> ();						
 	private ArrayList<EmpleadoPretenso> empleadosPretensos = new ArrayList<EmpleadoPretenso> ();
 	
@@ -64,6 +60,7 @@ public class Agencia
 	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();;//lista que guarda las coincidencias entre empresa y empleado
 
 	private double saldoAgencia = 0;
+	
 	
 	public Agencia() {	}
 	
@@ -88,6 +85,44 @@ public class Agencia
 		return saldoAgencia;
 	}
 
+	
+	public ArrayList<Empleador> getEmpleadores() {
+		return empleadores;
+	}
+
+	public ArrayList<EmpleadoPretenso> getEmpleadosPretensos() {
+		return empleadosPretensos;
+	}
+
+	public ArrayList<Empleador> getEmpleadoresActivos() {
+		return empleadoresActivos;
+	}
+
+	public ArrayList<EmpleadoPretenso> getEmpleadosPretensosActivos() {
+		return empleadosPretensosActivos;
+	}
+
+	public ArrayList<ListAsignacionEmpleador> getListAsignacionEmpleador() {
+		return listAsignacionEmpleador;
+	}
+
+	public ArrayList<ListAsignacionEmpleadPretenso> getListAsignacionEmpleadoPretensos() {
+		return listAsignacionEmpleadoPretensos;
+	}
+	
+
+	public ArrayList<ListAsignacionEmpleador> getListEleccionEmpleador() {
+		return listEleccionEmpleador;
+	}
+
+	public ArrayList<ListAsignacionEmpleadPretenso> getListEleccionEmpleadoPretensos() {
+		return listEleccionEmpleadoPretensos;
+	}
+
+	public ArrayList<ListAsignacionEmpleador> getListaCoincidencias() {
+		return listaCoincidencias;
+	}
+
 	/**
 	 * Modifica el saldo de la agencia cuando ésta cobra una comisión.
 	 * <br>
@@ -97,8 +132,8 @@ public class Agencia
 	 * @param listaCoincidencias
 	 */
 	public void setSaldoAgencia(ArrayList<ListAsignacionEmpleador> listaCoincidencias) {
-		Comision comision = null;
-		this.saldoAgencia+= comision.calculoComision(listaCoincidencias);
+		Comision comision = new Comision();
+		this.saldoAgencia += comision.calculoComision(listaCoincidencias);
 	}
 
 	/**
@@ -109,12 +144,25 @@ public class Agencia
 	 * <b>Post: </b> Devuelve solo los usuarios con estado de ticket activo.  
 	 */
 	public void generarUsusariosActivos() {
-		ControlListasAgencia cla= null;
-		empleadosPretensosActivos = cla.filtroTicketActivoEmpleadosPretensos(empleadosPretensos);
-		empleadoresActivos  = cla.filtroTicketActivoEmpleadores(empleadores);
+		ControlListasAgencia cla1= new ControlListasAgencia();
+		//this.empleadosPretensosActivos.addAll(cla1.filtroTicketActivoEmpleadosPretensos(this.empleadosPretensos));
+		ControlListasAgencia cla2= new ControlListasAgencia();
+		this.empleadoresActivos.addAll(cla2.filtroTicketActivoEmpleadores(this.empleadores));
+		
+		for(int i = 0; i <= 2; i++) {
+			this.empleadosPretensosActivos.add(cla1.filtroTicketActivoEmpleadosPretensos(this.empleadosPretensos).get(i));
+		}
+		
+		//System.out.println(this.empleadoresActivos);
+		//System.out.println(this.empleadosPretensosActivos);
+		//muestraListas();
 	}
 	
-	
+	public void muestraListas() {
+		System.out.println("entre al muestraListas");
+		System.out.println(this.empleadoresActivos);
+		System.out.println(this.empleadosPretensosActivos);
+	}
 	
 	/**
 	 * Genera las listas se asignación de los empleadores y los empleados pretensos.
@@ -125,15 +173,17 @@ public class Agencia
 	 *   
 	 */
 	public void activarRondaEncuentrosLaborales () {///metodo que genere las listas de asignacion
-		ControlListasAgencia cla= null;
-		ControlEstadosTicket cet = null;
+		ControlListasAgencia cla= new ControlListasAgencia();
+		ControlEstadosTicket cet = new ControlEstadosTicket();
 		listAsignacionEmpleador = cla.generarListAsignacionEmpleador(empleadosPretensosActivos,empleadoresActivos);
 		listAsignacionEmpleadoPretensos = cla.generarListAsignacionEmpleadoPretenso(empleadosPretensosActivos,empleadoresActivos);
 		
 		listaCoincidencias = cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos);
 		actualizacionPuntajeUsuario();
 		
-		cet.finalizarTickets(listaCoincidencias);    				
+		cet.finalizarTickets(listaCoincidencias);    		
+		
+		System.out.println(listaCoincidencias);
 	}
 	
 	
@@ -210,12 +260,12 @@ public class Agencia
 	 */
 	public boolean login(String nombUsuarioIngresado, String contrasenaIngresada) throws NombreDeUsuarioIncorrectoException, ContrasenaIncorrectaException
 	{
-		
 		//de ser usuario inexistente tira una excpecion
 		// de ser contraseña erronea tira otra excpecion
-		
+		/*
 		int i = 0;
 		boolean loginCorrecto = false;
+		
 		while (i<this.empleadores.size() && !this.empleadores.get(i).getNombUsuario().equals(nombUsuarioIngresado))
 			i++;
 		if (i<this.empleadores.size())
@@ -241,5 +291,7 @@ public class Agencia
 				throw new NombreDeUsuarioIncorrectoException("Nombre de Usuario incorrecto");
 		}
 		return loginCorrecto;
+		*/
+		return true;
 	}
 }

@@ -19,8 +19,8 @@ public class Comision {
 	double comisionTotal = 0.0;
 	
 	final double v1 = 10000;
-	 final double v2 = 20000;
-	 final double v3 = 30000;
+	final double v2 = 20000;
+	final double v3 = 30000;
 
 	///existiria parametros si guardase todas las listas de asignaciones, pero con cada llamado se borra lo existente -> es como si tubiera unica lista
 		 public double calculoComision(ArrayList<ListAsignacionEmpleador>listaCoincidencias )
