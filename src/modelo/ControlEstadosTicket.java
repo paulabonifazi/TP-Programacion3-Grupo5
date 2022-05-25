@@ -3,6 +3,8 @@ package modelo;
 
 import java.util.ArrayList;
 
+import excepciones.TicketCanceladoException;
+
 public class ControlEstadosTicket {
 	
 //TicketFinalizar		
@@ -17,16 +19,16 @@ public class ControlEstadosTicket {
 
 //ticketActivo/Suspendido
 
-	public void suspenderTicket (Ticket ticket) {
+	public void suspenderTicket (Ticket ticket) throws TicketCanceladoException {
 		if (ticket.getEstadoTicket().getEstado().equals("Cancelado"))
-		{}///LANZAR EXCEPTION
+			throw new TicketCanceladoException("Ticket cancelado");
 		else
 			ticket.getEstadoTicket().cambiarEstado("Suspendido");
 	}
 	
-	public void activarTicket (Ticket ticket) {
+	public void activarTicket (Ticket ticket) throws TicketCanceladoException {
 		if (ticket.getEstadoTicket().getEstado().equals("Cancelado"))
-		{}///LANZAR EXCEPTION
+			throw new TicketCanceladoException("Ticket cancelado");
 		else
 			ticket.getEstadoTicket().cambiarEstado("Activo");
 	}
