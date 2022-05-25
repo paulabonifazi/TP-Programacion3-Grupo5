@@ -61,7 +61,37 @@ public class cargaDatos {
 		agencia.activarRondaEncuentrosLaborales();
 		agencia.generarUsusariosActivos();
 		agencia.getSaldoAgencia();
+	
 		
+		
+		
+		for (int i=0; i<agencia.getEmpleadosPretensos().size(); i++)
+			System.out.println(agencia.getEmpleadosPretensos().get(i).getNombre());
+		
+		for (int i=0; i<agencia.getEmpleadores().size(); i++)
+			System.out.println(agencia.getEmpleadores().get(i).getNomRazonS());
+			
+		agencia.generarUsusariosActivos();
+		
+	
+		System.out.println(agencia.getEmpleadoresActivos());
+		System.out.println(agencia.getEmpleadosPretensosActivos());
+		
+		
+		agencia.activarRondaEncuentrosLaborales();
+
+
+		System.out.println(agencia.getListAsignacionEmpleador());
+		System.out.println(agencia.getListAsignacionEmpleadoPretensos());
+		
+		System.out.println(agencia.getListEleccionEmpleador());
+		System.out.println(agencia.getListEleccionEmpleadoPretensos());
+		
+		System.out.println(agencia.getListaCoincidencias());
+		
+		
+		
+		System.out.println("saldo "+agencia.getSaldoAgencia());
 	}
 
 }
