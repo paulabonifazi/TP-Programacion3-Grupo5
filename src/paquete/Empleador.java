@@ -2,6 +2,8 @@ package paquete;
 
 import java.util.ArrayList;
 
+import excepciones.NoCoincidenciaException;
+import excepciones.TicketCanceladoException;
 import interfaces.IPersonaFisica;
 import interfaces.IPersonaJuridica;
 import interfaces.MuestraListaEmpleadosPretensos;
@@ -119,7 +121,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	}
 
 	@Override
-	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista)
+	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista) throws NoCoincidenciaException
 	{
 		boolean coincidencia = false;
 		int contEmpleado = 0;
@@ -137,18 +139,30 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 			contEmpleado++;
 		}
 		if (coincidencia == false)//si coincidencia es false -> nadie lo contrato -> lanza exception u cartel
-			System.out.println("Nadie tuvo en cuenta a " + this.getNombUsuario());
+			throw new NoCoincidenciaException(this.getNombUsuario());
 		else
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
 	}
 
 	public void activarTicket() {
 		ControlEstadosTicket cla=new ControlEstadosTicket();
-		cla.activarTicket(ticket);
+		try
+		{
+			cla.activarTicket(ticket);
+		} catch (TicketCanceladoException e)
+		{
+			e.getMessage();
+		}
 	}
 	
 	public void suspenderTicket() {
 		ControlEstadosTicket cla=new ControlEstadosTicket();
-		cla.suspenderTicket(ticket);
+		try
+		{
+			cla.suspenderTicket(ticket);
+		} catch (TicketCanceladoException e)
+		{
+			e.getMessage();
+		}
 	}
 }

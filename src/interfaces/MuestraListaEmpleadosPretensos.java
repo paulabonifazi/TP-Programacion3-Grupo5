@@ -2,6 +2,7 @@ package interfaces;
 
 import java.util.ArrayList;
 
+import excepciones.NoCoincidenciaException;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import paquete.EmpleadoPretenso;
@@ -22,5 +23,5 @@ public interface MuestraListaEmpleadosPretensos
 	// no hay mejor forma
 	/// si no llega a estar en ningunaparte -->> LANZAR EXCEPTION u tratar el caso
 
-	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista);
+	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista) throws NoCoincidenciaException;
 }
