@@ -187,7 +187,7 @@ public class Agencia
 		}
 		
 		
-	System.out.println("*******************listaAsignacioEmpleadiPretenso************");
+	System.out.println("*******************listaAsignacioEmpleadiPretenso");
 		
 		for (int q=0; q<listAsignacionEmpleadoPretensos.size(); q++) {
 			System.out.println("empleadoPrertensoi"+listAsignacionEmpleadoPretensos.get(q).getEmpleadoPretenso().getNombre());
@@ -241,19 +241,19 @@ public class Agencia
 System.out.println("*******************listaElecciconaEmpleador");
 		
 		for (int q=0; q<listEleccionEmpleador.size(); q++) {
-			System.out.println("empleador"+listEleccionEmpleador.get(q).getEmpleador().getNomRazonS());
+			System.out.println("empleador  "+listEleccionEmpleador.get(q).getEmpleador().getNomRazonS());
 			for (int w=0; w<listEleccionEmpleador.get(q).getListEmpleadosPretensos().size();w++) {
-				System.out.println("empleadfoPrentes"+listEleccionEmpleador.get(q).getListEmpleadosPretensos().get(w).getNombre());
+				System.out.println("empleadfoPrentes  "+listEleccionEmpleador.get(q).getListEmpleadosPretensos().get(w).getNombre());
 			}
 			
 		}
 		
-	System.out.println("*******************listaAsignacioEmpleadPretesnos");
+	System.out.println("*******************listaEleccionEmpleadPretesnos");
 		
 	for (int q=0; q<listEleccionEmpleadoPretensos.size(); q++) {
-		System.out.println("empleadoPrertensoi"+listEleccionEmpleadoPretensos.get(q).getEmpleadoPretenso().getNombre());
+		System.out.println("empleadoPrertensoi  "+listEleccionEmpleadoPretensos.get(q).getEmpleadoPretenso().getNombre());
 		for (int w=0; w<listEleccionEmpleadoPretensos.get(q).getListEmpleadores().size();w++) {
-			System.out.println("empresas"+listEleccionEmpleadoPretensos.get(q).getListEmpleadores().get(w).getNomRazonS());
+			System.out.println("empresas   "+listEleccionEmpleadoPretensos.get(q).getListEmpleadores().get(w).getNomRazonS());
 			
 		}}
 		
