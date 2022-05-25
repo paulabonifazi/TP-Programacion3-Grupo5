@@ -59,7 +59,7 @@ public class expLoginContrasena {
 		agencia.agregarEmpleadoPretenso(empleadoPretenso5);
 		
 		//------------------------------
-		/*for (int i=0; i<agencia.getEmpleadosPretensos().size(); i++)
+		for (int i=0; i<agencia.getEmpleadosPretensos().size(); i++)
 			System.out.println(agencia.getEmpleadosPretensos().get(i).getNombre());
 		
 		for (int i=0; i<agencia.getEmpleadores().size(); i++)
@@ -72,16 +72,16 @@ public class expLoginContrasena {
 		System.out.println(agencia.getEmpleadosPretensosActivos());
 		
 		
-		agencia.activarRondaEncuentrosLaborales();
+		/*agencia.activarRondaEncuentrosLaborales();//ACÁ CRASHEA
 
 
 		System.out.println(agencia.getListAsignacionEmpleador());
-		System.out.println(agencia.getListAsignacionEmpleadoPretensos());*/
+		System.out.println(agencia.getListAsignacionEmpleadoPretensos());
 		
-	/*	System.out.println(agencia.getListEleccionEmpleador());
-		System.out.println(agencia.getListEleccionEmpleadoPretensos());*/
+		System.out.println(agencia.getListEleccionEmpleador());
+		System.out.println(agencia.getListEleccionEmpleadoPretensos());
 		
-	//	System.out.println(agencia.getListaCoincidencias());
+		System.out.println(agencia.getListaCoincidencias());*/
 		//-----------------------------
 		try {
 			agencia.login("Paola", "hola1256");

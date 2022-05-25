@@ -2,7 +2,6 @@ package paquete;
 
 import java.util.ArrayList;
 
-import excepciones.NoCoincidenciaException;
 import excepciones.TicketCanceladoException;
 import interfaces.IPersonaFisica;
 import interfaces.MuestraListaEmpleadores;
@@ -72,7 +71,7 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, Muestra
 	}
 
 	@Override
-	public void mostrarResultado(ArrayList<ListAsignacionEmpleador> lista) throws NoCoincidenciaException
+	public void mostrarResultado(ArrayList<ListAsignacionEmpleador> lista)
 	{
 		boolean coincidencia = false;
 		int contEmpleador = 0;
@@ -90,7 +89,7 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, Muestra
 			contEmpleador++;
 		}
 		if (coincidencia == false)//si coincidencia es false -> nadie lo contrato -> lanza exception u cartel
-			throw new NoCoincidenciaException(this.getNombUsuario());
+			System.out.println("Nadie tuvo en cuenta a " + this.getNombUsuario());
 		else
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadorActual.getEmpleador().getNombUsuario());
 	}
