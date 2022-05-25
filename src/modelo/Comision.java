@@ -19,104 +19,94 @@ public class Comision {
 	double sueldoPretendidoE =0.0;
 	double comisionTotal = 0.0;
 	double c = 0.0;
+	int N =0;
+	double comision;
 	final double v1 = 10000;
 	final double v2 = 20000;
 	final double v3 = 30000;
 
-	///existiria parametros si guardase todas las listas de asignaciones, pero con cada llamado se borra lo existente -> es como si tubiera unica lista
-		 public double calculoComision(ArrayList<ListAsignacionEmpleador>listaCoincidencias )
+	 public double calculoComision(ArrayList<ListAsignacionEmpleador>listaCoincidencias )
+		{
+		
+		 	ArrayList<EmpleadoPretenso>listaEmpleadosContratados = new ArrayList<EmpleadoPretenso>() ;
+			for(int i=0; i< listaCoincidencias.size(); i++)//recorro la lista de contrataciones 
 			{
-			
-			 	ArrayList<EmpleadoPretenso>listaEmpleadosContratados = new ArrayList<EmpleadoPretenso>() ;
-				for(int i=0; i< listaCoincidencias.size(); i++)//recorro la lista de contrataciones 
+				comisionEmpleador = 0;
+				listaEmpleadosContratados.addAll(listaCoincidencias.get(i).getListEmpleadosPretensos());
+				
+				for(int j=0; j <listaEmpleadosContratados.size(); j++ )//recorro la lista de empelados
 				{
-					 
-					listaEmpleadosContratados.addAll(listaCoincidencias.get(i).getListEmpleadosPretensos());
-				///	System.out.println("cant empleados contratados"+listaCoincidencias.get(i).getListEmpleadosPretensos().size());
-					
-					for(int j=0; j <listaEmpleadosContratados.size(); j++ )//recorro la lista de empelados
-					{
-						///System.out.println("blblblblbl -> e,pleados");
-						double comision = 0;
-						//calculo la comision que se le cobra al EMPLEADO
-
-						if  (listaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion().equals("V1"))
-							sueldoPretendido = v1;
-						else if (listaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion().equals("V2"))
-							sueldoPretendido = v2;
-						else
-							sueldoPretendido = v3;
-						
-						if(listaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("Junior"))
-							comision = sueldoPretendido * PorcentajeJunior;
-						else
-							if(listaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("Senior"))
-								comision = sueldoPretendido * PorcentajeSenior;
-							else //tipoPuesto ->"Gerencial"
-								comision = sueldoPretendido;
-
-						//RESTA 1% POR CADA PUNTO
-
-						if(listaEmpleadosContratados.get(i).getPuntajeUsuario() > 0 && listaEmpleadosContratados.get(i).getPuntajeUsuario() <= 99)
-							comision -= listaEmpleadosContratados.get(i).getPuntajeUsuario() * 0.01;
-						else
-							if(listaEmpleadosContratados.get(i).getPuntajeUsuario() >= 100)
-								comision = 0;
-
-						comisionEmpleados += comision;
-						
-
-					}
-					
-					//calculo comsion que se le cobra al EMPLEADOR
-					if(listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V1"))
-						sueldoPretendidoE = v1;
-					else if (listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V2"))
-						sueldoPretendidoE = v2;
-					else if (listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V3"))
-						sueldoPretendidoE = v3;
-					
-					if(listaCoincidencias.get(i).getEmpleador().isPersonaJuridica())
-					{
-						
-						if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Salud"))
-							comisionEmpleador = sueldoPretendidoE * PorcentajePJSalud;
-						else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Comercio local"))
-								comisionEmpleador = sueldoPretendidoE * PorcentajePJComercioLocal;
-							else //rubro ->"COMERCIO INTERNACIONAL"
-								comisionEmpleador = sueldoPretendidoE;
-						////System.out.println(comisionEmpleador);
-					}
-					else //personaFisica
-					{
-						////System.out.println("blblblblbl -> fisica");
-						if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Salud"))
-							comisionEmpleador = sueldoPretendidoE * PorcentajePFSalud;
-						else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals ("Comercio local"))
-								comisionEmpleador = sueldoPretendidoE * PorcentajePFComercioLocal;
-							else //rubro ->"COMERCIO INTERNACIONAL"
-								comisionEmpleador = sueldoPretendidoE * PorcentajePFComercioInternacional;
-					}
-
-					//RESTA 1% POR CADA PUNTO
-			
-					if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() > 0 && listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() <= 99)
-						comisionEmpleador -= listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() * 0.01;
+					comision = 0;
+					//calculo la comision que se le cobra al EMPLEADO
+	
+					if  (listaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion().equals("V1"))
+						sueldoPretendido = v1;
+					else if (listaEmpleadosContratados.get(j).getTicket().getFbTicket().getRemuneracion().equals("V2"))
+						sueldoPretendido = v2;
 					else
-						if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() >= 100)
-							comisionEmpleador = 0;
+						sueldoPretendido = v3;
 					
-					////System.out.println("Al final: "+comisionEmpleador);
-					int N =listaCoincidencias.get(i).getListEmpleadosPretensos().size();
-				//	System.out.println(N);
-					
-					comisionTotal = (comisionEmpleador)*N; // comisionEmpleados;
-					////System.out.println("comision total: "+comisionTotal);
-					
-					c+=comisionTotal;
-				}	
-
-				return c;//retorno el total de la comision de la lista
-			}
+					if(listaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("Junior"))
+						comision = sueldoPretendido * PorcentajeJunior;
+					else
+						if(listaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("Senior"))
+							comision = sueldoPretendido * PorcentajeSenior;
+						else //tipoPuesto ->"Gerencial"
+							comision = sueldoPretendido;
+	
+					//RESTA 1% POR CADA PUNTO
+					if(listaEmpleadosContratados.get(j).getPuntajeUsuario() > 0 && listaEmpleadosContratados.get(j).getPuntajeUsuario() <= 99)
+						comision -= listaEmpleadosContratados.get(j).getPuntajeUsuario() * 0.01;
+					else
+						if(listaEmpleadosContratados.get(j).getPuntajeUsuario() >= 100)
+							comision = 0;
+	
+					comisionEmpleados += comision;
+				}
+				
+				//calculo comsion que se le cobra al EMPLEADOR
+				if(listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V1"))
+					sueldoPretendidoE = v1;
+				else if (listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V2"))
+					sueldoPretendidoE = v2;
+				else if (listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V3"))
+					sueldoPretendidoE = v3;
+				
+				if(listaCoincidencias.get(i).getEmpleador().isPersonaJuridica())
+				{						
+					if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Salud"))
+						comisionEmpleador = sueldoPretendidoE * PorcentajePJSalud;
+					else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Comercio local"))
+							comisionEmpleador = sueldoPretendidoE * PorcentajePJComercioLocal;
+						else //rubro ->"COMERCIO INTERNACIONAL"
+							comisionEmpleador = sueldoPretendidoE;
+					////System.out.println(comisionEmpleador);
+				}
+				else //personaFisica
+				{
+				
+					if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Salud"))
+						comisionEmpleador = sueldoPretendidoE * PorcentajePFSalud;
+					else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals ("Comercio local"))
+							comisionEmpleador = sueldoPretendidoE * PorcentajePFComercioLocal;
+						else //rubro ->"COMERCIO INTERNACIONAL"
+							comisionEmpleador = sueldoPretendidoE * PorcentajePFComercioInternacional;
+				}
+	
+				//RESTA 1% POR CADA PUNTo
+				if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() > 0 && listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() <= 99)
+					comisionEmpleador -= listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() * 0.01;
+				else
+					if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() >= 100)
+						comisionEmpleador = 0;
+				
+				N = listaCoincidencias.get(i).getListEmpleadosPretensos().size();
+				comisionTotal = (comisionEmpleador)*N + comisionEmpleados;
+	
+				c+=comisionTotal;
+			}	
+	
+			return c;//retorno el total de la comision de la lista
+		}
 
 }

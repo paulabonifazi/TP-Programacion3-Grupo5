@@ -17,12 +17,8 @@ public class ControlListasAgencia {
 	public ArrayList<ListAsignacionEmpleador> generarListAsignacionEmpleador(ArrayList<EmpleadoPretenso> empleadosPretensosActivos,ArrayList<Empleador> empleadoresActivos) {
 		ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador = new ArrayList<ListAsignacionEmpleador>();
 		for (int i=0; i<empleadoresActivos.size(); i++)
-			{listAsignacionEmpleador.add(listasAsignacionEmpresa(empleadosPretensosActivos,empleadoresActivos.get(i)));
-			System.out.println("desde generarLista"+i);
-			System.out.println(" nombre Empleador "+listAsignacionEmpleador.get(i).getEmpleador().getNomRazonS());
-			for (int k=0; k<listAsignacionEmpleador.size();k++)
-				System.out.println("                 nombre EmpleadPretensi "+listAsignacionEmpleador.get(i).getListEmpleadosPretensos().get(k).getNombre());
-			}
+			listAsignacionEmpleador.add(listasAsignacionEmpresa(empleadosPretensosActivos,empleadoresActivos.get(i)));
+			
 		return listAsignacionEmpleador;
 	}
 	
@@ -106,17 +102,6 @@ public class ControlListasAgencia {
 		nuevoNodo.setEmpleador(empleador);
 		nuevoNodo.setListEmpleadosPretensos(metodoOrdenamientoEmpleador(empleador , empleadosPretensos));//traigo una lista de empleadosPretensos ordenada
 		
-		
-	System.out.println("*******************metodoEmpresaAsignavion");
-		
-	
-			System.out.println("empleador"+nuevoNodo.getEmpleador().getNomRazonS());
-			for (int w=0; w<nuevoNodo.getListEmpleadosPretensos().size();w++) {
-				System.out.println("empleadfoPrentes"+nuevoNodo.getListEmpleadosPretensos().get(w).getNombre());
-			}
-			
-		
-		
 		return nuevoNodo;
 	}
 	
@@ -138,19 +123,10 @@ public class ControlListasAgencia {
 				empleadoPretensPuntaje.setPuntaje(puntaje);
 				listaOrdenada.add(empleadoPretensPuntaje);
 			
-			System.out.println("                        el puntaje es "+puntaje);	
-		
 			empleadoPretensPuntaje=null;
 			}
 	
-		System.out.println("*******************metodoOrdenamiteontListan********************Puntaje*************");
-		
-		for (int q=0; q<listaOrdenada.size();q++) {
-		System.out.println("empleadoPretnesir"+listaOrdenada.get(q).getEmpleadoPretenso().getNombre()+"puntake "+listaOrdenada.get(q).getPuntaje());
-		
-		}
-		
-		
+				
 	Collections.sort(listaOrdenada, new Comparator<EmpleadPretensoPuntaje>() {
 		@Override
 		public int compare(EmpleadPretensoPuntaje p2, EmpleadPretensoPuntaje p1) {
@@ -162,13 +138,7 @@ public class ControlListasAgencia {
 		{lista.add(listaOrdenada.get(j).getEmpleadoPretenso());
 		
 		}
-	
-	System.out.println("*******************metodoOrdenamiteontListan********************");
-	
-	for (int q=0; q<lista.size();q++) {
-	System.out.println("empleadoPretnesir"+lista.get(q).getNombre());
-	
-	}
+
 	
 	return lista;
 	
@@ -177,36 +147,36 @@ public class ControlListasAgencia {
 		
 		
 	 public  ArrayList<ListAsignacionEmpleador> ListaCoincidencias (ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
-		{	
-			
-	
+	{	
 			 ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();
 			 int w;
 			
 			for(int i = 0; i < ListaDeEmpleadores.size(); i++)//Recorre el arrayList de empleadores
 			{	 
 				ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
-				ArrayList<EmpleadoPretenso> nodoListEmpleado = new ArrayList<EmpleadoPretenso>();
-			
+				ArrayList <EmpleadoPretenso> nodoListEmpleado = new ArrayList<EmpleadoPretenso>();
+				
 				nodo.setEmpleador(ListaDeEmpleadores.get(i).getEmpleador());
 
-				for (int q=0; q<ListaDeEmpleadores.get(i).getListEmpleadosPretensos().size();q++) {//recorro los pretensos del empleador
+				for (int q=0; q < ListaDeEmpleadores.get(i).getListEmpleadosPretensos().size();q++) {//recorro los pretensos del empleador
 					w=0;
-					while (w < ListaDeEmpleadosPretensos.size() && !ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).equals(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso()))
-						w++;
 					
-						if (w < ListaDeEmpleadosPretensos.size()) {//encontre el empleado
-							if (ListaDeEmpleadosPretensos.get(w).getListEmpleadores().get(0).equals(ListaDeEmpleadores.get(i).getEmpleador())) {//coinviden
-								nodoListEmpleado.add(ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q));
-								//System.out.println((ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).getNombre()+"  w  "+ListaDeEmpleadosPretensos.get(w).getListEmpleadores().get(0).getNomRazonS()));
+					while (w < ListaDeEmpleadosPretensos.size() && 
+					!ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).equals(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso()))
+					{	w++;}
+					
+					
+						
+							if (w < ListaDeEmpleadosPretensos.size() && 
+								ListaDeEmpleadosPretensos.get(w).getListEmpleadores().get(0).equals(ListaDeEmpleadores.get(i).getEmpleador())) {//encontre el empleado
+								nodoListEmpleado.add(ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(w));				
+									
 							}
-						}
-					
 				}
-					
 					nodo.setListEmpleadosPretensos(nodoListEmpleado);
-					
 					listaCoincidencias.add(nodo);
+					
+					
 					nodoListEmpleado=null;
 					nodo = null;
 			}	

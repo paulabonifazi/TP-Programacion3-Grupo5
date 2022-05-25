@@ -176,26 +176,7 @@ public class Agencia
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
-	System.out.println("*******************listaAsignacioEmpleadior");
-		
-		for (int q=0; q<listAsignacionEmpleador.size(); q++) {
-			System.out.println("empleador"+listAsignacionEmpleador.get(q).getEmpleador().getNomRazonS());
-			for (int w=0; w<listAsignacionEmpleador.get(q).getListEmpleadosPretensos().size();w++) {
-				System.out.println("empleadfoPrentes"+listAsignacionEmpleador.get(q).getListEmpleadosPretensos().get(w).getNombre());
-			}
-			
-		}
-		
-		
-	System.out.println("*******************listaAsignacioEmpleadiPretenso");
-		
-		for (int q=0; q<listAsignacionEmpleadoPretensos.size(); q++) {
-			System.out.println("empleadoPrertensoi"+listAsignacionEmpleadoPretensos.get(q).getEmpleadoPretenso().getNombre());
-			for (int w=0; w<listAsignacionEmpleadoPretensos.get(q).getListEmpleadores().size();w++) {
-				System.out.println("empresas"+listAsignacionEmpleadoPretensos.get(q).getListEmpleadores().get(w).getNomRazonS());
-			}
-			
-		}
+	
 		
 		
 		//empleadores
@@ -238,36 +219,9 @@ public class Agencia
 		listaCoincidencias.addAll(cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos));
 		
 		
-System.out.println("*******************listaElecciconaEmpleador");
+
 		
-		for (int q=0; q<listEleccionEmpleador.size(); q++) {
-			System.out.println("empleador  "+listEleccionEmpleador.get(q).getEmpleador().getNomRazonS());
-			for (int w=0; w<listEleccionEmpleador.get(q).getListEmpleadosPretensos().size();w++) {
-				System.out.println("empleadfoPrentes  "+listEleccionEmpleador.get(q).getListEmpleadosPretensos().get(w).getNombre());
-			}
-			
-		}
-		
-	System.out.println("*******************listaEleccionEmpleadPretesnos");
-		
-	for (int q=0; q<listEleccionEmpleadoPretensos.size(); q++) {
-		System.out.println("empleadoPrertensoi  "+listEleccionEmpleadoPretensos.get(q).getEmpleadoPretenso().getNombre());
-		for (int w=0; w<listEleccionEmpleadoPretensos.get(q).getListEmpleadores().size();w++) {
-			System.out.println("empresas   "+listEleccionEmpleadoPretensos.get(q).getListEmpleadores().get(w).getNomRazonS());
-			
-		}}
-		
-System.out.println("*******************listaCoincidencia");
-		
-		for (int q=0; q<listaCoincidencias.size(); q++) {
-			System.out.println("empleador"+listaCoincidencias.get(q).getEmpleador().getNomRazonS());
-			for (int w=0; w<listaCoincidencias.get(q).getListEmpleadosPretensos().size();w++) {
-				System.out.println("empleadfoPrentes"+listaCoincidencias.get(q).getListEmpleadosPretensos().get(w).getNombre());
-			}
-			
-		}
-		
-		actualizacionPuntajeUsuario();
+	actualizacionPuntajeUsuario();
 		cet.finalizarTickets(listaCoincidencias);
 		setSaldoAgencia(listaCoincidencias);
 	}

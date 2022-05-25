@@ -10,7 +10,7 @@ public class ControlEstadosTicket {
 		for (int i=0; i<lista.size(); i++) {
 			if (lista.get(i).getEmpleador().getTicket().getCantEmpleadosObtenidos() == lista.get(i).getEmpleador().getTicket().getCantEmpleadosSolicitados())
 				lista.get(i).getEmpleador().getTicket().getEstadoTicket().cambiarEstado("FINALIZADO");
-			for (int j=0; j<lista.get(i).getListEmpleadosPretensos().size(); i++)
+			for (int j=0; j<lista.get(i).getListEmpleadosPretensos().size(); j++)
 				lista.get(i).getListEmpleadosPretensos().get(j).getTicket().getEstadoTicket().cambiarEstado("FINALIZADO");
 		}
 	}
