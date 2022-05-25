@@ -32,11 +32,11 @@ public class Comision {
 				{
 					 
 					listaEmpleadosContratados.addAll(listaCoincidencias.get(i).getListEmpleadosPretensos());
-					System.out.println("blblblblbl"+listaEmpleadosContratados.size());
+				///	System.out.println("cant empleados contratados"+listaCoincidencias.get(i).getListEmpleadosPretensos().size());
 					
 					for(int j=0; j <listaEmpleadosContratados.size(); j++ )//recorro la lista de empelados
 					{
-						System.out.println("blblblblbl -> e,pleados");
+						///System.out.println("blblblblbl -> e,pleados");
 						double comision = 0;
 						//calculo la comision que se le cobra al EMPLEADO
 
@@ -85,11 +85,11 @@ public class Comision {
 								comisionEmpleador = sueldoPretendidoE * PorcentajePJComercioLocal;
 							else //rubro ->"COMERCIO INTERNACIONAL"
 								comisionEmpleador = sueldoPretendidoE;
-						System.out.println(comisionEmpleador);
+						////System.out.println(comisionEmpleador);
 					}
 					else //personaFisica
 					{
-						System.out.println("blblblblbl -> fisica");
+						////System.out.println("blblblblbl -> fisica");
 						if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Salud"))
 							comisionEmpleador = sueldoPretendidoE * PorcentajePFSalud;
 						else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals ("Comercio local"))
@@ -105,9 +105,13 @@ public class Comision {
 					else
 						if(listaCoincidencias.get(i).getEmpleador().getPuntajeUsuario() >= 100)
 							comisionEmpleador = 0;
-
-					int N = listaEmpleadosContratados.size();
-					comisionTotal = (comisionEmpleador)*N + comisionEmpleados;
+					
+					////System.out.println("Al final: "+comisionEmpleador);
+					int N =listaCoincidencias.get(i).getListEmpleadosPretensos().size();
+				//	System.out.println(N);
+					
+					comisionTotal = (comisionEmpleador)*N; // comisionEmpleados;
+					////System.out.println("comision total: "+comisionTotal);
 					
 					c+=comisionTotal;
 				}	

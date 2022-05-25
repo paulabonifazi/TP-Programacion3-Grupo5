@@ -18,6 +18,7 @@ public class ControlListasAgencia {
 		ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador = new ArrayList<ListAsignacionEmpleador>();
 		for (int i=0; i<empleadoresActivos.size(); i++)
 			listAsignacionEmpleador.add(listasAsignacionEmpresa(empleadosPretensosActivos,empleadoresActivos.get(i)));
+			System.out.println("blalalalala"+listAsignacionEmpleador.get(i));
 		return listAsignacionEmpleador;
 	}
 	
@@ -154,7 +155,7 @@ public class ControlListasAgencia {
 			 ArrayList<EmpleadoPretenso> ListaPosiblesEmpleados ;
 			 String empleadoPretenso;
 			 int cont;
-
+			 
 			for(int i = 0; i < ListaDeEmpleadores.size(); i++)//Recorre el arrayList de empleadores
 			{
 				//trabahar con var para simplificar
@@ -175,12 +176,16 @@ public class ControlListasAgencia {
 					{
 						nodo.setListEmpleadosPretensos(ListaPosiblesEmpleados);
 						nodo.getListEmpleadosPretensos().add(ListaDeEmpleadosPretensos.get(k).getEmpleadoPretenso());
-						ListaDeEmpleadores.get(i).getEmpleador().getTicket().setCantEmpleadosObtenidos();
+						ListaDeEmpleadores.get(i).getEmpleador().getTicket().setCantEmpleadosObtenidos(1);
 					}
 					cont++;
 				}
 				listaCoincidencias.add(nodo);
+				
+				System.out.println("ListaCoincidencias"+listaCoincidencias.get(i).getListEmpleadosPretensos().size());
 			}
+			
+			
 			return listaCoincidencias;
 				
 		}
