@@ -6,7 +6,8 @@ import java.util.Comparator;
 
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
-
+import interfaces.IMuestraEmpleadores;
+import interfaces.IMuestraEmpleadosPretensos;
 import modelo.Comision;
 import modelo.ControlEstadosTicket;
 import modelo.EmpleadPretensoPuntaje;
@@ -23,7 +24,7 @@ import tablas.PuntajeTicket;
  *<br>
  *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego serán procesados para generar tickets. Dichos tickets permitirá analizar la contratación de empleados.
  */
-public class Agencia
+public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 {
 	private static Agencia instancia = null;
 
@@ -300,4 +301,16 @@ public class Agencia
 		return loginCorrecto;
 		
 	}
+
+	@Override
+	public void mostrarEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
+		
+	}
+
+	@Override
+	public void mostrarEmpleadores(ArrayList<Empleador> empleadores) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

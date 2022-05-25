@@ -3,13 +3,13 @@ package paquete;
 import java.util.ArrayList;
 
 import interfaces.IPersonaFisica;
-import interfaces.MuestraListaEmpleadores;
+import interfaces.IMuestraListasEmpleadosPretensos;
 import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleadoPretenso;
 
-public class EmpleadoPretenso extends Persona implements IPersonaFisica, MuestraListaEmpleadores
+public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestraListasEmpleadosPretensos
 {	
 	private String nombre;
 	private String apellido;
@@ -87,27 +87,10 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, Muestra
 			}
 			contEmpleador++;
 		}
-		if (coincidencia == false)//si coincidencia es false -> nadie lo contrato -> lanza exception u cartel
+		if (coincidencia == false)
 			System.out.println("Nadie contrató a " + this.getNombUsuario());
 		else
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadorActual.getEmpleador().getNombUsuario());
 	}
 	
-
-	public void activarTicket() {
-		ControlEstadosTicket cla=null;
-		cla.activarTicket(ticket);
-	}
-	
-	public void suspenderTicket() {
-		ControlEstadosTicket cla=null;
-		cla.suspenderTicket(ticket);
-	}
-	
-	public void resultadoTicket() {
-		ControlEstadosTicket cet = null;
-		cet.resultadoTicketEP(ticket);
-		
-	}
 }
-	//
