@@ -31,22 +31,21 @@ public class ControlEstadosTicket {
 			ticket.getEstadoTicket().cambiarEstado("ACTIVO");
 	}
 		
-		//SE MODIFICA DCESPUES DE LA RONDA DE ENCUENTRO 
-		//O A PETICION DEL usuario
+	//SE MODIFICA DCESPUES DE LA RONDA DE ENCUENTRO 
+	//O A PETICION DEL usuario
+	
+	//el resultado esta en INICIADO cuando se crea el ticket
+	public String resultadoTicketEP(TicketEmpleadoPretenso ticket)
+	{
+		String estado = null; 
+		if(ticket.getEstadoTicket().getEstado().equals("FINALIZADO")) //exito
+			estado = "EXITO";
+		else
+			if(ticket.getEstadoTicket().getEstado().equals("CANCELADO"))//fracaso
+				estado = "FRACASO";	
 		
-		//el resultado esta en INICIADO cuando se crea el ticket
-		public String resultadoTicketEP(TicketEmpleadoPretenso ticket)
-		{
-			String estado = null; 
-			if(ticket.getEstadoTicket().getEstado().equals("FINALIZADO")) //exito
-				estado = "EXITO";
-			else
-				if(ticket.getEstadoTicket().getEstado().equals("CANCELADO"))//fracaso
-					estado = "FRACASO";	
-			
-			return estado;
-			//ver que onda como hacer esto xq el estado necesita el resultado y viceversa
-		}
+		return estado;
+	}
 	}
 
 

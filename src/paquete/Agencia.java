@@ -218,11 +218,10 @@ public class Agencia
 		
 		listaCoincidencias.addAll(cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos));
 		
+//actualiza el puntaje de los usuarios activos	
 		
-
-		
-	actualizacionPuntajeUsuario();
-		cet.finalizarTickets(listaCoincidencias);
+		actualizacionPuntajeUsuario();
+		cet.finalizarTickets(listaCoincidencias);		
 		setSaldoAgencia(listaCoincidencias);
 	}
 	
@@ -283,6 +282,8 @@ public class Agencia
 				if ( listaCoincidencias.get(k).getListEmpleadosPretensos() == null)//sin elecciones
 					empleadoresActivos.get(j).setPuntajeUsuario(-20); 
 		}
+		
+		
 	}
 
 	/**
