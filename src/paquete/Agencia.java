@@ -155,43 +155,56 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 	
 	public void activarRondaEleccion(){
-		int i = 0;
+		int i ;
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
-		ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
-		ArrayList<EmpleadoPretenso> nodoListas = new ArrayList<EmpleadoPretenso>();
+	
+		
 		
 		//empleadores
 		for (int j=0; j<listAsignacionEmpleador.size(); j++) {
-			nodo.setEmpleador(this.listAsignacionEmpleador.get(j).getEmpleador());
+			ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
+			ArrayList<EmpleadoPretenso> nodoListas = new ArrayList<EmpleadoPretenso>();
+			i=0;
 			
-			while (i < this.listAsignacionEmpleador.size()  &&  this.listAsignacionEmpleador.get(j).getEmpleador().getTicket().getCantEmpleadosSolicitados() < this.listAsignacionEmpleador.get(j).getEmpleador().getTicket().getCantEmpleadosObtenidos())
+			nodo.setEmpleador(this.listAsignacionEmpleador.get(j).getEmpleador());
+		
+			while (i < this.listAsignacionEmpleador.get(j).getListEmpleadosPretensos().size()  &&
+					this.listAsignacionEmpleador.get(j).getEmpleador().getTicket().getCantEmpleadosSolicitados() > this.listAsignacionEmpleador.get(j).getEmpleador().getTicket().getCantEmpleadosObtenidos())
 			{	
 				nodoListas.add(this.listAsignacionEmpleador.get(j).getListEmpleadosPretensos().get(i));
-				this.listAsignacionEmpleador.get(i).getEmpleador().getTicket().setCantEmpleadosObtenidos();
+				this.listAsignacionEmpleador.get(j).getEmpleador().getTicket().setCantEmpleadosObtenidos(1);
 				i++;
 			}
-			
 			nodo.setListEmpleadosPretensos(nodoListas);
 			this.listEleccionEmpleador.add(nodo);
+			
+			nodo=null;
 		}
 		
 		//empleadoPretensos
 		
-		ListAsignacionEmpleadPretenso nodoEP = new ListAsignacionEmpleadPretenso();
-		ArrayList<Empleador> nodoEmpresa = new ArrayList<Empleador>();
-		
 		for (int j=0; j<listAsignacionEmpleadoPretensos.size(); j++) {
+			ListAsignacionEmpleadPretenso nodoEP = new ListAsignacionEmpleadPretenso();
+			ArrayList<Empleador> nodoEmpresa = new ArrayList<Empleador>();
+		
 			nodoEP.setEmpleadoPretenso(listAsignacionEmpleadoPretensos.get(j).getEmpleadoPretenso());
 			nodoEmpresa.add(listAsignacionEmpleadoPretensos.get(j).getListEmpleadores().get(0));
+			nodoEP.setListEmpleadores(nodoEmpresa);
 			
 			this.listEleccionEmpleadoPretensos.add(nodoEP);
+		
+			nodoEP=null;
 		}
 		
+		
 		listaCoincidencias.addAll(cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos));
+		
+//actualiza el puntaje de los usuarios activos	
+		
 		actualizacionPuntajeUsuario();
-		cet.finalizarTickets(listaCoincidencias);
+		cet.finalizarTickets(listaCoincidencias);		
 		setSaldoAgencia(listaCoincidencias);
 	}
 	
@@ -252,6 +265,8 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 				if ( listaCoincidencias.get(k).getListEmpleadosPretensos() == null)//sin elecciones
 					empleadoresActivos.get(j).setPuntajeUsuario(-20); 
 		}
+		
+		
 	}
 
 	/**

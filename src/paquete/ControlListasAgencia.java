@@ -18,6 +18,7 @@ public class ControlListasAgencia {
 		ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador = new ArrayList<ListAsignacionEmpleador>();
 		for (int i=0; i<empleadoresActivos.size(); i++)
 			listAsignacionEmpleador.add(listasAsignacionEmpresa(empleadosPretensosActivos,empleadoresActivos.get(i)));
+			
 		return listAsignacionEmpleador;
 	}
 	
@@ -68,14 +69,17 @@ public class ControlListasAgencia {
 	
 	ArrayList<Empleador> lista = new  ArrayList<Empleador>();						//lista que voy a devolver
 	ArrayList<EmpleadorPuntaje> listaOrdenada = new ArrayList<EmpleadorPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
-	EmpleadorPuntaje empleadorPuntaje = new EmpleadorPuntaje();	
+	
 	
 	for (int i=0; i<listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
+		EmpleadorPuntaje empleadorPuntaje = new EmpleadorPuntaje();	
+		
 		empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
-		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeFC(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
+		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
 				//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
 		listaOrdenada.add(empleadorPuntaje);
-		}
+		empleadorPuntaje=null;
+	}
 	
 
 	Collections.sort(listaOrdenada, new Comparator<EmpleadorPuntaje>() {
@@ -97,7 +101,7 @@ public class ControlListasAgencia {
 		ListAsignacionEmpleador nuevoNodo = new ListAsignacionEmpleador();	
 		nuevoNodo.setEmpleador(empleador);
 		nuevoNodo.setListEmpleadosPretensos(metodoOrdenamientoEmpleador(empleador , empleadosPretensos));//traigo una lista de empleadosPretensos ordenada
-	
+		
 		return nuevoNodo;
 	}
 	
@@ -107,16 +111,22 @@ public class ControlListasAgencia {
 	
 		ArrayList<EmpleadoPretenso> lista = new  ArrayList<EmpleadoPretenso>();						//lista que voy a devolver
 		ArrayList<EmpleadPretensoPuntaje> listaOrdenada = new ArrayList<EmpleadPretensoPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
-		EmpleadPretensoPuntaje empleadoPretensPuntaje = new EmpleadPretensoPuntaje();
+		double puntaje;
 	
 		for (int i=0; i<listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
 			
+			puntaje = new PuntajeTicket().getPuntajeCF(empleador, listaEmpleaPretenso.get(i).getTicket());
+			
+			EmpleadPretensoPuntaje empleadoPretensPuntaje = new EmpleadPretensoPuntaje();
+			
 				empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
-				empleadoPretensPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(empleador, listaEmpleaPretenso.get(i).getTicket()));
+				empleadoPretensPuntaje.setPuntaje(puntaje);
 				listaOrdenada.add(empleadoPretensPuntaje);
+			
+			empleadoPretensPuntaje=null;
 			}
 	
-		
+				
 	Collections.sort(listaOrdenada, new Comparator<EmpleadPretensoPuntaje>() {
 		@Override
 		public int compare(EmpleadPretensoPuntaje p2, EmpleadPretensoPuntaje p1) {
@@ -126,50 +136,54 @@ public class ControlListasAgencia {
 	
 	for (int j = 0; j< listaOrdenada.size(); j++) ///cargo lista con el orden de listaOrdenada
 		{lista.add(listaOrdenada.get(j).getEmpleadoPretenso());
+		
 		}
+
 	
 	return lista;
 	
 	}
 		
+		
+		
 	 public  ArrayList<ListAsignacionEmpleador> ListaCoincidencias (ArrayList<ListAsignacionEmpleador> ListaDeEmpleadores, ArrayList<ListAsignacionEmpleadPretenso> ListaDeEmpleadosPretensos) 
-		{	
-			 ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
-			 ArrayList<EmpleadoPretenso>empleado;
+	{	
 			 ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();
-			 
-			 String empleador;
-			 ArrayList<EmpleadoPretenso> ListaPosiblesEmpleados ;
-			 String empleadoPretenso;
-			 int cont;
-
+			 int w;
+			
 			for(int i = 0; i < ListaDeEmpleadores.size(); i++)//Recorre el arrayList de empleadores
-			{
-				ListaPosiblesEmpleados = ListaDeEmpleadores.get(i).getListEmpleadosPretensos();
-
-				//CREAR UN NUEVO OBJETO DE lISTACOINCIDENCIAS 
-				nodo.setEmpleador(ListaDeEmpleadores.get(i).getEmpleador());
-				//CARGAR EL NOMBRE DE LA EMPRESA
-				cont = 0;
-				while (	cont < ListaPosiblesEmpleados.size() &&	ListaDeEmpleadores.get(i).getEmpleador().getTicket().getCantEmpleadosSolicitados() > ListaDeEmpleadores.get(i).getEmpleador().getTicket().getCantEmpleadosObtenidos())
-				{
-					empleadoPretenso = ListaPosiblesEmpleados.get(cont).getNombUsuario();
-					int k = 0;
-					while(k < ListaDeEmpleadosPretensos.size() && !ListaDeEmpleadosPretensos.get(k).getEmpleadoPretenso().getNombUsuario().equals(empleadoPretenso))//recorro buscando la coincidencia en la lista de los empleados -> si aparece el nombre en esa lista entonces hay coincidencia
-						k++;
-
-					if(k < ListaDeEmpleadosPretensos.size()) //coincidencia
-					{
-						nodo.setListEmpleadosPretensos(ListaPosiblesEmpleados);
-						nodo.getListEmpleadosPretensos().add(ListaDeEmpleadosPretensos.get(k).getEmpleadoPretenso());
-						ListaDeEmpleadores.get(i).getEmpleador().getTicket().setCantEmpleadosObtenidos();
-					}
-					cont++;
-				}
-				listaCoincidencias.add(nodo);
-			}
-			return listaCoincidencias;
+			{	 
+				ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
+				ArrayList <EmpleadoPretenso> nodoListEmpleado = new ArrayList<EmpleadoPretenso>();
 				
-		}
+				nodo.setEmpleador(ListaDeEmpleadores.get(i).getEmpleador());
+
+				for (int q=0; q < ListaDeEmpleadores.get(i).getListEmpleadosPretensos().size();q++) {//recorro los pretensos del empleador
+					w=0;
+					
+					while (w < ListaDeEmpleadosPretensos.size() && 
+					!ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).equals(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso()))
+					{	w++;}
+					
+					
+						
+							if (w < ListaDeEmpleadosPretensos.size() && 
+								ListaDeEmpleadosPretensos.get(w).getListEmpleadores().get(0).equals(ListaDeEmpleadores.get(i).getEmpleador())) {//encontre el empleado
+								nodoListEmpleado.add(ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(w));				
+									
+							}
+				}
+					nodo.setListEmpleadosPretensos(nodoListEmpleado);
+					listaCoincidencias.add(nodo);
+					
+					
+					nodoListEmpleado=null;
+					nodo = null;
+			}	
+		 return listaCoincidencias;
+	
+	 }
+			
 	
 }
+		
