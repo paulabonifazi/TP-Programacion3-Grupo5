@@ -319,12 +319,19 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 
 	@Override
 	public void mostrarEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
-		
+		for(int i = 0; i < empleadosPretensos.size(); i++) {
+			System.out.println(empleadosPretensos.get(i).getNombre()+empleadosPretensos.get(i).getApellido());
+		}
 	}
 
 	@Override
 	public void mostrarEmpleadores(ArrayList<Empleador> empleadores) {
-		// TODO Auto-generated method stub
+		for (int i=0; i < empleadores.size(); i++) {
+			if (empleadores.get(i).isPersonaJuridica())
+				System.out.println(empleadores.get(i).getNomRazonS());
+			else
+				System.out.println(empleadores.get(i).getNombre()+empleadores.get(i).getApellido());
+		}
 		
 	}
 
