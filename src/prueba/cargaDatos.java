@@ -28,7 +28,6 @@ public class cargaDatos {
 		
 		
 		
-		
 		TicketEmpleadoPretenso ticketEmpleadoPretenso1 = new TicketEmpleadoPretenso(new FormularioBusqueda("Presencial", "V1", "Completa", "Senior", "Menos de 40", "MUCHA", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 5, 2));
 		TicketEmpleadoPretenso ticketEmpleadoPretenso2 = new TicketEmpleadoPretenso(new FormularioBusqueda("HomeOffice", "V2", "Media", "Managment", "40 a 50", "MEDIA", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 8, 9));
 		TicketEmpleadoPretenso ticketEmpleadoPretenso3 = new TicketEmpleadoPretenso(new FormularioBusqueda("Indistinto", "V1", "Extendida", "Junior", "Mas de 50", "NADA", "Primario"), new EstadoTicket("Activo"), new Date(2022, 11, 7));
