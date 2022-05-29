@@ -57,7 +57,7 @@ public class cargaDatos {
 		
 		
 		
-		System.out.println("Empleadores:");
+	/*	System.out.println("Empleadores:");
 		agencia.mostrarEmpleadores(agencia.getEmpleadores());
 		System.out.println("Empleados pretensos:");
 		agencia.mostrarEmpleadosPretensos(agencia.getEmpleadosPretensos());
@@ -71,7 +71,7 @@ public class cargaDatos {
 		System.out.println("Empleados Pretensos activos:");
 		agencia.mostrarEmpleadosPretensos(agencia.getEmpleadosPretensosActivos());
 		
-		
+		*/
 		
 		agencia.activarRondaEncuentrosLaborales();
 
