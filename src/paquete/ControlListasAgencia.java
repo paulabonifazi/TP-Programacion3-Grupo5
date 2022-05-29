@@ -168,7 +168,7 @@ public class ControlListasAgencia {
 					
 					while (w < ListaDeEmpleadosPretensos.size() && 
 					!ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).equals(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso()))
-					{	w++;
+					{	w++; 
 					}
 					
 					System.out.println("empleador "+ListaDeEmpleadores.get(i).getEmpleador().getNomRazonS());	
