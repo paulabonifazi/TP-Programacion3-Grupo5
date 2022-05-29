@@ -159,9 +159,6 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
-	
-		
-		
 		//empleadores
 		for (int j=0; j<listAsignacionEmpleador.size(); j++) {
 			ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
