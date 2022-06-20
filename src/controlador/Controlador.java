@@ -47,15 +47,11 @@ public class Controlador implements ActionListener
 	}
 	private void login()
 	{
-		Persona persona = null;// = this.vista.getPersonajeSeleccionado();
+		Persona persona = null;
 		if (persona != null)
 		{
-			//double x = this.vista.getCoordenadaMovimientoX();
-			//double y = this.vista.getCoordenadaMovimientoY();
-			//personaje.mueve(x, y);
-			//this.vista.agregaLog("Se movio a: " + personaje.getNombre() + "X: " + x + " Y: " + y + "\n");
 		} else
-			JOptionPane.showMessageDialog(null, "Nombre de usuario/Contraseña incorrecta");
+			JOptionPane.showMessageDialog(null, "Nombre de usuario/ContraseÃ±a incorrecta");
 
 	}
 }
