@@ -105,9 +105,9 @@ public class Ventana extends JFrame
 		panelColumna_2.add(panel_Contrasena);
 		panel_Contrasena.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JLabel contraseñaLabel = new JLabel("Contrase\u00F1a");
-		contraseñaLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_Contrasena.add(contraseñaLabel);
+		JLabel contrasenaLabel = new JLabel("Contrase\u00F1a");
+		contrasenaLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_Contrasena.add(contrasenaLabel);
 		
 		JPanel panel_2 = new JPanel();
 		panel_Contrasena.add(panel_2);
