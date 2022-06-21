@@ -57,7 +57,6 @@ public class cargaDatos {
 		Agencia.getInstance().mostrarEmpleadosPretensos(Agencia.getInstance().getEmpleadosPretensosActivos());
 		
 		
-		
 		Agencia.getInstance().activarRondaEncuentrosLaborales();
 
 		
