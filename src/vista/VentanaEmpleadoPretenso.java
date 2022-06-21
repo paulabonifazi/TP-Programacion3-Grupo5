@@ -18,13 +18,18 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
+
+import paquete.Empleador;
+
 import javax.swing.JList;
 
-public class VentanaEmpleadoPretenso extends JFrame
+public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPretenso, KeyListener
 {
 
 	private JPanel contentPane;
@@ -38,6 +43,10 @@ public class VentanaEmpleadoPretenso extends JFrame
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private ActionListener actionListener;
+	private JButton loginButton;
+	private JButton registroButton;
+	private JTabbedPane tabbedPane;
 
 	/**
 	 * Launch the application.
@@ -73,13 +82,13 @@ public class VentanaEmpleadoPretenso extends JFrame
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		this.tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(new Color(30, 144, 255));
 		tabbedPane.setBorder(new TitledBorder(null, "Empleado Pretenso", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel_Login = new JPanel();
-		tabbedPane.addTab("Login", null, panel_Login, null);
+		tabbedPane.addTab("Login", null, panel_Login, "Login");
 		panel_Login.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		JPanel panelColumna_1 = new JPanel();
@@ -118,6 +127,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		textField = new JTextField();
 		textField.setToolTipText("Usuario");
 		textField.setColumns(20);
+		this.textField.addKeyListener(this);
 		panel_1.add(textField);
 		
 		JPanel panel_Contrasena = new JPanel();
@@ -134,14 +144,16 @@ public class VentanaEmpleadoPretenso extends JFrame
 		passwordField = new JPasswordField();
 		passwordField.setToolTipText("Contraseña");
 		passwordField.setColumns(20);
+		this.passwordField.addKeyListener(this);
 		panel_2.add(passwordField);
 		
 		JPanel panel_Boton = new JPanel();
 		panelColumna_2.add(panel_Boton);
 		
-		JButton loginButton = new JButton("Entrar");
+		this.loginButton = new JButton("Entrar");
 		loginButton.setToolTipText("Entrar");
 		panel_Boton.add(loginButton);
+		this.loginButton.setEnabled(false);
 		
 		JLabel contrasenaOlvidada = new JLabel("¿Olvidaste la contraseña?");
 		contrasenaOlvidada.setHorizontalAlignment(SwingConstants.CENTER);
@@ -157,7 +169,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		panel_Login.add(panelColumna_3);
 		
 		JPanel panel_Registro = new JPanel();
-		tabbedPane.addTab("Registro", null, panel_Registro, null);
+		tabbedPane.addTab("Registro", null, panel_Registro, "Registro");
 		panel_Registro.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelColumna_1_1 = new JPanel();
@@ -185,6 +197,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		textField_2 = new JTextField();
 		textField_2.setToolTipText("Usuario");
 		textField_2.setColumns(20);
+		this.textField_2.addKeyListener(this);
 		panel_1_1_1.add(textField_2);
 		
 		JPanel panel_ApellidoNuevo = new JPanel();
@@ -201,6 +214,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		textField_3 = new JTextField();
 		panel_2_1_1.add(textField_3);
 		textField_3.setColumns(20);
+		this.textField_3.addKeyListener(this);
 		
 		JPanel panel_NombreNuevo_1 = new JPanel();
 		panelColumna_2_1.add(panel_NombreNuevo_1);
@@ -214,8 +228,9 @@ public class VentanaEmpleadoPretenso extends JFrame
 		panel_NombreNuevo_1.add(panel_1_1_1_1);
 		
 		textField_4 = new JTextField();
-		textField_4.setToolTipText("Usuario");
+		textField_4.setToolTipText("Edad");
 		textField_4.setColumns(20);
+		this.textField_4.addKeyListener(this);
 		panel_1_1_1_1.add(textField_4);
 		
 		JPanel panel_ApellidoNuevo_1 = new JPanel();
@@ -232,6 +247,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		textField_5 = new JTextField();
 		textField_5.setColumns(20);
 		panel_2_1_1_1.add(textField_5);
+		this.textField_5.addKeyListener(this);
 		
 		JPanel panel_UsuarioNuevo_1 = new JPanel();
 		panelColumna_2_1.add(panel_UsuarioNuevo_1);
@@ -245,8 +261,9 @@ public class VentanaEmpleadoPretenso extends JFrame
 		panel_UsuarioNuevo_1.add(panel_1_1_2);
 		
 		textField_6 = new JTextField();
-		textField_6.setToolTipText("Usuario");
+		textField_6.setToolTipText("Teléfono");
 		textField_6.setColumns(20);
+		this.textField_6.addKeyListener(this);
 		panel_1_1_2.add(textField_6);
 		
 		JPanel panel_ContrasenaNuevo_1 = new JPanel();
@@ -263,6 +280,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		textField_7 = new JTextField();
 		panel_2_1_2.add(textField_7);
 		textField_7.setColumns(20);
+		this.textField_7.addKeyListener(this);
 		
 		JPanel panel_UsuarioNuevo = new JPanel();
 		panelColumna_2_1.add(panel_UsuarioNuevo);
@@ -278,6 +296,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		textField_1 = new JTextField();
 		textField_1.setToolTipText("Usuario");
 		textField_1.setColumns(20);
+		this.textField_1.addKeyListener(this);
 		panel_1_1.add(textField_1);
 		
 		JPanel panel_ContrasenaNuevo = new JPanel();
@@ -294,6 +313,7 @@ public class VentanaEmpleadoPretenso extends JFrame
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setToolTipText("Contraseña");
 		passwordField_1.setColumns(20);
+		this.passwordField_1.addKeyListener(this);
 		panel_2_1.add(passwordField_1);
 		
 		JLabel textoEnBlanco = new JLabel("");
@@ -303,9 +323,10 @@ public class VentanaEmpleadoPretenso extends JFrame
 		JPanel panel_Boton_1 = new JPanel();
 		panelColumna_2_1.add(panel_Boton_1);
 		
-		JButton loginButton_1 = new JButton("Registrarse");
-		loginButton_1.setToolTipText("Registrarse");
-		panel_Boton_1.add(loginButton_1);
+		this.registroButton = new JButton("Registrarse");
+		registroButton.setToolTipText("Registrarse");
+		panel_Boton_1.add(registroButton);
+		this.registroButton.setEnabled(false);
 		
 		JPanel panelColumna_3_1 = new JPanel();
 		panelColumna_3_1.setPreferredSize(new Dimension(100, 10));
@@ -313,26 +334,68 @@ public class VentanaEmpleadoPretenso extends JFrame
 		panel_Registro.add(panelColumna_3_1, BorderLayout.EAST);
 		
 		JPanel panel_Ticket = new JPanel();
+		panel_Ticket.setVisible(false);
 		panel_Ticket.setToolTipText("Ticket");
-		tabbedPane.addTab("Ticket", null, panel_Ticket, null);
+		tabbedPane.addTab("Ticket", null, panel_Ticket, "Ticket");
+		tabbedPane.setEnabledAt(2, false);
 		
 		JPanel panel_ListaEmpleadores = new JPanel();
+		panel_ListaEmpleadores.setVisible(false);
 		panel_ListaEmpleadores.setToolTipText("Lista de Empleadores");
-		tabbedPane.addTab("Lista de Empleadores", null, panel_ListaEmpleadores, null);
+		tabbedPane.addTab("Lista de Empleadores", null, panel_ListaEmpleadores, "Lista de Empleadores");
+		tabbedPane.setEnabledAt(3, false);
 		
-		JList list = new JList();
+		JList<Empleador> list = new JList<Empleador>();
 		panel_ListaEmpleadores.add(list);
 		
 		JPanel panel_RondaEleccion = new JPanel();
 		panel_RondaEleccion.setToolTipText("Ronda de Elección");
-		tabbedPane.addTab("Ronda de Elección", null, panel_RondaEleccion, null);
+		tabbedPane.addTab("Ronda de Elección", null, panel_RondaEleccion, "Ronda de Elección");
+		tabbedPane.setEnabledAt(4, false);
 		
 		JPanel panel_Resultado = new JPanel();
+		panel_Resultado.setVisible(false);
 		panel_Resultado.setToolTipText("Resultado");
-		tabbedPane.addTab("Resultado", null, panel_Resultado, null);
+		tabbedPane.addTab("Resultado", null, panel_Resultado, "Resultado");
+		tabbedPane.setEnabledAt(5, false);
 		
 		JPanel panel_Publicidad = new JPanel();
 		contentPane.add(panel_Publicidad, BorderLayout.SOUTH);
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener)
+	{
+		this.loginButton.addActionListener(actionListener);
+		this.actionListener = actionListener;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e){}
+
+	@Override
+	public void keyPressed(KeyEvent e){}
+
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+		String usuario = this.textField.getText();
+		String contrasena = this.passwordField.getText();
+		String nombre = this.textField_2.getText();
+		String apellido = this.textField_3.getText();
+		String edad = this.textField_4.getText();
+		String direccion = this.textField_5.getText();
+		String telefono = this.textField_6.getText();
+		String email = this.textField_7.getText();
+		String nuevoUsuario = this.textField_1.getText();
+		String nuevaContrasena = this.passwordField_1.getText();
+		this.loginButton.setEnabled(!(usuario.isBlank() || contrasena.isBlank()));
+		this.registroButton.setEnabled(!(nombre.isBlank() || apellido.isBlank() || edad.isBlank() || direccion.isBlank() || telefono.isBlank() || email.isBlank() || nuevoUsuario.isBlank() || nuevaContrasena.isBlank()));
+	}
+
+	public JTabbedPane getTabbedPane()
+	{
+		return tabbedPane;
 	}
 
 }

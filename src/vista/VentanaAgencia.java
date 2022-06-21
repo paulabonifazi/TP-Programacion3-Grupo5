@@ -86,7 +86,7 @@ public class VentanaAgencia extends JFrame
 		JPanel panel_IngresoDatos = new JPanel();
 		panel_IngresoDatos.setBackground(new Color(255, 51, 51));
 		panel_IngresoDatos.setToolTipText("Ingreso de datos");
-		tabbedPane.addTab("Ingreso de datos", null, panel_IngresoDatos, null);
+		tabbedPane.addTab("Ingreso de datos", null, panel_IngresoDatos, "Ingreso de datos");
 		panel_IngresoDatos.setLayout(new GridLayout(1, 3, 0, 0));
 		
 		JPanel panel_Columna11 = new JPanel();
@@ -156,7 +156,7 @@ public class VentanaAgencia extends JFrame
 		
 		JPanel panel_VisualizacionDatos = new JPanel();
 		panel_VisualizacionDatos.setToolTipText("Visualización de datos");
-		tabbedPane.addTab("Visualización de datos", null, panel_VisualizacionDatos, null);
+		tabbedPane.addTab("Visualización de datos", null, panel_VisualizacionDatos, "Visualización de datos");
 		panel_VisualizacionDatos.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
@@ -184,21 +184,21 @@ public class VentanaAgencia extends JFrame
 		
 		JPanel panel_CalculoComisiones = new JPanel();
 		panel_CalculoComisiones.setToolTipText("Cálculo de comisiones");
-		tabbedPane.addTab("Cálculo de comisiones", null, panel_CalculoComisiones, null);
+		tabbedPane.addTab("Cálculo de comisiones", null, panel_CalculoComisiones, "Cálculo de comisiones");
 		panel_CalculoComisiones.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_REL = new JPanel();
 		panel_REL.setToolTipText("Ronda de Encuentros Laborales");
-		tabbedPane.addTab("Ronda de Encuentros Laborales", null, panel_REL, null);
+		tabbedPane.addTab("Ronda de Encuentros Laborales", null, panel_REL, "Ronda de Encuentros Laborales");
 		panel_REL.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_2 = new JPanel();
 		panel_REL.add(panel_2, BorderLayout.WEST);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("Activar ronda");
 		panel_2.add(lblNewLabel_1);
 		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("Activar");
 		panel_2.add(tglbtnNewToggleButton);
 		
 		JList list_2 = new JList();
@@ -206,16 +206,16 @@ public class VentanaAgencia extends JFrame
 		
 		JPanel panel_RondaContratacion = new JPanel();
 		panel_RondaContratacion.setToolTipText("Ronda de Contratación");
-		tabbedPane.addTab("Ronda de Contratación", null, panel_RondaContratacion, null);
+		tabbedPane.addTab("Ronda de Contratación", null, panel_RondaContratacion, "Ronda de Contratación");
 		panel_RondaContratacion.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_3 = new JPanel();
 		panel_RondaContratacion.add(panel_3, BorderLayout.WEST);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("New label");
+		JLabel lblNewLabel_1_1 = new JLabel("Activar ronda");
 		panel_3.add(lblNewLabel_1_1);
 		
-		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("New toggle button");
+		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Activar");
 		panel_3.add(tglbtnNewToggleButton_1);
 		
 		JList list_3 = new JList();
