@@ -195,7 +195,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panel_NombreNuevo.add(panel_1_1_1);
 		
 		textField_2 = new JTextField();
-		textField_2.setToolTipText("Usuario");
+		textField_2.setToolTipText("Nombre");
 		textField_2.setColumns(20);
 		this.textField_2.addKeyListener(this);
 		panel_1_1_1.add(textField_2);
@@ -212,6 +212,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panel_ApellidoNuevo.add(panel_2_1_1);
 		
 		textField_3 = new JTextField();
+		textField_3.setToolTipText("Apellido");
 		panel_2_1_1.add(textField_3);
 		textField_3.setColumns(20);
 		this.textField_3.addKeyListener(this);
@@ -245,6 +246,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panel_ApellidoNuevo_1.add(panel_2_1_1_1);
 		
 		textField_5 = new JTextField();
+		textField_5.setToolTipText("Dirección");
 		textField_5.setColumns(20);
 		panel_2_1_1_1.add(textField_5);
 		this.textField_5.addKeyListener(this);
@@ -278,6 +280,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panel_ContrasenaNuevo_1.add(panel_2_1_2);
 		
 		textField_7 = new JTextField();
+		textField_7.setToolTipText("e-Mail");
 		panel_2_1_2.add(textField_7);
 		textField_7.setColumns(20);
 		this.textField_7.addKeyListener(this);

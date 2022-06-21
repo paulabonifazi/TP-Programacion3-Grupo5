@@ -27,6 +27,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import paquete.EmpleadoPretenso;
+import java.awt.event.ActionEvent;
 
 public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyListener
 {
@@ -46,6 +47,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	private JButton loginButton;
 	private JButton registroButton;
 	private JTabbedPane tabbedPane;
+	private JLabel nombreLabel;
 
 	/**
 	 * Launch the application.
@@ -190,9 +192,17 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		soyPersona.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JRadioButton fisicaRadioButton = new JRadioButton("Física");
+		fisicaRadioButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panel_Persona.add(fisicaRadioButton);
 		
 		JRadioButton juridicaRadioButton = new JRadioButton("Jurídica");
+		juridicaRadioButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panel_Persona.add(juridicaRadioButton);
 		
 		ButtonGroup group = new ButtonGroup();
@@ -203,7 +213,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panelColumna_2_1.add(panel_NombreNuevo);
 		panel_NombreNuevo.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel nombreLabel = new JLabel("Nombre:");
+		this.nombreLabel = new JLabel("Nombre:");
 		nombreLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_NombreNuevo.add(nombreLabel);
 		
@@ -228,6 +238,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panel_ApellidoNuevo.add(panel_2_1_1);
 		
 		textField_3 = new JTextField();
+		textField_3.setToolTipText("Apellido");
 		panel_2_1_1.add(textField_3);
 		textField_3.setColumns(20);
 		this.textField_3.addKeyListener(this);
@@ -261,6 +272,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panel_ApellidoNuevo_1.add(panel_2_1_1_1);
 		
 		textField_5 = new JTextField();
+		textField_5.setToolTipText("Dirección");
 		textField_5.setColumns(20);
 		this.textField_5.addKeyListener(this);
 		panel_2_1_1_1.add(textField_5);
@@ -294,6 +306,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panel_ContrasenaNuevo_1.add(panel_2_1_2);
 		
 		textField_7 = new JTextField();
+		textField_7.setToolTipText("e-Mail");
 		panel_2_1_2.add(textField_7);
 		textField_7.setColumns(20);
 		this.textField_7.addKeyListener(this);
@@ -376,6 +389,16 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		contentPane.add(panel_Publicidad, BorderLayout.SOUTH);
 	}
 
+	public JLabel getNombreLabel()
+	{
+		return nombreLabel;
+	}
+
+	public void setNombreLabel(JLabel nombreLabel)
+	{
+		this.nombreLabel = nombreLabel;
+	}
+
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
@@ -418,6 +441,26 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	public JTabbedPane getTabbedPane()
 	{
 		return tabbedPane;
+	}
+
+	public JTextField getTextField_3()
+	{
+		return textField_3;
+	}
+
+	public void setTextField_3(JTextField textField_3)
+	{
+		this.textField_3 = textField_3;
+	}
+
+	public JTextField getTextField_4()
+	{
+		return textField_4;
+	}
+
+	public void setTextField_4(JTextField textField_4)
+	{
+		this.textField_4 = textField_4;
 	}
 
 }
