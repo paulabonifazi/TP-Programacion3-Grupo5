@@ -45,7 +45,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	private double saldoAgencia = 0;
 	
 	
-	public Agencia() {	}
+	private Agencia() {	}
 	
 	public static Agencia getInstance()
 	{

@@ -20,6 +20,7 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 			String nombre, String apellido, int edad, TicketEmpleadoPretenso ticket) 
 	{
 		super(domicilio, telefono, mail, nombUsuario, contrasenia);
+		Agencia.getInstance().agregarEmpleadoPretenso(this);
 		this.apellido=apellido;
 		this.nombre=nombre;
 		this.edad=edad;
