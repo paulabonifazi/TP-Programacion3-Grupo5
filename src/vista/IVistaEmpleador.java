@@ -13,4 +13,6 @@ public interface IVistaEmpleador
 	public JTextField getTextField_4();
 	public JTabbedPane getTabbedPane();
 	public JLabel getNombreLabel();
+	public JLabel getApellidoLabel();
+	public JLabel getEdadLabel();
 }

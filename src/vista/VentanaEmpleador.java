@@ -48,6 +48,8 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	private JButton registroButton;
 	private JTabbedPane tabbedPane;
 	private JLabel nombreLabel;
+	private JLabel edadLabel;
+	private JLabel apellidoLabel;
 
 	/**
 	 * Launch the application.
@@ -230,7 +232,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panelColumna_2_1.add(panel_ApellidoNuevo);
 		panel_ApellidoNuevo.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel apellidoLabel = new JLabel("Apellido:");
+		this.apellidoLabel = new JLabel("Apellido:");
 		apellidoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_ApellidoNuevo.add(apellidoLabel);
 		
@@ -243,16 +245,16 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		textField_3.setColumns(20);
 		this.textField_3.addKeyListener(this);
 		
-		JPanel panel_NombreNuevo_1 = new JPanel();
-		panelColumna_2_1.add(panel_NombreNuevo_1);
-		panel_NombreNuevo_1.setLayout(new GridLayout(1, 2, 0, 0));
+		JPanel panel_Edad = new JPanel();
+		panelColumna_2_1.add(panel_Edad);
+		panel_Edad.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel nombreLabel_1 = new JLabel("Edad:");
-		nombreLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_NombreNuevo_1.add(nombreLabel_1);
+		this.edadLabel = new JLabel("Edad:");
+		edadLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_Edad.add(edadLabel);
 		
 		JPanel panel_1_1_1_1 = new JPanel();
-		panel_NombreNuevo_1.add(panel_1_1_1_1);
+		panel_Edad.add(panel_1_1_1_1);
 		
 		textField_4 = new JTextField();
 		textField_4.setToolTipText("Edad");
@@ -260,16 +262,16 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		this.textField_4.addKeyListener(this);
 		panel_1_1_1_1.add(textField_4);
 		
-		JPanel panel_ApellidoNuevo_1 = new JPanel();
-		panelColumna_2_1.add(panel_ApellidoNuevo_1);
-		panel_ApellidoNuevo_1.setLayout(new GridLayout(1, 2, 0, 0));
+		JPanel panel_Direccion = new JPanel();
+		panelColumna_2_1.add(panel_Direccion);
+		panel_Direccion.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel apellidoLabel_1 = new JLabel("Dirección:");
-		apellidoLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_ApellidoNuevo_1.add(apellidoLabel_1);
+		JLabel direccionLabel = new JLabel("Dirección:");
+		direccionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_Direccion.add(direccionLabel);
 		
 		JPanel panel_2_1_1_1 = new JPanel();
-		panel_ApellidoNuevo_1.add(panel_2_1_1_1);
+		panel_Direccion.add(panel_2_1_1_1);
 		
 		textField_5 = new JTextField();
 		textField_5.setToolTipText("Dirección");
@@ -277,16 +279,16 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		this.textField_5.addKeyListener(this);
 		panel_2_1_1_1.add(textField_5);
 		
-		JPanel panel_UsuarioNuevo_1 = new JPanel();
-		panelColumna_2_1.add(panel_UsuarioNuevo_1);
-		panel_UsuarioNuevo_1.setLayout(new GridLayout(1, 2, 0, 0));
+		JPanel panel_Telefono = new JPanel();
+		panelColumna_2_1.add(panel_Telefono);
+		panel_Telefono.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel usuarioLabel_1_1 = new JLabel("Teléfono:");
-		usuarioLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_UsuarioNuevo_1.add(usuarioLabel_1_1);
+		JLabel telefonoLabel = new JLabel("Teléfono:");
+		telefonoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_Telefono.add(telefonoLabel);
 		
 		JPanel panel_1_1_2 = new JPanel();
-		panel_UsuarioNuevo_1.add(panel_1_1_2);
+		panel_Telefono.add(panel_1_1_2);
 		
 		textField_6 = new JTextField();
 		textField_6.setToolTipText("Teléfono");
@@ -294,16 +296,16 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		this.textField_6.addKeyListener(this);
 		panel_1_1_2.add(textField_6);
 		
-		JPanel panel_ContrasenaNuevo_1 = new JPanel();
-		panelColumna_2_1.add(panel_ContrasenaNuevo_1);
-		panel_ContrasenaNuevo_1.setLayout(new GridLayout(1, 2, 0, 0));
+		JPanel panel_eMail = new JPanel();
+		panelColumna_2_1.add(panel_eMail);
+		panel_eMail.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel contrasenaLabel_1_1 = new JLabel("e-Mail:");
-		contrasenaLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_ContrasenaNuevo_1.add(contrasenaLabel_1_1);
+		JLabel eMailLabel = new JLabel("e-Mail:");
+		eMailLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_eMail.add(eMailLabel);
 		
 		JPanel panel_2_1_2 = new JPanel();
-		panel_ContrasenaNuevo_1.add(panel_2_1_2);
+		panel_eMail.add(panel_2_1_2);
 		
 		textField_7 = new JTextField();
 		textField_7.setToolTipText("e-Mail");
@@ -387,6 +389,26 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		
 		JPanel panel_Publicidad = new JPanel();
 		contentPane.add(panel_Publicidad, BorderLayout.SOUTH);
+	}
+
+	public JLabel getApellidoLabel()
+	{
+		return apellidoLabel;
+	}
+
+	public void setApellidoLabel(JLabel apellidoLabel)
+	{
+		this.apellidoLabel = apellidoLabel;
+	}
+
+	public JLabel getEdadLabel()
+	{
+		return edadLabel;
+	}
+
+	public void setEdadLabel(JLabel edadLabel)
+	{
+		this.edadLabel = edadLabel;
 	}
 
 	public JLabel getNombreLabel()

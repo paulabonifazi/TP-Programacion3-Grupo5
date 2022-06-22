@@ -111,46 +111,38 @@ public class VentanaAgencia extends JFrame
 		JPanel panel_Columna12 = new JPanel();
 		panel_IngresoDatos.add(panel_Columna12);
 		
-		JPanel panel2;
 		panel_Columna12.setLayout(new BorderLayout(0, 0));
 		panel2 = new JPanel();
 		panel_Columna12.add(panel2, BorderLayout.NORTH);
 		panel2.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JLabel lblNewLabel2;
 		lblNewLabel2 = new JLabel("Especificación de rango laboral:");
 		lblNewLabel2.setToolTipText("Especificación de rango laboral");
 		panel2.add(lblNewLabel2);
 		
-		JButton btnNewButton2;
 		btnNewButton2 = new JButton("Ingresar");
 		btnNewButton2.setToolTipText("Ingresar");
 		panel2.add(btnNewButton2);
 		
-		JList list2;
 		list2 = new JList();
 		panel_Columna12.add(list2);
 		
 		JPanel panel_Columna13 = new JPanel();
 		panel_IngresoDatos.add(panel_Columna13);
 		
-		JPanel panel3;
 		panel_Columna13.setLayout(new BorderLayout(0, 0));
 		panel3 = new JPanel();
 		panel_Columna13.add(panel3, BorderLayout.NORTH);
 		panel3.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JLabel lblNewLabel3;
 		lblNewLabel3 = new JLabel("Especificación de tipos de puestos:");
 		lblNewLabel3.setToolTipText("Especificación de tipos de puestos");
 		panel3.add(lblNewLabel3);
 		
-		JButton btnNewButton3;
 		btnNewButton3 = new JButton("Ingresar");
 		btnNewButton3.setToolTipText("Ingresar");
 		panel3.add(btnNewButton3);
 		
-		JList list3;
 		list3 = new JList();
 		panel_Columna13.add(list3);
 		

@@ -54,12 +54,16 @@ public class ControladorEmpleador implements ActionListener, Observer
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("Física")) {
 			this.vista.getNombreLabel().setText("Nombre:");
+			this.vista.getApellidoLabel().setText("Apellido:");
 			this.vista.getTextField_3().setEnabled(true);
+			this.vista.getEdadLabel().setText("Edad:");
 			this.vista.getTextField_4().setEnabled(true);
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("Jurídica")) {
 			this.vista.getNombreLabel().setText("Razón Social:");
+			this.vista.getApellidoLabel().setText("");
 			this.vista.getTextField_3().setEnabled(false);
+			this.vista.getEdadLabel().setText("");
 			this.vista.getTextField_4().setEnabled(false);
 		}
 	}
