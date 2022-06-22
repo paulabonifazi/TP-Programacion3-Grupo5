@@ -1,16 +1,5 @@
 package patronState;
 
-<<<<<<< Updated upstream
-public class ActivoState implements IState{
-	private Ticket ticket;
-	
-	
-	public ActivoState(Ticket ticket) {
-		super();
-		this.ticket = ticket;
-	}
-
-=======
 import java.io.Serializable;
 
 import modelo.Ticket;
@@ -49,7 +38,6 @@ public class ActivoState implements IState, Serializable{
 	}
 
 
->>>>>>> Stashed changes
 	@Override
 	public void ponerActivo() {
 		///si no hace nada se deja vacio?		

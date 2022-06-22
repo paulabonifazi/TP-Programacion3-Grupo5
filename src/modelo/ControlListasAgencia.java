@@ -64,7 +64,7 @@ public class ControlListasAgencia {
 	ArrayList<Empleador> lista = new  ArrayList<Empleador>();						//lista que voy a devolver
 	ArrayList<EmpleadorPuntaje> listaOrdenada = new ArrayList<EmpleadorPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
 	
-	System.out.println("pretenao "+empleadoPretensos.getNombre());
+	
 	for (int i=0; i<listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
 		EmpleadorPuntaje empleadorPuntaje = new EmpleadorPuntaje();	
 		
@@ -74,11 +74,6 @@ public class ControlListasAgencia {
 		empleadorPuntaje.setPuntaje(ptj); 
 				//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
 	
-<<<<<<< Updated upstream:src/paquete/ControlListasAgencia.java
-	
-		System.out.println("         empleador "+empleadorPuntaje.getEmpleador().getTicket().getFbTicket().getLocacion()+"  puntaje  "+empleadorPuntaje.getPuntaje()+ " double ptj "+new PuntajeTicket().getPuntajeCF(listaEmpleadores.get(i), empleadoPretensos.getTicket()));
-=======
->>>>>>> Stashed changes:src/modelo/ControlListasAgencia.java
 		listaOrdenada.add(empleadorPuntaje);
 		empleadorPuntaje=null;
 	}
@@ -92,11 +87,7 @@ public class ControlListasAgencia {
 		});
 	
 	for (int j = 0; j< listaOrdenada.size(); j++) 	{			///cargo lista con el orden de listaOrdenada
-<<<<<<< Updated upstream:src/paquete/ControlListasAgencia.java
-		System.out.println("puntaje de la ordenada"+listaOrdenada.get(j).getPuntaje());
-=======
 	
->>>>>>> Stashed changes:src/modelo/ControlListasAgencia.java
 		lista.add(listaOrdenada.get(j).getEmpleador());
 	}
 	return lista;	
@@ -171,12 +162,8 @@ public class ControlListasAgencia {
 					!ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).equals(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso()))
 					{	w++; 
 					}
-<<<<<<< Updated upstream:src/paquete/ControlListasAgencia.java
-=======
 					
->>>>>>> Stashed changes:src/modelo/ControlListasAgencia.java
 					
-					System.out.println("empleador "+ListaDeEmpleadores.get(i).getEmpleador().getNomRazonS());	
 						
 							if (w < ListaDeEmpleadosPretensos.size() && 
 								ListaDeEmpleadosPretensos.get(w).getListEmpleadores().get(0).equals(ListaDeEmpleadores.get(i).getEmpleador())) {//encontre el empleado

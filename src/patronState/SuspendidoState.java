@@ -1,10 +1,5 @@
 package patronState;
 
-<<<<<<< Updated upstream
-public class SuspendidoState implements IState{
-	private Ticket ticket;
-	
-=======
 import java.io.Serializable;
 
 import modelo.Ticket;
@@ -12,15 +7,12 @@ import modelo.Ticket;
 public class SuspendidoState implements IState, Serializable{
 	private Ticket ticket;
 	private String estado = "SUSPENDIDO";
->>>>>>> Stashed changes
 	
 	public SuspendidoState(Ticket ticket) {
 		super();
 		this.ticket = ticket;
 	}
 
-<<<<<<< Updated upstream
-=======
 	
 	
 	public String estadoActual() {
@@ -29,7 +21,6 @@ public class SuspendidoState implements IState, Serializable{
 
 
 
->>>>>>> Stashed changes
 	@Override
 	public void ponerActivo() {
 		this.ticket.setEstado(new ActivoState(this.ticket));				
