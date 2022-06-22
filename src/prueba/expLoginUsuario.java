@@ -17,7 +17,7 @@ import paquete.ValoracionAspecto;
 public class expLoginUsuario {
 
 	public static void main(String[] args) {
-
+ 
 
 		TicketEmpleador ticketEmpleador1 = new TicketEmpleador(new FormularioBusqueda("HomeOffice", "V1", "Completa", "Junior", "Menos de 40", "NADA", "Secundario"), new EstadoTicket("Activo"), new Date(2022, 8, 23), 2, 0);
 		TicketEmpleador ticketEmpleador2 = new TicketEmpleador(new FormularioBusqueda("Indistinto", "V2", "Extendida", "Managment", "40 a 50", "MUCHA", "Terciario"), new EstadoTicket("Activo"), new Date(2022, 10, 5), 1, 0);
