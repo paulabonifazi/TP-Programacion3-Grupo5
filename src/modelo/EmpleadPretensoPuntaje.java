@@ -1,7 +1,5 @@
 package modelo;
 
-import paquete.EmpleadoPretenso;
-
 ///este objeto lo usa el metodo metodoOrdenamientoEmpleador de la clase RondaEncuentroLaborales
 
 public class EmpleadPretensoPuntaje {

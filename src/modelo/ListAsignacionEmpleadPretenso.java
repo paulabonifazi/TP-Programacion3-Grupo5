@@ -1,15 +1,17 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import paquete.EmpleadoPretenso;
-import paquete.Empleador;
-
-public class ListAsignacionEmpleadPretenso {
+public class ListAsignacionEmpleadPretenso implements Serializable{
 
 	private EmpleadoPretenso empleadoPretenso;
 	private ArrayList <Empleador> listEmpleadores = new ArrayList <Empleador>();
 	
+
+	public ListAsignacionEmpleadPretenso() {
+		super();
+	}
 
 	public EmpleadoPretenso getEmpleadoPretenso() {
 		return empleadoPretenso;

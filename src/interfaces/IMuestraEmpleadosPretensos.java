@@ -2,7 +2,7 @@ package interfaces;
 
 import java.util.ArrayList;
 
-import paquete.EmpleadoPretenso;
+import modelo.EmpleadoPretenso;
 
 public interface IMuestraEmpleadosPretensos
 {

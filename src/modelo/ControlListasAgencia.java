@@ -1,14 +1,9 @@
-package paquete;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import modelo.ControlEstadosTicket;
-import modelo.EmpleadPretensoPuntaje;
-import modelo.EmpleadorPuntaje;
-import modelo.ListAsignacionEmpleadPretenso;
-import modelo.ListAsignacionEmpleador;
 import tablas.PuntajeTicket;
 
 public class ControlListasAgencia {
@@ -33,9 +28,8 @@ public class ControlListasAgencia {
 	public static ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		ArrayList<EmpleadoPretenso> empleadosPretensosActivos = new ArrayList<EmpleadoPretenso>();
 		for (int i=0; i<empleadosPretensos.size();i++) {
-			if (empleadosPretensos.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
+			if (empleadosPretensos.get(i).getTicket().estadoTicket().equals("ACTIVO")) {
 				empleadosPretensosActivos.add(empleadosPretensos.get(i));
-				//System.out.println(empleadosPretensosActivos.get(i));
 			}
 		}
 		return empleadosPretensosActivos;
@@ -44,9 +38,9 @@ public class ControlListasAgencia {
 	public static ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
 		ArrayList<Empleador> empleadoresActivos = new ArrayList<Empleador>();
 		for (int i=0; i<empleadores.size();i++) {
-			if (empleadores.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
+			if (empleadores.get(i).getTicket().estadoTicket().equals("ACTIVO")) {
 				empleadoresActivos.add(empleadores.get(i));
-				//System.out.println(empleadoresActivos.get(i));
+			
 			}
 		}
 		return empleadoresActivos;
@@ -80,8 +74,11 @@ public class ControlListasAgencia {
 		empleadorPuntaje.setPuntaje(ptj); 
 				//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
 	
+<<<<<<< Updated upstream:src/paquete/ControlListasAgencia.java
 	
 		System.out.println("         empleador "+empleadorPuntaje.getEmpleador().getTicket().getFbTicket().getLocacion()+"  puntaje  "+empleadorPuntaje.getPuntaje()+ " double ptj "+new PuntajeTicket().getPuntajeCF(listaEmpleadores.get(i), empleadoPretensos.getTicket()));
+=======
+>>>>>>> Stashed changes:src/modelo/ControlListasAgencia.java
 		listaOrdenada.add(empleadorPuntaje);
 		empleadorPuntaje=null;
 	}
@@ -95,7 +92,11 @@ public class ControlListasAgencia {
 		});
 	
 	for (int j = 0; j< listaOrdenada.size(); j++) 	{			///cargo lista con el orden de listaOrdenada
+<<<<<<< Updated upstream:src/paquete/ControlListasAgencia.java
 		System.out.println("puntaje de la ordenada"+listaOrdenada.get(j).getPuntaje());
+=======
+	
+>>>>>>> Stashed changes:src/modelo/ControlListasAgencia.java
 		lista.add(listaOrdenada.get(j).getEmpleador());
 	}
 	return lista;	
@@ -170,6 +171,10 @@ public class ControlListasAgencia {
 					!ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).equals(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso()))
 					{	w++; 
 					}
+<<<<<<< Updated upstream:src/paquete/ControlListasAgencia.java
+=======
+					
+>>>>>>> Stashed changes:src/modelo/ControlListasAgencia.java
 					
 					System.out.println("empleador "+ListaDeEmpleadores.get(i).getEmpleador().getNomRazonS());	
 						

@@ -2,9 +2,9 @@ package interfaces;
 
 import java.util.ArrayList;
 
+import modelo.Empleador;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
-import paquete.Empleador;
 
 //interfaz que contiene los métodos que muestran las listas que los empleados pretensos tienen!
 

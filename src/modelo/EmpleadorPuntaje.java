@@ -1,7 +1,5 @@
 package modelo;
 
-import paquete.Empleador;
-
 public class EmpleadorPuntaje {
 
 	private double puntaje;

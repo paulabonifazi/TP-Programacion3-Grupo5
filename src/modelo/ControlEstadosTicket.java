@@ -9,15 +9,15 @@ public class ControlEstadosTicket {
 	public void finalizarTickets(ArrayList<ListAsignacionEmpleador> lista) {
 		for (int i=0; i<lista.size(); i++) {
 			if (lista.get(i).getEmpleador().getTicket().getCantEmpleadosObtenidos() == lista.get(i).getEmpleador().getTicket().getCantEmpleadosSolicitados())
-				lista.get(i).getEmpleador().getTicket().getEstadoTicket().cambiarEstado("FINALIZADO");
+				lista.get(i).getEmpleador().getTicket().getEstado().ponerFinalizado();
 			for (int j=0; j<lista.get(i).getListEmpleadosPretensos().size(); j++)
-				lista.get(i).getListEmpleadosPretensos().get(j).getTicket().getEstadoTicket().cambiarEstado("FINALIZADO");
+				lista.get(i).getListEmpleadosPretensos().get(j).getTicket().getEstado().ponerFinalizado();
 		}
 	}
 
 //ticketActivo/Suspendido
 
-	public void suspenderTicket (Ticket ticket) {
+/*	public void suspenderTicket (Ticket ticket) {
 		if (ticket.getEstadoTicket().getEstado().equals("CANCELADO"))
 		{}///LANZAR EXCEPTION
 		else
@@ -45,7 +45,7 @@ public class ControlEstadosTicket {
 				estado = "FRACASO";	
 		
 		return estado;
-	}
+	}*/
 	}
 
 

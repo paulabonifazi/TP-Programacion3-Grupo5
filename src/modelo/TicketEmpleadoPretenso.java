@@ -1,31 +1,26 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import paquete.Empleador; 
+import java.util.GregorianCalendar; 
 
-public class TicketEmpleadoPretenso extends Ticket
+public class TicketEmpleadoPretenso extends Ticket 
 {
 	
-	private String resultado; 
 
-	public TicketEmpleadoPretenso(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket) 
+
+	public TicketEmpleadoPretenso(FormularioBusqueda fbTicket, Date date) 
 	{
-		super(fbTicket, estadoTicket, fechaTicket);
-		this.resultado = "Iniciado";
+		super(fbTicket, date);
+
 	}
 
-
-
-
-	public void setResultado(String resultado) {
-		this.resultado = resultado;
+	public TicketEmpleadoPretenso() {
+		super();
 	}
 
-
-	public String getResultado() {
-		return resultado;
-	}
+	
 
 
 }

@@ -1,8 +1,8 @@
 package tablas;
 
 import interfaces.IAspecto;
+import modelo.Empleador;
 import modelo.TicketEmpleadoPretenso;
-import paquete.Empleador;
 
 public class PuntajeTicket {
 	private double puntaje = 0;

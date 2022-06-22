@@ -1,6 +1,8 @@
-package paquete;
+package modelo;
 
-public class Persona
+import java.io.Serializable;
+
+public class Persona implements Serializable
 {
 	private Domicilio domicilio;
 	private String telefono;
@@ -11,6 +13,12 @@ public class Persona
 	private int puntajeUsuario;
 	
 	
+	public Persona() {
+		super();
+	}
+
+
+
 	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
 		super();

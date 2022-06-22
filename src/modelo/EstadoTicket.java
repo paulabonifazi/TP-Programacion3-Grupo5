@@ -1,19 +1,24 @@
 package modelo;
 
-public class EstadoTicket {
+import java.io.Serializable;
+
+public class EstadoTicket implements Serializable{
 
 	private String estadoTicket;
 
 	public EstadoTicket(String estadoTicket) {
-		super();
 		this.estadoTicket = estadoTicket;
 	}
 	
+	public EstadoTicket() {
+		super();
+	}
+
 	public String getEstado() {
 		return estadoTicket;
 	}
 	
-	public void cambiarEstado(String nuevoEstado) {///
+	public void cambiarEstado(String nuevoEstado) {
 		this.estadoTicket=nuevoEstado;
 	}
 	

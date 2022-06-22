@@ -1,21 +1,22 @@
-package paquete;
+package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import interfaces.IPersonaFisica;
 import interfaces.IMuestraListasEmpleadosPretensos;
-import modelo.ControlEstadosTicket;
-import modelo.ListAsignacionEmpleadPretenso;
-import modelo.ListAsignacionEmpleador;
-import modelo.TicketEmpleadoPretenso;
 
-public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestraListasEmpleadosPretensos
+public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestraListasEmpleadosPretensos, Serializable
 {	
 	private String nombre;
 	private String apellido;
 	private int edad;
-	private TicketEmpleadoPretenso ticket;
+	private  TicketEmpleadoPretenso ticket;
 	
+	public EmpleadoPretenso() {
+		super();
+	}
+
 	public EmpleadoPretenso(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nombre, String apellido, int edad, TicketEmpleadoPretenso ticket) 
 	{
@@ -24,6 +25,18 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 		this.nombre=nombre;
 		this.edad=edad;
 		this.ticket = ticket;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 
 	public TicketEmpleadoPretenso getTicket() {

@@ -1,26 +1,27 @@
-package paquete;
+package modelo;
 
 import java.util.ArrayList;
 
 import interfaces.IPersonaFisica;
 import interfaces.IPersonaJuridica;
 import interfaces.IMuestraListasEmpleadores;
-import modelo.ControlEstadosTicket;
-import modelo.ListAsignacionEmpleadPretenso;
-import modelo.ListAsignacionEmpleador;
-import modelo.TicketEmpleador;
 
 public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, IMuestraListasEmpleadores
 {
-	private boolean personaJuridica;
+	private  boolean personaJuridica;
 	private String nomRazonS;
 	private String nombre;
 	private String apellido;
 	private int edad;
 	private String rubro; //salud - comercio local - comercio internacional
-	private TicketEmpleador ticket;
-	private ValoracionAspecto listaPesos;                
+	private  TicketEmpleador ticket;
+	private  ValoracionAspecto listaPesos;                
 	
+	
+	public Empleador() {
+		super();
+	}
+
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nomRazonS, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
@@ -33,6 +34,34 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		this.rubro = rubro;
 		this.ticket = ticket;
 		this.listaPesos = listaPesos;
+	}
+
+	public void setPersonaJuridica(boolean personaJuridica) {
+		this.personaJuridica = personaJuridica;
+	}
+
+	public void setNomRazonS(String nomRazonS) {
+		this.nomRazonS = nomRazonS;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public void setRubro(String rubro) {
+		this.rubro = rubro;
+	}
+
+	public void setTicket(TicketEmpleador ticket) {
+		this.ticket = ticket;
 	}
 
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,

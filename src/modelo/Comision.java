@@ -1,8 +1,6 @@
 package modelo;
 
 import java.util.ArrayList;
-
-import paquete.EmpleadoPretenso;
 public class Comision {
 	final double PorcentajeJunior = 0.8;
 	final double PorcentajeSenior = 0.9;

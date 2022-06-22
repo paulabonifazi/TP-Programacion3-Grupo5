@@ -1,4 +1,4 @@
-package paquete;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,13 +8,6 @@ import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
 import interfaces.IMuestraEmpleadores;
 import interfaces.IMuestraEmpleadosPretensos;
-import modelo.Comision;
-import modelo.ControlEstadosTicket;
-import modelo.EmpleadPretensoPuntaje;
-import modelo.EmpleadorPuntaje;
-import modelo.ListAsignacionEmpleadPretenso;
-import modelo.ListAsignacionEmpleador;
-
 import tablas.PuntajeTicket;
 
 /**
@@ -45,6 +38,55 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	private double saldoAgencia = 0;
 	
 	
+	public static Agencia getInstancia() {
+		return instancia;
+	}
+
+	public static void setInstancia(Agencia instancia) {
+		Agencia.instancia = instancia;
+	}
+
+	public void setEmpleadoresActivos(ArrayList<Empleador> empleadoresActivos) {
+		this.empleadoresActivos = empleadoresActivos;
+	}
+
+	public void setEmpleadosPretensosActivos(ArrayList<EmpleadoPretenso> empleadosPretensosActivos) {
+		this.empleadosPretensosActivos = empleadosPretensosActivos;
+	}
+
+	public void setListAsignacionEmpleador(ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador) {
+		this.listAsignacionEmpleador = listAsignacionEmpleador;
+	}
+
+	public void setListAsignacionEmpleadoPretensos(
+			ArrayList<ListAsignacionEmpleadPretenso> listAsignacionEmpleadoPretensos) {
+		this.listAsignacionEmpleadoPretensos = listAsignacionEmpleadoPretensos;
+	}
+
+	public void setListEleccionEmpleador(ArrayList<ListAsignacionEmpleador> listEleccionEmpleador) {
+		this.listEleccionEmpleador = listEleccionEmpleador;
+	}
+
+	public void setListEleccionEmpleadoPretensos(ArrayList<ListAsignacionEmpleadPretenso> listEleccionEmpleadoPretensos) {
+		this.listEleccionEmpleadoPretensos = listEleccionEmpleadoPretensos;
+	}
+
+	public void setListaCoincidencias(ArrayList<ListAsignacionEmpleador> listaCoincidencias) {
+		this.listaCoincidencias = listaCoincidencias;
+	}
+
+	public void setSaldoAgencia(double saldoAgencia) {
+		this.saldoAgencia = saldoAgencia;
+	}
+
+	public void setEmpleadores(ArrayList<Empleador> empleadores) {
+		this.empleadores = empleadores;
+	}
+
+	public void setEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
+		this.empleadosPretensos = empleadosPretensos;
+	}
+
 	public Agencia() {	}
 	
 	public static Agencia getInstance()
@@ -56,11 +98,11 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 	
 	public void agregarEmpleador (Empleador empleador) {
-		empleadores.add(empleador);
+		this.empleadores.add(empleador);
 	}
 	
 	public void agregarEmpleadoPretenso (EmpleadoPretenso empleadoPretenso) {
-		empleadosPretensos.add(empleadoPretenso);
+		this.empleadosPretensos.add(empleadoPretenso);
 	}
 	
 	
@@ -214,6 +256,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	 * <b>Pos: </b> Devuelve el puntaje actualizado.
 	 * 
 	 */
+	
 	public void actualizacionPuntajeUsuario()
 	{
 		for(int i=0; i<empleadosPretensosActivos.size(); i++)
@@ -221,10 +264,10 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		{
 			
 			//analizo estado del ticket 
-			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Finalizado"))
+			if(empleadosPretensosActivos.get(i).getTicket().estadoTicket().equals("FINALIZADO"))
 				empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
 			else
-				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Cancelado"))
+				if(empleadosPretensosActivos.get(i).getTicket().estadoTicket().equals("CANCELADO"))
 					empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
 			
 			//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
@@ -245,7 +288,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		for(int j=0; j<empleadoresActivos.size(); j++)
 		{
 	
-			if(empleadoresActivos.get(j).getTicket().getEstadoTicket().getEstado().equals("Finalizado"))
+			if(empleadoresActivos.get(j).getTicket().estadoTicket().equals("FINALIZADO"))
 				empleadoresActivos.get(j).setPuntajeUsuario(50); 
 	
 			Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();
