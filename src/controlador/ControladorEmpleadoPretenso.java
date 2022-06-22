@@ -15,7 +15,7 @@ import vista.VentanaEmpleadoPretenso;
 public class ControladorEmpleadoPretenso implements ActionListener, Observer
 {
 	//private static ControladorEmpleadoPretenso instance = null;
-	private Agencia agencia = new Agencia();
+	private Agencia agencia = Agencia.getInstance();
 	private IVistaEmpleadoPretenso vista;
 
 	/*public static ControladorEmpleadoPretenso getInstance()

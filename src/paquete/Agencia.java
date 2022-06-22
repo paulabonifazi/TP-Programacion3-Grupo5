@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import concurrencia.TicketSimplificado;
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
 import interfaces.IMuestraEmpleadores;
@@ -14,7 +15,6 @@ import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
-
 import tablas.PuntajeTicket;
 
 /**
@@ -42,10 +42,13 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	
 	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();//lista que guarda las coincidencias entre empresa y empleado
 
+	private ArrayList<TicketSimplificado> bolsaDeEmpleo = new ArrayList<TicketSimplificado>();
+	
+	
 	private double saldoAgencia = 0;
 	
 	
-	public Agencia() {	}
+	private Agencia() {	}
 	
 	public static Agencia getInstance()
 	{
@@ -106,6 +109,23 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		return listaCoincidencias;
 	}
 
+	
+	public ArrayList<TicketSimplificado> getBolsaDeEmpleo() {
+		return bolsaDeEmpleo;
+	}
+
+	public void setBolsaDeEmpleo(ArrayList<TicketSimplificado> bolsaDeEmpleo) {
+		this.bolsaDeEmpleo = bolsaDeEmpleo;
+	}
+	
+	public void agregarTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeEmpleo.add(ticket);
+	}
+	
+	public void emilinarTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeEmpleo.remove(ticket);
+	}
+
 	/**
 	 * Modifica el saldo de la agencia cuando ésta cobra una comisión.
 	 * <br>
@@ -146,6 +166,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
+		
 		listAsignacionEmpleador.addAll(cla.generarListAsignacionEmpleador(empleadosPretensosActivos,empleadoresActivos));
 		listAsignacionEmpleadoPretensos.addAll(cla.generarListAsignacionEmpleadoPretenso(empleadosPretensosActivos,empleadoresActivos));
 		
@@ -159,11 +180,9 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
-	
-		
 		
 		//empleadores
-		for (int j=0; j<listAsignacionEmpleador.size(); j++) {
+		for (int j=0; j<this.listAsignacionEmpleador.size(); j++) {
 			ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
 			ArrayList<EmpleadoPretenso> nodoListas = new ArrayList<EmpleadoPretenso>();
 			i=0;
@@ -316,6 +335,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		return loginCorrecto;
 		
 	}
+	
 
 	@Override
 	public void mostrarEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {

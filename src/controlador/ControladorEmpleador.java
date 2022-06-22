@@ -11,7 +11,7 @@ import vista.VentanaEmpleador;
 
 public class ControladorEmpleador implements ActionListener, Observer
 {
-	private Agencia agencia = new Agencia();
+	private Agencia agencia = Agencia.getInstance();
 	private IVistaEmpleador vista;
 	
 	public ControladorEmpleador()

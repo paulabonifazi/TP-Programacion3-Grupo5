@@ -25,6 +25,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 			String nomRazonS, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
 		super(domicilio, telefono, mail, nombUsuario, contrasenia);
+		Agencia.getInstance().agregarEmpleador(this);
 		this.personaJuridica = true;
 		this.nomRazonS = nomRazonS;
 		this.nombre = null;
