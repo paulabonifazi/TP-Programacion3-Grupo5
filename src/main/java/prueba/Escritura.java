@@ -73,7 +73,7 @@ public class Escritura
 	Agencia.getInstance().setEmpleadosPretensos(empresa);
 	Agencia.getInstance().setEmpleadores(emp);
 	
-	
+
 
 	
 	try
