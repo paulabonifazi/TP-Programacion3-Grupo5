@@ -546,6 +546,13 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 			public void actionPerformed(ActionEvent e) {
 				listaDeTicketsEmpleadoPretenso.setVisible(false);
 				panel_4.setVisible(true);
+				buttonGroup.clearSelection();
+				buttonGroup_1.clearSelection();
+				buttonGroup_2.clearSelection();
+				buttonGroup_3.clearSelection();
+				buttonGroup_4.clearSelection();
+				buttonGroup_5.clearSelection();
+				buttonGroup_6.clearSelection();
 			}
 		});
 		panel.add(btnNewButton_1);
@@ -607,6 +614,91 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	public JTabbedPane getTabbedPane()
 	{
 		return tabbedPane;
+	}
+
+	public JTextField getTextField()
+	{
+		return textField;
+	}
+
+	public JPasswordField getPasswordField()
+	{
+		return passwordField;
+	}
+
+	public JTextField getTextField_1()
+	{
+		return textField_1;
+	}
+
+	public JPasswordField getPasswordField_1()
+	{
+		return passwordField_1;
+	}
+
+	public JTextField getTextField_2()
+	{
+		return textField_2;
+	}
+
+	public JTextField getTextField_3()
+	{
+		return textField_3;
+	}
+
+	public JTextField getTextField_4()
+	{
+		return textField_4;
+	}
+
+	public JTextField getTextField_5()
+	{
+		return textField_5;
+	}
+
+	public JTextField getTextField_6()
+	{
+		return textField_6;
+	}
+
+	public JTextField getTextField_7()
+	{
+		return textField_7;
+	}
+
+	public ButtonGroup getButtonGroup()
+	{
+		return buttonGroup;
+	}
+
+	public ButtonGroup getButtonGroup_1()
+	{
+		return buttonGroup_1;
+	}
+
+	public ButtonGroup getButtonGroup_2()
+	{
+		return buttonGroup_2;
+	}
+
+	public ButtonGroup getButtonGroup_3()
+	{
+		return buttonGroup_3;
+	}
+
+	public ButtonGroup getButtonGroup_4()
+	{
+		return buttonGroup_4;
+	}
+
+	public ButtonGroup getButtonGroup_5()
+	{
+		return buttonGroup_5;
+	}
+
+	public ButtonGroup getButtonGroup_6()
+	{
+		return buttonGroup_6;
 	}
 
 }
