@@ -17,25 +17,19 @@ public class ControlEstadosTicket {
 
 //ticketActivo/Suspendido
 
-/*	public void suspenderTicket (Ticket ticket) {
-		if (ticket.getEstadoTicket().getEstado().equals("CANCELADO"))
-		{}///LANZAR EXCEPTION
-		else
-			ticket.getEstadoTicket().cambiarEstado("SUSPENDIDO");
+	public void suspenderTicket (Ticket ticket) {
+		ticket.getEstado().ponerSuspendido();
 	}
 	
 	public void activarTicket (Ticket ticket) {
-		if (ticket.getEstadoTicket().getEstado().equals("CANCELADO"))
-		{}///LANZAR EXCEPTION
-		else
-			ticket.getEstadoTicket().cambiarEstado("ACTIVO");
+		ticket.getEstado().ponerActivo();
 	}
 		
 	//SE MODIFICA DCESPUES DE LA RONDA DE ENCUENTRO 
 	//O A PETICION DEL usuario
 	
 	//el resultado esta en INICIADO cuando se crea el ticket
-	public String resultadoTicketEP(TicketEmpleadoPretenso ticket)
+/*	public String resultadoTicketEP(TicketEmpleadoPretenso ticket)
 	{
 		String estado = null; 
 		if(ticket.getEstadoTicket().getEstado().equals("FINALIZADO")) //exito

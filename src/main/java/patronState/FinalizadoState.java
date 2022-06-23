@@ -2,22 +2,18 @@ package patronState;
 
 import java.io.Serializable;
 
+import modelo.EmpleadoPretenso;
+import modelo.Persona;
 import modelo.Ticket;
 
-public class FinalizadoState implements IState, Serializable{
+public class FinalizadoState implements IState{
 	private Ticket ticket;
-	private String estado = "FINALIZADO";
 	
 	public FinalizadoState(Ticket ticket) {
 		super();
 		this.ticket = ticket;
 	}
 
-	
-	public String estadoActual() {
-		return estado;
-	}
-	
 	
 	@Override
 	public void ponerActivo() {
@@ -26,20 +22,31 @@ public class FinalizadoState implements IState, Serializable{
 
 	@Override
 	public void ponerSuspendido() {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void ponerCancelado() {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void ponerFinalizado() {
-		// TODO Auto-generated method stub
-		
+	
+	}
+
+
+	@Override
+	public Ticket ticketDisponible() {
+		return null;
+	}
+
+
+	@Override
+	public void actualizarPtj(Persona emp) {
+		emp.setPuntajeUsuario(10);
+		if (emp.getNombUsuario()=="si es empleador")
+			emp.setPuntajeUsuario(50);
 	}
 
 }

@@ -50,14 +50,10 @@ public class Ticket
 	}
 
 
-
 	public IState getEstado() {
 		return estado;
 	}
 
-	public String estadoTicket() {
-		return estado.estadoActual();
-	}
 
 	public void setEstado(IState estado) {
 		this.estado = estado;

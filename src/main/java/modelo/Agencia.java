@@ -13,9 +13,9 @@ import tablas.PuntajeTicket;
 /**
  * @author paula
  *<br> 
- *Clase que representa una agencia dentro de un sistema de Gestión de Búsquedas Laborales.
+ *Clase que representa una agencia dentro de un sistema de Gestiï¿½n de Bï¿½squedas Laborales.
  *<br>
- *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego serán procesados para generar tickets. Dichos tickets permitirá analizar la contratación de empleados.
+ *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego serï¿½n procesados para generar tickets. Dichos tickets permitirï¿½ analizar la contrataciï¿½n de empleados.
  */
 public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 {
@@ -149,11 +149,11 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 
 	/**
-	 * Modifica el saldo de la agencia cuando ésta cobra una comisión.
+	 * Modifica el saldo de la agencia cuando ï¿½sta cobra una comisiï¿½n.
 	 * <br>
 	 * <b>Pre: </b> Existe una lista de coincidencias con usuarios no nulos. Un empleado solo elije una empresa.
 	 * <br>
-	 * <b>Post: </b> Devuelve un único valor.
+	 * <b>Post: </b> Devuelve un ï¿½nico valor.
 	 * @param listaCoincidencias
 	 */
 	public void setSaldoAgencia(ArrayList<ListAsignacionEmpleador> listaCoincidencias) {
@@ -176,11 +176,11 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	
 	
 	/**
-	 * Genera las listas se asignación de los empleadores y los empleados pretensos.
+	 * Genera las listas se asignaciï¿½n de los empleadores y los empleados pretensos.
 	 * <br>
 	 * <b>Pre: <b/> Las listas no pueden ser nulas y tienen que tener al menos un dato.
 	 * <br>
-	 * <b>Pos: <b/> Devuelve listas de asignación y las de coincidencia. <br> Finaliza estado ticket <br> Actualiza puntaje usuario <br>
+	 * <b>Pos: <b/> Devuelve listas de asignaciï¿½n y las de coincidencia. <br> Finaliza estado ticket <br> Actualiza puntaje usuario <br>
 	 *   
 	 */
 	public void activarRondaEncuentrosLaborales () {///metodo que genere las listas de asignacion
@@ -263,12 +263,9 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		
 		{
 			
-			//analizo estado del ticket 
-			if(empleadosPretensosActivos.get(i).getTicket().estadoTicket().equals("FINALIZADO"))
-				empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
-			else
-				if(empleadosPretensosActivos.get(i).getTicket().estadoTicket().equals("CANCELADO"))
-					empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
+			//actualiza solo si esta finalizado/ cancelado
+			empleadosPretensosActivos.get(i).getTicket().getEstado().actualizarPtj(empleadosPretensosActivos.get(i));
+
 			
 			//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
 			
@@ -287,9 +284,8 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	
 		for(int j=0; j<empleadoresActivos.size(); j++)
 		{
-	
-			if(empleadoresActivos.get(j).getTicket().estadoTicket().equals("FINALIZADO"))
-				empleadoresActivos.get(j).setPuntajeUsuario(50); 
+			///actualiza puntaje finalizados
+			empleadoresActivos.get(j).getTicket().getEstado().actualizarPtj(empleadoresActivos.get(j)); 
 	
 			Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();
 			
@@ -314,17 +310,17 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	 * <br>
 	 * <b>Pre: </b> La lista de empleadores y empleados no pueden ser nula.
 	 * <br>
-	 * <b>Pos: </b> Que el usuario ingresa al sistema con su nombre de usuario y la contraseña, si éste se encuentra registrado.
+	 * <b>Pos: </b> Que el usuario ingresa al sistema con su nombre de usuario y la contraseï¿½a, si ï¿½ste se encuentra registrado.
 	 * @param nombUsuarioIngresado : Nombre de usuario a logearse
-	 * @param contrasenaIngresada : Contraseña del usuario a logearse.
+	 * @param contrasenaIngresada : Contraseï¿½a del usuario a logearse.
 	 * @return : retorna si el usuario se pudo logear.
 	 * @throws NombreDeUsuarioIncorrectoException : Lanza una excepcion si el usuario es incorrecto.
-	 * @throws ContrasenaIncorrectaException : Lanza una excepcion si la contraseña es incorrecta.
+	 * @throws ContrasenaIncorrectaException : Lanza una excepcion si la contraseï¿½a es incorrecta.
 	 */
 	public boolean login(String nombUsuarioIngresado, String contrasenaIngresada) throws NombreDeUsuarioIncorrectoException, ContrasenaIncorrectaException
 	{
 		//de ser usuario inexistente tira una excpecion
-		// de ser contraseña erronea tira otra excpecion
+		// de ser contraseï¿½a erronea tira otra excpecion
 		
 		int i = 0;
 		boolean loginCorrecto = false;

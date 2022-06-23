@@ -1,25 +1,15 @@
 package patronState;
 
-import java.io.Serializable;
-
+import modelo.Persona;
 import modelo.Ticket;
 
-public class SuspendidoState implements IState, Serializable{
+public class SuspendidoState implements IState{
 	private Ticket ticket;
-	private String estado = "SUSPENDIDO";
 	
 	public SuspendidoState(Ticket ticket) {
 		super();
 		this.ticket = ticket;
 	}
-
-	
-	
-	public String estadoActual() {
-		return estado;
-	}
-
-
 
 	@Override
 	public void ponerActivo() {
@@ -33,11 +23,22 @@ public class SuspendidoState implements IState, Serializable{
 
 	@Override
 	public void ponerCancelado() {
-		
+		this.ticket.setEstado(new CanceladoState(this.ticket));
 	}
 
 	@Override
 	public void ponerFinalizado() {
+		
+	}
+
+	@Override
+	public Ticket ticketDisponible() {
+		return null;
+	}
+
+	@Override
+	public void actualizarPtj(Persona empl) {
+		// TODO Auto-generated method stub
 		
 	}
 

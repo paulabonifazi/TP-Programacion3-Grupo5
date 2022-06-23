@@ -29,8 +29,11 @@ public class ControlListasAgencia implements Serializable{
 	public static ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		ArrayList<EmpleadoPretenso> empleadosPretensosActivos = new ArrayList<EmpleadoPretenso>();
 		for (int i=0; i<empleadosPretensos.size();i++) {
-			if (empleadosPretensos.get(i).getTicket().estadoTicket().equals("ACTIVO")) {
+			if (empleadosPretensos.get(i).getTicket().getEstado().ticketDisponible() != null) {
 				empleadosPretensosActivos.add(empleadosPretensos.get(i));
+			}
+			else {
+				///***** exception *********
 			}
 		}
 		return empleadosPretensosActivos;
@@ -39,11 +42,14 @@ public class ControlListasAgencia implements Serializable{
 	public static ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
 		ArrayList<Empleador> empleadoresActivos = new ArrayList<Empleador>();
 		for (int i=0; i<empleadores.size();i++) {
-			if (empleadores.get(i).getTicket().estadoTicket().equals("ACTIVO")) {
+			if (empleadores.get(i).getTicket().getEstado().ticketDisponible() != null) {
 				empleadoresActivos.add(empleadores.get(i));
+				}
+				else {
+					///***** exception *********
+				}
 			
 			}
-		}
 		return empleadoresActivos;
 	}
 	
