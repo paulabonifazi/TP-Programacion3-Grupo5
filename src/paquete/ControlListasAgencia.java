@@ -13,7 +13,6 @@ import tablas.PuntajeTicket;
 
 public class ControlListasAgencia {
 
-	
 	public ArrayList<ListAsignacionEmpleador> generarListAsignacionEmpleador(ArrayList<EmpleadoPretenso> empleadosPretensosActivos,ArrayList<Empleador> empleadoresActivos) {
 		ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador = new ArrayList<ListAsignacionEmpleador>();
 		for (int i=0; i<empleadoresActivos.size(); i++)
@@ -27,8 +26,8 @@ public class ControlListasAgencia {
 		for (int i=0; i<empleadosPretensosActivos.size(); i++)
 			listAsignacionEmpleadoPretensos.add(listasAsignacionEmpleadoPretenso(empleadoresActivos, empleadosPretensosActivos.get(i)));
 		return listAsignacionEmpleadoPretensos;
-	}
-		
+	}	
+	
 	//filtro solo ticket activos
 	public static ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		ArrayList<EmpleadoPretenso> empleadosPretensosActivos = new ArrayList<EmpleadoPretenso>();
@@ -185,5 +184,4 @@ public class ControlListasAgencia {
 	 }
 			
 	
-}
-		
+}		

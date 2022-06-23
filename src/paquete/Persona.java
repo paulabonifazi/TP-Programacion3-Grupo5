@@ -1,6 +1,6 @@
 package paquete;
 
-public class Persona
+public class Persona extends Thread
 {
 	private Domicilio domicilio;
 	private String telefono;

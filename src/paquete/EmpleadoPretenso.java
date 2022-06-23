@@ -1,14 +1,15 @@
 package paquete;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import concurrencia.TicketSimplificado;
 import interfaces.IPersonaFisica;
 import interfaces.IMuestraListasEmpleadosPretensos;
 import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleadoPretenso;
+import modelo.TicketSimplificado;
 
 public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestraListasEmpleadosPretensos
 {	
@@ -44,18 +45,21 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 		return cantBusquedas;
 	}
 
+	/*
 	public void setCantBusquedas(int cantBusquedas) {
 		this.cantBusquedas += cantBusquedas;	//cuento nueva búsqueda realizada
 	}
-	
+	*/
 
 	public TicketSimplificado getTicketSimplificado() {
 		return ticketSimplificado;
 	}
 
+	/*
 	public void setTicketSimplificado(TicketSimplificado ticketSimplificado) {
 		this.ticketSimplificado = ticketSimplificado;
 	}
+	*/
 
 	
 	@Override
@@ -116,5 +120,49 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 		else
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadorActual.getEmpleador().getNombUsuario());
 	}
+
+	@Override
+	public void run() {
+		/*
+		 Cada Empleado Pretenso buscará hasta 10 en la Bolsa de Empleo o hasta encontrar un 
+		 Ticket Simplificado 
+		 */
+		
+		Random r = new Random();
+		
+		while( (this.getCantBusquedas() < 10) || (this.getTicketSimplificado() == null))
+		{
+			this.ticketSimplificado = this.ticketSimplificado.sacarTicketBolsa();
+			
+			if (this.getTicket().getFbTicket().getTipoPuesto().equals(this.getTicketSimplificado().getTipoTrabajo()) && (r.nextInt() <= 5) ) { //acepta la petición de empleo
+				//modifico listas de elección
+				int i = 0;
+				
+				//agrego empleado pretenso a la lista de asignación del empleador
+				while ( (i < Agencia.getInstance().getListAsignacionEmpleador().size()) && !(Agencia.getInstance().getListAsignacionEmpleador().get(i).getEmpleador().equals(this.getTicketSimplificado().getEmpleador())) )
+				{
+					i++;
+				}
+				Agencia.getInstance().getListAsignacionEmpleador().get(i).getListEmpleadosPretensos().add(this);
+				
+				
+				//agrego empleador a la lista de asignación del empleado pretenso
+				ListAsignacionEmpleadPretenso nodoEP = new ListAsignacionEmpleadPretenso();
+				nodoEP.setEmpleadoPretenso(this);
+				nodoEP.getListEmpleadores().add(this.ticketSimplificado.getEmpleador());
+				Agencia.getInstance().getListEleccionEmpleadoPretensos().add(nodoEP);
+				
+			}
+			else {
+				//no hay contratación
+				this.ticketSimplificado.agregarTicketBolsa(this.ticketSimplificado);
+				this.ticketSimplificado = null;
+			}
+			this.cantBusquedas++;
+			
+		}
+	}
+	
+	
 	
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import concurrencia.TicketSimplificado;
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
 import interfaces.IMuestraEmpleadores;
@@ -15,6 +14,7 @@ import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
+import modelo.TicketSimplificado;
 import tablas.PuntajeTicket;
 
 /**
@@ -166,7 +166,6 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
-		
 		listAsignacionEmpleador.addAll(cla.generarListAsignacionEmpleador(empleadosPretensosActivos,empleadoresActivos));
 		listAsignacionEmpleadoPretensos.addAll(cla.generarListAsignacionEmpleadoPretenso(empleadosPretensosActivos,empleadoresActivos));
 		
@@ -180,9 +179,8 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
-		
 		//empleadores
-		for (int j=0; j<this.listAsignacionEmpleador.size(); j++) {
+		for (int j=0; j<listAsignacionEmpleador.size(); j++) {
 			ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
 			ArrayList<EmpleadoPretenso> nodoListas = new ArrayList<EmpleadoPretenso>();
 			i=0;
@@ -220,7 +218,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		
 		listaCoincidencias.addAll(cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos));
 		
-//actualiza el puntaje de los usuarios activos	
+		//actualiza el puntaje de los usuarios activos	
 		
 		actualizacionPuntajeUsuario();
 		cet.finalizarTickets(listaCoincidencias);		
@@ -287,6 +285,17 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		
 		
 	}
+	
+	
+	public void rondaTicketSimplificado() {
+		
+		//usar while para la busqueda de empleado pretenso!! o no, el ticket pasa a dejar de estar activo!
+		for (int i = 0; i < empleadosPretensosActivos.size(); i++) {
+			int j = 0;
+			//while ()
+		}
+	}
+	
 
 	/**
 	 * Logea un usuario.

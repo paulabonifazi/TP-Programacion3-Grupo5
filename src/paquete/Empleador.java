@@ -9,6 +9,8 @@ import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleador;
+import modelo.TicketSimplificado;
+import util.Util;
 
 public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, IMuestraListasEmpleadores
 {
@@ -142,4 +144,24 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		else
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
 	}
+
+	
+	@Override
+	public void run() {						
+		//el Empleador generará 3 puestos de trabajo (Ticket Simplificado)
+		
+		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
+		Agencia.getInstance().agregarTicketSimplificado(ts1);
+		Util.espera();
+		
+		TicketSimplificado ts2 = new TicketSimplificado("Comercio Internacional","Indistinto", this);
+		Agencia.getInstance().agregarTicketSimplificado(ts2);
+		Util.espera();
+		
+		TicketSimplificado ts3 = new TicketSimplificado("Comercio Local","HomeOffice", this);
+		Agencia.getInstance().agregarTicketSimplificado(ts3);
+		Util.espera();
+	}
+	
+	
 }

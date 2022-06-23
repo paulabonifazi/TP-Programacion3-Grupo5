@@ -1,4 +1,4 @@
-package concurrencia;
+package util;
 
 import java.util.Random;
 
