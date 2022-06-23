@@ -25,9 +25,13 @@ import java.awt.FlowLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
 
+import modelo.Ticket;
+import modelo.TicketEmpleadoPretenso;
 import paquete.Empleador;
 
 import javax.swing.JList;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPretenso, KeyListener
 {
@@ -47,6 +51,13 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	private JButton loginButton;
 	private JButton registroButton;
 	private JTabbedPane tabbedPane;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_3 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_4 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_6 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -75,7 +86,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	public VentanaEmpleadoPretenso()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 520, 340);
+		setBounds(100, 100, 515, 340);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(30, 144, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -151,6 +162,17 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panelColumna_2.add(panel_Boton);
 		
 		this.loginButton = new JButton("Entrar");
+		loginButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tabbedPane.setEnabledAt(0, false);
+				tabbedPane.setEnabledAt(1, false);
+				tabbedPane.setSelectedIndex(2);
+				tabbedPane.setEnabledAt(2, true);
+				tabbedPane.setEnabledAt(3, true);
+				tabbedPane.setEnabledAt(4, true);
+				tabbedPane.setEnabledAt(5, true);
+			}
+		});
 		loginButton.setToolTipText("Entrar");
 		panel_Boton.add(loginButton);
 		this.loginButton.setEnabled(false);
@@ -159,9 +181,29 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		contrasenaOlvidada.setHorizontalAlignment(SwingConstants.CENTER);
 		panelColumna_2.add(contrasenaOlvidada);
 		
-		JLabel nuevoUsuario = new JLabel("¿Nuevo usuario? ¡Registrate!");
-		nuevoUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		panelColumna_2.add(nuevoUsuario);
+		JPanel panel_BotonRegistrate = new JPanel();
+		panel_BotonRegistrate.setBackground(new Color(30, 144, 255));
+		panelColumna_2.add(panel_BotonRegistrate);
+		panel_BotonRegistrate.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel nuevoUsuario = new JLabel("¿Nuevo usuario?");
+		panel_BotonRegistrate.add(nuevoUsuario);
+		nuevoUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		JPanel panel_Boton_2 = new JPanel();
+		panel_Boton_2.setBackground(new Color(30, 144, 255));
+		panel_BotonRegistrate.add(panel_Boton_2);
+		
+		JButton registrarseButton = new JButton("¡Registrate!");
+		registrarseButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tabbedPane.setSelectedIndex(1);
+			}
+		});
+		registrarseButton.setHorizontalAlignment(SwingConstants.LEFT);
+		panel_Boton_2.add(registrarseButton);
+		registrarseButton.setToolTipText("¡Registrate!");
+		registrarseButton.setEnabled(true);
 		
 		JPanel panelColumna_3 = new JPanel();
 		panelColumna_3.setPreferredSize(new Dimension(180, 720));
@@ -327,6 +369,17 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panelColumna_2_1.add(panel_Boton_1);
 		
 		this.registroButton = new JButton("Registrarse");
+		registroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tabbedPane.setEnabledAt(0, false);
+				tabbedPane.setEnabledAt(1, false);
+				tabbedPane.setSelectedIndex(2);
+				tabbedPane.setEnabledAt(2, true);
+				tabbedPane.setEnabledAt(3, true);
+				tabbedPane.setEnabledAt(4, true);
+				tabbedPane.setEnabledAt(5, true);
+			}
+		});
 		registroButton.setToolTipText("Registrarse");
 		panel_Boton_1.add(registroButton);
 		this.registroButton.setEnabled(false);
@@ -340,7 +393,162 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panel_Ticket.setVisible(false);
 		panel_Ticket.setToolTipText("Ticket");
 		tabbedPane.addTab("Ticket", null, panel_Ticket, "Ticket");
+		panel_Ticket.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_3 = new JPanel();
+		panel_Ticket.add(panel_3, BorderLayout.CENTER);
+		
+		JList<TicketEmpleadoPretenso> listaDeTicketsEmpleadoPretenso = new JList<TicketEmpleadoPretenso>();
+		listaDeTicketsEmpleadoPretenso.setVisible(false);
+		panel_3.add(listaDeTicketsEmpleadoPretenso);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setVisible(false);
+		panel_3.add(panel_4);
+		panel_4.setLayout(new GridLayout(8, 4, 0, 0));
+		
+		JLabel lblNewLabel = new JLabel("Locación:");
+		panel_4.add(lblNewLabel);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Home Office");
+		buttonGroup.add(rdbtnNewRadioButton);
+		panel_4.add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Presencial");
+		buttonGroup.add(rdbtnNewRadioButton_1);
+		panel_4.add(rdbtnNewRadioButton_1);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Indistinto");
+		buttonGroup.add(rdbtnNewRadioButton_2);
+		panel_4.add(rdbtnNewRadioButton_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("Remuneración:");
+		panel_4.add(lblNewLabel_1);
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Hasta V1");
+		buttonGroup_1.add(rdbtnNewRadioButton_3);
+		
+		panel_4.add(rdbtnNewRadioButton_3);
+		JRadioButton rdbtnNewRadioButton_1_1 = new JRadioButton("Entre V1 y V2");
+		buttonGroup_1.add(rdbtnNewRadioButton_1_1);
+		
+		panel_4.add(rdbtnNewRadioButton_1_1);
+		JRadioButton rdbtnNewRadioButton_2_1 = new JRadioButton("Más de V2");
+		buttonGroup_1.add(rdbtnNewRadioButton_2_1);
+		
+		panel_4.add(rdbtnNewRadioButton_2_1);
+		JLabel lblNewLabel_2 = new JLabel("Carga Horaria:");
+		panel_4.add(lblNewLabel_2);
+		
+		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Media");
+		buttonGroup_2.add(rdbtnNewRadioButton_4);
+		panel_4.add(rdbtnNewRadioButton_4);
+		
+		JRadioButton rdbtnNewRadioButton_1_2 = new JRadioButton("Completa");
+		buttonGroup_2.add(rdbtnNewRadioButton_1_2);
+		panel_4.add(rdbtnNewRadioButton_1_2);
+		
+		JRadioButton rdbtnNewRadioButton_2_2 = new JRadioButton("Extendida");
+		buttonGroup_2.add(rdbtnNewRadioButton_2_2);
+		panel_4.add(rdbtnNewRadioButton_2_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Tipo de Puesto:");
+		panel_4.add(lblNewLabel_3);
+		
+		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Júnior");
+		buttonGroup_3.add(rdbtnNewRadioButton_5);
+		panel_4.add(rdbtnNewRadioButton_5);
+		
+		JRadioButton rdbtnNewRadioButton_1_3 = new JRadioButton("Sénior");
+		buttonGroup_3.add(rdbtnNewRadioButton_1_3);
+		panel_4.add(rdbtnNewRadioButton_1_3);
+		
+		JRadioButton rdbtnNewRadioButton_2_3 = new JRadioButton("Managment");
+		buttonGroup_3.add(rdbtnNewRadioButton_2_3);
+		panel_4.add(rdbtnNewRadioButton_2_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Rango Etario:");
+		panel_4.add(lblNewLabel_4);
+		
+		JRadioButton rdbtnNewRadioButton_6 = new JRadioButton("Menos de 40");
+		buttonGroup_4.add(rdbtnNewRadioButton_6);
+		panel_4.add(rdbtnNewRadioButton_6);
+		
+		JRadioButton rdbtnNewRadioButton_1_4 = new JRadioButton("Entre 40 y 50");
+		buttonGroup_4.add(rdbtnNewRadioButton_1_4);
+		panel_4.add(rdbtnNewRadioButton_1_4);
+		
+		JRadioButton rdbtnNewRadioButton_2_4 = new JRadioButton("Más de 50");
+		buttonGroup_4.add(rdbtnNewRadioButton_2_4);
+		panel_4.add(rdbtnNewRadioButton_2_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Experiencia previa:");
+		panel_4.add(lblNewLabel_5);
+		
+		JRadioButton rdbtnNewRadioButton_7 = new JRadioButton("Nada");
+		buttonGroup_5.add(rdbtnNewRadioButton_7);
+		panel_4.add(rdbtnNewRadioButton_7);
+		
+		JRadioButton rdbtnNewRadioButton_1_5 = new JRadioButton("Media");
+		buttonGroup_5.add(rdbtnNewRadioButton_1_5);
+		panel_4.add(rdbtnNewRadioButton_1_5);
+		
+		JRadioButton rdbtnNewRadioButton_2_5 = new JRadioButton("Mucha");
+		buttonGroup_5.add(rdbtnNewRadioButton_2_5);
+		panel_4.add(rdbtnNewRadioButton_2_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("Estudios Cursados:");
+		panel_4.add(lblNewLabel_6);
+		
+		JRadioButton rdbtnNewRadioButton_8 = new JRadioButton("Primario");
+		buttonGroup_6.add(rdbtnNewRadioButton_8);
+		panel_4.add(rdbtnNewRadioButton_8);
+		
+		JRadioButton rdbtnNewRadioButton_1_6 = new JRadioButton("Secundario");
+		buttonGroup_6.add(rdbtnNewRadioButton_1_6);
+		panel_4.add(rdbtnNewRadioButton_1_6);
+		
+		JRadioButton rdbtnNewRadioButton_2_6 = new JRadioButton("Universitario");
+		buttonGroup_6.add(rdbtnNewRadioButton_2_6);
+		panel_4.add(rdbtnNewRadioButton_2_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("");
+		panel_4.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_8 = new JLabel("");
+		panel_4.add(lblNewLabel_8);
+		
+		JButton btnNewButton_2 = new JButton("Crear ticket");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel_4.add(btnNewButton_2);
+		
+		JLabel lblNewLabel_9 = new JLabel("");
+		panel_4.add(lblNewLabel_9);
 		tabbedPane.setEnabledAt(2, false);
+
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(150, 10));
+		panel_Ticket.add(panel, BorderLayout.WEST);
+		
+		JButton btnNewButton = new JButton("Ver mis tickets");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listaDeTicketsEmpleadoPretenso.setVisible(true);
+				panel_4.setVisible(false);
+			}
+		});
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Crear nuevo ticket");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listaDeTicketsEmpleadoPretenso.setVisible(false);
+				panel_4.setVisible(true);
+			}
+		});
+		panel.add(btnNewButton_1);
 		
 		JPanel panel_ListaEmpleadores = new JPanel();
 		panel_ListaEmpleadores.setVisible(false);

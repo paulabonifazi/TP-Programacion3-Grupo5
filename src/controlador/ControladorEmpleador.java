@@ -42,31 +42,7 @@ public class ControladorEmpleador implements ActionListener, Observer
 
 	@Override
 	public void actionPerformed(ActionEvent e)
-	{
-		if (e.getActionCommand().equalsIgnoreCase("Entrar") || e.getActionCommand().equalsIgnoreCase("REGISTRARSE"))
-		{
-			this.vista.getTabbedPane().setEnabledAt(0, false);
-			this.vista.getTabbedPane().setEnabledAt(1, false);
-			this.vista.getTabbedPane().setEnabledAt(2, true);
-			this.vista.getTabbedPane().setEnabledAt(3, true);
-			this.vista.getTabbedPane().setEnabledAt(4, true);
-			this.vista.getTabbedPane().setEnabledAt(5, true);
-		}
-		else if (e.getActionCommand().equalsIgnoreCase("Física")) {
-			this.vista.getNombreLabel().setText("Nombre:");
-			this.vista.getApellidoLabel().setText("Apellido:");
-			this.vista.getTextField_3().setEnabled(true);
-			this.vista.getEdadLabel().setText("Edad:");
-			this.vista.getTextField_4().setEnabled(true);
-		}
-		else if (e.getActionCommand().equalsIgnoreCase("Jurídica")) {
-			this.vista.getNombreLabel().setText("Razón Social:");
-			this.vista.getApellidoLabel().setText("");
-			this.vista.getTextField_3().setEnabled(false);
-			this.vista.getEdadLabel().setText("");
-			this.vista.getTextField_4().setEnabled(false);
-		}
-	}
+	{}
 
 	@Override
 	public void update(Observable o, Object arg)

@@ -52,19 +52,6 @@ public class ControladorEmpleadoPretenso implements ActionListener, Observer
 		this.vista.setActionListener(this);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		if (e.getActionCommand().equalsIgnoreCase("Entrar") || e.getActionCommand().equalsIgnoreCase("REGISTRARSE"))
-		{
-			this.vista.getTabbedPane().setEnabledAt(0, false);
-			this.vista.getTabbedPane().setEnabledAt(1, false);
-			this.vista.getTabbedPane().setEnabledAt(2, true);
-			this.vista.getTabbedPane().setEnabledAt(3, true);
-			this.vista.getTabbedPane().setEnabledAt(4, true);
-			this.vista.getTabbedPane().setEnabledAt(5, true);
-		}
-	}
 	private void login()
 	{
 		Persona persona = null;
@@ -78,6 +65,13 @@ public class ControladorEmpleadoPretenso implements ActionListener, Observer
 
 	@Override
 	public void update(Observable o, Object arg)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e)
 	{
 		// TODO Auto-generated method stub
 		
