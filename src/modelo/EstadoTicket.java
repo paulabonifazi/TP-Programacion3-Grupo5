@@ -1,6 +1,9 @@
 package modelo;
 
-public class EstadoTicket {
+import java.util.Observable;
+
+public class EstadoTicket  extends Observable
+{
 
 	private String estadoTicket;
 
@@ -13,7 +16,7 @@ public class EstadoTicket {
 		return estadoTicket;
 	}
 	
-	public void cambiarEstado(String nuevoEstado) {///
+	public void cambiarEstado(String nuevoEstado) {
 		this.estadoTicket=nuevoEstado;
 	}
 	

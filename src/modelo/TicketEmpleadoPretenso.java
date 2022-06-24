@@ -14,9 +14,7 @@ public class TicketEmpleadoPretenso extends Ticket
 		super(fbTicket, estadoTicket, fechaTicket);
 		this.resultado = "Iniciado";
 	}
-
-
-
+	
 
 	public void setResultado(String resultado) {
 		this.resultado = resultado;
