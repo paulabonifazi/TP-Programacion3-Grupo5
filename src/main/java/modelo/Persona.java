@@ -1,9 +1,8 @@
 package modelo;
 
-public class Persona extends Thread
 import java.io.Serializable;
 
-public class Persona implements Serializable
+public class Persona extends Thread implements Serializable
 {
 	private Domicilio domicilio;
 	private String telefono;

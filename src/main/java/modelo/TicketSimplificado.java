@@ -2,9 +2,6 @@ package modelo;
 
 import java.util.ArrayList;
 
-import paquete.Agencia;
-import paquete.Empleador;
-
 public class TicketSimplificado 
 {
 	private String tipoTrabajo; //Salud - Comercio Local - Comercio Internacional

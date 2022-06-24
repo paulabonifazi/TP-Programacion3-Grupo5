@@ -283,16 +283,6 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		
 	}
 	
-	
-	public void rondaTicketSimplificado() {
-		
-		//usar while para la busqueda de empleado pretenso!! o no, el ticket pasa a dejar de estar activo!
-		for (int i = 0; i < empleadosPretensosActivos.size(); i++) {
-			int j = 0;
-			//while ()
-		}
-	}
-	
 
 	/**
 	 * Logea un usuario.

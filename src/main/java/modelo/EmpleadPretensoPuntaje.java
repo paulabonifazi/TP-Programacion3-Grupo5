@@ -1,6 +1,4 @@
-
-import paquete.EmpleadoPretenso;
-
+package modelo;
 
 public class EmpleadPretensoPuntaje {
 	
