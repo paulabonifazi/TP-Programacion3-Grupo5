@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="15.0.1" class="java.beans.XMLDecoder">
+ <object class="persistencia.AgenciaDTO" id="AgenciaDTO0">
+  <void property="empleadores">
+   <void method="add">
+    <object class="modelo.Empleador">
+     <void property="contrasenia">
+      <string>123456789</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>Juramento</string>
+       </void>
+       <void property="descripcion">
+        <string>Casa</string>
+       </void>
+       <void property="numero">
+        <int>256</int>
+       </void>
+      </object>
+     </void>
+     <void property="listaPesos">
+      <object class="modelo.ValoracionAspecto">
+       <void property="pesoCargaHoraria">
+        <int>10</int>
+       </void>
+       <void property="pesoEstudiosCursados">
+        <int>10</int>
+       </void>
+       <void property="pesoExperienciaPrevia">
+        <int>10</int>
+       </void>
+       <void property="pesoLocacion">
+        <int>1</int>
+       </void>
+       <void property="pesoRangoEtario">
+        <int>10</int>
+       </void>
+       <void property="pesoRemuneracion">
+        <int>10</int>
+       </void>
+       <void property="pesoTipoPuesto">
+        <int>10</int>
+       </void>
+      </object>
+     </void>
+     <void property="mail">
+      <string>joseyasociados@gmail.com</string>
+     </void>
+     <void property="nomRazonS">
+      <string>Jose y Asociados S.A.</string>
+     </void>
+     <void property="nombUsuario">
+      <string>JoseyAsociados</string>
+     </void>
+     <void property="personaJuridica">
+      <boolean>true</boolean>
+     </void>
+     <void property="rubro">
+      <string>Comercio Local</string>
+     </void>
+     <void property="telefono">
+      <string>22356971</string>
+     </void>
+     <void property="ticket">
+      <object class="modelo.TicketEmpleador" id="TicketEmpleador0">
+       <void property="cantEmpleadosSolicitados">
+        <int>3</int>
+       </void>
+       <void property="fbTicket">
+        <object class="modelo.FormularioBusqueda">
+         <void property="cargaHoraria">
+          <string>Media</string>
+         </void>
+         <void property="estudiosCursados">
+          <string>Secundario</string>
+         </void>
+         <void property="experienciaPrevia">
+          <string>MEDIA</string>
+         </void>
+         <void property="locacion">
+          <string>Presencial</string>
+         </void>
+         <void property="rangoEtario">
+          <string>Mas de 50</string>
+         </void>
+         <void property="remuneracion">
+          <string>V3</string>
+         </void>
+         <void property="tipoPuesto">
+          <string>Senior</string>
+         </void>
+        </object>
+       </void>
+       <void property="fechaTicket">
+        <object class="java.util.Date">
+         <long>61618417200000</long>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="modelo.Empleador">
+     <void property="contrasenia">
+      <string>987456</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>Alvear</string>
+       </void>
+       <void property="descripcion">
+        <string>9 H</string>
+       </void>
+       <void property="numero">
+        <int>2978</int>
+       </void>
+      </object>
+     </void>
+     <void property="listaPesos">
+      <object class="modelo.ValoracionAspecto">
+       <void property="pesoCargaHoraria">
+        <int>10</int>
+       </void>
+       <void property="pesoEstudiosCursados">
+        <int>10</int>
+       </void>
+       <void property="pesoExperienciaPrevia">
+        <int>10</int>
+       </void>
+       <void property="pesoLocacion">
+        <int>10</int>
+       </void>
+       <void property="pesoRangoEtario">
+        <int>10</int>
+       </void>
+       <void property="pesoRemuneracion">
+        <int>10</int>
+       </void>
+       <void property="pesoTipoPuesto">
+        <int>10</int>
+       </void>
+      </object>
+     </void>
+     <void property="mail">
+      <string>juana@gmail.com</string>
+     </void>
+     <void property="nomRazonS">
+      <string>Juana Gonzalez</string>
+     </void>
+     <void property="nombUsuario">
+      <string>JuanaGonzalez</string>
+     </void>
+     <void property="personaJuridica">
+      <boolean>true</boolean>
+     </void>
+     <void property="rubro">
+      <string>Salud</string>
+     </void>
+     <void property="telefono">
+      <string>7895630</string>
+     </void>
+     <void property="ticket">
+      <object class="modelo.TicketEmpleador">
+       <void property="cantEmpleadosSolicitados">
+        <int>1</int>
+       </void>
+       <void property="fbTicket">
+        <object class="modelo.FormularioBusqueda">
+         <void property="cargaHoraria">
+          <string>Extendida</string>
+         </void>
+         <void property="estudiosCursados">
+          <string>Terciario</string>
+         </void>
+         <void property="experienciaPrevia">
+          <string>MUCHA</string>
+         </void>
+         <void property="locacion">
+          <string>Indistinto</string>
+         </void>
+         <void property="rangoEtario">
+          <string>40 a 50</string>
+         </void>
+         <void property="remuneracion">
+          <string>V2</string>
+         </void>
+         <void property="tipoPuesto">
+          <string>Managment</string>
+         </void>
+        </object>
+       </void>
+       <void property="fechaTicket">
+        <object class="java.util.Date">
+         <long>61625761200000</long>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="modelo.Empleador">
+     <void property="contrasenia">
+      <string>5555555</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>Luro</string>
+       </void>
+       <void property="descripcion">
+        <string>1 A</string>
+       </void>
+       <void property="numero">
+        <int>560</int>
+       </void>
+      </object>
+     </void>
+     <void property="listaPesos">
+      <object class="modelo.ValoracionAspecto">
+       <void property="pesoCargaHoraria">
+        <int>5</int>
+       </void>
+       <void property="pesoEstudiosCursados">
+        <int>5</int>
+       </void>
+       <void property="pesoExperienciaPrevia">
+        <int>5</int>
+       </void>
+       <void property="pesoLocacion">
+        <int>5</int>
+       </void>
+       <void property="pesoRangoEtario">
+        <int>5</int>
+       </void>
+       <void property="pesoRemuneracion">
+        <int>5</int>
+       </void>
+       <void property="pesoTipoPuesto">
+        <int>5</int>
+       </void>
+      </object>
+     </void>
+     <void property="mail">
+      <string>raul@gmail.com</string>
+     </void>
+     <void property="nomRazonS">
+      <string>Raul Martinez</string>
+     </void>
+     <void property="nombUsuario">
+      <string>RaulMartinez</string>
+     </void>
+     <void property="personaJuridica">
+      <boolean>true</boolean>
+     </void>
+     <void property="rubro">
+      <string>Comercio Esterior</string>
+     </void>
+     <void property="telefono">
+      <string>65892150</string>
+     </void>
+     <void property="ticket">
+      <object idref="TicketEmpleador0"/>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="empleadosPretensos">
+   <void method="add">
+    <object class="modelo.EmpleadoPretenso">
+     <void property="apellido">
+      <string>Argento</string>
+     </void>
+     <void property="contrasenia">
+      <string>hola1256</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>Saavedra</string>
+       </void>
+       <void property="descripcion">
+        <string>Casa</string>
+       </void>
+       <void property="numero">
+        <int>5842</int>
+       </void>
+      </object>
+     </void>
+     <void property="edad">
+      <int>34</int>
+     </void>
+     <void property="mail">
+      <string>paola@hyty.com</string>
+     </void>
+     <void property="nombUsuario">
+      <string>PaolaArgento</string>
+     </void>
+     <void property="nombre">
+      <string>Paola</string>
+     </void>
+     <void property="telefono">
+      <string>552564</string>
+     </void>
+     <void property="ticket">
+      <object class="modelo.TicketEmpleadoPretenso">
+       <void property="fbTicket">
+        <object class="modelo.FormularioBusqueda">
+         <void property="cargaHoraria">
+          <string>Completa</string>
+         </void>
+         <void property="estudiosCursados">
+          <string>Secundario</string>
+         </void>
+         <void property="experienciaPrevia">
+          <string>MUCHA</string>
+         </void>
+         <void property="locacion">
+          <string>Presencial</string>
+         </void>
+         <void property="rangoEtario">
+          <string>Menos de 40</string>
+         </void>
+         <void property="remuneracion">
+          <string>V1</string>
+         </void>
+         <void property="tipoPuesto">
+          <string>Senior</string>
+         </void>
+        </object>
+       </void>
+       <void property="fechaTicket">
+        <object class="java.util.Date">
+         <long>61612282800000</long>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="modelo.EmpleadoPretenso">
+     <void property="apellido">
+      <string>Rodriguez</string>
+     </void>
+     <void property="contrasenia">
+      <string>contrasenia</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>Mateu</string>
+       </void>
+       <void property="descripcion">
+        <string>7 A</string>
+       </void>
+       <void property="numero">
+        <int>4563</int>
+       </void>
+      </object>
+     </void>
+     <void property="edad">
+      <int>48</int>
+     </void>
+     <void property="mail">
+      <string>celeste@gmail.com</string>
+     </void>
+     <void property="nombUsuario">
+      <string>CelesteRodriguez</string>
+     </void>
+     <void property="nombre">
+      <string>Celeste</string>
+     </void>
+     <void property="telefono">
+      <string>999999</string>
+     </void>
+     <void property="ticket">
+      <object class="modelo.TicketEmpleadoPretenso">
+       <void property="fbTicket">
+        <object class="modelo.FormularioBusqueda">
+         <void property="cargaHoraria">
+          <string>Media</string>
+         </void>
+         <void property="estudiosCursados">
+          <string>Terciario</string>
+         </void>
+         <void property="experienciaPrevia">
+          <string>MEDIA</string>
+         </void>
+         <void property="locacion">
+          <string>HomeOffice</string>
+         </void>
+         <void property="rangoEtario">
+          <string>40 a 50</string>
+         </void>
+         <void property="remuneracion">
+          <string>V2</string>
+         </void>
+         <void property="tipoPuesto">
+          <string>Managment</string>
+         </void>
+        </object>
+       </void>
+       <void property="fechaTicket">
+        <object class="java.util.Date">
+         <long>61620836400000</long>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="modelo.EmpleadoPretenso">
+     <void property="apellido">
+      <string>Aguirre</string>
+     </void>
+     <void property="contrasenia">
+      <string>asdfasdf</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>San Luis</string>
+       </void>
+       <void property="descripcion">
+        <string>5 F</string>
+       </void>
+       <void property="numero">
+        <int>23</int>
+       </void>
+      </object>
+     </void>
+     <void property="edad">
+      <int>56</int>
+     </void>
+     <void property="mail">
+      <string>tatiana@outlook.com</string>
+     </void>
+     <void property="nombUsuario">
+      <string>TatianaAguirre</string>
+     </void>
+     <void property="nombre">
+      <string>Tatiana</string>
+     </void>
+     <void property="telefono">
+      <string>56215</string>
+     </void>
+     <void property="ticket">
+      <object class="modelo.TicketEmpleadoPretenso">
+       <void property="fbTicket">
+        <object class="modelo.FormularioBusqueda">
+         <void property="cargaHoraria">
+          <string>Extendida</string>
+         </void>
+         <void property="estudiosCursados">
+          <string>Primario</string>
+         </void>
+         <void property="experienciaPrevia">
+          <string>NADA</string>
+         </void>
+         <void property="locacion">
+          <string>Indistinto</string>
+         </void>
+         <void property="rangoEtario">
+          <string>Mas de 50</string>
+         </void>
+         <void property="remuneracion">
+          <string>V1</string>
+         </void>
+         <void property="tipoPuesto">
+          <string>Junior</string>
+         </void>
+        </object>
+       </void>
+       <void property="fechaTicket">
+        <object class="java.util.Date">
+         <long>61628526000000</long>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="modelo.EmpleadoPretenso">
+     <void property="apellido">
+      <string>Lopez</string>
+     </void>
+     <void property="contrasenia">
+      <string>nosequeponer</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>Calle Falsa</string>
+       </void>
+       <void property="descripcion">
+        <string>Casa</string>
+       </void>
+       <void property="numero">
+        <int>123</int>
+       </void>
+      </object>
+     </void>
+     <void property="edad">
+      <int>28</int>
+     </void>
+     <void property="mail">
+      <string>camila@adf.com</string>
+     </void>
+     <void property="nombUsuario">
+      <string>CamilaLopez</string>
+     </void>
+     <void property="nombre">
+      <string>Camila</string>
+     </void>
+     <void property="telefono">
+      <string>1565156</string>
+     </void>
+     <void property="ticket">
+      <object class="modelo.TicketEmpleadoPretenso">
+       <void property="fbTicket">
+        <object class="modelo.FormularioBusqueda">
+         <void property="cargaHoraria">
+          <string>Completa</string>
+         </void>
+         <void property="estudiosCursados">
+          <string>Primario</string>
+         </void>
+         <void property="experienciaPrevia">
+          <string>MEDIA</string>
+         </void>
+         <void property="locacion">
+          <string>HomeOffice</string>
+         </void>
+         <void property="rangoEtario">
+          <string>40 a 50</string>
+         </void>
+         <void property="remuneracion">
+          <string>V1</string>
+         </void>
+         <void property="tipoPuesto">
+          <string>Senior</string>
+         </void>
+        </object>
+       </void>
+       <void property="fechaTicket">
+        <object class="java.util.Date">
+         <long>61616430000000</long>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="modelo.EmpleadoPretenso">
+     <void property="apellido">
+      <string>Lazuli</string>
+     </void>
+     <void property="contrasenia">
+      <string>holahola</string>
+     </void>
+     <void property="domicilio">
+      <object class="modelo.Domicilio">
+       <void property="calle">
+        <string>Santiago del Estero</string>
+       </void>
+       <void property="descripcion">
+        <string>3 I</string>
+       </void>
+       <void property="numero">
+        <int>666</int>
+       </void>
+      </object>
+     </void>
+     <void property="edad">
+      <int>42</int>
+     </void>
+     <void property="mail">
+      <string>lautaro@gmail.com</string>
+     </void>
+     <void property="nombUsuario">
+      <string>LautaroLazuli</string>
+     </void>
+     <void property="nombre">
+      <string>Lautaro</string>
+     </void>
+     <void property="telefono">
+      <string>08004556666</string>
+     </void>
+     <void property="ticket">
+      <object class="modelo.TicketEmpleadoPretenso">
+       <void property="fbTicket">
+        <object class="modelo.FormularioBusqueda">
+         <void property="cargaHoraria">
+          <string>Extendida</string>
+         </void>
+         <void property="estudiosCursados">
+          <string>Terciario</string>
+         </void>
+         <void property="experienciaPrevia">
+          <string>MUCHA</string>
+         </void>
+         <void property="locacion">
+          <string>Presencial</string>
+         </void>
+         <void property="rangoEtario">
+          <string>Menos de 40</string>
+         </void>
+         <void property="remuneracion">
+          <string>V3</string>
+         </void>
+         <void property="tipoPuesto">
+          <string>Managment</string>
+         </void>
+        </object>
+       </void>
+       <void property="fechaTicket">
+        <object class="java.util.Date">
+         <long>61625761200000</long>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>
