@@ -58,6 +58,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_6 = new ButtonGroup();
 	private final ButtonGroup group = new ButtonGroup();
+	private final ButtonGroup buttonGroup_7 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -222,7 +223,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panelColumna_2_1.setPreferredSize(new Dimension(360, 720));
 		panelColumna_2_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_Registro.add(panelColumna_2_1);
-		panelColumna_2_1.setLayout(new GridLayout(10, 0, 0, 0));
+		panelColumna_2_1.setLayout(new GridLayout(11, 0, 0, 0));
 		
 		JPanel panel_Persona = new JPanel();
 		panelColumna_2_1.add(panel_Persona);
@@ -362,6 +363,25 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panel_2_1_2.add(textField_7);
 		textField_7.setColumns(20);
 		this.textField_7.addKeyListener(this);
+		
+		JPanel panel_Rubro = new JPanel();
+		panelColumna_2_1.add(panel_Rubro);
+		panel_Rubro.setLayout(new GridLayout(0, 4, 0, 0));
+		
+		JLabel rubroLabel = new JLabel("Rubro al que se dedica");
+		panel_Rubro.add(rubroLabel);
+		
+		JRadioButton rdbtnNewRadioButton_9 = new JRadioButton("Salud");
+		buttonGroup_7.add(rdbtnNewRadioButton_9);
+		panel_Rubro.add(rdbtnNewRadioButton_9);
+		
+		JRadioButton rdbtnNewRadioButton_10 = new JRadioButton("Comercio local");
+		buttonGroup_7.add(rdbtnNewRadioButton_10);
+		panel_Rubro.add(rdbtnNewRadioButton_10);
+		
+		JRadioButton rdbtnNewRadioButton_11 = new JRadioButton("Comercio internacional");
+		buttonGroup_7.add(rdbtnNewRadioButton_11);
+		panel_Rubro.add(rdbtnNewRadioButton_11);
 		
 		JPanel panel_UsuarioNuevo = new JPanel();
 		panelColumna_2_1.add(panel_UsuarioNuevo);
@@ -787,6 +807,12 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	public ButtonGroup getGroup()
 	{
 		return group;
+	}
+
+	@Override
+	public ButtonGroup getButtonGroup_7()
+	{
+		return buttonGroup_7;
 	}
 
 }

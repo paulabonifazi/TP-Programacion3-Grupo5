@@ -28,5 +28,6 @@ public interface IVistaEmpleador
 	public ButtonGroup getButtonGroup_4();
 	public ButtonGroup getButtonGroup_5();
 	public ButtonGroup getButtonGroup_6();
+	public ButtonGroup getButtonGroup_7();
 	public ButtonGroup getGroup();
 }

@@ -101,7 +101,11 @@ public class VentanaAgencia extends JFrame
 		lblNewLabel.setToolTipText("Tipos de trabajo");
 		panel.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Ingresar");
+		JButton btnNewButton = new JButton("Ingresar tipos de trabajo");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setToolTipText("Ingresar");
 		panel.add(btnNewButton);
 		
@@ -156,18 +160,34 @@ public class VentanaAgencia extends JFrame
 		panel_1.setLayout(new GridLayout(4, 0, 0, 0));
 		
 		JButton btnNewButton_1 = new JButton("Empleadores");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_1.setToolTipText("Empleadores");
 		panel_1.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Solicitud empleadores");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_2.setToolTipText("Solicitud empleadores");
 		panel_1.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Empleados");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_3.setToolTipText("Empleados");
 		panel_1.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("Solicitud empleados");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_4.setToolTipText("Solicitud empleados");
 		panel_1.add(btnNewButton_4);
 		
