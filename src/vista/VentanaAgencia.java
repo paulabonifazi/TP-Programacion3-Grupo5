@@ -36,12 +36,12 @@ public class VentanaAgencia extends JFrame
 	private JPanel contentPane;
 	private JPanel panel2;
 	private JPanel panel3;
-	private JLabel lblNewLabel2;
 	private JButton btnNewButton2;
 	private JList list2;
-	private JLabel lblNewLabel3;
 	private JButton btnNewButton3;
 	private JList list3;
+	private boolean rondaELActivada = false;
+	private boolean rondaContratacionActivada = false;
 
 	/**
 	 * Launch the application.
@@ -95,17 +95,13 @@ public class VentanaAgencia extends JFrame
 		
 		JPanel panel = new JPanel();
 		panel_Columna11.add(panel, BorderLayout.NORTH);
-		panel.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		JLabel lblNewLabel = new JLabel("Tipos de trabajo:");
-		lblNewLabel.setToolTipText("Tipos de trabajo");
-		panel.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Ingresar tipos de trabajo");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btnNewButton.setToolTipText("Ingresar");
 		panel.add(btnNewButton);
 		
@@ -118,13 +114,13 @@ public class VentanaAgencia extends JFrame
 		panel_Columna12.setLayout(new BorderLayout(0, 0));
 		panel2 = new JPanel();
 		panel_Columna12.add(panel2, BorderLayout.NORTH);
-		panel2.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		lblNewLabel2 = new JLabel("Especificación de rango laboral:");
-		lblNewLabel2.setToolTipText("Especificación de rango laboral");
-		panel2.add(lblNewLabel2);
-		
-		btnNewButton2 = new JButton("Ingresar");
+		btnNewButton2 = new JButton("Ingresar especificación de rango laboral");
+		btnNewButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btnNewButton2.setToolTipText("Ingresar");
 		panel2.add(btnNewButton2);
 		
@@ -137,13 +133,13 @@ public class VentanaAgencia extends JFrame
 		panel_Columna13.setLayout(new BorderLayout(0, 0));
 		panel3 = new JPanel();
 		panel_Columna13.add(panel3, BorderLayout.NORTH);
-		panel3.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		lblNewLabel3 = new JLabel("Especificación de tipos de puestos:");
-		lblNewLabel3.setToolTipText("Especificación de tipos de puestos");
-		panel3.add(lblNewLabel3);
-		
-		btnNewButton3 = new JButton("Ingresar");
+		btnNewButton3 = new JButton("Ingresar especificación de tipos de puestos");
+		btnNewButton3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btnNewButton3.setToolTipText("Ingresar");
 		panel3.add(btnNewButton3);
 		
@@ -207,10 +203,18 @@ public class VentanaAgencia extends JFrame
 		JPanel panel_2 = new JPanel();
 		panel_REL.add(panel_2, BorderLayout.WEST);
 		
-		JLabel lblNewLabel_1 = new JLabel("Activar ronda");
-		panel_2.add(lblNewLabel_1);
-		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("Activar");
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("Activar Ronda de Encuentros Laborales");
+		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!isRondaELActivada()) {
+					tglbtnNewToggleButton.setText("Desactivar Ronda de Encuentros Laborales");
+					setRondaELActivada(true);
+				} else {
+					tglbtnNewToggleButton.setText("Activar Ronda de Encuentros Laborales");
+					setRondaELActivada(false);
+				}
+			}
+		});
 		panel_2.add(tglbtnNewToggleButton);
 		
 		JList list_2 = new JList();
@@ -224,10 +228,18 @@ public class VentanaAgencia extends JFrame
 		JPanel panel_3 = new JPanel();
 		panel_RondaContratacion.add(panel_3, BorderLayout.WEST);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Activar ronda");
-		panel_3.add(lblNewLabel_1_1);
-		
-		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Activar");
+		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Activar Ronda de Contratación");
+		tglbtnNewToggleButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!isRondaContratacionActivada()) {
+					tglbtnNewToggleButton.setText("Desactivar Ronda de Contratación");
+					setRondaContratacionActivada(true);
+				} else {
+					tglbtnNewToggleButton.setText("Activar Ronda de Contratación");
+					setRondaContratacionActivada(false);
+				}
+			}
+		});
 		panel_3.add(tglbtnNewToggleButton_1);
 		
 		JList list_3 = new JList();
@@ -235,6 +247,22 @@ public class VentanaAgencia extends JFrame
 		
 		JPanel panel_Publicidad = new JPanel();
 		contentPane.add(panel_Publicidad, BorderLayout.SOUTH);
+	}
+
+	public boolean isRondaELActivada() {
+		return rondaELActivada;
+	}
+
+	public void setRondaELActivada(boolean rondaELActivada) {
+		this.rondaELActivada = rondaELActivada;
+	}
+
+	public boolean isRondaContratacionActivada() {
+		return rondaContratacionActivada;
+	}
+
+	public void setRondaContratacionActivada(boolean rondaContratacionActivada) {
+		this.rondaContratacionActivada = rondaContratacionActivada;
 	}
 
 }
