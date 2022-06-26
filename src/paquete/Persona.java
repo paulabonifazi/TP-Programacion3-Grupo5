@@ -1,6 +1,8 @@
 package paquete;
 
-public class Persona extends Thread
+import java.io.Serializable;
+
+public class Persona extends Thread implements Serializable
 {
 	private Domicilio domicilio;
 	private String telefono;
@@ -11,6 +13,12 @@ public class Persona extends Thread
 	private int puntajeUsuario;
 	
 	
+	public Persona() {
+		super();
+	}
+
+
+
 	public Persona(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia) 
 	{
 		super();

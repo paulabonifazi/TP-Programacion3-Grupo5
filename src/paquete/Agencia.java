@@ -12,20 +12,18 @@ import interfaces.IMuestraEmpleadores;
 import interfaces.IMuestraEmpleadosPretensos;
 import modelo.Comision;
 import modelo.ControlEstadosTicket;
-import modelo.EmpleadPretensoPuntaje;
-import modelo.EmpleadorPuntaje;
-import modelo.EstadoTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
+import modelo.Ticket;
 import modelo.TicketSimplificado;
 import tablas.PuntajeTicket;
 
 /**
  * @author paula
  *<br> 
- *Clase que representa una agencia dentro de un sistema de Gestion de Busquedas Laborales.
+ *Clase que representa una agencia dentro de un sistema de Gestiï¿½n de Bï¿½squedas Laborales.
  *<br>
- *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego seran procesados para generar tickets. Dichos tickets permitiran analizar la contratacion de empleados.
+ *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego serï¿½n procesados para generar tickets. Dichos tickets permitirï¿½ analizar la contrataciï¿½n de empleados.
  */
 public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos, Observer
 {
@@ -45,15 +43,64 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	
 	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();//lista que guarda las coincidencias entre empresa y empleado
 
-	private ArrayList<TicketSimplificado> bolsaDeEmpleo = new ArrayList<TicketSimplificado>();
-	
-	private ArrayList<EstadoTicket> observados = new ArrayList<EstadoTicket>(); //lista de estado de ticket de empleados pretensos observados
-	
-	
 	private double saldoAgencia = 0;
 	
+	private ArrayList<TicketSimplificado> bolsaDeEmpleo = new ArrayList<TicketSimplificado>();
 	
-	private Agencia() {	}
+	private ArrayList<Ticket> observados = new ArrayList<Ticket>(); //lista de estado de ticket de empleados pretensos observados
+	
+
+	
+	public static Agencia getInstancia() {
+		return instancia;
+	}
+
+	public static void setInstancia(Agencia instancia) {
+		Agencia.instancia = instancia;
+	}
+
+	public void setEmpleadoresActivos(ArrayList<Empleador> empleadoresActivos) {
+		this.empleadoresActivos = empleadoresActivos;
+	}
+
+	public void setEmpleadosPretensosActivos(ArrayList<EmpleadoPretenso> empleadosPretensosActivos) {
+		this.empleadosPretensosActivos = empleadosPretensosActivos;
+	}
+
+	public void setListAsignacionEmpleador(ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador) {
+		this.listAsignacionEmpleador = listAsignacionEmpleador;
+	}
+
+	public void setListAsignacionEmpleadoPretensos(
+			ArrayList<ListAsignacionEmpleadPretenso> listAsignacionEmpleadoPretensos) {
+		this.listAsignacionEmpleadoPretensos = listAsignacionEmpleadoPretensos;
+	}
+
+	public void setListEleccionEmpleador(ArrayList<ListAsignacionEmpleador> listEleccionEmpleador) {
+		this.listEleccionEmpleador = listEleccionEmpleador;
+	}
+
+	public void setListEleccionEmpleadoPretensos(ArrayList<ListAsignacionEmpleadPretenso> listEleccionEmpleadoPretensos) {
+		this.listEleccionEmpleadoPretensos = listEleccionEmpleadoPretensos;
+	}
+
+	public void setListaCoincidencias(ArrayList<ListAsignacionEmpleador> listaCoincidencias) {
+		this.listaCoincidencias = listaCoincidencias;
+	}
+
+	public void setSaldoAgencia(double saldoAgencia) {
+		this.saldoAgencia = saldoAgencia;
+	}
+
+	public void setEmpleadores(ArrayList<Empleador> empleadores) {
+		this.empleadores = empleadores;
+	}
+
+	public void setEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
+		this.empleadosPretensos = empleadosPretensos;
+	}
+
+	public Agencia() {	}
 	
 	public static Agencia getInstance()
 	{
@@ -64,11 +111,11 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 	
 	public void agregarEmpleador (Empleador empleador) {
-		empleadores.add(empleador);
+		this.empleadores.add(empleador);
 	}
 	
 	public void agregarEmpleadoPretenso (EmpleadoPretenso empleadoPretenso) {
-		empleadosPretensos.add(empleadoPretenso);
+		this.empleadosPretensos.add(empleadoPretenso);
 	}
 	
 	
@@ -102,6 +149,31 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 	
 
+	public void agregarTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeEmpleo.add(ticket);
+	}
+	
+	public void emilinarTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeEmpleo.remove(ticket);
+	}
+
+
+	public ArrayList<Ticket> getObservados() {
+		return observados;
+	}
+
+	public void setObservados(ArrayList<Ticket> observados) {
+		this.observados = observados;
+	}
+
+	public ArrayList<TicketSimplificado> getBolsaDeEmpleo() {
+		return bolsaDeEmpleo;
+	}
+
+	public void setBolsaDeEmpleo(ArrayList<TicketSimplificado> bolsaDeEmpleo) {
+		this.bolsaDeEmpleo = bolsaDeEmpleo;
+	}
+	
 	public ArrayList<ListAsignacionEmpleador> getListEleccionEmpleador() {
 		return listEleccionEmpleador;
 	}
@@ -114,29 +186,12 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		return listaCoincidencias;
 	}
 
-	
-	public ArrayList<TicketSimplificado> getBolsaDeEmpleo() {
-		return bolsaDeEmpleo;
-	}
-
-	public void setBolsaDeEmpleo(ArrayList<TicketSimplificado> bolsaDeEmpleo) {
-		this.bolsaDeEmpleo = bolsaDeEmpleo;
-	}
-	
-	public void agregarTicketSimplificado(TicketSimplificado ticket) {
-		this.bolsaDeEmpleo.add(ticket);
-	}
-	
-	public void emilinarTicketSimplificado(TicketSimplificado ticket) {
-		this.bolsaDeEmpleo.remove(ticket);
-	}
-
 	/**
-	 * Modifica el saldo de la agencia cuando esta cobra una comision.
+	 * Modifica el saldo de la agencia cuando ï¿½sta cobra una comisiï¿½n.
 	 * <br>
 	 * <b>Pre: </b> Existe una lista de coincidencias con usuarios no nulos. Un empleado solo elije una empresa.
 	 * <br>
-	 * <b>Post: </b> Devuelve un unico valor.
+	 * <b>Post: </b> Devuelve un ï¿½nico valor.
 	 * @param listaCoincidencias
 	 */
 	public void setSaldoAgencia(ArrayList<ListAsignacionEmpleador> listaCoincidencias) {
@@ -223,10 +278,8 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		
 		listaCoincidencias.addAll(cla.ListaCoincidencias(listEleccionEmpleador, listEleccionEmpleadoPretensos));
 		
-		//actualiza el puntaje de los usuarios activos	
 		
 		actualizacionPuntajeUsuario();
-		cet.finalizarTickets(listaCoincidencias);		
 		setSaldoAgencia(listaCoincidencias);
 	}
 	
@@ -239,18 +292,16 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	 * <b>Pos: </b> Devuelve el puntaje actualizado.
 	 * 
 	 */
+	
 	public void actualizacionPuntajeUsuario()
 	{
 		for(int i=0; i<empleadosPretensosActivos.size(); i++)
 		
 		{
 			
-			//analizo estado del ticket 
-			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Finalizado"))
-				empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
-			else
-				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Cancelado"))
-					empleadosPretensosActivos.get(i).setPuntajeUsuario(-1);
+			//actualiza solo si esta finalizado/ cancelado
+			empleadosPretensosActivos.get(i).getTicket().getEstado().actualizarPtj(empleadosPretensosActivos.get(i));
+
 			
 			//analizo Posicion en la listaEmpleados -> necesito un contador de elementos de la lista
 			
@@ -269,9 +320,8 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	
 		for(int j=0; j<empleadoresActivos.size(); j++)
 		{
-	
-			if(empleadoresActivos.get(j).getTicket().getEstadoTicket().getEstado().equals("Finalizado"))
-				empleadoresActivos.get(j).setPuntajeUsuario(50); 
+			///actualiza puntaje finalizados
+			empleadoresActivos.get(j).getTicket().getEstado().actualizarPtj(empleadoresActivos.get(j)); 
 	
 			Empleador empresaPos1 = listAsignacionEmpleador.get(1).getEmpleador();
 			
@@ -290,7 +340,6 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		
 		
 	}
-	
 
 	/**
 	 * Logea un usuario.
@@ -339,7 +388,6 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		return loginCorrecto;
 		
 	}
-	
 
 	@Override
 	public void mostrarEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
@@ -358,18 +406,14 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		}
 		
 	}
-	
-	
-	// Métodos del Patrón Observer/Observable
-	
-	public void agregarObservable(EstadoTicket estadoTicket)
+	public void agregarObservable(Ticket estadoTicket)
 	{
 		estadoTicket.addObserver(this);
 		this.observados.add(estadoTicket);
 		
 	}
 	
-	public void eliminarObservable(EstadoTicket estadoTicket)
+	public void eliminarObservable(Ticket estadoTicket)
 	{
 		estadoTicket.deleteObserver(this);
 		this.observados.remove(estadoTicket);
@@ -378,18 +422,19 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	@Override
 	public void update(Observable o, Object arg) 
 	{
-		EstadoTicket estadoTicket = (EstadoTicket) o;
+		Ticket estadoTicket = (Ticket) o;
 		
 		if (this.observados.contains(o))
 		{
-			if (!(estadoTicket.equals("ACTIVO")))
+			if (estadoTicket.getEstado().ticketDisponible() == null)
 				eliminarObservable(estadoTicket);
 		}
 		else
 			throw new IllegalArgumentException();
 		
 	}
-
+	
+	
 	
 
 }
