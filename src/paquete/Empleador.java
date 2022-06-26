@@ -45,6 +45,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 			String nombre, String apellido, int edad, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
 		super(domicilio, telefono, mail, nombUsuario, contrasenia);
+		Agencia.getInstance().agregarEmpleador(this);
 		this.personaJuridica = false;
 		this.nomRazonS = null;
 		this.nombre = nombre;
@@ -151,7 +152,7 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	
 	@Override
 	public void run() {						
-		//el Empleador generará 3 puestos de trabajo (Ticket Simplificado)
+		//el Empleador generarï¿½ 3 puestos de trabajo (Ticket Simplificado)
 		
 		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
 		Agencia.getInstance().agregarTicketSimplificado(ts1);
