@@ -3,6 +3,8 @@ package paquete;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Observable;
+import java.util.Observer;
 
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
@@ -12,6 +14,7 @@ import modelo.Comision;
 import modelo.ControlEstadosTicket;
 import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
+import modelo.EstadoTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketSimplificado;
@@ -20,11 +23,11 @@ import tablas.PuntajeTicket;
 /**
  * @author paula
  *<br> 
- *Clase que representa una agencia dentro de un sistema de Gestiï¿½n de Bï¿½squedas Laborales.
+ *Clase que representa una agencia dentro de un sistema de Gestion de Busquedas Laborales.
  *<br>
- *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego serï¿½n procesados para generar tickets. Dichos tickets permitirï¿½ analizar la contrataciï¿½n de empleados.
+ *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego seran procesados para generar tickets. Dichos tickets permitiran analizar la contratacion de empleados.
  */
-public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
+public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos, Observer
 {
 	private static Agencia instancia = null;
 
@@ -43,6 +46,8 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();//lista que guarda las coincidencias entre empresa y empleado
 
 	private ArrayList<TicketSimplificado> bolsaDeEmpleo = new ArrayList<TicketSimplificado>();
+	
+	private ArrayList<EstadoTicket> observados = new ArrayList<EstadoTicket>(); //lista de estado de ticket de empleados pretensos observados
 	
 	
 	private double saldoAgencia = 0;
@@ -127,11 +132,11 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 
 	/**
-	 * Modifica el saldo de la agencia cuando ï¿½sta cobra una comisiï¿½n.
+	 * Modifica el saldo de la agencia cuando esta cobra una comision.
 	 * <br>
 	 * <b>Pre: </b> Existe una lista de coincidencias con usuarios no nulos. Un empleado solo elije una empresa.
 	 * <br>
-	 * <b>Post: </b> Devuelve un ï¿½nico valor.
+	 * <b>Post: </b> Devuelve un unico valor.
 	 * @param listaCoincidencias
 	 */
 	public void setSaldoAgencia(ArrayList<ListAsignacionEmpleador> listaCoincidencias) {
@@ -353,5 +358,38 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		}
 		
 	}
+	
+	
+	// Métodos del Patrón Observer/Observable
+	
+	public void agregarObservable(EstadoTicket estadoTicket)
+	{
+		estadoTicket.addObserver(this);
+		this.observados.add(estadoTicket);
+		
+	}
+	
+	public void eliminarObservable(EstadoTicket estadoTicket)
+	{
+		estadoTicket.deleteObserver(this);
+		this.observados.remove(estadoTicket);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) 
+	{
+		EstadoTicket estadoTicket = (EstadoTicket) o;
+		
+		if (this.observados.contains(o))
+		{
+			if (!(estadoTicket.equals("ACTIVO")))
+				eliminarObservable(estadoTicket);
+		}
+		else
+			throw new IllegalArgumentException();
+		
+	}
+
+	
 
 }

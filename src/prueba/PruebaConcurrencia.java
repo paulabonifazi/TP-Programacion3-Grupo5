@@ -42,6 +42,14 @@ public class PruebaConcurrencia {
 		
 		
 		
+		//Agrego los observables
+		Agencia.getInstance().agregarObservable(ticketEmpleadoPretenso1.getEstadoTicket());
+		Agencia.getInstance().agregarObservable(ticketEmpleadoPretenso2.getEstadoTicket());
+		Agencia.getInstance().agregarObservable(ticketEmpleadoPretenso3.getEstadoTicket());
+		Agencia.getInstance().agregarObservable(ticketEmpleadoPretenso4.getEstadoTicket());
+		Agencia.getInstance().agregarObservable(ticketEmpleadoPretenso5.getEstadoTicket());
+		
+		
 		empleador1.start();
 		empleador2.start();
 		empleador3.start();

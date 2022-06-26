@@ -17,7 +17,7 @@ public class ControlEstadosTicket {
 
 //ticketActivo/Suspendido
 
-	public void suspenderTicket (Ticket ticket) {
+	public static void suspenderTicket (Ticket ticket) {
 		if (ticket.getEstadoTicket().getEstado().equals("CANCELADO"))
 		{}///LANZAR EXCEPTION
 		else

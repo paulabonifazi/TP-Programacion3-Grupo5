@@ -14,7 +14,7 @@ import modelo.TicketEmpleador;
 import modelo.TicketSimplificado;
 import util.Util;
 
-public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, IMuestraListasEmpleadores, Observer
+public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, IMuestraListasEmpleadores
 {
 	private boolean personaJuridica;
 	private String nomRazonS;
@@ -24,8 +24,6 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 	private String rubro; //salud - comercio local - comercio internacional
 	private TicketEmpleador ticket;
 	private ValoracionAspecto listaPesos;     
-	
-	protected ArrayList<EmpleadoPretenso> observados = new ArrayList<EmpleadoPretenso>();
 	
 	
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
@@ -166,38 +164,6 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		TicketSimplificado ts3 = new TicketSimplificado("Comercio Local","HomeOffice", this);
 		Agencia.getInstance().agregarTicketSimplificado(ts3);
 		Util.espera();
-	}
-	
-	public void agregarObservable(EmpleadoPretenso empleadoPretenso) {
-		
-		empleadoPretenso.addObserver(this);
-		this.observados.add(empleadoPretenso);
-	}
-
-	public void eliminarObservable(EmpleadoPretenso empleadoPretenso) {
-		
-		empleadoPretenso.deleteObserver(this);
-		this.observados.remove(empleadoPretenso);
-	}
-	
-	@Override
-	public void update(Observable empleadoPretenso, Object est) {
-		
-		EstadoTicket estado = (EstadoTicket) est;
-		
-		if (this.observados.contains(empleadoPretenso)) 
-		{
-			System.out.println(empleadoPretenso.);
-		}
-		else {
-			throw new IllegalArgumentException();
-			//lanza uina excepción si el empleado pretenso a observar no se encuentra entre los observables
-		
-		}
-		
-		
-		
-		
 	}
 	
 	

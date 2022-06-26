@@ -145,6 +145,9 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 				}
 				Agencia.getInstance().getListAsignacionEmpleador().get(i).getListEmpleadosPretensos().add(this);
 				
+				//El ticket pasa a ser suspendido porque hubo contratación
+				ControlEstadosTicket.suspenderTicket(this.ticket);
+				this.ticketSimplificado.getEmpleador().getTicket().setCantEmpleadosObtenidos(1);
 				
 				//agrego empleador a la lista de asignación del empleado pretenso
 				ListAsignacionEmpleadPretenso nodoEP = new ListAsignacionEmpleadPretenso();
@@ -160,6 +163,8 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 			}
 			this.cantBusquedas++;
 			
+			this.ticket.getEstadoTicket().hasChanged();
+			this.ticket.getEstadoTicket().notifyObservers();
 		}
 	}
 	
