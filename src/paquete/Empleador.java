@@ -195,6 +195,12 @@ public class Empleador extends Persona implements  IPersona, IMuestraListasEmple
 		Agencia.getInstance().agregarTicketSimplificado(ts3);
 		Util.espera();
 	}
+
+	@Override
+	public double porcentComicion() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }
