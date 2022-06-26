@@ -1,10 +1,10 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import paquete.EmpleadoPretenso;
 
-import paquete.ValoracionAspecto;
+import patronState.ActivoState;
 
 public class TicketEmpleador extends Ticket 
 {	
@@ -16,6 +16,13 @@ public class TicketEmpleador extends Ticket
 		super(fbTicket, fechaTicket);
 		this.cantEmpleadosSolicitados = cantEmpleadosSolicitados;
 		this.cantEmpleadosObtenidos = cantEmpleadosObtenidos;
+
+	}
+
+
+
+	public TicketEmpleador() {
+		super();
 	}
 
 

@@ -1,7 +1,7 @@
-package state;
+package patronState;
 
-import paquete.Persona;
 import modelo.Ticket;
+import paquete.Persona;
 
 public class SuspendidoState implements IState{
 	private Ticket ticket;
@@ -17,8 +17,7 @@ public class SuspendidoState implements IState{
 	}
 
 	@Override
-	public void ponerSuspendido() {
-		
+	public void ponerSuspendido() {	
 	}
 
 	@Override
@@ -28,7 +27,7 @@ public class SuspendidoState implements IState{
 
 	@Override
 	public void ponerFinalizado() {
-		
+		System.out.println("No corresponde el cambio de estado");
 	}
 
 	@Override
@@ -38,7 +37,6 @@ public class SuspendidoState implements IState{
 
 	@Override
 	public void actualizarPtj(Persona empl) {
-		// TODO Auto-generated method stub
 		
 	}
 

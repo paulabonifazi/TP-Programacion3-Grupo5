@@ -1,6 +1,8 @@
 package modelo;
 
-public class FormularioBusqueda {
+import java.io.Serializable;
+
+public class FormularioBusqueda implements Serializable{
 	
 	private	String locacion;
 	private String remuneracion;
@@ -11,6 +13,12 @@ public class FormularioBusqueda {
 	private String estudiosCursados;
 	
 	
+
+	public FormularioBusqueda() {
+		super();
+	}
+
+
 	public FormularioBusqueda(String locacion, String remuneracion, String cargaHoraria, String tipoPuesto,
 			String rangoEtario, String experienciaPrevia, String estudiosCursados) {
 		super();
@@ -56,6 +64,41 @@ public class FormularioBusqueda {
 
 	public String getEstudiosCursados() {
 		return estudiosCursados;
+	}
+
+
+	public void setLocacion(String locacion) {
+		this.locacion = locacion;
+	}
+
+
+	public void setRemuneracion(String remuneracion) {
+		this.remuneracion = remuneracion;
+	}
+
+
+	public void setCargaHoraria(String cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
+
+
+	public void setTipoPuesto(String tipoPuesto) {
+		this.tipoPuesto = tipoPuesto;
+	}
+
+
+	public void setRangoEtario(String rangoEtario) {
+		this.rangoEtario = rangoEtario;
+	}
+
+
+	public void setExperienciaPrevia(String experienciaPrevia) {
+		this.experienciaPrevia = experienciaPrevia;
+	}
+
+
+	public void setEstudiosCursados(String estudiosCursados) {
+		this.estudiosCursados = estudiosCursados;
 	}
 	
 	

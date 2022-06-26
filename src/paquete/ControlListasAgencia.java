@@ -1,18 +1,19 @@
 package paquete;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import modelo.ControlEstadosTicket;
 import modelo.EmpleadPretensoPuntaje;
 import modelo.EmpleadorPuntaje;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import tablas.PuntajeTicket;
 
-public class ControlListasAgencia {
+public class ControlListasAgencia implements Serializable{
 
+	
 	public ArrayList<ListAsignacionEmpleador> generarListAsignacionEmpleador(ArrayList<EmpleadoPretenso> empleadosPretensosActivos,ArrayList<Empleador> empleadoresActivos) {
 		ArrayList<ListAsignacionEmpleador> listAsignacionEmpleador = new ArrayList<ListAsignacionEmpleador>();
 		for (int i=0; i<empleadoresActivos.size(); i++)
@@ -26,15 +27,17 @@ public class ControlListasAgencia {
 		for (int i=0; i<empleadosPretensosActivos.size(); i++)
 			listAsignacionEmpleadoPretensos.add(listasAsignacionEmpleadoPretenso(empleadoresActivos, empleadosPretensosActivos.get(i)));
 		return listAsignacionEmpleadoPretensos;
-	}	
-	
+	}
+		
 	//filtro solo ticket activos
 	public static ArrayList<EmpleadoPretenso> filtroTicketActivoEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		ArrayList<EmpleadoPretenso> empleadosPretensosActivos = new ArrayList<EmpleadoPretenso>();
 		for (int i=0; i<empleadosPretensos.size();i++) {
-			if (empleadosPretensos.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
+			if (empleadosPretensos.get(i).getTicket().getEstado().ticketDisponible() != null) {
 				empleadosPretensosActivos.add(empleadosPretensos.get(i));
-				//System.out.println(empleadosPretensosActivos.get(i));
+			}
+			else {
+				///***** exception *********
 			}
 		}
 		return empleadosPretensosActivos;
@@ -43,11 +46,14 @@ public class ControlListasAgencia {
 	public static ArrayList<Empleador> filtroTicketActivoEmpleadores(ArrayList<Empleador> empleadores) {
 		ArrayList<Empleador> empleadoresActivos = new ArrayList<Empleador>();
 		for (int i=0; i<empleadores.size();i++) {
-			if (empleadores.get(i).getTicket().getEstadoTicket().getEstado().equals("Activo")) {
+			if (empleadores.get(i).getTicket().getEstado().ticketDisponible() != null) {
 				empleadoresActivos.add(empleadores.get(i));
-				//System.out.println(empleadoresActivos.get(i));
+				}
+				else {
+					///***** exception *********
+				}
+			
 			}
-		}
 		return empleadoresActivos;
 	}
 	
@@ -73,9 +79,12 @@ public class ControlListasAgencia {
 	for (int i=0; i<listaEmpleadores.size(); i++) {///creo la lista Con Puntajes 
 		EmpleadorPuntaje empleadorPuntaje = new EmpleadorPuntaje();	
 		
+		double ptj = new PuntajeTicket().getPuntajeCF(listaEmpleadores.get(i), empleadoPretensos.getTicket());
+		
 		empleadorPuntaje.setEmpleador(listaEmpleadores.get(i)); 
-		empleadorPuntaje.setPuntaje(new PuntajeTicket().getPuntajeCF(listaEmpleadores.get(i), empleadoPretensos.getTicket())); 
+		empleadorPuntaje.setPuntaje(ptj); 
 				//(a,b) que el (b,a) de la tabla por que si no lo es .> necisto cambiar FC a CF
+	
 		listaOrdenada.add(empleadorPuntaje);
 		empleadorPuntaje=null;
 	}
@@ -88,9 +97,10 @@ public class ControlListasAgencia {
 			}
 		});
 	
-	for (int j = 0; j< listaOrdenada.size(); j++) 				///cargo lista con el orden de listaOrdenada
-		lista.add(listaOrdenada.get(j).getEmpleador());
+	for (int j = 0; j< listaOrdenada.size(); j++) 	{			///cargo lista con el orden de listaOrdenada
 	
+		lista.add(listaOrdenada.get(j).getEmpleador());
+	}
 	return lista;	
 	}
 	
@@ -111,7 +121,7 @@ public class ControlListasAgencia {
 		ArrayList<EmpleadoPretenso> lista = new  ArrayList<EmpleadoPretenso>();						//lista que voy a devolver
 		ArrayList<EmpleadPretensoPuntaje> listaOrdenada = new ArrayList<EmpleadPretensoPuntaje>();   //lista que contiene el puntaje y se ordena segun este atributo
 		double puntaje;
-	
+		
 		for (int i=0; i<listaEmpleaPretenso.size(); i++) {///creo la lista Con Puntajes 
 			
 			puntaje = new PuntajeTicket().getPuntajeCF(empleador, listaEmpleaPretenso.get(i).getTicket());
@@ -121,8 +131,7 @@ public class ControlListasAgencia {
 				empleadoPretensPuntaje.setEmpleadoPretenso(listaEmpleaPretenso.get(i));
 				empleadoPretensPuntaje.setPuntaje(puntaje);
 				listaOrdenada.add(empleadoPretensPuntaje);
-			
-			empleadoPretensPuntaje=null;
+				empleadoPretensPuntaje=null;
 			}
 	
 				
@@ -162,14 +171,15 @@ public class ControlListasAgencia {
 					
 					while (w < ListaDeEmpleadosPretensos.size() && 
 					!ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(q).equals(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso()))
-					{	w++;}
+					{	w++; 
+					}
 					
 					
 						
 							if (w < ListaDeEmpleadosPretensos.size() && 
 								ListaDeEmpleadosPretensos.get(w).getListEmpleadores().get(0).equals(ListaDeEmpleadores.get(i).getEmpleador())) {//encontre el empleado
-								nodoListEmpleado.add(ListaDeEmpleadores.get(i).getListEmpleadosPretensos().get(w));				
-									
+								nodoListEmpleado.add(ListaDeEmpleadosPretensos.get(w).getEmpleadoPretenso());				
+								
 							}
 				}
 					nodo.setListEmpleadosPretensos(nodoListEmpleado);
@@ -184,4 +194,5 @@ public class ControlListasAgencia {
 	 }
 			
 	
-}		
+}
+		

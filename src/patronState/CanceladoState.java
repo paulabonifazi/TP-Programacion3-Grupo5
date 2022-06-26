@@ -1,7 +1,7 @@
-package state;
+package patronState;
 
-import paquete.Persona;
 import modelo.Ticket;
+import paquete.Persona;
 
 public class CanceladoState implements IState{
 	private Ticket ticket;
@@ -10,26 +10,25 @@ public class CanceladoState implements IState{
 		super();
 		this.ticket = ticket;
 	}
-
+	
 
 	@Override
 	public void ponerActivo() {
-		
+		System.out.println("No corresponde el cambio de estado");
 	}
 
 	@Override
 	public void ponerSuspendido() {
-		
+		System.out.println("No corresponde el cambio de estado");
 	}
 
 	@Override
 	public void ponerCancelado() {
-		
 	}
 
 	@Override
 	public void ponerFinalizado() {
-		
+		System.out.println("No corresponde el cambio de estado");
 	}
 
 	@Override

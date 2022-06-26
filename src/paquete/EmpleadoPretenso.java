@@ -1,9 +1,10 @@
 package paquete;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-import interfaces.IPersonaFisica;
+import decorator.IPersona;
 import interfaces.IMuestraListasEmpleadosPretensos;
 import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
@@ -11,15 +12,35 @@ import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleadoPretenso;
 import modelo.TicketSimplificado;
 
-public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestraListasEmpleadosPretensos
+public class EmpleadoPretenso extends Persona implements IPersona, IMuestraListasEmpleadosPretensos, Serializable
 {	
 	private String nombre;
 	private String apellido;
 	private int edad;
-	private TicketEmpleadoPretenso ticket;
+	private  TicketEmpleadoPretenso ticket;
 	private TicketSimplificado ticketSimplificado;
 	private int cantBusquedas = 0;
 	
+	public TicketSimplificado getTicketSimplificado() {
+		return ticketSimplificado;
+	}
+
+	public void setTicketSimplificado(TicketSimplificado ticketSimplificado) {
+		this.ticketSimplificado = ticketSimplificado;
+	}
+
+	public int getCantBusquedas() {
+		return cantBusquedas;
+	}
+
+	public void setCantBusquedas(int cantBusquedas) {
+		this.cantBusquedas = cantBusquedas;
+	}
+
+	public EmpleadoPretenso() {
+		super();
+	}
+
 	public EmpleadoPretenso(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nombre, String apellido, int edad, TicketEmpleadoPretenso ticket) 
 	{
@@ -29,7 +50,18 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 		this.nombre=nombre;
 		this.edad=edad;
 		this.ticket = ticket;
-		this.ticketSimplificado = null; //se asignará de la Bolsa de Trabajo, producto de la simulación
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 
 	public TicketEmpleadoPretenso getTicket() {
@@ -40,28 +72,6 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 		this.ticket = ticket;
 	}
 
-
-	public int getCantBusquedas() {
-		return cantBusquedas;
-	}
-
-	/*
-	public void setCantBusquedas(int cantBusquedas) {
-		this.cantBusquedas += cantBusquedas;	//cuento nueva búsqueda realizada
-	}
-	*/
-
-	public TicketSimplificado getTicketSimplificado() {
-		return ticketSimplificado;
-	}
-
-	/*
-	public void setTicketSimplificado(TicketSimplificado ticketSimplificado) {
-		this.ticketSimplificado = ticketSimplificado;
-	}
-	*/
-
-	
 	@Override
 	public String getNombre()
 	{
@@ -116,15 +126,27 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 			contEmpleador++;
 		}
 		if (coincidencia == false)
-			System.out.println("Nadie contrató a " + this.getNombUsuario());
+			System.out.println("Nadie contratï¿½ a " + this.getNombUsuario());
 		else
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadorActual.getEmpleador().getNombUsuario());
 	}
 
-	@Override
+
+    @Override
+    public String getNomRazonS() {
+        // TODO Implement this method
+        return null;
+    }
+
+    @Override
+    public double porcentComicion() {
+        return 0.0;
+    }
+    
+    @Override
 	public void run() {
 		/*
-		 Cada Empleado Pretenso buscará hasta 10 en la Bolsa de Empleo o hasta encontrar un 
+		 Cada Empleado Pretenso buscarï¿½ hasta 10 en la Bolsa de Empleo o hasta encontrar un 
 		 Ticket Simplificado 
 		 */
 		
@@ -134,22 +156,22 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 		{
 			this.ticketSimplificado = this.ticketSimplificado.sacarTicketBolsa();
 			
-			if (this.getTicket().getFbTicket().getTipoPuesto().equals(this.getTicketSimplificado().getTipoTrabajo()) && (r.nextInt() <= 5) ) { //acepta la petición de empleo
-				//modifico listas de elección
+			if (this.getTicket().getFbTicket().getTipoPuesto().equals(this.getTicketSimplificado().getTipoTrabajo()) && (r.nextInt() <= 5) ) { //acepta la peticiï¿½n de empleo
+				//modifico listas de elecciï¿½n
 				int i = 0;
 				
-				//agrego empleado pretenso a la lista de asignación del empleador
+				//agrego empleado pretenso a la lista de asignacion del empleador
 				while ( (i < Agencia.getInstance().getListAsignacionEmpleador().size()) && !(Agencia.getInstance().getListAsignacionEmpleador().get(i).getEmpleador().equals(this.getTicketSimplificado().getEmpleador())) )
 				{
 					i++;
 				}
 				Agencia.getInstance().getListAsignacionEmpleador().get(i).getListEmpleadosPretensos().add(this);
 				
-				//El ticket pasa a ser suspendido porque hubo contratación
+				//El ticket pasa a ser suspendido porque hubo contratacion
 				ControlEstadosTicket.suspenderTicket(this.ticket);
 				this.ticketSimplificado.getEmpleador().getTicket().setCantEmpleadosObtenidos(1);
 				
-				//agrego empleador a la lista de asignación del empleado pretenso
+				//agrego empleador a la lista de asignacion del empleado pretenso
 				ListAsignacionEmpleadPretenso nodoEP = new ListAsignacionEmpleadPretenso();
 				nodoEP.setEmpleadoPretenso(this);
 				nodoEP.getListEmpleadores().add(this.ticketSimplificado.getEmpleador());
@@ -157,17 +179,14 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 				
 			}
 			else {
-				//no hay contratación
+				//no hay contratacion
 				this.ticketSimplificado.agregarTicketBolsa(this.ticketSimplificado);
 				this.ticketSimplificado = null;
 			}
 			this.cantBusquedas++;
 			
-			this.ticket.getEstadoTicket().hasChanged();
-			this.ticket.getEstadoTicket().notifyObservers();
+			this.ticket.hasChanged();
+			this.ticket.notifyObservers();
 		}
 	}
-	
-	
-	
 }

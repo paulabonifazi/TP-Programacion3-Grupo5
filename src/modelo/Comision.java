@@ -1,16 +1,15 @@
+
 package modelo;
 
-import java.util.ArrayList;
-
+import decorator.EmplPretensoComisioFactory;
+import decorator.EmpleadoComisioFactory;
 import paquete.EmpleadoPretenso;
+
+import java.util.ArrayList;
 public class Comision {
 	final double PorcentajeJunior = 0.8;
 	final double PorcentajeSenior = 0.9;
-	final double PorcentajePJSalud = 0.8;
-	final double PorcentajePJComercioLocal = 0.9;
-	final double PorcentajePFSalud = 0.6;
-	final double PorcentajePFComercioLocal = 0.7;
-	final double PorcentajePFComercioInternacional = 0.8;
+	
 
 	double comisionEmpleados = 0;
 	double comisionEmpleador = 0;
@@ -46,13 +45,7 @@ public class Comision {
 					else
 						sueldoPretendido = v3;
 					
-					if(listaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("Junior"))
-						comision = sueldoPretendido * PorcentajeJunior;
-					else
-						if(listaEmpleadosContratados.get(j).getTicket().getFbTicket().getTipoPuesto().equals("Senior"))
-							comision = sueldoPretendido * PorcentajeSenior;
-						else //tipoPuesto ->"Gerencial"
-							comision = sueldoPretendido;
+					comisionEmpleados = (sueldoPretendido * EmplPretensoComisioFactory.getPorcentajeComision(listaEmpleadosContratados.get(j)));
 	
 					//RESTA 1% POR CADA PUNTO
 					if(listaEmpleadosContratados.get(j).getPuntajeUsuario() > 0 && listaEmpleadosContratados.get(j).getPuntajeUsuario() <= 99)
@@ -65,6 +58,8 @@ public class Comision {
 				}
 				
 				//calculo comsion que se le cobra al EMPLEADOR
+                            
+                            
 				if(listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V1"))
 					sueldoPretendidoE = v1;
 				else if (listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V2"))
@@ -72,25 +67,20 @@ public class Comision {
 				else if (listaCoincidencias.get(i).getEmpleador().getTicket().getFbTicket().getRemuneracion().equals("V3"))
 					sueldoPretendidoE = v3;
 				
+                                
+                               
+                                
+                                
+                                
 				if(listaCoincidencias.get(i).getEmpleador().isPersonaJuridica())
-				{						
-					if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Salud"))
-						comisionEmpleador = sueldoPretendidoE * PorcentajePJSalud;
-					else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Comercio local"))
-							comisionEmpleador = sueldoPretendidoE * PorcentajePJComercioLocal;
-						else //rubro ->"COMERCIO INTERNACIONAL"
-							comisionEmpleador = sueldoPretendidoE;
-					////System.out.println(comisionEmpleador);
+				{			
+                                    //+ el 0.2
+                                    comisionEmpleador = (sueldoPretendidoE * (EmpleadoComisioFactory.getPorcentajeComision(listaCoincidencias.get(i).getEmpleador()) + 0.2));
+            
 				}
 				else //personaFisica
-				{
-				
-					if(listaCoincidencias.get(i).getEmpleador().getRubro().equals("Salud"))
-						comisionEmpleador = sueldoPretendidoE * PorcentajePFSalud;
-					else if(listaCoincidencias.get(i).getEmpleador().getRubro().equals ("Comercio local"))
-							comisionEmpleador = sueldoPretendidoE * PorcentajePFComercioLocal;
-						else //rubro ->"COMERCIO INTERNACIONAL"
-							comisionEmpleador = sueldoPretendidoE * PorcentajePFComercioInternacional;
+				{//dejo tal cual
+                                    comisionEmpleador = (sueldoPretendidoE * (EmpleadoComisioFactory.getPorcentajeComision(listaCoincidencias.get(i).getEmpleador()) ));
 				}
 	
 				//RESTA 1% POR CADA PUNTo

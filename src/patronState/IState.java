@@ -1,10 +1,10 @@
-package state;
+package patronState;
 
 import java.io.Serializable;
 
+import modelo.Ticket;
 import paquete.EmpleadoPretenso;
 import paquete.Persona;
-import modelo.Ticket;
 
 public interface IState extends Serializable{
 	//cuando no corresponda el cambio -> exception 
@@ -12,6 +12,7 @@ public interface IState extends Serializable{
 		void ponerSuspendido();
 		void ponerCancelado();
 		void ponerFinalizado();
+		
 		Ticket ticketDisponible();
 		void actualizarPtj(Persona empl);
 }

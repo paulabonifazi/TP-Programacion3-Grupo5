@@ -1,7 +1,7 @@
-package state;
+package patronState;
 
-import paquete.Persona;
 import modelo.Ticket;
+import paquete.Persona;
 
 public class ActivoState implements IState{
 	private Ticket ticket;
@@ -10,19 +10,9 @@ public class ActivoState implements IState{
 		this.ticket = ticket;
 	}
 	
-	public Ticket getTicket() {
-		return ticket;
-	}
-
-
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
-	}
-
-
+	
 	@Override
-	public void ponerActivo() {
-		///si no hace nada se deja vacio?		
+	public void ponerActivo() {	
 	}
 
 	@Override
@@ -49,7 +39,6 @@ public class ActivoState implements IState{
 
 	@Override
 	public void actualizarPtj(Persona empl) {
-		// TODO Auto-generated method stub
 		
 	}
 

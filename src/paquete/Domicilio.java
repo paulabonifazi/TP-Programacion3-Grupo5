@@ -1,12 +1,19 @@
 package paquete;
 
-public class Domicilio
+import java.io.Serializable;
+
+public class Domicilio implements Serializable
 {
 	private String calle;
 	private int numero;
 	private String descripcion;
 	
 	
+	public Domicilio() {
+		super();
+	}
+
+
 	public Domicilio(String calle, int numero, String descripcion)
 	{
 		super();

@@ -1,31 +1,32 @@
 package paquete;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
-import interfaces.IPersonaFisica;
-import interfaces.IPersonaJuridica;
+import decorator.IPersona;
+
 import interfaces.IMuestraListasEmpleadores;
-import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleador;
 import modelo.TicketSimplificado;
 import util.Util;
 
-public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridica, IMuestraListasEmpleadores
+public class Empleador extends Persona implements  IPersona, IMuestraListasEmpleadores
 {
-	private boolean personaJuridica;
+	private  boolean personaJuridica;
 	private String nomRazonS;
 	private String nombre;
 	private String apellido;
 	private int edad;
 	private String rubro; //salud - comercio local - comercio internacional
-	private TicketEmpleador ticket;
-	private ValoracionAspecto listaPesos;     
+	private  TicketEmpleador ticket;
+	private  ValoracionAspecto listaPesos;                
 	
 	
+	public Empleador() {
+		super();
+	}
+
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nomRazonS, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
@@ -41,10 +42,39 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 		this.listaPesos = listaPesos;
 	}
 
+	public void setPersonaJuridica(boolean personaJuridica) {
+		this.personaJuridica = personaJuridica;
+	}
+
+	public void setNomRazonS(String nomRazonS) {
+		this.nomRazonS = nomRazonS;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public void setRubro(String rubro) {
+		this.rubro = rubro;
+	}
+
+	public void setTicket(TicketEmpleador ticket) {
+		this.ticket = ticket;
+	}
+
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nombre, String apellido, int edad, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
 		super(domicilio, telefono, mail, nombUsuario, contrasenia);
+		Agencia.getInstance().agregarEmpleador(this);
 		this.personaJuridica = false;
 		this.nomRazonS = null;
 		this.nombre = nombre;
@@ -148,23 +178,26 @@ public class Empleador extends Persona implements IPersonaFisica, IPersonaJuridi
 			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
 	}
 
-	
-	@Override
-	public void run() {						
-		//el Empleador generará 3 puestos de trabajo (Ticket Simplificado)
-		
-		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
-		Agencia.getInstance().agregarTicketSimplificado(ts1);
-		Util.espera();
-		
-		TicketSimplificado ts2 = new TicketSimplificado("Comercio Internacional","Indistinto", this);
-		Agencia.getInstance().agregarTicketSimplificado(ts2);
-		Util.espera();
-		
-		TicketSimplificado ts3 = new TicketSimplificado("Comercio Local","HomeOffice", this);
-		Agencia.getInstance().agregarTicketSimplificado(ts3);
-		Util.espera();
-	}
-	
-	
+    @Override
+    
+    public  double porcentComicion(){
+        return 0; };
+        
+        @Override
+    	public void run() {						
+    		//el Empleador generarï¿½ 3 puestos de trabajo (Ticket Simplificado)
+    		
+    		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
+    		Agencia.getInstance().agregarTicketSimplificado(ts1);
+    		Util.espera();
+    		
+    		TicketSimplificado ts2 = new TicketSimplificado("Comercio Internacional","Indistinto", this);
+    		Agencia.getInstance().agregarTicketSimplificado(ts2);
+    		Util.espera();
+    		
+    		TicketSimplificado ts3 = new TicketSimplificado("Comercio Local","HomeOffice", this);
+    		Agencia.getInstance().agregarTicketSimplificado(ts3);
+    		Util.espera();
+    	}
+    	
 }
