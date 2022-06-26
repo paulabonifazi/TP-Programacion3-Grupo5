@@ -134,7 +134,7 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 		{
 			this.ticketSimplificado = this.ticketSimplificado.sacarTicketBolsa();
 			
-			if (this.getTicket().getFbTicket().getTipoPuesto().equals(this.getTicketSimplificado().getTipoTrabajo()) && (r.nextInt() <= 5) ) { //acepta la petición de empleo
+			if (this.getTicket().getFbTicket().getTipoPuesto().equals(this.getTicketSimplificado().getTipoTrabajo()) && (r.nextInt(10) <= 5) ) { //acepta la petición de empleo
 				//modifico listas de elección
 				int i = 0;
 				
@@ -155,6 +155,11 @@ public class EmpleadoPretenso extends Persona implements IPersonaFisica, IMuestr
 				nodoEP.getListEmpleadores().add(this.ticketSimplificado.getEmpleador());
 				Agencia.getInstance().getListEleccionEmpleadoPretensos().add(nodoEP);
 				
+				//agrego empleador y empleado a la lista de elecciones
+				ListAsignacionEmpleador nodoE = new ListAsignacionEmpleador();
+				nodoE.setEmpleador(this.ticketSimplificado.getEmpleador());
+				nodoE.getListEmpleadosPretensos().add(this);
+				Agencia.getInstance().getListaCoincidencias().add(nodoE);
 			}
 			else {
 				//no hay contratación
