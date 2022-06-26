@@ -16,10 +16,16 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
+
+import controlador.ControladorAgencia;
+
 import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JMenuBar;
@@ -29,10 +35,10 @@ import javax.swing.JMenuItem;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.JToggleButton;
+import java.awt.Dimension;
 
-public class VentanaAgencia extends JFrame
+public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListener
 {
-
 	private JPanel contentPane;
 	private JPanel panel2;
 	private JPanel panel3;
@@ -42,6 +48,7 @@ public class VentanaAgencia extends JFrame
 	private JList list3;
 	private boolean rondaELActivada = false;
 	private boolean rondaContratacionActivada = false;
+	private ActionListener actionListener;
 
 	/**
 	 * Launch the application.
@@ -83,7 +90,7 @@ public class VentanaAgencia extends JFrame
 		tabbedPane.setBorder(new TitledBorder(null, "Agencia", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		JPanel panel_IngresoDatos = new JPanel();
+		/*JPanel panel_IngresoDatos = new JPanel();
 		panel_IngresoDatos.setBackground(new Color(255, 51, 51));
 		panel_IngresoDatos.setToolTipText("Ingreso de datos");
 		tabbedPane.addTab("Ingreso de datos", null, panel_IngresoDatos, "Ingreso de datos");
@@ -144,7 +151,7 @@ public class VentanaAgencia extends JFrame
 		panel3.add(btnNewButton3);
 		
 		list3 = new JList();
-		panel_Columna13.add(list3);
+		panel_Columna13.add(list3);*/
 		
 		JPanel panel_VisualizacionDatos = new JPanel();
 		panel_VisualizacionDatos.setToolTipText("Visualización de datos");
@@ -190,7 +197,7 @@ public class VentanaAgencia extends JFrame
 		JList list_1 = new JList();
 		panel_VisualizacionDatos.add(list_1, BorderLayout.CENTER);
 		
-		JPanel panel_CalculoComisiones = new JPanel();
+		/*JPanel panel_CalculoComisiones = new JPanel();
 		panel_CalculoComisiones.setToolTipText("Cálculo de comisiones");
 		tabbedPane.addTab("Cálculo de comisiones", null, panel_CalculoComisiones, "Cálculo de comisiones");
 		panel_CalculoComisiones.setLayout(new BorderLayout(0, 0));
@@ -243,7 +250,66 @@ public class VentanaAgencia extends JFrame
 		panel_3.add(tglbtnNewToggleButton_1);
 		
 		JList list_3 = new JList();
-		panel_RondaContratacion.add(list_3, BorderLayout.CENTER);
+		panel_RondaContratacion.add(list_3, BorderLayout.CENTER);*/
+		
+		JPanel panel_Rondas = new JPanel();
+		panel_Rondas.setToolTipText("Rondas");
+		tabbedPane.addTab("Rondas", null, panel_Rondas, "Ronda de Encuentros Laborales");
+		panel_Rondas.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_Botones = new JPanel();
+		panel_Rondas.add(panel_Botones, BorderLayout.WEST);
+		panel_Botones.setLayout(new GridLayout(2, 1, 0, 0));
+		
+		JPanel panel_2 = new JPanel();
+		panel_Botones.add(panel_2);
+		
+		JToggleButton rondaELButton = new JToggleButton("Activar Ronda de Encuentros Laborales");
+		panel_2.add(rondaELButton);
+		rondaELButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!isRondaELActivada()) {
+					rondaELButton.setText("Desactivar Ronda de Encuentros Laborales");
+					setRondaELActivada(true);
+				} else {
+					rondaELButton.setText("Activar Ronda de Encuentros Laborales");
+					setRondaELActivada(false);
+				}
+			}
+		});
+		
+		JPanel panel_3 = new JPanel();
+		panel_Botones.add(panel_3);
+		
+		JToggleButton rondaContratacionButton = new JToggleButton("Activar Ronda de Contratación");
+		panel_3.add(rondaContratacionButton);
+		rondaContratacionButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!isRondaContratacionActivada()) {
+					rondaContratacionButton.setText("Desactivar Ronda de Contratación");
+					setRondaContratacionActivada(true);
+				} else {
+					rondaContratacionButton.setText("Activar Ronda de Contratación");
+					setRondaContratacionActivada(false);
+				}
+			}
+		});
+		
+		JPanel panel_Listas = new JPanel();
+		panel_Rondas.add(panel_Listas, BorderLayout.CENTER);
+		panel_Listas.setLayout(new GridLayout(2, 0, 0, 0));
+		
+		JList list_RondaEL = new JList();
+		panel_Listas.add(list_RondaEL);
+		
+		JList list_RondaContratacion = new JList();
+		panel_Listas.add(list_RondaContratacion);
+		
+		JPanel panel_Comisiones = new JPanel();
+		panel_Comisiones.setPreferredSize(new Dimension(120, 10));
+		panel_Comisiones.setBorder(new TitledBorder(null, "Comisiones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_Rondas.add(panel_Comisiones, BorderLayout.EAST);
+		panel_Comisiones.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		JPanel panel_Publicidad = new JPanel();
 		contentPane.add(panel_Publicidad, BorderLayout.SOUTH);
@@ -263,6 +329,47 @@ public class VentanaAgencia extends JFrame
 
 	public void setRondaContratacionActivada(boolean rondaContratacionActivada) {
 		this.rondaContratacionActivada = rondaContratacionActivada;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener)
+	{
+		this.actionListener = actionListener;
 	}
 
 }

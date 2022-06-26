@@ -3,6 +3,7 @@ package vista;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -15,10 +16,12 @@ public interface IVistaEmpleador
 	public JTextField getTextField_1();
 	public JTextField getTextField_2();
 	public JTextField getTextField_3();
-	public JTextField getTextField_4();
+	public JFormattedTextField getTextField_4();
 	public JTextField getTextField_5();
 	public JTextField getTextField_6();
 	public JTextField getTextField_7();
+	public JFormattedTextField getTextField_8();
+	public JTextField getTextField_9();
 	public JPasswordField getPasswordField();
 	public JPasswordField getPasswordField_1();
 	public ButtonGroup getButtonGroup();

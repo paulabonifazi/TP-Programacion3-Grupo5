@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import javax.swing.JTabbedPane;
@@ -32,10 +34,10 @@ import paquete.Empleador;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JFormattedTextField;
 
-public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPretenso, KeyListener
+public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPretenso, KeyListener, MouseListener
 {
-
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -43,10 +45,12 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	private JPasswordField passwordField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_4;
+	private JFormattedTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JFormattedTextField textField_8;
+	private JTextField textField_9;
 	private ActionListener actionListener;
 	private JButton loginButton;
 	private JButton registroButton;
@@ -58,6 +62,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	private final ButtonGroup buttonGroup_4 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_6 = new ButtonGroup();
+
 
 	/**
 	 * Launch the application.
@@ -238,7 +243,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		
 		textField_2 = new JTextField();
 		textField_2.setToolTipText("Nombre");
-		textField_2.setColumns(20);
+		textField_2.setColumns(30);
 		this.textField_2.addKeyListener(this);
 		panel_1_1_1.add(textField_2);
 		
@@ -256,7 +261,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		textField_3 = new JTextField();
 		textField_3.setToolTipText("Apellido");
 		panel_2_1_1.add(textField_3);
-		textField_3.setColumns(20);
+		textField_3.setColumns(30);
 		this.textField_3.addKeyListener(this);
 		
 		JPanel panel_NombreNuevo_1 = new JPanel();
@@ -270,28 +275,50 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		JPanel panel_1_1_1_1 = new JPanel();
 		panel_NombreNuevo_1.add(panel_1_1_1_1);
 		
-		textField_4 = new JTextField();
+		textField_4 = new JFormattedTextField();
 		textField_4.setToolTipText("Edad");
-		textField_4.setColumns(20);
+		textField_4.setColumns(5);
 		this.textField_4.addKeyListener(this);
 		panel_1_1_1_1.add(textField_4);
 		
-		JPanel panel_ApellidoNuevo_1 = new JPanel();
-		panelColumna_2_1.add(panel_ApellidoNuevo_1);
-		panel_ApellidoNuevo_1.setLayout(new GridLayout(1, 2, 0, 0));
+		JPanel panel_DireccionNueva = new JPanel();
+		panelColumna_2_1.add(panel_DireccionNueva);
+		panel_DireccionNueva.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel apellidoLabel_1 = new JLabel("Dirección:");
-		apellidoLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_ApellidoNuevo_1.add(apellidoLabel_1);
+		JLabel direccionLabel = new JLabel("Dirección:");
+		direccionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_DireccionNueva.add(direccionLabel);
 		
-		JPanel panel_2_1_1_1 = new JPanel();
-		panel_ApellidoNuevo_1.add(panel_2_1_1_1);
+		JPanel panel_Direccion = new JPanel();
+		panel_DireccionNueva.add(panel_Direccion);
+		panel_Direccion.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		JPanel panel_5 = new JPanel();
+		panel_Direccion.add(panel_5);
 		
 		textField_5 = new JTextField();
-		textField_5.setToolTipText("Dirección");
-		textField_5.setColumns(20);
-		panel_2_1_1_1.add(textField_5);
+		panel_5.add(textField_5);
+		textField_5.setToolTipText("Calle");
+		textField_5.setColumns(15);
 		this.textField_5.addKeyListener(this);
+		
+		JPanel panel_6 = new JPanel();
+		panel_Direccion.add(panel_6);
+		
+		textField_8 = new JFormattedTextField();
+		panel_6.add(textField_8);
+		textField_8.setToolTipText("Número");
+		textField_8.setColumns(5);
+		this.textField_8.addKeyListener(this);
+		
+		JPanel panel_7 = new JPanel();
+		panel_Direccion.add(panel_7);
+		
+		textField_9 = new JTextField();
+		panel_7.add(textField_9);
+		textField_9.setToolTipText("Descripción");
+		textField_9.setColumns(10);
+		this.textField_9.addKeyListener(this);
 		
 		JPanel panel_UsuarioNuevo_1 = new JPanel();
 		panelColumna_2_1.add(panel_UsuarioNuevo_1);
@@ -306,7 +333,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		
 		textField_6 = new JTextField();
 		textField_6.setToolTipText("Teléfono");
-		textField_6.setColumns(20);
+		textField_6.setColumns(30);
 		this.textField_6.addKeyListener(this);
 		panel_1_1_2.add(textField_6);
 		
@@ -324,7 +351,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		textField_7 = new JTextField();
 		textField_7.setToolTipText("e-Mail");
 		panel_2_1_2.add(textField_7);
-		textField_7.setColumns(20);
+		textField_7.setColumns(30);
 		this.textField_7.addKeyListener(this);
 		
 		JPanel panel_UsuarioNuevo = new JPanel();
@@ -340,7 +367,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		
 		textField_1 = new JTextField();
 		textField_1.setToolTipText("Usuario");
-		textField_1.setColumns(20);
+		textField_1.setColumns(30);
 		this.textField_1.addKeyListener(this);
 		panel_1_1.add(textField_1);
 		
@@ -357,7 +384,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setToolTipText("Contraseña");
-		passwordField_1.setColumns(20);
+		passwordField_1.setColumns(30);
 		this.passwordField_1.addKeyListener(this);
 		panel_2_1.add(passwordField_1);
 		
@@ -646,7 +673,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		return textField_3;
 	}
 
-	public JTextField getTextField_4()
+	public JFormattedTextField getTextField_4()
 	{
 		return textField_4;
 	}
@@ -666,6 +693,16 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		return textField_7;
 	}
 
+	public JFormattedTextField getTextField_8()
+	{
+		return textField_8;
+	}
+	
+	public JTextField getTextField_9()
+	{
+		return textField_9;
+	}
+	
 	public ButtonGroup getButtonGroup()
 	{
 		return buttonGroup;
@@ -699,6 +736,41 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	public ButtonGroup getButtonGroup_6()
 	{
 		return buttonGroup_6;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

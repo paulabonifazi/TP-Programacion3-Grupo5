@@ -3,11 +3,11 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JOptionPane;
 
+import excepciones.ContrasenaIncorrectaException;
+import excepciones.NombreDeUsuarioIncorrectoException;
 import modelo.EstadoTicket;
 import modelo.FormularioBusqueda;
 import modelo.TicketEmpleadoPretenso;
@@ -18,18 +18,10 @@ import paquete.Persona;
 import vista.IVistaEmpleadoPretenso;
 import vista.VentanaEmpleadoPretenso;
 
-public class ControladorEmpleadoPretenso implements ActionListener, Observer
+public class ControladorEmpleadoPretenso implements ActionListener
 {
-	//private static ControladorEmpleadoPretenso instance = null;
 	private Agencia agencia = Agencia.getInstance();
 	private IVistaEmpleadoPretenso vista;
-
-	/*public static ControladorEmpleadoPretenso getInstance()
-	{
-		if (ControladorEmpleadoPretenso.instance == null)
-			ControladorEmpleadoPretenso.instance = new ControladorEmpleadoPretenso();
-		return instance;
-	}*/
 
 	public ControladorEmpleadoPretenso()
 	{
@@ -58,33 +50,31 @@ public class ControladorEmpleadoPretenso implements ActionListener, Observer
 		this.vista.setActionListener(this);
 	}
 
-	/*private void login()
-	{
-		Persona persona = null;
-		if (persona != null)
-		{
-			
-		} else
-			JOptionPane.showMessageDialog(null, "Nombre de usuario/Contraseña incorrecta");
-
-	}*/
-
-	@Override
-	public void update(Observable o, Object arg)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equalsIgnoreCase("Registrarse"))
 		{
-			EmpleadoPretenso empleado = new EmpleadoPretenso(new Domicilio(this.vista.getTextField_5().getText(), 0, null) , this.vista.getTextField_6().getText(), this.vista.getTextField_7().getText(), this.vista.getTextField_1().getText(), this.vista.getPasswordField_1().getText(), this.vista.getTextField_2().getText(), this.vista.getTextField_3().getText(), Integer.parseInt(this.vista.getTextField_4().getText()), null);
+			EmpleadoPretenso empleado = new EmpleadoPretenso(new Domicilio(this.vista.getTextField_5().getText(), Integer.parseInt(this.vista.getTextField_8().getText()), this.vista.getTextField_9().getText()) , this.vista.getTextField_6().getText(), this.vista.getTextField_7().getText(), this.vista.getTextField_1().getText(), this.vista.getPasswordField_1().getText(), this.vista.getTextField_2().getText(), this.vista.getTextField_3().getText(), Integer.parseInt(this.vista.getTextField_4().getText()), null);
 			Agencia.getInstance().agregarEmpleadoPretenso(empleado);
-		}
+		} /*else if (e.getActionCommand().equalsIgnoreCase("Entrar")) VER LOGIN
+		{
+			try
+			{
+				Agencia.getInstance().login(this.vista.getTextField().getText(), this.vista.getPasswordField().getText());
+			} catch (NombreDeUsuarioIncorrectoException e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto");
+			} catch (ContrasenaIncorrectaException e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+			}
+		}*/
 		else if (e.getActionCommand().equalsIgnoreCase("Crear ticket")) {
 			String usuario;
 			if (!this.vista.getTextField().getText().isBlank())

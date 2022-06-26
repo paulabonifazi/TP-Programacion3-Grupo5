@@ -3,8 +3,6 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.Observable;
-import java.util.Observer;
 
 import modelo.EstadoTicket;
 import modelo.FormularioBusqueda;
@@ -17,7 +15,7 @@ import paquete.Empleador;
 import vista.IVistaEmpleador;
 import vista.VentanaEmpleador;
 
-public class ControladorEmpleador implements ActionListener, Observer
+public class ControladorEmpleador implements ActionListener
 {
 	private Agencia agencia = Agencia.getInstance();
 	private IVistaEmpleador vista;
@@ -72,13 +70,6 @@ public class ControladorEmpleador implements ActionListener, Observer
 			//Agencia.getInstance().getEmpleadores().get(i).setTicket(new TicketEmpleador(new FormularioBusqueda(this.vista.getButtonGroup().getSelection().getActionCommand(), this.vista.getButtonGroup_1().getSelection().getActionCommand(), this.vista.getButtonGroup_2().getSelection().getActionCommand(), this.vista.getButtonGroup_3().getSelection().getActionCommand(), this.vista.getButtonGroup_4().getSelection().getActionCommand(), this.vista.getButtonGroup_5().getSelection().getActionCommand(), this.vista.getButtonGroup_6().getSelection().getActionCommand()), new EstadoTicket("Activo"), new Date(2022, 05, 23)));
 			//falta setTicket
 		}
-	}
-
-	@Override
-	public void update(Observable o, Object arg)
-	{
-		// TODO Auto-generated method stub
-		
 	}
 
 }

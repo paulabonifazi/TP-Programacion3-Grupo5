@@ -9,9 +9,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -30,18 +33,20 @@ import modelo.TicketEmpleadoPretenso;
 import paquete.EmpleadoPretenso;
 import java.awt.event.ActionEvent;
 
-public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyListener
+public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyListener, MouseListener
 {
 	private JPanel contentPane;
 	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_4;
+	private JFormattedTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-	private JTextField textField_1;
+	private JFormattedTextField textField_8;
+	private JTextField textField_9;
+	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
 	private ActionListener actionListener;
 	private JButton loginButton;
@@ -50,6 +55,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	private JLabel nombreLabel;
 	private JLabel edadLabel;
 	private JLabel apellidoLabel;
+	private final ButtonGroup group = new ButtonGroup();
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
@@ -57,8 +63,8 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	private final ButtonGroup buttonGroup_4 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_6 = new ButtonGroup();
-	private final ButtonGroup group = new ButtonGroup();
 	private final ButtonGroup buttonGroup_7 = new ButtonGroup();
+
 
 	/**
 	 * Launch the application.
@@ -307,28 +313,50 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		JPanel panel_1_1_1_1 = new JPanel();
 		panel_Edad.add(panel_1_1_1_1);
 		
-		textField_4 = new JTextField();
+		textField_4 = new JFormattedTextField();
 		textField_4.setToolTipText("Edad");
-		textField_4.setColumns(20);
+		textField_4.setColumns(5);
 		this.textField_4.addKeyListener(this);
 		panel_1_1_1_1.add(textField_4);
 		
-		JPanel panel_Direccion = new JPanel();
-		panelColumna_2_1.add(panel_Direccion);
-		panel_Direccion.setLayout(new GridLayout(1, 2, 0, 0));
+		JPanel panel_DireccionNueva = new JPanel();
+		panelColumna_2_1.add(panel_DireccionNueva);
+		panel_DireccionNueva.setLayout(new GridLayout(1, 2, 0, 0));
 		
 		JLabel direccionLabel = new JLabel("Dirección:");
 		direccionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_Direccion.add(direccionLabel);
+		panel_DireccionNueva.add(direccionLabel);
 		
-		JPanel panel_2_1_1_1 = new JPanel();
-		panel_Direccion.add(panel_2_1_1_1);
+		JPanel panel_Direccion = new JPanel();
+		panel_DireccionNueva.add(panel_Direccion);
+		panel_Direccion.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		JPanel panel_5 = new JPanel();
+		panel_Direccion.add(panel_5);
 		
 		textField_5 = new JTextField();
-		textField_5.setToolTipText("Dirección");
-		textField_5.setColumns(20);
+		panel_5.add(textField_5);
+		textField_5.setToolTipText("Calle");
+		textField_5.setColumns(15);
 		this.textField_5.addKeyListener(this);
-		panel_2_1_1_1.add(textField_5);
+		
+		JPanel panel_6 = new JPanel();
+		panel_Direccion.add(panel_6);
+		
+		textField_8 = new JFormattedTextField();
+		panel_6.add(textField_8);
+		textField_8.setToolTipText("Número");
+		textField_8.setColumns(5);
+		this.textField_8.addKeyListener(this);
+		
+		JPanel panel_7 = new JPanel();
+		panel_Direccion.add(panel_7);
+		
+		textField_9 = new JTextField();
+		panel_7.add(textField_9);
+		textField_9.setToolTipText("Descripción");
+		textField_9.setColumns(10);
+		this.textField_9.addKeyListener(this);
 		
 		JPanel panel_Telefono = new JPanel();
 		panelColumna_2_1.add(panel_Telefono);
@@ -372,14 +400,26 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		panel_Rubro.add(rubroLabel);
 		
 		JRadioButton rdbtnNewRadioButton_9 = new JRadioButton("Salud");
+		rdbtnNewRadioButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		buttonGroup_7.add(rdbtnNewRadioButton_9);
 		panel_Rubro.add(rdbtnNewRadioButton_9);
 		
 		JRadioButton rdbtnNewRadioButton_10 = new JRadioButton("Comercio local");
+		rdbtnNewRadioButton_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		buttonGroup_7.add(rdbtnNewRadioButton_10);
 		panel_Rubro.add(rdbtnNewRadioButton_10);
 		
 		JRadioButton rdbtnNewRadioButton_11 = new JRadioButton("Comercio internacional");
+		rdbtnNewRadioButton_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		buttonGroup_7.add(rdbtnNewRadioButton_11);
 		panel_Rubro.add(rdbtnNewRadioButton_11);
 		
@@ -693,7 +733,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		String nuevoUsuario = this.textField_1.getText();
 		String nuevaContrasena = this.passwordField_1.getText();
 		this.loginButton.setEnabled(!(usuario.isBlank() || contrasena.isBlank()));
-		this.registroButton.setEnabled(!(nombre.isBlank() || apellido.isBlank() || edad.isBlank() || direccion.isBlank() || telefono.isBlank() || email.isBlank() || nuevoUsuario.isBlank() || nuevaContrasena.isBlank()));
+		this.registroButton.setEnabled(!(nombre.isBlank() || apellido.isBlank() || edad.isBlank() || direccion.isBlank() || telefono.isBlank() || email.isBlank() || nuevoUsuario.isBlank() || nuevaContrasena.isBlank()));// || group.getSelection().getActionCommand() || buttonGroup_7.getSelection().equals(null)
 	}
 
 	@Override
@@ -707,26 +747,6 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	public JTabbedPane getTabbedPane()
 	{
 		return tabbedPane;
-	}
-
-	public JTextField getTextField_3()
-	{
-		return textField_3;
-	}
-
-	public void setTextField_3(JTextField textField_3)
-	{
-		this.textField_3 = textField_3;
-	}
-
-	public JTextField getTextField_4()
-	{
-		return textField_4;
-	}
-
-	public void setTextField_4(JTextField textField_4)
-	{
-		this.textField_4 = textField_4;
 	}
 
 	public JTextField getTextField()
@@ -743,7 +763,27 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	{
 		return textField_2;
 	}
+	
+	public JTextField getTextField_3()
+	{
+		return textField_3;
+	}
 
+	public void setTextField_3(JTextField textField_3)
+	{
+		this.textField_3 = textField_3;
+	}
+
+	public JFormattedTextField getTextField_4()
+	{
+		return textField_4;
+	}
+
+	public void setTextField_4(JFormattedTextField textField_4)
+	{
+		this.textField_4 = textField_4;
+	}
+	
 	public JTextField getTextField_5()
 	{
 		return textField_5;
@@ -758,7 +798,16 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	{
 		return textField_7;
 	}
+	
+	public JFormattedTextField getTextField_8()
+	{
+		return textField_8;
+	}
 
+	public JTextField getTextField_9()
+	{
+		return textField_9;
+	}
 	public JTextField getTextField_1()
 	{
 		return textField_1;
@@ -769,6 +818,11 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		return passwordField_1;
 	}
 
+	public ButtonGroup getGroup()
+	{
+		return group;
+	}
+	
 	public ButtonGroup getButtonGroup()
 	{
 		return buttonGroup;
@@ -804,15 +858,44 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		return buttonGroup_6;
 	}
 
-	public ButtonGroup getGroup()
-	{
-		return group;
-	}
-
-	@Override
 	public ButtonGroup getButtonGroup_7()
 	{
 		return buttonGroup_7;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }
