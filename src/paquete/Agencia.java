@@ -246,7 +246,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		{
 			
 			//analizo estado del ticket 
-			if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Finalizado"))
+			if(empleadosPretensosActivos.get(i).getTicket().getEstado().equals("Finalizado"))
 				empleadosPretensosActivos.get(i).setPuntajeUsuario(10);
 			else
 				if(empleadosPretensosActivos.get(i).getTicket().getEstadoTicket().getEstado().equals("Cancelado"))

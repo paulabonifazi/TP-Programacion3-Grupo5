@@ -9,9 +9,9 @@ public class TicketEmpleadoPretenso extends Ticket
 	
 	private String resultado; 
 
-	public TicketEmpleadoPretenso(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket) 
+	public TicketEmpleadoPretenso(FormularioBusqueda fbTicket, Date fechaTicket) 
 	{
-		super(fbTicket, estadoTicket, fechaTicket);
+		super(fbTicket, fechaTicket);
 		this.resultado = "Iniciado";
 	}
 	

@@ -11,9 +11,9 @@ public class TicketEmpleador extends Ticket
 	private int cantEmpleadosSolicitados;
 	private int cantEmpleadosObtenidos;
 	
-	public TicketEmpleador(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket, int cantEmpleadosSolicitados,int cantEmpleadosObtenidos) 
+	public TicketEmpleador(FormularioBusqueda fbTicket, Date fechaTicket, int cantEmpleadosSolicitados,int cantEmpleadosObtenidos) 
 	{
-		super(fbTicket, estadoTicket, fechaTicket);
+		super(fbTicket, fechaTicket);
 		this.cantEmpleadosSolicitados = cantEmpleadosSolicitados;
 		this.cantEmpleadosObtenidos = cantEmpleadosObtenidos;
 	}

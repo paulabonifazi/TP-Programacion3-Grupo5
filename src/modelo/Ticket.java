@@ -1,23 +1,32 @@
 package modelo;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class Ticket
+import modelo.FormularioBusqueda;
+import state.ActivoState;
+import state.IState;
+import state.SuspendidoState;
+
+public class Ticket 
 {
 	
-	protected FormularioBusqueda fbTicket;
-	protected EstadoTicket estadoTicket;
+	private FormularioBusqueda fbTicket;
+	private IState estado = new ActivoState(this) ;
 	
 	private Date fechaTicket;
 	
 	
-
-	public Ticket(FormularioBusqueda fbTicket, EstadoTicket estadoTicket, Date fechaTicket)
+	public Ticket()
 	{
-		super();
+	}
+	
+	public Ticket(FormularioBusqueda fbTicket, Date fechaTicket)
+	{
 		this.fbTicket = fbTicket;
-		this.estadoTicket = estadoTicket;
+		
 		this.fechaTicket = fechaTicket;
+		
 	}
 
 	
@@ -25,13 +34,31 @@ public class Ticket
 		return fbTicket;
 	}
 
-	public EstadoTicket getEstadoTicket() {
-		return estadoTicket;
-	}
 
 	public Date getFechaTicket() {
 		return fechaTicket;
 	}
+	
+	
+	
+	public void setFbTicket(FormularioBusqueda fbTicket) {
+		this.fbTicket = fbTicket;
+	}
+
+	public void setFechaTicket(Date fechaTicket) {
+		this.fechaTicket = fechaTicket;
+	}
+
+
+	public IState getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(IState estado) {
+		this.estado = estado;
+	}
+	
 	
 	
 }
