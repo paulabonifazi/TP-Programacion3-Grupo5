@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.Observable;
 import java.util.Observer;
 
+import concurrencia.TicketSimplificado;
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
 import interfaces.IMuestraEmpleadores;
@@ -43,6 +44,9 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	
 	private ArrayList<ListAsignacionEmpleador> listaCoincidencias = new ArrayList<ListAsignacionEmpleador>();//lista que guarda las coincidencias entre empresa y empleado
 
+	private ArrayList<TicketSimplificado> bolsaDeEmpleo = new ArrayList<TicketSimplificado>();
+	
+	
 	private double saldoAgencia = 0;
 	
 	private ArrayList<TicketSimplificado> bolsaDeEmpleo = new ArrayList<TicketSimplificado>();
@@ -186,6 +190,23 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		return listaCoincidencias;
 	}
 
+	
+	public ArrayList<TicketSimplificado> getBolsaDeEmpleo() {
+		return bolsaDeEmpleo;
+	}
+
+	public void setBolsaDeEmpleo(ArrayList<TicketSimplificado> bolsaDeEmpleo) {
+		this.bolsaDeEmpleo = bolsaDeEmpleo;
+	}
+	
+	public void agregarTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeEmpleo.add(ticket);
+	}
+	
+	public void emilinarTicketSimplificado(TicketSimplificado ticket) {
+		this.bolsaDeEmpleo.remove(ticket);
+	}
+
 	/**
 	 * Modifica el saldo de la agencia cuando �sta cobra una comisi�n.
 	 * <br>
@@ -226,6 +247,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		ControlListasAgencia cla= new ControlListasAgencia();
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
+		
 		listAsignacionEmpleador.addAll(cla.generarListAsignacionEmpleador(empleadosPretensosActivos,empleadoresActivos));
 		listAsignacionEmpleadoPretensos.addAll(cla.generarListAsignacionEmpleadoPretenso(empleadosPretensosActivos,empleadoresActivos));
 		
@@ -240,7 +262,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		ControlEstadosTicket cet = new ControlEstadosTicket();
 		
 		//empleadores
-		for (int j=0; j<listAsignacionEmpleador.size(); j++) {
+		for (int j=0; j<this.listAsignacionEmpleador.size(); j++) {
 			ListAsignacionEmpleador nodo = new ListAsignacionEmpleador();
 			ArrayList<EmpleadoPretenso> nodoListas = new ArrayList<EmpleadoPretenso>();
 			i=0;
@@ -388,6 +410,7 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		return loginCorrecto;
 		
 	}
+	
 
 	@Override
 	public void mostrarEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {

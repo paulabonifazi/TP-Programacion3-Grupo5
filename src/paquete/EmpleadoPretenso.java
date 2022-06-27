@@ -17,7 +17,7 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 	private String nombre;
 	private String apellido;
 	private int edad;
-	private  TicketEmpleadoPretenso ticket;
+	private TicketEmpleadoPretenso ticket;
 	private TicketSimplificado ticketSimplificado;
 	private int cantBusquedas = 0;
 	
@@ -50,6 +50,7 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 		this.nombre=nombre;
 		this.edad=edad;
 		this.ticket = ticket;
+		this.ticketSimplificado = null; //se asignar� de la Bolsa de Trabajo, producto de la simulaci�n
 	}
 
 	public void setNombre(String nombre) {
@@ -72,6 +73,25 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 		this.ticket = ticket;
 	}
 
+
+	public int getCantBusquedas() {
+		return cantBusquedas;
+	}
+
+	public void setCantBusquedas(int cantBusquedas) {
+		this.cantBusquedas += cantBusquedas;	//cuento nueva b�squeda realizada
+	}
+	
+
+	public TicketSimplificado getTicketSimplificado() {
+		return ticketSimplificado;
+	}
+
+	public void setTicketSimplificado(TicketSimplificado ticketSimplificado) {
+		this.ticketSimplificado = ticketSimplificado;
+	}
+
+	
 	@Override
 	public String getNombre()
 	{
