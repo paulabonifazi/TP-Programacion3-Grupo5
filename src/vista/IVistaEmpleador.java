@@ -6,6 +6,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public interface IVistaEmpleador
@@ -33,4 +34,5 @@ public interface IVistaEmpleador
 	public ButtonGroup getButtonGroup_6();
 	public ButtonGroup getButtonGroup_7();
 	public ButtonGroup getGroup();
+	public JTable getTable();
 }

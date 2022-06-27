@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
+
 import paquete.Agencia;
 import vista.IVistaAgencia;
 import vista.VentanaAgencia;
@@ -44,16 +46,38 @@ public class ControladorAgencia implements ActionListener
 	{
 		if (e.getActionCommand().equalsIgnoreCase("Empleadores"))
 		{
-			Agencia.getInstance().mostrarEmpleadores(Agencia.getInstance().getEmpleadores());
+			System.out.println("hkfbvsdl");
+			DefaultListModel<String> listModel = new DefaultListModel<String>();
+			this.vista.getList1().setModel(listModel);
+			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
+			    listModel.addElement(Agencia.getInstance().getEmpleadores().get(i).getNombUsuario());
+			}
+			
 		} else if (e.getActionCommand().equalsIgnoreCase("Solicitud empleadores"))
 		{
-			Agencia.getInstance().mostrarEmpleadores(Agencia.getInstance().getEmpleadoresActivos());
+			System.out.println(e);
+			DefaultListModel<String> listModel = new DefaultListModel<String>();
+			this.vista.getList1().setModel(listModel);
+			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
+			    listModel.addElement(Agencia.getInstance().getEmpleadoresActivos().get(i).getNombUsuario());
+			}
+			//Agencia.getInstance().mostrarEmpleadores(Agencia.getInstance().getEmpleadoresActivos());
 		} else if (e.getActionCommand().equalsIgnoreCase("Empleados"))
 		{
-			Agencia.getInstance().mostrarEmpleadosPretensos(Agencia.getInstance().getEmpleadosPretensos());
+			DefaultListModel<String> listModel = new DefaultListModel<String>();
+			this.vista.getList1().setModel(listModel);
+			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
+			    listModel.addElement(Agencia.getInstance().getEmpleadosPretensos().get(i).getNombUsuario());
+			}
+			//Agencia.getInstance().mostrarEmpleadosPretensos(Agencia.getInstance().getEmpleadosPretensos());
 		} else if (e.getActionCommand().equalsIgnoreCase("Solicitud empleados"))
 		{
-			Agencia.getInstance().mostrarEmpleadosPretensos(Agencia.getInstance().getEmpleadosPretensosActivos());
+			DefaultListModel<String> listModel = new DefaultListModel<String>();
+			this.vista.getList1().setModel(listModel);
+			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
+			    listModel.addElement(Agencia.getInstance().getEmpleadosPretensosActivos().get(i).getNombUsuario());
+			}
+			//Agencia.getInstance().mostrarEmpleadosPretensos(Agencia.getInstance().getEmpleadosPretensosActivos());
 		}else if (e.getActionCommand().equalsIgnoreCase("Activar Ronda de Encuentros Laborales"))
 		{
 			Agencia.getInstance().activarRondaEncuentrosLaborales();

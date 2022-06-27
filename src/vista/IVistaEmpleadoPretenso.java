@@ -6,6 +6,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public interface IVistaEmpleadoPretenso
@@ -32,4 +33,5 @@ public interface IVistaEmpleadoPretenso
 	public ButtonGroup getButtonGroup_4();
 	public ButtonGroup getButtonGroup_5();
 	public ButtonGroup getButtonGroup_6();
+	public JTable getTable();
 }

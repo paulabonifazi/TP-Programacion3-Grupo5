@@ -35,6 +35,8 @@ import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPretenso, KeyListener, MouseListener
 {
@@ -62,28 +64,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	private final ButtonGroup buttonGroup_4 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_6 = new ButtonGroup();
-
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				try
-				{
-					VentanaEmpleadoPretenso frame = new VentanaEmpleadoPretenso();
-					frame.setVisible(true);
-				} catch (Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JTable table;
 
 	/**
 	 * Create the frame.
@@ -97,6 +78,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		this.setVisible(true);
 		
 		this.tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(new Color(30, 144, 255));
@@ -175,7 +157,6 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 				tabbedPane.setEnabledAt(2, true);
 				tabbedPane.setEnabledAt(3, true);
 				tabbedPane.setEnabledAt(4, true);
-				tabbedPane.setEnabledAt(5, true);
 			}
 		});
 		loginButton.setToolTipText("Entrar");
@@ -404,7 +385,6 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 				tabbedPane.setEnabledAt(2, true);
 				tabbedPane.setEnabledAt(3, true);
 				tabbedPane.setEnabledAt(4, true);
-				tabbedPane.setEnabledAt(5, true);
 			}
 		});
 		registroButton.setToolTipText("Registrarse");
@@ -425,12 +405,40 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		JPanel panel_3 = new JPanel();
 		panel_Ticket.add(panel_3, BorderLayout.CENTER);
 		
-		JList<TicketEmpleadoPretenso> listaDeTicketsEmpleadoPretenso = new JList<TicketEmpleadoPretenso>();
-		listaDeTicketsEmpleadoPretenso.setVisible(false);
-		panel_3.add(listaDeTicketsEmpleadoPretenso);
-		
 		JPanel panel_4 = new JPanel();
 		panel_4.setVisible(false);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Locaci\u00F3n:", null},
+				{"Remuneraci\u00F3n:", null},
+				{"Carga Horaria:", null},
+				{"Tipo de Puesto:", null},
+				{"Rango Etario:", null},
+				{"Experiencia Previa:", null},
+				{"Estudios Cursados:", null},
+				{"Fecha:", null},
+				{"Estado del Ticket:", null},
+				{"Resultado del Ticket:", null},
+			},
+			new String[] {
+				"Aspectos", "Valores"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(0).setPreferredWidth(200);
+		table.getColumnModel().getColumn(1).setResizable(false);
+		table.getColumnModel().getColumn(1).setPreferredWidth(200);
+		table.setEnabled(false);
+		panel_3.add(table);
 		panel_3.add(panel_4);
 		panel_4.setLayout(new GridLayout(8, 4, 0, 0));
 		
@@ -545,6 +553,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panel_4.add(lblNewLabel_8);
 		
 		JButton btnNewButton_2 = new JButton("Crear ticket");
+		btnNewButton_2.setActionCommand("Crear ticket");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -559,19 +568,21 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		panel.setPreferredSize(new Dimension(150, 10));
 		panel_Ticket.add(panel, BorderLayout.WEST);
 		
-		JButton btnNewButton = new JButton("Ver mis tickets");
+		JButton btnNewButton = new JButton("Ver ticket");
+		btnNewButton.setActionCommand("Ver ticket");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listaDeTicketsEmpleadoPretenso.setVisible(true);
+				table.setVisible(true);
 				panel_4.setVisible(false);
 			}
 		});
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Crear nuevo ticket");
+		btnNewButton_1.setActionCommand("Crear nuevo ticket");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listaDeTicketsEmpleadoPretenso.setVisible(false);
+				table.setVisible(false);
 				panel_4.setVisible(true);
 				buttonGroup.clearSelection();
 				buttonGroup_1.clearSelection();
@@ -596,13 +607,10 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		JPanel panel_RondaEleccion = new JPanel();
 		panel_RondaEleccion.setToolTipText("Ronda de Elección");
 		tabbedPane.addTab("Ronda de Elección", null, panel_RondaEleccion, "Ronda de Elección");
-		tabbedPane.setEnabledAt(4, false);
 		
-		JPanel panel_Resultado = new JPanel();
-		panel_Resultado.setVisible(false);
-		panel_Resultado.setToolTipText("Resultado");
-		tabbedPane.addTab("Resultado", null, panel_Resultado, "Resultado");
-		tabbedPane.setEnabledAt(5, false);
+		JList list_1 = new JList();
+		panel_RondaEleccion.add(list_1);
+		tabbedPane.setEnabledAt(4, false);
 		
 		JPanel panel_Publicidad = new JPanel();
 		contentPane.add(panel_Publicidad, BorderLayout.SOUTH);
@@ -771,6 +779,11 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	{
 		// TODO Auto-generated method stub
 		
+	}
+
+	public JTable getTable()
+	{
+		return table;
 	}
 
 }

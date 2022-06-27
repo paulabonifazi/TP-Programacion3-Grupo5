@@ -25,6 +25,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
 
 import controlador.ControladorAgencia;
+import paquete.Persona;
 
 import javax.swing.JList;
 import javax.swing.JComboBox;
@@ -36,6 +37,7 @@ import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.JToggleButton;
 import java.awt.Dimension;
+import javax.swing.AbstractListModel;
 
 public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListener
 {
@@ -43,34 +45,14 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 	private JPanel panel2;
 	private JPanel panel3;
 	private JButton btnNewButton2;
+	private JList<String> list1;
 	private JList list2;
 	private JButton btnNewButton3;
 	private JList list3;
 	private boolean rondaELActivada = false;
 	private boolean rondaContratacionActivada = false;
 	private ActionListener actionListener;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				try
-				{
-					VentanaAgencia frame = new VentanaAgencia();
-					frame.setVisible(true);
-				} catch (Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -83,7 +65,7 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+		this.setVisible(true);
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setForeground(Color.BLACK);
 		tabbedPane.setBackground(new Color(255, 51, 51));
@@ -158,19 +140,33 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		tabbedPane.addTab("Visualización de datos", null, panel_VisualizacionDatos, "Visualización de datos");
 		panel_VisualizacionDatos.setLayout(new BorderLayout(0, 0));
 		
+		list1 = new JList<String>();
+		panel_VisualizacionDatos.add(list1, BorderLayout.CENTER);
+		
 		JPanel panel_1 = new JPanel();
 		panel_VisualizacionDatos.add(panel_1, BorderLayout.WEST);
 		panel_1.setLayout(new GridLayout(4, 0, 0, 0));
 		
 		JButton btnNewButton_1 = new JButton("Empleadores");
+		btnNewButton_1.setActionCommand("Empleadores");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				list1.setModel(new AbstractListModel() {
+					String[] values = new String[] {""};
+					public int getSize() {
+						return values.length;
+					}
+					public Object getElementAt(int index) {
+						return values[index];
+					}
+				});
 			}
 		});
 		btnNewButton_1.setToolTipText("Empleadores");
 		panel_1.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Solicitud empleadores");
+		btnNewButton_2.setActionCommand("Solicitud empleadores");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -179,6 +175,7 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		panel_1.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Empleados");
+		btnNewButton_3.setActionCommand("Empleados");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -187,15 +184,13 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		panel_1.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("Solicitud empleados");
+		btnNewButton_1.setActionCommand("Solicitud empleados");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnNewButton_4.setToolTipText("Solicitud empleados");
 		panel_1.add(btnNewButton_4);
-		
-		JList list_1 = new JList();
-		panel_VisualizacionDatos.add(list_1, BorderLayout.CENTER);
 		
 		/*JPanel panel_CalculoComisiones = new JPanel();
 		panel_CalculoComisiones.setToolTipText("Cálculo de comisiones");
@@ -370,6 +365,39 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 	public void setActionListener(ActionListener actionListener)
 	{
 		this.actionListener = actionListener;
+	}
+
+	@Override
+	public JList<String> getList1()
+	{
+		// TODO Auto-generated method stub
+		return list1;
+	}
+
+	@Override
+	public void setList1(JList<String> list1)
+	{
+		this.list1 = list1;
+	}
+
+	public JList getList2()
+	{
+		return list2;
+	}
+
+	public void setList2(JList list2)
+	{
+		this.list2 = list2;
+	}
+
+	public JList getList3()
+	{
+		return list3;
+	}
+
+	public void setList3(JList list3)
+	{
+		this.list3 = list3;
 	}
 
 }
