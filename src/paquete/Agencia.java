@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.Observable;
 import java.util.Observer;
 
-import concurrencia.TicketSimplificado;
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
 import interfaces.IMuestraEmpleadores;
@@ -48,8 +47,6 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	
 	
 	private double saldoAgencia = 0;
-	
-	private ArrayList<TicketSimplificado> bolsaDeEmpleo = new ArrayList<TicketSimplificado>();
 	
 	private ArrayList<Ticket> observados = new ArrayList<Ticket>(); //lista de estado de ticket de empleados pretensos observados
 	
@@ -191,21 +188,6 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 
 	
-	public ArrayList<TicketSimplificado> getBolsaDeEmpleo() {
-		return bolsaDeEmpleo;
-	}
-
-	public void setBolsaDeEmpleo(ArrayList<TicketSimplificado> bolsaDeEmpleo) {
-		this.bolsaDeEmpleo = bolsaDeEmpleo;
-	}
-	
-	public void agregarTicketSimplificado(TicketSimplificado ticket) {
-		this.bolsaDeEmpleo.add(ticket);
-	}
-	
-	public void emilinarTicketSimplificado(TicketSimplificado ticket) {
-		this.bolsaDeEmpleo.remove(ticket);
-	}
 
 	/**
 	 * Modifica el saldo de la agencia cuando �sta cobra una comisi�n.

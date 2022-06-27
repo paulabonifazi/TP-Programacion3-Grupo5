@@ -6,6 +6,7 @@ import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
 
 import modelo.FormularioBusqueda;
+import modelo.Ticket;
 import modelo.TicketEmpleadoPretenso;
 import modelo.TicketEmpleador;
 import paquete.Agencia;
@@ -14,11 +15,11 @@ import paquete.EmpleadoPretenso;
 import paquete.Empleador;
 import paquete.ValoracionAspecto;
 
-public class expLoginUsuario {
+public class ExpLoginContrasena {
 
-	public static void main(String[] args) {
-
-
+	public static void main(String[] args) 
+	{
+		
 
 		TicketEmpleador ticketEmpleador1 = new TicketEmpleador(new FormularioBusqueda("HomeOffice", "V1", "Completa", "Junior", "Menos de 40", "NADA", "Secundario"), new Date(2022, 8, 23), 2, 0);
 		TicketEmpleador ticketEmpleador2 = new TicketEmpleador(new FormularioBusqueda("Indistinto", "V2", "Extendida", "Managment", "40 a 50", "MUCHA", "Terciario"), new Date(2022, 10, 5), 1, 0);
@@ -44,7 +45,8 @@ public class expLoginUsuario {
 		EmpleadoPretenso empleadoPretenso4 = new EmpleadoPretenso(new Domicilio("Santiago del Estero", 666, "3 I"), "08004556666", "lautaro@gmail.com", "LautaroLazuli", "holahola", "Lautaro", "Lazuli", 42, ticketEmpleadoPretenso4);
 		EmpleadoPretenso empleadoPretenso5 = new EmpleadoPretenso(new Domicilio("Calle Falsa", 123, "Casa"), "1565156", "camila@adf.com", "CamilaLopez", "nosequeponer", "Camila", "Lopez", 28, ticketEmpleadoPretenso5);
 		
-	
+		
+		
 		
 		System.out.println("Empleadores:");
 		Agencia.getInstance().mostrarEmpleadores(Agencia.getInstance().getEmpleadores());
@@ -144,19 +146,15 @@ public class expLoginUsuario {
 		
 		System.out.println("saldo "+Agencia.getInstance().getSaldoAgencia());
 		
-		
-		try
-		{
-			Agencia.getInstance().login("PaolaArgento", "11111");
+		try {
+			Agencia.getInstance().login("Paola", "hola1256");
 			System.out.println("Logueo exitoso");
-		} catch (NombreDeUsuarioIncorrectoException e)
-		{
+		} catch (NombreDeUsuarioIncorrectoException e) {
 			System.out.println(e.getMessage());
-		} catch (ContrasenaIncorrectaException e)
-		{
+		} catch (ContrasenaIncorrectaException e) {
 			System.out.println(e.getMessage());
 		}
 		
 	}
-
+	
 }

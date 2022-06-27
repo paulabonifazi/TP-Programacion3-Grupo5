@@ -21,22 +21,7 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 	private TicketSimplificado ticketSimplificado;
 	private int cantBusquedas = 0;
 	
-	public TicketSimplificado getTicketSimplificado() {
-		return ticketSimplificado;
-	}
-
-	public void setTicketSimplificado(TicketSimplificado ticketSimplificado) {
-		this.ticketSimplificado = ticketSimplificado;
-	}
-
-	public int getCantBusquedas() {
-		return cantBusquedas;
-	}
-
-	public void setCantBusquedas(int cantBusquedas) {
-		this.cantBusquedas = cantBusquedas;
-	}
-
+	
 	public EmpleadoPretenso() {
 		super();
 	}
