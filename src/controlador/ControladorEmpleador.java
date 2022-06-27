@@ -4,6 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
+import excepciones.ContrasenaIncorrectaException;
+import excepciones.NombreDeUsuarioIncorrectoException;
 import modelo.EstadoTicket;
 import modelo.FormularioBusqueda;
 import modelo.Ticket;
@@ -58,6 +62,25 @@ public class ControladorEmpleador implements ActionListener
 			else
 				empleador = new Empleador(new Domicilio(this.vista.getTextField_5().getText(), 0, null) , this.vista.getTextField_6().getText(), this.vista.getTextField_7().getText(), this.vista.getTextField_1().getText(), this.vista.getPasswordField_1().getText(), this.vista.getTextField_2().getText(), this.vista.getButtonGroup_7().getSelection().getActionCommand(), null, null);
 			Agencia.getInstance().agregarEmpleador(empleador);
+		}
+		else if (e.getActionCommand().equalsIgnoreCase("Entrar"))
+		{
+			try
+			{
+				Agencia.getInstance().login(this.vista.getTextField().getText(), this.vista.getPasswordField().getText());
+				this.vista.getTabbedPane().setEnabledAt(0, false);
+				this.vista.getTabbedPane().setEnabledAt(1, false);
+				this.vista.getTabbedPane().setSelectedIndex(2);
+				this.vista.getTabbedPane().setEnabledAt(2, true);
+				this.vista.getTabbedPane().setEnabledAt(3, true);
+				this.vista.getTabbedPane().setEnabledAt(4, true);
+			} catch (NombreDeUsuarioIncorrectoException e1)
+			{
+				JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto");
+			} catch (ContrasenaIncorrectaException e1)
+			{
+				JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+			}
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("Crear ticket")) {
 			String usuario;

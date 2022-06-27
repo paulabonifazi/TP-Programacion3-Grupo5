@@ -59,23 +59,26 @@ public class ControladorEmpleadoPretenso implements ActionListener
 		{
 			EmpleadoPretenso empleado = new EmpleadoPretenso(new Domicilio(this.vista.getTextField_5().getText(), Integer.parseInt(this.vista.getTextField_8().getText()), this.vista.getTextField_9().getText()) , this.vista.getTextField_6().getText(), this.vista.getTextField_7().getText(), this.vista.getTextField_1().getText(), this.vista.getPasswordField_1().getText(), this.vista.getTextField_2().getText(), this.vista.getTextField_3().getText(), Integer.parseInt(this.vista.getTextField_4().getText()), null);
 			Agencia.getInstance().agregarEmpleadoPretenso(empleado);
-		} /*else if (e.getActionCommand().equalsIgnoreCase("Entrar")) VER LOGIN
+		}
+		else if (e.getActionCommand().equalsIgnoreCase("Entrar"))
 		{
 			try
 			{
 				Agencia.getInstance().login(this.vista.getTextField().getText(), this.vista.getPasswordField().getText());
+				this.vista.getTabbedPane().setEnabledAt(0, false);
+				this.vista.getTabbedPane().setEnabledAt(1, false);
+				this.vista.getTabbedPane().setSelectedIndex(2);
+				this.vista.getTabbedPane().setEnabledAt(2, true);
+				this.vista.getTabbedPane().setEnabledAt(3, true);
+				this.vista.getTabbedPane().setEnabledAt(4, true);
 			} catch (NombreDeUsuarioIncorrectoException e1)
 			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto");
 			} catch (ContrasenaIncorrectaException e1)
 			{
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
 			}
-		}*/
+		}
 		else if (e.getActionCommand().equalsIgnoreCase("Crear ticket")) {
 			String usuario;
 			if (!this.vista.getTextField().getText().isBlank())

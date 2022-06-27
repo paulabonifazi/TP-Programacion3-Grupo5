@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.border.BevelBorder;
@@ -65,6 +66,8 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	private final ButtonGroup buttonGroup_5 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_6 = new ButtonGroup();
 	private JTable table;
+	private JList<Empleador> list;
+	private JList<Empleador> list_1;
 
 	/**
 	 * Create the frame.
@@ -151,12 +154,7 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		this.loginButton = new JButton("Entrar");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tabbedPane.setEnabledAt(0, false);
-				tabbedPane.setEnabledAt(1, false);
-				tabbedPane.setSelectedIndex(2);
-				tabbedPane.setEnabledAt(2, true);
-				tabbedPane.setEnabledAt(3, true);
-				tabbedPane.setEnabledAt(4, true);
+				actionListener.actionPerformed(e);
 			}
 		});
 		loginButton.setToolTipText("Entrar");
@@ -601,14 +599,14 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 		tabbedPane.addTab("Lista de Empleadores", null, panel_ListaEmpleadores, "Lista de Empleadores");
 		tabbedPane.setEnabledAt(3, false);
 		
-		JList<Empleador> list = new JList<Empleador>();
+		list = new JList<Empleador>();
 		panel_ListaEmpleadores.add(list);
 		
 		JPanel panel_RondaEleccion = new JPanel();
 		panel_RondaEleccion.setToolTipText("Ronda de Elección");
 		tabbedPane.addTab("Ronda de Elección", null, panel_RondaEleccion, "Ronda de Elección");
 		
-		JList list_1 = new JList();
+		list_1 = new JList<Empleador>();
 		panel_RondaEleccion.add(list_1);
 		tabbedPane.setEnabledAt(4, false);
 		
@@ -784,6 +782,26 @@ public class VentanaEmpleadoPretenso extends JFrame implements IVistaEmpleadoPre
 	public JTable getTable()
 	{
 		return table;
+	}
+
+	public JList<Empleador> getList()
+	{
+		return list;
+	}
+
+	public void setList(JList<Empleador> list)
+	{
+		this.list = list;
+	}
+
+	public JList<Empleador> getList_1()
+	{
+		return list_1;
+	}
+
+	public void setList_1(JList<Empleador> list_1)
+	{
+		this.list_1 = list_1;
 	}
 
 }

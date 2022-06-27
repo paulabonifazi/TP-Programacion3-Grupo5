@@ -4,10 +4,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
+import javax.swing.JList;
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import paquete.Empleador;
 
 public interface IVistaEmpleadoPretenso
 {
@@ -34,4 +37,8 @@ public interface IVistaEmpleadoPretenso
 	public ButtonGroup getButtonGroup_5();
 	public ButtonGroup getButtonGroup_6();
 	public JTable getTable();
+	public JList<Empleador> getList();
+	public void setList(JList<Empleador> list);
+	public JList<Empleador> getList_1();
+	public void setList_1(JList<Empleador> list_1);
 }

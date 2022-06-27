@@ -72,69 +72,6 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		tabbedPane.setBorder(new TitledBorder(null, "Agencia", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		/*JPanel panel_IngresoDatos = new JPanel();
-		panel_IngresoDatos.setBackground(new Color(255, 51, 51));
-		panel_IngresoDatos.setToolTipText("Ingreso de datos");
-		tabbedPane.addTab("Ingreso de datos", null, panel_IngresoDatos, "Ingreso de datos");
-		panel_IngresoDatos.setLayout(new GridLayout(1, 3, 0, 0));
-		
-		JPanel panel_Columna11 = new JPanel();
-		panel_IngresoDatos.add(panel_Columna11);
-		panel_Columna11.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		panel_Columna11.add(panel, BorderLayout.NORTH);
-		
-		JButton btnNewButton = new JButton("Ingresar tipos de trabajo");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		btnNewButton.setToolTipText("Ingresar");
-		panel.add(btnNewButton);
-		
-		JList list = new JList();
-		panel_Columna11.add(list);
-		
-		JPanel panel_Columna12 = new JPanel();
-		panel_IngresoDatos.add(panel_Columna12);
-		
-		panel_Columna12.setLayout(new BorderLayout(0, 0));
-		panel2 = new JPanel();
-		panel_Columna12.add(panel2, BorderLayout.NORTH);
-		
-		btnNewButton2 = new JButton("Ingresar especificación de rango laboral");
-		btnNewButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		btnNewButton2.setToolTipText("Ingresar");
-		panel2.add(btnNewButton2);
-		
-		list2 = new JList();
-		panel_Columna12.add(list2);
-		
-		JPanel panel_Columna13 = new JPanel();
-		panel_IngresoDatos.add(panel_Columna13);
-		
-		panel_Columna13.setLayout(new BorderLayout(0, 0));
-		panel3 = new JPanel();
-		panel_Columna13.add(panel3, BorderLayout.NORTH);
-		
-		btnNewButton3 = new JButton("Ingresar especificación de tipos de puestos");
-		btnNewButton3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		btnNewButton3.setToolTipText("Ingresar");
-		panel3.add(btnNewButton3);
-		
-		list3 = new JList();
-		panel_Columna13.add(list3);*/
-		
 		JPanel panel_VisualizacionDatos = new JPanel();
 		panel_VisualizacionDatos.setToolTipText("Visualización de datos");
 		tabbedPane.addTab("Visualización de datos", null, panel_VisualizacionDatos, "Visualización de datos");
@@ -151,15 +88,7 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		btnNewButton_1.setActionCommand("Empleadores");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				list1.setModel(new AbstractListModel() {
-					String[] values = new String[] {""};
-					public int getSize() {
-						return values.length;
-					}
-					public Object getElementAt(int index) {
-						return values[index];
-					}
-				});
+				actionListener.actionPerformed(e);
 			}
 		});
 		btnNewButton_1.setToolTipText("Empleadores");
@@ -169,6 +98,7 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		btnNewButton_2.setActionCommand("Solicitud empleadores");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 			}
 		});
 		btnNewButton_2.setToolTipText("Solicitud empleadores");
@@ -178,74 +108,21 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		btnNewButton_3.setActionCommand("Empleados");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 			}
 		});
 		btnNewButton_3.setToolTipText("Empleados");
 		panel_1.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("Solicitud empleados");
-		btnNewButton_1.setActionCommand("Solicitud empleados");
+		btnNewButton_4.setActionCommand("Solicitud empleados");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 			}
 		});
 		btnNewButton_4.setToolTipText("Solicitud empleados");
 		panel_1.add(btnNewButton_4);
-		
-		/*JPanel panel_CalculoComisiones = new JPanel();
-		panel_CalculoComisiones.setToolTipText("Cálculo de comisiones");
-		tabbedPane.addTab("Cálculo de comisiones", null, panel_CalculoComisiones, "Cálculo de comisiones");
-		panel_CalculoComisiones.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel_REL = new JPanel();
-		panel_REL.setToolTipText("Ronda de Encuentros Laborales");
-		tabbedPane.addTab("Ronda de Encuentros Laborales", null, panel_REL, "Ronda de Encuentros Laborales");
-		panel_REL.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel_2 = new JPanel();
-		panel_REL.add(panel_2, BorderLayout.WEST);
-		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("Activar Ronda de Encuentros Laborales");
-		tglbtnNewToggleButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!isRondaELActivada()) {
-					tglbtnNewToggleButton.setText("Desactivar Ronda de Encuentros Laborales");
-					setRondaELActivada(true);
-				} else {
-					tglbtnNewToggleButton.setText("Activar Ronda de Encuentros Laborales");
-					setRondaELActivada(false);
-				}
-			}
-		});
-		panel_2.add(tglbtnNewToggleButton);
-		
-		JList list_2 = new JList();
-		panel_REL.add(list_2, BorderLayout.CENTER);
-		
-		JPanel panel_RondaContratacion = new JPanel();
-		panel_RondaContratacion.setToolTipText("Ronda de Contratación");
-		tabbedPane.addTab("Ronda de Contratación", null, panel_RondaContratacion, "Ronda de Contratación");
-		panel_RondaContratacion.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel_3 = new JPanel();
-		panel_RondaContratacion.add(panel_3, BorderLayout.WEST);
-		
-		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Activar Ronda de Contratación");
-		tglbtnNewToggleButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!isRondaContratacionActivada()) {
-					tglbtnNewToggleButton.setText("Desactivar Ronda de Contratación");
-					setRondaContratacionActivada(true);
-				} else {
-					tglbtnNewToggleButton.setText("Activar Ronda de Contratación");
-					setRondaContratacionActivada(false);
-				}
-			}
-		});
-		panel_3.add(tglbtnNewToggleButton_1);
-		
-		JList list_3 = new JList();
-		panel_RondaContratacion.add(list_3, BorderLayout.CENTER);*/
 		
 		JPanel panel_Rondas = new JPanel();
 		panel_Rondas.setToolTipText("Rondas");
@@ -263,6 +140,7 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		panel_2.add(rondaELButton);
 		rondaELButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 				if (!isRondaELActivada()) {
 					rondaELButton.setText("Desactivar Ronda de Encuentros Laborales");
 					setRondaELActivada(true);
@@ -280,6 +158,7 @@ public class VentanaAgencia extends JFrame implements IVistaAgencia, MouseListen
 		panel_3.add(rondaContratacionButton);
 		rondaContratacionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 				if (!isRondaContratacionActivada()) {
 					rondaContratacionButton.setText("Desactivar Ronda de Contratación");
 					setRondaContratacionActivada(true);

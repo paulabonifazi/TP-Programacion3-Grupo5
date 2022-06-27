@@ -46,7 +46,6 @@ public class ControladorAgencia implements ActionListener
 	{
 		if (e.getActionCommand().equalsIgnoreCase("Empleadores"))
 		{
-			System.out.println("hkfbvsdl");
 			DefaultListModel<String> listModel = new DefaultListModel<String>();
 			this.vista.getList1().setModel(listModel);
 			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
@@ -55,10 +54,9 @@ public class ControladorAgencia implements ActionListener
 			
 		} else if (e.getActionCommand().equalsIgnoreCase("Solicitud empleadores"))
 		{
-			System.out.println(e);
 			DefaultListModel<String> listModel = new DefaultListModel<String>();
 			this.vista.getList1().setModel(listModel);
-			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
+			for(int i=0; i<Agencia.getInstance().getEmpleadoresActivos().size(); i++) {
 			    listModel.addElement(Agencia.getInstance().getEmpleadoresActivos().get(i).getNombUsuario());
 			}
 			//Agencia.getInstance().mostrarEmpleadores(Agencia.getInstance().getEmpleadoresActivos());
@@ -66,7 +64,7 @@ public class ControladorAgencia implements ActionListener
 		{
 			DefaultListModel<String> listModel = new DefaultListModel<String>();
 			this.vista.getList1().setModel(listModel);
-			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
+			for(int i=0; i<Agencia.getInstance().getEmpleadosPretensos().size(); i++) {
 			    listModel.addElement(Agencia.getInstance().getEmpleadosPretensos().get(i).getNombUsuario());
 			}
 			//Agencia.getInstance().mostrarEmpleadosPretensos(Agencia.getInstance().getEmpleadosPretensos());
@@ -74,7 +72,7 @@ public class ControladorAgencia implements ActionListener
 		{
 			DefaultListModel<String> listModel = new DefaultListModel<String>();
 			this.vista.getList1().setModel(listModel);
-			for(int i=0; i<Agencia.getInstance().getEmpleadores().size(); i++) {
+			for(int i=0; i<Agencia.getInstance().getEmpleadosPretensosActivos().size(); i++) {
 			    listModel.addElement(Agencia.getInstance().getEmpleadosPretensosActivos().get(i).getNombUsuario());
 			}
 			//Agencia.getInstance().mostrarEmpleadosPretensos(Agencia.getInstance().getEmpleadosPretensosActivos());

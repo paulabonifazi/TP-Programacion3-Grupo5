@@ -67,6 +67,8 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	private final ButtonGroup buttonGroup_6 = new ButtonGroup();
 	private final ButtonGroup buttonGroup_7 = new ButtonGroup();
 	private JTable table;
+	private JList<EmpleadoPretenso> list;
+	private JList<EmpleadoPretenso> list_1;
 
 	/**
 	 * Create the frame.
@@ -153,12 +155,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		this.loginButton = new JButton("Entrar");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tabbedPane.setEnabledAt(0, false);
-				tabbedPane.setEnabledAt(1, false);
-				tabbedPane.setSelectedIndex(2);
-				tabbedPane.setEnabledAt(2, true);
-				tabbedPane.setEnabledAt(3, true);
-				tabbedPane.setEnabledAt(4, true);
+				actionListener.actionPerformed(e);
 			}
 		});
 		loginButton.setToolTipText("Entrar");
@@ -444,6 +441,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		this.registroButton = new JButton("Registrarse");
 		registroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 				tabbedPane.setEnabledAt(0, false);
 				tabbedPane.setEnabledAt(1, false);
 				tabbedPane.setSelectedIndex(2);
@@ -631,6 +629,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		btnNewButton_2.setActionCommand("Crear ticket");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 			}
 		});
 		panel_4.add(btnNewButton_2);
@@ -647,6 +646,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		btnNewButton.setActionCommand("Ver ticket");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 				table.setVisible(true);
 				panel_4.setVisible(false);
 			}
@@ -657,6 +657,7 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		btnNewButton.setActionCommand("Crear nuevo ticket");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				actionListener.actionPerformed(e);
 				table.setVisible(false);
 				panel_4.setVisible(true);
 				buttonGroup.clearSelection();
@@ -670,14 +671,14 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 		});
 		panel.add(btnNewButton_1);
 		
-		JList<EmpleadoPretenso> list = new JList<EmpleadoPretenso>();
+		list = new JList<EmpleadoPretenso>();
 		panel_ListaEmpleados.add(list);
 		
 		JPanel panel_RondaEleccion = new JPanel();
 		panel_RondaEleccion.setToolTipText("Ronda de Elección");
 		tabbedPane.addTab("Ronda de Elección", null, panel_RondaEleccion, "Ronda de Elección");
 		
-		JList list_1 = new JList();
+		list_1 = new JList<EmpleadoPretenso>();
 		panel_RondaEleccion.add(list_1);
 		tabbedPane.setEnabledAt(4, false);
 		
@@ -911,6 +912,26 @@ public class VentanaEmpleador extends JFrame implements IVistaEmpleador, KeyList
 	public JTable getTable()
 	{
 		return table;
+	}
+
+	public JList<EmpleadoPretenso> getList()
+	{
+		return list;
+	}
+
+	public void setList(JList<EmpleadoPretenso> list)
+	{
+		this.list = list;
+	}
+
+	public JList<EmpleadoPretenso> getList_1()
+	{
+		return list_1;
+	}
+
+	public void setList_1(JList<EmpleadoPretenso> list_1)
+	{
+		this.list_1 = list_1;
 	}
 
 }
