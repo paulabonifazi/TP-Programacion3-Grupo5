@@ -1,22 +1,18 @@
 package paquete;
 
-import java.util.ArrayList;
-
 import interfaces.IPersona;
-import modelo.ListAsignacionEmpleadPretenso;
-import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleador;
 import modelo.TicketSimplificado;
 import util.Util;
 
-public class Empleador extends Persona implements  IPersona
+public class Empleador extends Persona implements  IPersona, Runnable
 {
 	private  boolean personaJuridica;
 	private String nomRazonS;
 	private String nombre;
 	private String apellido;
 	private int edad;
-	private String rubro; //salud - comercio local - comercio internacional
+	private String rubro; //Salud - Comercio Local - Comercio Internacional
 	private  TicketEmpleador ticket;
 	private  ValoracionAspecto listaPesos;                
 	
@@ -90,24 +86,28 @@ public class Empleador extends Persona implements  IPersona
 	public double porcentComicion() {
 		return 0;
 	}
-	
-	/*
-	
+
 	@Override
-	public void run() {						
-		//el Empleador genera 3 puestos de trabajo (Ticket Simplificado)
+	public void run() 
+	{
+		//cada empleador genera 3 puestos de trabajo (tickets simplificados)
+		//notifica cada vez que agrega un nuevo ticket
 		
 		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
 		Agencia.getInstance().agregarTicketSimplificado(ts1);
+		notifyAll();
 		Util.espera();
 		
 		TicketSimplificado ts2 = new TicketSimplificado("Comercio Internacional","Indistinto", this);
 		Agencia.getInstance().agregarTicketSimplificado(ts2);
+		notifyAll();
 		Util.espera();
 		
 		TicketSimplificado ts3 = new TicketSimplificado("Comercio Local","HomeOffice", this);
 		Agencia.getInstance().agregarTicketSimplificado(ts3);
+		notifyAll();
 		Util.espera();
 	}
-	*/
+	
+	
 }

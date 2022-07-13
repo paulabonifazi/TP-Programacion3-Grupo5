@@ -46,8 +46,6 @@ public class Agencia
 	
 	private double saldoAgencia = 0;
 	
-	private ArrayList<Ticket> observados = new ArrayList<Ticket>(); //lista de estado de ticket de empleados pretensos observados
-	
 
 	
 	public static Agencia getInstancia() {
@@ -156,15 +154,6 @@ public class Agencia
 		this.bolsaDeEmpleo.remove(ticket);
 	}
 
-
-	public ArrayList<Ticket> getObservados() {
-		return observados;
-	}
-
-	public void setObservados(ArrayList<Ticket> observados) {
-		this.observados = observados;
-	}
-
 	public ArrayList<TicketSimplificado> getBolsaDeEmpleo() {
 		return bolsaDeEmpleo;
 	}
@@ -200,6 +189,8 @@ public class Agencia
 		this.saldoAgencia += comision.calculoComision(listaCoincidencias);
 	}
 
+	
+	
 	/**
 	 * Genera un ArrayList con los empleados pretensos y empleadores activos.
 	 * <br>
@@ -235,6 +226,8 @@ public class Agencia
 		
 		
 	}
+	
+	
 	
 	public void activarRondaEleccion(){
 		int i ;
