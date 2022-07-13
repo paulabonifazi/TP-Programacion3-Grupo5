@@ -8,8 +8,6 @@ import java.util.Observer;
 
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
-import interfaces.IMuestraEmpleadores;
-import interfaces.IMuestraEmpleadosPretensos;
 import modelo.Comision;
 import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
@@ -25,7 +23,7 @@ import tablas.PuntajeTicket;
  *<br>
  *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego ser�n procesados para generar tickets. Dichos tickets permitir� analizar la contrataci�n de empleados.
  */
-public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
+public class Agencia
 {
 	private static Agencia instancia = null;
 
@@ -394,14 +392,13 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 	}
 	
 
-	@Override
 	public void mostrarEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadosPretensos) {
 		for(int i = 0; i < empleadosPretensos.size(); i++) {
 			System.out.println(empleadosPretensos.get(i).getNombre()+empleadosPretensos.get(i).getApellido());
 		}
 	}
 
-	@Override
+
 	public void mostrarEmpleadores(ArrayList<Empleador> empleadores) {
 		for (int i=0; i < empleadores.size(); i++) {
 			if (empleadores.get(i).isPersonaJuridica())

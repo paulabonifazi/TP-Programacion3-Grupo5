@@ -2,7 +2,6 @@ package paquete;
 
 import java.util.ArrayList;
 
-import interfaces.IMuestraListasEmpleadores;
 import interfaces.IPersona;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
