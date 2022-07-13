@@ -1,5 +1,6 @@
 package decorator;
 
+import interfaces.IPersona;
 import paquete.EmpleadoPretenso;
 
 

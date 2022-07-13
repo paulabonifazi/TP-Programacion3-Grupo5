@@ -2,16 +2,15 @@ package paquete;
 
 import java.util.ArrayList;
 
-import decorator.IPersona;
-
 import interfaces.IMuestraListasEmpleadores;
+import interfaces.IPersona;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleador;
 import modelo.TicketSimplificado;
 import util.Util;
 
-public class Empleador extends Persona implements  IPersona, IMuestraListasEmpleadores
+public class Empleador extends Persona implements  IPersona
 {
 	private  boolean personaJuridica;
 	private String nomRazonS;
@@ -23,10 +22,7 @@ public class Empleador extends Persona implements  IPersona, IMuestraListasEmple
 	private  ValoracionAspecto listaPesos;                
 	
 	
-	public Empleador() {
-		super();
-	}
-
+	//Tipo jurídico
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nomRazonS, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
@@ -42,34 +38,7 @@ public class Empleador extends Persona implements  IPersona, IMuestraListasEmple
 		this.listaPesos = listaPesos;
 	}
 
-	public void setPersonaJuridica(boolean personaJuridica) {
-		this.personaJuridica = personaJuridica;
-	}
-
-	public void setNomRazonS(String nomRazonS) {
-		this.nomRazonS = nomRazonS;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
-	public void setRubro(String rubro) {
-		this.rubro = rubro;
-	}
-
-	public void setTicket(TicketEmpleador ticket) {
-		this.ticket = ticket;
-	}
-
+	//Tipo física
 	public Empleador(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nombre, String apellido, int edad, String rubro, TicketEmpleador ticket, ValoracionAspecto listaPesos)
 	{
@@ -85,103 +54,49 @@ public class Empleador extends Persona implements  IPersona, IMuestraListasEmple
 		this.listaPesos = listaPesos;
 	}
 
-	/*/* en la parte donde la empresa se registra crea y manda el valor*/
-	public void setListaPesos(ValoracionAspecto listaPesos) {
-		this.listaPesos = listaPesos;
+	
+	public boolean isPersonaJuridica() {
+		return personaJuridica;
 	}
 
-	public ValoracionAspecto getListaPesos() {
-		return listaPesos;
+	public String getNomRazonS() {
+		return nomRazonS;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public String getRubro() {
+		return rubro;
 	}
 
 	public TicketEmpleador getTicket() {
 		return ticket;
 	}
 
-	@Override
-	public String getNomRazonS()
-	{
-		// TODO Auto-generated method stub
-		return nomRazonS;
+	public ValoracionAspecto getListaPesos() {
+		return listaPesos;
 	}
 
 	@Override
-	public String getNombre()
-	{
-		// TODO Auto-generated method stub
-		return nombre;
-	}
-
-	@Override
-	public String getApellido()
-	{
-		// TODO Auto-generated method stub
-		return apellido;
-	}
-
-	@Override
-	public int getEdad()
-	{
-		int edad;
-		if (personaJuridica)
-			edad = 0;
-		else
-			edad = this.edad;
-		return edad;
-	}
-
-	public boolean isPersonaJuridica()
-	{
-		return personaJuridica;
-	}
-
-	public String getRubro()
-	{
-		return rubro;
-	}
-
-	@Override
-	public void mostrarListaEmpleadosPretensos(ArrayList<EmpleadoPretenso> empleadoPretenso)
-	{
-		for (int i = 0; i<empleadoPretenso.size(); i++) 
-			System.out.println(empleadoPretenso.get(i).getNombUsuario());
+	public double porcentComicion() {
+		return 0;
 	}
 	
-	@Override
-	public void mostrarListaAsignacionDelEmpleador(ListAsignacionEmpleador lista)
-	{
-		for (int i=0; i<lista.getListEmpleadosPretensos().size(); i++)
-			System.out.println(lista.getListEmpleadosPretensos().get(i).getNombUsuario());
-	}
-
-	@Override
-	public void mostrarResultado(ArrayList<ListAsignacionEmpleadPretenso> lista)
-	{
-		boolean coincidencia = false;
-		int contEmpleado = 0;
-		ListAsignacionEmpleadPretenso empleadoActual = null;
-		while (coincidencia==false && contEmpleado < lista.size()) {
-			int contEmpleador = 0;
-			//comienzo la busqueda en el nodo
-			empleadoActual = lista.get(contEmpleado);
-			while (coincidencia==false && contEmpleador <= empleadoActual.getListEmpleadores().size()) {
-				if (empleadoActual.getListEmpleadores().get(contEmpleador).getNombUsuario().equals(this.getNombUsuario()))///ver si no hay otra forma de buscar
-					coincidencia = true;
-				else
-					contEmpleador++;
-			}
-			contEmpleado++;
-		}
-		if (coincidencia == false)
-			System.out.println("Nadie tuvo en cuenta a " + this.getNombUsuario());
-		else
-			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadoActual.getEmpleadoPretenso().getNombUsuario());		
-	}
-
+	/*
 	
 	@Override
 	public void run() {						
-		//el Empleador generarï¿½ 3 puestos de trabajo (Ticket Simplificado)
+		//el Empleador genera 3 puestos de trabajo (Ticket Simplificado)
 		
 		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
 		Agencia.getInstance().agregarTicketSimplificado(ts1);
@@ -195,12 +110,5 @@ public class Empleador extends Persona implements  IPersona, IMuestraListasEmple
 		Agencia.getInstance().agregarTicketSimplificado(ts3);
 		Util.espera();
 	}
-
-	@Override
-	public double porcentComicion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
+	*/
 }

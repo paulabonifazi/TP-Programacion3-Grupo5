@@ -1,5 +1,7 @@
 package decorator;
 
+import interfaces.IPersona;
+
 public abstract class DecoratorCategoria implements IPersona{
     protected IPersona encapsulado;
     

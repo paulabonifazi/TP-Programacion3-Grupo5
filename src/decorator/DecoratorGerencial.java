@@ -1,5 +1,7 @@
 package decorator;
 
+import interfaces.IPersona;
+
 public class DecoratorGerencial extends DecoratorCategoria{
     public DecoratorGerencial(IPersona encapsulado) {
         super(encapsulado);

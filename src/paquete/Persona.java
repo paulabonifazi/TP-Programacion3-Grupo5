@@ -2,7 +2,7 @@ package paquete;
 
 import java.io.Serializable;
 
-public class Persona extends Thread implements Serializable
+public class Persona implements Serializable
 {
 	private Domicilio domicilio;
 	private String telefono;

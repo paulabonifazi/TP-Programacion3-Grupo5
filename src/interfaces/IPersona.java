@@ -1,4 +1,4 @@
-package decorator;
+package interfaces;
 
 public interface IPersona {
     public String getNomRazonS();

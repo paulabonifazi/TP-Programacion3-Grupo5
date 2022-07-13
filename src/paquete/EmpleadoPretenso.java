@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-import decorator.IPersona;
 import interfaces.IMuestraListasEmpleadosPretensos;
+import interfaces.IPersona;
 import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
 import modelo.TicketEmpleadoPretenso;
 import modelo.TicketSimplificado;
 
-public class EmpleadoPretenso extends Persona implements IPersona, IMuestraListasEmpleadosPretensos, Serializable
+public class EmpleadoPretenso extends Persona implements IPersona, Serializable
 {	
 	private String nombre;
 	private String apellido;
@@ -21,10 +21,6 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 	private TicketSimplificado ticketSimplificado;
 	private int cantBusquedas = 0;
 	
-	
-	public EmpleadoPretenso() {
-		super();
-	}
 
 	public EmpleadoPretenso(Domicilio domicilio, String telefono, String mail, String nombUsuario, String contrasenia,
 			String nombre, String apellido, int edad, TicketEmpleadoPretenso ticket) 
@@ -36,18 +32,18 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 		this.edad=edad;
 		this.ticket = ticket;
 		this.ticketSimplificado = null; //se asignar� de la Bolsa de Trabajo, producto de la simulaci�n
+	}	
+
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public String getApellido() {
+		return apellido;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public int getEdad() {
+		return edad;
 	}
 
 	public TicketEmpleadoPretenso getTicket() {
@@ -64,7 +60,7 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 	}
 
 	public void setCantBusquedas(int cantBusquedas) {
-		this.cantBusquedas += cantBusquedas;	//cuento nueva b�squeda realizada
+		this.cantBusquedas += cantBusquedas;	//cuento nueva busqueda realizada
 	}
 	
 
@@ -75,85 +71,26 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 	public void setTicketSimplificado(TicketSimplificado ticketSimplificado) {
 		this.ticketSimplificado = ticketSimplificado;
 	}
-
+	
 	
 	@Override
-	public String getNombre()
-	{
-		// TODO Auto-generated method stub
-		return nombre;
+	public String getNomRazonS() {
+		return null;
 	}
 
-	@Override
-	public String getApellido()
-	{
-		// TODO Auto-generated method stub
-		return apellido;
-	}
-
-	@Override
-	public int getEdad()
-	{
-		// TODO Auto-generated method stub
-		return edad;
-	}
-
-	@Override
-	public void mostrarListaEmpleadores(ArrayList<Empleador> empleador)
-	{
-		for (int i =0; i<empleador.size(); i++) 
-			System.out.println(empleador.get(i).getNombUsuario());		
-	}
-
-	@Override
-	public void mostrarListaAsignacionDelEmpleadoPretenso(ListAsignacionEmpleadPretenso lista)
-	{
-		for (int i=0; i<lista.getListEmpleadores().size(); i++)
-			System.out.println(lista.getListEmpleadores().get(i).getNombUsuario());
-	}
-
-	@Override
-	public void mostrarResultado(ArrayList<ListAsignacionEmpleador> lista)
-	{
-		boolean coincidencia = false;
-		int contEmpleador = 0;
-		ListAsignacionEmpleador empleadorActual = null;
-		while (coincidencia==false && contEmpleador < lista.size()) {
-			int contEmpleadoPretenso = 0;
-			//comienzo la busqueda en el nodo
-			empleadorActual = lista.get(contEmpleador);
-			while (coincidencia==false && contEmpleadoPretenso <= empleadorActual.getListEmpleadosPretensos().size()) {
-				if (empleadorActual.getListEmpleadosPretensos().get(contEmpleadoPretenso).getNombUsuario().equals(this.getNombUsuario()))///ver si no hay otra forma de buscar
-					coincidencia = true;
-				else
-					contEmpleadoPretenso++;
-			}
-			contEmpleador++;
-		}
-		if (coincidencia == false)
-			System.out.println("Nadie contrat� a " + this.getNombUsuario());
-		else
-			System.out.println("Hay coincidencia entre " + this.getNombUsuario() + " y " + empleadorActual.getEmpleador().getNombUsuario());
-	}
-
-
-    @Override
-    public String getNomRazonS() {
-        // TODO Implement this method
-        return null;
-    }
-
+    
     @Override
     public double porcentComicion() {
         return 0.0;
     }
     
+    /*
     @Override
 	public void run() {
-		/*
-		 Cada Empleado Pretenso buscar� hasta 10 en la Bolsa de Empleo o hasta encontrar un 
-		 Ticket Simplificado 
-		 */
+	
+		 //Cada Empleado Pretenso buscar� hasta 10 en la Bolsa de Empleo o hasta encontrar un 
+		 //Ticket Simplificado 
+		
 		
 		Random r = new Random();
 		
@@ -199,4 +136,5 @@ public class EmpleadoPretenso extends Persona implements IPersona, IMuestraLista
 			this.ticket.notifyObservers();
 		}
 	}
+     */
 }

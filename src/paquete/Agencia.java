@@ -25,7 +25,7 @@ import tablas.PuntajeTicket;
  *<br>
  *Contiene el registro de todos los usuarios y permite logear un nuevo usuario. El sistema permite el ingreso de datos, que luego ser�n procesados para generar tickets. Dichos tickets permitir� analizar la contrataci�n de empleados.
  */
-public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos, Observer
+public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 {
 	private static Agencia instancia = null;
 
@@ -411,35 +411,4 @@ public class Agencia  implements IMuestraEmpleadores, IMuestraEmpleadosPretensos
 		}
 		
 	}
-	public void agregarObservable(Ticket estadoTicket)
-	{
-		estadoTicket.addObserver(this);
-		this.observados.add(estadoTicket);
-		
-	}
-	
-	public void eliminarObservable(Ticket estadoTicket)
-	{
-		estadoTicket.deleteObserver(this);
-		this.observados.remove(estadoTicket);
-	}
-
-	@Override
-	public void update(Observable o, Object arg) 
-	{
-		Ticket estadoTicket = (Ticket) o;
-		
-		if (this.observados.contains(o))
-		{
-			if (estadoTicket.getEstado().ticketDisponible() == null)
-				eliminarObservable(estadoTicket);
-		}
-		else
-			throw new IllegalArgumentException();
-		
-	}
-	
-	
-	
-
 }
