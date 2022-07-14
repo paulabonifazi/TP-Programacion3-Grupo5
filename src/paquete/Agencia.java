@@ -1,9 +1,6 @@
 package paquete;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
@@ -11,9 +8,7 @@ import modelo.Comision;
 import modelo.ControlEstadosTicket;
 import modelo.ListAsignacionEmpleadPretenso;
 import modelo.ListAsignacionEmpleador;
-import modelo.Ticket;
 import modelo.TicketSimplificado;
-import tablas.PuntajeTicket;
 import util.Util;
 
 /**

@@ -93,6 +93,18 @@ public class Empleador extends Persona implements  IPersona, Runnable
 		//cada empleador genera 3 puestos de trabajo (tickets simplificados)
 		//notifica cada vez que agrega un nuevo ticket
 		
+		/* */
+		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
+		Agencia.getInstance().agregarTicketSimplificado(ts1);
+		
+		TicketSimplificado ts2 = new TicketSimplificado("Comercio Internacional","Indistinto", this);
+		Agencia.getInstance().agregarTicketSimplificado(ts2);
+		
+		TicketSimplificado ts3 = new TicketSimplificado("Comercio Local","HomeOffice", this);
+		Agencia.getInstance().agregarTicketSimplificado(ts3);
+		
+		/*
+		/*
 		TicketSimplificado ts1 = new TicketSimplificado("Salud","Presencial", this);
 		Agencia.getInstance().agregarTicketSimplificado(ts1);
 		notifyAll();
@@ -107,6 +119,7 @@ public class Empleador extends Persona implements  IPersona, Runnable
 		Agencia.getInstance().agregarTicketSimplificado(ts3);
 		notifyAll();
 		Util.espera();
+		/**/
 	}
 	
 	

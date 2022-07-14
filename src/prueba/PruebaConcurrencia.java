@@ -60,7 +60,10 @@ public class PruebaConcurrencia {
 		hilo7.start();
 		hilo8.start();
 		
-		
+		/*
+		   error en los hilos de empleado pretenso!
+		   error en los hilos de empleador cuando se notifica!!
+		*/
 		
 		
 		System.out.println("Empleadores:");
