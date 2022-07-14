@@ -61,6 +61,8 @@ public class PruebaConcurrencia {
 		hilo8.start();
 		
 		
+		//hay problemas en la ejecución de los hilos!
+		
 		
 		System.out.println("Empleadores:");
 		Agencia.getInstance().mostrarEmpleadores(Agencia.getInstance().getEmpleadores());
