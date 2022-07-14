@@ -15,6 +15,7 @@ import modelo.ListAsignacionEmpleador;
 import modelo.Ticket;
 import modelo.TicketSimplificado;
 import tablas.PuntajeTicket;
+import util.Util;
 
 /**
  * @author paula
@@ -400,5 +401,40 @@ public class Agencia
 				System.out.println(empleadores.get(i).getNombre()+empleadores.get(i).getApellido());
 		}
 		
+	}
+	
+	
+	public synchronized void BuscaTicketSimplificado(EmpleadoPretenso empleado)
+	{
+		while(this.bolsaDeEmpleo.isEmpty())
+		{
+			try
+			{
+				wait();
+			} catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		notifyAll();
+		
+		int i = 0;
+		while(this.bolsaDeEmpleo.get(i).getEstado().equals("Autorizado"))
+		{
+			if(this.bolsaDeEmpleo.get(i).getTipoTrabajo().equals(empleado.getTicket().getFbTicket().getTipoPuesto()))
+			{
+				this.bolsaDeEmpleo.get(i).setEstado("Bloqueado");
+				Util.espera(); //simula el envio de mensaje al empleador
+				
+				if(this.bolsaDeEmpleo.get(i).getLocacion().equals(empleado.getTicket().getFbTicket().getLocacion()))
+				{
+					this.bolsaDeEmpleo.get(i).setEstado("Contratado");
+					empleado.setTicketSimplificado(this.bolsaDeEmpleo.get(i));
+					this.emilinarTicketSimplificado(this.bolsaDeEmpleo.get(i));
+				}
+					
+			}
+			i++;
+		}
 	}
 }

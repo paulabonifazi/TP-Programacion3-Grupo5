@@ -89,12 +89,15 @@ public class EmpleadoPretenso extends Persona implements IPersona, Serializable,
 		empleado llama a método que se encuentra en agencia! 
 		ver como hacer lo de buscar hasta 10 veces y lo de esperar hasta que la bolsa 
 		de empleo no esté vacía
+		  
 		 
-		 
-		 
-		EJEMPLO SIMILAR A "Ejemplos_Concurrencia_clase_TeoricoPractica_2021"!!!!!!!!!
 		*/
 		
+		while(this.ticketSimplificado == null && this.cantBusquedas < 10)
+		{
+			Agencia.getInstance().BuscaTicketSimplificado(this);
+			this.setCantBusquedas(1);
+		}
 	}
     
     

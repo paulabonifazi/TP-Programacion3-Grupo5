@@ -7,12 +7,13 @@ public class TicketSimplificado
 	private String tipoTrabajo; //Salud - Comercio Local - Comercio Internacional
 	private String locacion; // HomeOffice - Presencial - Indistinto
 	private Empleador empleador;
-	private String estado; //Autorizado - Bloqueado
+	private String estado; //Autorizado - Bloqueado - Contratado
 	
 	/*
 	Autorizado: cualquier empleado pretenso puede acceder a él para su análisis
 	Bloqueado: el ticket pasa a ser analizado por el empleado pretenso
-	 
+	Contratado: si hubo éxito en la ronda de encuentro
+	
 	Si hubo éxito el ticket pasa a estar en poder del empleado pretenso, sino vuelve a autorizado
 	*/
 	
