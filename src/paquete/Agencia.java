@@ -1,10 +1,9 @@
 package paquete;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Observable;
-import java.util.Observer;
 
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.NombreDeUsuarioIncorrectoException;
@@ -174,7 +173,6 @@ public class Agencia
 	public ArrayList<ListAsignacionEmpleador> getListaCoincidencias() {
 		return listaCoincidencias;
 	}
-
 	
 
 	/**
@@ -428,9 +426,31 @@ public class Agencia
 				
 				if(this.bolsaDeEmpleo.get(i).getLocacion().equals(empleado.getTicket().getFbTicket().getLocacion()))
 				{
-					this.bolsaDeEmpleo.get(i).setEstado("Contratado");
-					empleado.setTicketSimplificado(this.bolsaDeEmpleo.get(i));
-					this.emilinarTicketSimplificado(this.bolsaDeEmpleo.get(i));
+					if (this.bolsaDeEmpleo.get(i).getEmpleador().getTicket().getCantEmpleadosObtenidos() < this.bolsaDeEmpleo.get(i).getEmpleador().getTicket().getCantEmpleadosSolicitados())
+					{   
+						//hay contratación
+						
+						this.bolsaDeEmpleo.get(i).getEmpleador().getTicket().setCantEmpleadosObtenidos(1);
+						this.bolsaDeEmpleo.get(i).setEstado("Contratado");
+						empleado.setTicketSimplificado(this.bolsaDeEmpleo.get(i));
+						this.emilinarTicketSimplificado(this.bolsaDeEmpleo.get(i));
+						
+						//cargar lista de coincidencia!
+						ListAsignacionEmpleador nodoE = new ListAsignacionEmpleador();
+						nodoE.setEmpleador(this.bolsaDeEmpleo.get(i).getEmpleador());
+						nodoE.getListEmpleadosPretensos().add(empleado);
+						
+						/*
+						  no me convence como cargar la lista de coincidencia
+						  quisiera buscar a un empleador en la lista y si esta agregar el
+						  empleado pretenso
+						*/
+					}
+				}
+				else 
+				{
+					//no hubo éxito en la locación o el empleador ya contrató a todos los empleados pretensos requeridos
+					this.bolsaDeEmpleo.get(i).setEstado("Autorizado");
 				}
 					
 			}
